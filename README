@@ -1,0 +1,4 @@
+PARA COMEÇAR A UTILIZAR O REPOSITORIO:
+
+Crie uma pasta para o git (ex: home/git) vá até ela no terminal e execute o comando:
+git clone git@github.com:leonardowolter/zeng.git

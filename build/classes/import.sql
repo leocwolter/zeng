@@ -1,3 +1,0 @@
-INSERT INTO `Project` (`name`) VALUES ('Zeng'), ('XuxaViado'), ('HarryBixa'), ('GabrielBaitola'), ('EnzoBambi');
-INSERT INTO `TaskPanel` (`name`, `project_id`) VALUES ('ToDo',1), ('Doing',1), ('Done',1);
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskPanel_id`) VALUES ('Fazer alguma coisa!', '2012-04-30 07:00:00', 'Tarefa Marota', '1'), ('Fazer marotagem!', '2012-04-28 15:00:00', 'Marotona', '2'), ('Alooo', '2012-12-31 00:00:00', 'Porra do tcc', '2'), ('Sem inspiração', '2012-04-28 10:30:00', 'Malandraaageeem', '2'), ('Akaka', '2012-04-11 00:00:00', 'EnzoBambi', '3'), ('lalalala', '2012-06-19 00:00:00', 'Alo galera de cowboy', '3');

@@ -18,6 +18,9 @@
 						${task.name }<br />
 						${task.description }<br />
 						<joda:format value="${task.expirationDate}" pattern="dd/MM/YY"/> <br />
+						<c:forEach items="${task.contributors}" var="contributor">
+							${contributor.name} / 					
+						</c:forEach>
 					</section>		
 				</c:forEach>
 			</section>

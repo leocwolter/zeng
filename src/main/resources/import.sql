@@ -1,3 +1,6 @@
 INSERT INTO `Project` (`name`) VALUES ('Zeng'), ('XuxaViado'), ('HarryBixa'), ('GabrielBaitola'), ('EnzoBambi');
 INSERT INTO `TaskPanel` (`name`, `project_id`) VALUES ('ToDo',1), ('Doing',1), ('Done',1);
 INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskPanel_id`) VALUES ('Fazer alguma coisa!', '2012-04-30 07:00:00', 'Tarefa Marota', '1'), ('Fazer marotagem!', '2012-04-28 15:00:00', 'Marotona', '2'), ('Alooo', '2012-12-31 00:00:00', 'Porra do tcc', '2'), ('Sem inspiração', '2012-04-28 10:30:00', 'Malandraaageeem', '2'), ('Akaka', '2012-04-11 00:00:00', 'EnzoBambi', '3'), ('lalalala', '2012-06-19 00:00:00', 'Alo galera de cowboy', '3');
+INSERT INTO `User` (`email`, `name`, `password`) VALUES ('leocwolter@gmail.com', 'Leonardo Wolter', '12345'), ('enzo.toshiba@gmail.com', 'Enzo Toshio', '12345'), ('henrique.develops@gmail.com', 'Henrique Diniz', '12345'), ('gareis93@gmail.com', 'Gabriel Reis', '12345'), ('mtsh.poli@gmail.com', 'Mateus Poli', '12345');
+INSERT INTO `Task_User` (`Task_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('2', '4'), ('2', '5'), ('4', '2'), ('4', '1'), ('5', '3'), ('5', '5'), ('6', '3');
+INSERT INTO `Project_User` (`Project_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'), ('1', '5');

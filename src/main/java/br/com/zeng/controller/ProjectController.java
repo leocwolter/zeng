@@ -29,5 +29,6 @@ public class ProjectController {
 		public void listProjects() {
 			result.include("project" ,projectDao.list());
 		}
+		
 
 }

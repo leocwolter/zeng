@@ -16,8 +16,9 @@
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="show_sql">false</property>
         <property name="format_sql">false</property>
+		<mapping class="br.com.zeng.model.Project"/> 
 		<mapping class="br.com.zeng.model.Task"/> 
-		<mapping class="br.com.zeng.model.TaskList"/> 
+		<mapping class="br.com.zeng.model.TaskPanel"/> 
 		<mapping class="br.com.zeng.model.User"/> 
 
     </session-factory>

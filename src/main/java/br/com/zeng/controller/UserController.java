@@ -41,8 +41,6 @@ public class UserController {
 	@Path("/projects/")
 	public void listProjects() {
 		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
-		System.out.println("==========="+userSession.getUser().getId());
-		System.out.println("==========="+userSession.getUser());
 		result.include("projects", listProjectsWithUser);
 	}
 	

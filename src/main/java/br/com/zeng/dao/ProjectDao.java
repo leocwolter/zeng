@@ -2,10 +2,13 @@ package br.com.zeng.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.zeng.model.Project;
+import br.com.zeng.model.User;
 
 @Component
 public class ProjectDao {
@@ -23,6 +26,15 @@ public class ProjectDao {
 	@SuppressWarnings("unchecked")
 	public List<Project> list() {
 		return session.createCriteria(Project.class).list();
+	}
+
+	public List<Project> listWithUser(User user) {
+		String hql = "select distinct project from Project project "
+				+ "join project.contributors contributor " + "where contributor.id=:id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", user.getId());
+		return query.list();
+
 	}
 
 }

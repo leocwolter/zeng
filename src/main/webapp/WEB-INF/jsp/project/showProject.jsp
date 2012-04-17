@@ -12,7 +12,7 @@
 	<body>
 		<c:forEach items="${taskPanels}" var="taskPanel">
 			<section class="taskPanel">
-				<h1 class="titulo-taskPanel">${taskPanel.name }</h1><br />
+				<h1 class="title-taskPanel">${taskPanel.name }</h1><br />
 				<c:forEach items="${taskPanel.tasks }" var="task">
 					<section class="task">
 						${task.name }<br />

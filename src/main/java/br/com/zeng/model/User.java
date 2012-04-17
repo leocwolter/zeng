@@ -10,7 +10,12 @@ public class User {
 	@GeneratedValue
 	private Long id;
 
+
 	private String name;
+
+	private String password;
+
+	private String email;
 
 	public String getName() {
 		return name;
@@ -24,7 +29,14 @@ public class User {
 		return password;
 	}
 
-	private String email;
-	private String password;
-
+	public Long getId() {
+		return id;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

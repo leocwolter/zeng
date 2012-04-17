@@ -19,15 +19,12 @@ public class ProjectController {
 		this.projectDao = projectDao;
 	}
 
-	@Path("/{project.id}")
-	public void listTaskPanels(Project project) {
-		result.include("project", projectDao.getProjectWithId(project.getId()));
-		result.include("taskPanels", taskPanelDao.listWithProject(project));
+	@Path("/projects/{project.url}/{project.id}")
+	public void showProject(Project project) {
+		Project projectCompleted = projectDao.getProjectWithId(project.getId());
+		result.include("project", projectCompleted);
+		result.include("taskPanels", taskPanelDao.listWithProject(projectCompleted));
 	}
-
-	@Path("/")
-	public void listProjects() {
-		result.include("project", projectDao.list());
-	}
+	
 
 }

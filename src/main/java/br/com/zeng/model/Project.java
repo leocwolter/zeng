@@ -38,4 +38,8 @@ public class Project {
 	public List<User> getContributors() {
 		return contributors;
 	}
+	
+	public String getUrl() {
+		return name.replace(" ", "-").toLowerCase();
+	}
 }

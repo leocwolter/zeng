@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.zeng.model.Project;
@@ -28,7 +27,8 @@ public class ProjectDao {
 		return session.createCriteria(Project.class).list();
 	}
 
-	public List<Project> listWithUser(User user) {
+	@SuppressWarnings("unchecked")
+	public List<Project> listProjectsWithUser(User user) {
 		String hql = "select distinct project from Project project "
 				+ "join project.contributors contributor " + "where contributor.id=:id";
 		Query query = session.createQuery(hql);

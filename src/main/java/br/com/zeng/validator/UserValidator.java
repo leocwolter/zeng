@@ -21,8 +21,6 @@ public class UserValidator {
 	public void validate(User user) {
 		if(user == null) {
 			validator.add(new ValidationMessage("Usuario invalido", "error"));
-		}else if(userDao.getUser(user) == null) {
-			validator.add(new ValidationMessage("Email ou Senha invalidos", "error"));
 		}
 		validator.onErrorRedirectTo(ZengController.class).loginForm();
 	}

@@ -1,5 +1,6 @@
 package br.com.zeng.model;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,6 +20,13 @@ public class Project {
 	@ManyToMany
 	List<User> contributors;
 
+	public Project(List<User> contributors) {
+		this.contributors = contributors;
+	}
+	
+	public Project() {
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -36,10 +44,14 @@ public class Project {
 	}
 
 	public List<User> getContributors() {
-		return contributors;
+		return (List<User>) Collections.unmodifiableCollection(contributors);
 	}
 	
 	public String getUrl() {
 		return name.replace(" ", "-").toLowerCase();
+	}
+	
+	public void addContributor(User contributor) {
+		this.contributors.add(contributor);
 	}
 }

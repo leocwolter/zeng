@@ -2,7 +2,6 @@ package br.com.zeng.dao;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -23,10 +22,9 @@ public class UserDao {
 		return session.createCriteria(User.class).add(Restrictions.eq("id", id)).list();
 	}
 
-	public User getUser(User user) {
-		Criteria returnedUser = session.createCriteria(User.class).add(Restrictions.eq("email", user.getEmail()))
-				.add(Restrictions.eq("password", user.getPassword()));
-		return (User) returnedUser.uniqueResult();
+	public User getRegistredUser(String email, String password) {
+		return (User) session.createCriteria(User.class)
+				.add(Restrictions.and(Restrictions.like("email", email), Restrictions.like("password",password)))
+				.uniqueResult();
 	}
-
 }

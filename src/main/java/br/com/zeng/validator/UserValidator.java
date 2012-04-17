@@ -4,18 +4,15 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.zeng.controller.ZengController;
-import br.com.zeng.dao.UserDao;
 import br.com.zeng.model.User;
 
 @Component
 public class UserValidator {
 
 	private final Validator validator;
-	private final UserDao userDao;
 
-	public UserValidator(Validator validator, UserDao userDao) {
+	public UserValidator(Validator validator) {
 		this.validator = validator;
-		this.userDao = userDao;
 	}
 	
 	public void validate(User user) {

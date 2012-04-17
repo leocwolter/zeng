@@ -19,6 +19,7 @@ public class TaskPanelDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<TaskPanel> listWithProject(Project project) {
 		return session.createCriteria(TaskPanel.class).add(Restrictions.eq("project.id", project.getId())).list();
 	}

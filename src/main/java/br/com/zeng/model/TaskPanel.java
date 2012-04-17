@@ -13,15 +13,15 @@ public class TaskPanel {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private String name;
 
 	@ManyToOne
 	private Project project;
-	
-	@OneToMany(mappedBy="taskPanel")
+
+	@OneToMany(mappedBy = "taskPanel")
 	private List<Task> tasks;
-	
+
 	public List<Task> getTasks() {
 		return tasks;
 	}

@@ -20,9 +20,9 @@ public class ProjectDao {
 		return (Project) session.get(Project.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Project> list() {
 		return session.createCriteria(Project.class).list();
 	}
-	
-	
+
 }

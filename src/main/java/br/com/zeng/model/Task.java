@@ -13,24 +13,24 @@ import org.joda.time.DateTime;
 
 @Entity
 public class Task {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private String name;
-	
+
 	private String description;
 
 	@ManyToMany
 	private List<User> contributors;
-	
+
 	@ManyToOne
 	private TaskPanel taskPanel;
-	
+
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime expirationDate;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -46,8 +46,5 @@ public class Task {
 	public DateTime getExpirationDate() {
 		return expirationDate;
 	}
-
-	
-	
 
 }

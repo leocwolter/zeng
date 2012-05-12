@@ -17,7 +17,7 @@ public class TaskPanel {
 	private String name;
 
 	@ManyToOne
-	private Project project;
+	private Category category;
 
 	@OneToMany(mappedBy = "taskPanel")
 	private List<Task> tasks;
@@ -46,12 +46,12 @@ public class TaskPanel {
 		this.name = name;
 	}
 
-	public Project getProject() {
-		return project;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

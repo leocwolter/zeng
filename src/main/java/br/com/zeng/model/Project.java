@@ -1,5 +1,6 @@
 package br.com.zeng.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Project {
@@ -20,11 +22,11 @@ public class Project {
 	@ManyToMany
 	List<User> contributors;
 
-	public Project(List<User> contributors) {
-		this.contributors = contributors;
-	}
+	@OneToMany(mappedBy = "project")
+	private List<Category> categories;
 	
 	public Project() {
+		contributors = new ArrayList<User>();
 	}
 	
 	public void setId(Long id) {
@@ -54,4 +56,9 @@ public class Project {
 	public void addContributor(User contributor) {
 		this.contributors.add(contributor);
 	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
 }

@@ -3,6 +3,7 @@ package br.com.zeng.controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.zeng.dao.CategoryDao;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskPanelDao;
 import br.com.zeng.model.Project;
@@ -13,7 +14,7 @@ public class ProjectController {
 	private final TaskPanelDao taskPanelDao;
 	private final ProjectDao projectDao;
 
-	public ProjectController(Result result, TaskPanelDao taskPanelDao, ProjectDao projectDao) {
+	public ProjectController(Result result, TaskPanelDao taskPanelDao,CategoryDao categoryDao, ProjectDao projectDao) {
 		this.result = result;
 		this.taskPanelDao = taskPanelDao;
 		this.projectDao = projectDao;
@@ -23,7 +24,6 @@ public class ProjectController {
 	public void showProject(Project project) {
 		Project projectCompleted = projectDao.getProjectWithId(project.getId());
 		result.include("project", projectCompleted);
-		result.include("taskPanels", taskPanelDao.listWithProject(projectCompleted));
 	}
 	
 

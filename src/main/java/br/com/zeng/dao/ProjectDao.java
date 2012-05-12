@@ -30,7 +30,7 @@ public class ProjectDao {
 	@SuppressWarnings("unchecked")
 	public List<Project> listProjectsWithUser(User user) {
 		String hql = "select distinct project from Project project "
-				+ "join project.contributors contributor " + "where contributor.id=:id";
+				+ "join project.contributors contributor where contributor.id=:id";
 		Query query = session.createQuery(hql);
 		query.setParameter("id", user.getId());
 		return query.list();

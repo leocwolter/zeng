@@ -2,8 +2,6 @@ package br.com.zeng.dao;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +25,8 @@ public class ProjectDaoTest extends DaoTest{
 		User user = new User("user","user@user.com","password");
 		session.save(user);
 		
-		Project project = new Project(Arrays.asList(user));
+		Project project = new Project();
+		project.addContributor(user);
 		session.save(project);
 
 		Project project2 = new Project();

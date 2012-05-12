@@ -2,6 +2,7 @@ package br.com.zeng.controller;
 
 import java.util.List;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -28,6 +29,10 @@ public class UserController {
 		this.projectDao = projectDao;
 		this.userSession = userSession;
 		this.userValidator = userValidator;
+	}
+
+	@Get("/loginForm/")
+	public void loginForm() {
 	}
 	
 	@Post("/login/")

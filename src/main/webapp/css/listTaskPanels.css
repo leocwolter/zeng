@@ -1,4 +1,20 @@
 @CHARSET "UTF-8";
+*{
+	font-family:arial;
+	margin:0;
+	padding:0;
+}
+
+.category{ 
+	width:100%;
+	min-height:100px;
+	height:auto;
+	background: #EFEFEF;
+	padding: 10px;
+	float:left;
+	clear:both;
+	border: 1px solid #AAAAAA;
+}
 
 .taskPanel{
 	width:300px;
@@ -14,8 +30,4 @@
 	font: 10px #333333 Arial;
 	border: 1px solid #AAAAAA;
 	padding: 10px;
-}
-
-.taskPanel .task:FIRST-CHILD {
-	font: 15px;
 }

@@ -19,11 +19,11 @@
 						<c:forEach items="${taskPanel.tasks }" var="task">
 							<section class="task">
 								${task.name }<br />
-								${task.description }<br />
 								<joda:format value="${task.expirationDate}" pattern="dd/MM/YY"/> <br />
 								<c:forEach items="${task.contributors}" var="contributor">
 									${contributor.name} / 					
-								</c:forEach>
+								</c:forEach><br/>
+								<a href="${linkTo[TaskController].showTask}${task.id}">Mais detalhes</a>
 							</section>		
 						</c:forEach>
 						<a href="${linkTo[TaskController].insertTaskForm}${taskPanel.id}">Adicionar tarefa</a>
@@ -32,5 +32,6 @@
 				<a href="${linkTo[TaskPanelController].insertTaskPanelForm}${category.id}">Adicionar lista de tarefas</a>
 			</section>
 		</c:forEach>
+		<a href="${linkTo[CategoryController].insertCategoryForm}${project.id}">Adicionar categoria</a>
 	</body>
 </html>

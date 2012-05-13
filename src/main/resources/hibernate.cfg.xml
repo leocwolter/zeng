@@ -21,7 +21,6 @@
 		<mapping class="br.com.zeng.model.Task"/> 
 		<mapping class="br.com.zeng.model.TaskPanel"/> 
 		<mapping class="br.com.zeng.model.User"/> 
-		<mapping class="br.com.zeng.model.StepByStep"/> 
 		<mapping class="br.com.zeng.model.Step"/> 
 
     </session-factory>

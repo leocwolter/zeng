@@ -17,6 +17,10 @@ public class CategoryDao {
 	public Category getCategoryWithId(Long id) {
 		return (Category) session.get(Category.class, id);
 	}
+
+	public void insert(Category category) {
+		session.save(category);
+	}
 	
 	
 	

@@ -13,10 +13,11 @@ public class Step {
 	private Long id;
 	
 	@ManyToOne
-	private StepByStep stepByStep;
+	private Task task;
 	
 	private String description;
 
+	
 	public Long getId() {
 		return id;
 	}
@@ -25,23 +26,21 @@ public class Step {
 		this.id = id;
 	}
 
-	public void setStepByStep(StepByStep stepByStep) {
-		this.stepByStep = stepByStep;
-	}
-
 	public String getDescription() {
 		return description;
+	}
+
+	public Task getTask() {
+		return task;
+	}
+
+	public void setStepByStep(Task task) {
+		this.task = task;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public StepByStep getStepByStep() {
-		return stepByStep;
-	}
-
-	
-	
 
 }

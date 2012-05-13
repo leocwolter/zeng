@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -27,6 +28,10 @@ public class Task {
 
 	@ManyToOne
 	private TaskPanel taskPanel;
+
+
+	@OneToMany(mappedBy = "task")
+	private List<Step> steps;
 
 	public Long getId() {
 		return id;
@@ -77,6 +82,14 @@ public class Task {
 
 	public DateTime getExpirationDate() {
 		return expirationDate;
+	}
+
+	public List<Step> getSteps() {
+		return steps;
+	}
+
+	public void setSteps(List<Step> steps) {
+		this.steps = steps;
 	}
 
 }

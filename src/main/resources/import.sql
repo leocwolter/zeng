@@ -14,7 +14,6 @@ INSERT INTO `User` (`email`, `name`, `password`) VALUES ('leocwolter@gmail.com',
 INSERT INTO `Task_User` (`Task_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('2', '4'), ('2', '5'), ('4', '2'), ('4', '1'), ('5', '3'), ('5', '5'), ('6', '3');
 INSERT INTO `Project_User` (`Project_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'), ('1', '5');
 
---INSERT INTO `StepByStep` (`task_id`) VALUES ('1');
---INSERT INTO `Step` (`description`, `stepByStep_id`) VALUES ('passo 1 ', '1');
---INSERT INTO `Step` (`description`, `stepByStep_id`) VALUES ('passo 2 ', '2');
---INSERT INTO `Step` (`description`, `stepByStep_id`) VALUES ('passo 3 ', '3');
+INSERT INTO `Step` (`description`, `task_id`) VALUES ('passo 1 ', '1');
+INSERT INTO `Step` (`description`, `task_id`) VALUES ('passo 2 ', '1');
+INSERT INTO `Step` (`description`, `task_id`) VALUES ('passo 3 ', '1');

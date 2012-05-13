@@ -26,7 +26,7 @@ public class TaskController {
 	public void insert(Task task, TaskPanel taskPanel) {
 		TaskPanel taskPanelComplete = taskPanelDao.getTaskPanelWithId(taskPanel.getId());
 		task.setTaskPanel(taskPanelComplete);
-		taskDao.insertTask(task);
+		taskDao.insert(task);
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 
@@ -34,5 +34,12 @@ public class TaskController {
 	public TaskPanel insertTaskForm(TaskPanel taskPanel) {
 		return taskPanel;
 	}	
+	
+	@Path("/task/{task.id}")
+	public Task showTask(Task task) {
+		return taskDao.getTaskWithId(task.getId());
+	}	
+	
+	
 
 }

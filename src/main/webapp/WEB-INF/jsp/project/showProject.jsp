@@ -26,6 +26,7 @@
 								</c:forEach>
 							</section>		
 						</c:forEach>
+						<a href="${linkTo[TaskController].insertTaskForm}${taskPanel.id}">Adicionar tarefa</a>
 					</section>		
 				</c:forEach>
 			</section>

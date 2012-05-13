@@ -14,7 +14,7 @@ public class UserValidator {
 	public UserValidator(Validator validator) {
 		this.validator = validator;
 	}
-	
+
 	public void validate(User user) {
 		if(user == null) {
 			validator.add(new ValidationMessage("Usuario invalido", "error"));

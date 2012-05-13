@@ -28,8 +28,40 @@ public class Task {
 	@ManyToOne
 	private TaskPanel taskPanel;
 
+	public Long getId() {
+		return id;
+	}
+
+	public TaskPanel getTaskPanel() {
+		return taskPanel;
+	}
+
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime expirationDate;
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setContributors(List<User> contributors) {
+		this.contributors = contributors;
+	}
+
+	public void setTaskPanel(TaskPanel taskPanel) {
+		this.taskPanel = taskPanel;
+	}
+
+	public void setExpirationDate(DateTime expirationDate) {
+		this.expirationDate = expirationDate;
+	}
 
 	public String getName() {
 		return name;

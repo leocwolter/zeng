@@ -40,13 +40,7 @@ public class UserController {
 		User registredUser = userDao.getRegistredUser(user.getEmail(),user.getPassword()) ;
 		userValidator.validate(registredUser);
 		userSession.logIn(registredUser);
-		result.redirectTo(UserController.class).listProjects();
-	}
-	
-	@Path("/projects/")
-	public void listProjects() {
-		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
-		result.include("projects", listProjectsWithUser);
+		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
 }

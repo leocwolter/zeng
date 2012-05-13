@@ -1,23 +1,24 @@
 package br.com.zeng.controller;
 
+import java.util.List;
+
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.zeng.dao.CategoryDao;
 import br.com.zeng.dao.ProjectDao;
-import br.com.zeng.dao.TaskPanelDao;
 import br.com.zeng.model.Project;
+import br.com.zeng.session.UserSession;
 
 @Resource
 public class ProjectController {
 	private final Result result;
-	private final TaskPanelDao taskPanelDao;
 	private final ProjectDao projectDao;
+	private final UserSession userSession;
 
-	public ProjectController(Result result, TaskPanelDao taskPanelDao,CategoryDao categoryDao, ProjectDao projectDao) {
+	public ProjectController(Result result, ProjectDao projectDao, UserSession userSession) {
 		this.result = result;
-		this.taskPanelDao = taskPanelDao;
 		this.projectDao = projectDao;
+		this.userSession = userSession;
 	}
 
 	@Path("/projects/{project.url}/{project.id}")
@@ -26,5 +27,9 @@ public class ProjectController {
 		result.include("project", projectCompleted);
 	}
 	
-
+	@Path("/projects/")
+	public void listProjects() {
+		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
+		result.include("projects", listProjectsWithUser);
+	}
 }

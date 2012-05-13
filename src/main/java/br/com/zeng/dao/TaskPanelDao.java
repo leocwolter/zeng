@@ -18,4 +18,8 @@ public class TaskPanelDao {
 		return (TaskPanel) session.get(TaskPanel.class, id);
 	}
 
+	public void insert(TaskPanel taskPanel) {
+		session.save(taskPanel);
+	}
+
 }

@@ -29,6 +29,7 @@
 						<a href="${linkTo[TaskController].insertTaskForm}${taskPanel.id}">Adicionar tarefa</a>
 					</section>		
 				</c:forEach>
+				<a href="${linkTo[TaskPanelController].insertTaskPanelForm}${category.id}">Adicionar lista de tarefas</a>
 			</section>
 		</c:forEach>
 	</body>

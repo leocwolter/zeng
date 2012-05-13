@@ -29,6 +29,18 @@ public class Step {
 		this.stepByStep = stepByStep;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public StepByStep getStepByStep() {
+		return stepByStep;
+	}
+
 	
 	
 

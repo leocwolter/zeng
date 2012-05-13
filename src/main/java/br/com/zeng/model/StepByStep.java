@@ -26,4 +26,8 @@ public class StepByStep {
 		this.task = task;
 	}
 
+	public Task getTask() {
+		return task;
+	}
+ 
 }

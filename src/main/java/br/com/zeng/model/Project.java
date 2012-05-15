@@ -46,7 +46,7 @@ public class Project {
 	}
 
 	public List<User> getContributors() {
-		return (List<User>) Collections.unmodifiableCollection(contributors);
+		return Collections.unmodifiableList(contributors);
 	}
 	
 	public String getUrl() {

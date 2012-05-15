@@ -10,16 +10,19 @@
 <body>
 	<form action="${linkTo[TaskController].insert}" method="post">
 		<label for="task-name">Nome: </label>
-		<input type="text" id="task-name" name="task.name" />
+		<input type="text" id="task-name" name="task.name" /><br/>
 		
 		<label for="task-description">Descrição: </label>
-		<input type="text" id="task-description" name="task.description" />
+		<input type="text" id="task-description" name="task.description" /><br/>
 	
-		<label for="task-contributors">Colaboradores: </label>
-		<input type="text" id="task-contributors" name="task.contributors" />
+		<label for="task-contributors">Colaboradores: </label><br/>
+		<c:forEach items="${taskPanel.category.project.contributors}" var="contributor" varStatus="i">
+			<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="contributors[${i.count}].id"/>
+			<label for="task-contributors[${i.count}]">${contributor.name} </label><br/> 
+		</c:forEach>
 	
 		<label for="task-expirationDate">Data de expiração: </label>
-		<input type="text" id="task-expirationDate" name="task.expirationDate" />
+		<input type="text" id="task-expirationDate" name="task.expirationDate" /><br/>
 
 		<input type="hidden" name="taskPanel.id" value="${taskPanel.id}"/>
 

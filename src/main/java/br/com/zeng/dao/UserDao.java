@@ -27,4 +27,11 @@ public class UserDao {
 				.add(Restrictions.and(Restrictions.like("email", email), Restrictions.like("password",password)))
 				.uniqueResult();
 	}
+
+	public List<User> getCompleteContributorsByList(List<User> contributors) {
+		for (User user : contributors) {
+			user = (User) session.get(User.class, user.getId());
+		}
+		return contributors;
+	}
 }

@@ -17,7 +17,7 @@
 					<section class="taskPanel">
 						<h2 class="title-taskPanel">${taskPanel.name }</h2><br />
 						<c:forEach items="${taskPanel.tasks }" var="task">
-							<section class="task">
+							<section class="task ${task.state}">
 								${task.name }<br />
 								<joda:format value="${task.expirationDate}" pattern="dd/MM/YY"/> <br />
 								<c:forEach items="${task.contributors}" var="contributor">
@@ -25,8 +25,13 @@
 								</c:forEach><br/>
 								<a href="${linkTo[TaskController].showTask}${task.id}">Mais detalhes</a>
 							</section>		
+							<section class="options-task">
+								<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
+								<a href="${linkTo[TaskController].finalize}${task.id}">Finalizar tarefa</a>/
+								<a href="${linkTo[TaskController].todo}${task.id}">Devolver tarefa</a>/
+							</section>
 						</c:forEach>
-						<a href="${linkTo[TaskController].insertTaskForm}${taskPanel.id}">Adicionar tarefa</a>
+						<a href="${linkTo[TaskController].insertTaskForm}${taskPanel.id}">Adicionar tarefa</a><br/>
 					</section>		
 				</c:forEach>
 				<a href="${linkTo[TaskPanelController].insertTaskPanelForm}${category.id}">Adicionar lista de tarefas</a>

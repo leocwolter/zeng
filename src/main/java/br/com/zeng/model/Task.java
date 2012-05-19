@@ -29,6 +29,7 @@ public class Task {
 	@ManyToOne
 	private TaskPanel taskPanel;
 
+	private State state;
 
 	@OneToMany(mappedBy = "task")
 	private List<Step> steps;
@@ -90,6 +91,14 @@ public class Task {
 
 	public void setSteps(List<Step> steps) {
 		this.steps = steps;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
 	}
 
 }

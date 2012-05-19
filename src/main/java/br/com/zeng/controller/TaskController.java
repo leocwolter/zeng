@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskPanelDao;
 import br.com.zeng.dao.UserDao;
+import br.com.zeng.model.State;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskPanel;
 import br.com.zeng.model.User;
@@ -52,6 +53,36 @@ public class TaskController {
 		return taskDao.getTaskWithId(task.getId());
 	}	
 	
+	@Path("/task/startTask/{task.id}")
+	public void start(Task task) {
+		changeState(task, State.DOING);
+	}
+
+	@Path("/task/finalizeTask/{task.id}")
+	public void finalize(Task task) {
+		changeState(task, State.DONE);
+	}
 	
+	@Path("/task/todoTask/{task.id}")
+	public void todo(Task task) {
+		changeState(task, State.TODO);
+	}
+	
+	@Path("/task/aprove/{task.id}")
+	public void aprove(Task task) {
+		changeState(task, State.APROVED);
+	}
+	
+	@Path("/task/deny/{task.id}")
+	public void deny(Task task) {
+		changeState(task, State.DENIED);
+	}
+	
+	private void changeState(Task task, State state) {
+		Task taskComplete = taskDao.getTaskWithId(task.getId());
+		taskComplete.setState(state);
+		taskDao.update(taskComplete);
+		result.redirectTo(ProjectController.class).listProjects();
+	}
 
 }

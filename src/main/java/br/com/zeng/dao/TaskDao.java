@@ -26,4 +26,9 @@ public class TaskDao {
 		return (Task) session.get(Task.class, id);
 	}
 
+
+	public void update(Task task) {
+		session.update(task);
+	}
+
 }

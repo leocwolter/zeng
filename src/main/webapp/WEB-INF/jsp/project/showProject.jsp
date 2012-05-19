@@ -7,7 +7,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Projeto - ${project.name}</title>
-		<link rel="stylesheet" href='<c:url value="/css/listTaskPanels.css" />'>
+		<link rel="stylesheet" href='<c:url value="/css/showProject.css" />'>
 	</head>
 	<body>
 		<c:forEach items="${project.categories}" var="category">

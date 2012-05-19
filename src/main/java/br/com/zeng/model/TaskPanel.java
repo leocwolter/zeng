@@ -54,4 +54,8 @@ public class TaskPanel {
 		this.category = category;
 	}
 
+	public Project getProject() {
+		return category.getProject();
+	}
+
 }

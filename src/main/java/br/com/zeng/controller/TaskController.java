@@ -39,7 +39,7 @@ public class TaskController {
 		task.setTaskPanel(taskPanelComplete);
 		
 		taskDao.insert(task);
-		result.redirectTo(ProjectController.class).listProjects();
+		result.redirectTo(ProjectController.class).showProject(task.getProject());
 	}
 
 	@Path("/taskpanel/addTask/{taskPanel.id}")
@@ -82,7 +82,7 @@ public class TaskController {
 		Task taskComplete = taskDao.getTaskWithId(task.getId());
 		taskComplete.setState(state);
 		taskDao.update(taskComplete);
-		result.redirectTo(ProjectController.class).listProjects();
+		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
 
 }

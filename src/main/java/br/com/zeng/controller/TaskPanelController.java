@@ -27,7 +27,7 @@ public class TaskPanelController {
 		Category categoryComplete = categoryDao.getCategoryWithId(category.getId());
 		taskPanel.setCategory(categoryComplete);
 		taskPanelDao.insert(taskPanel);
-		result.redirectTo(ProjectController.class).listProjects();
+		result.redirectTo(ProjectController.class).showProject(taskPanel.getProject());
 	}
 
 	@Path("/addTaskPanel/{category.id}")

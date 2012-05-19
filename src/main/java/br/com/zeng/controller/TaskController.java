@@ -32,7 +32,6 @@ public class TaskController {
 
 	@Post("/taskpanel/task/add")
 	public void insert(Task task, TaskPanel taskPanel, List<User> contributors) {
-		System.out.println(contributors.size());
 		List<User> completeContributorsByList = userDao.getCompleteContributorsByList(contributors);
 		TaskPanel taskPanelComplete = taskPanelDao.getTaskPanelWithId(taskPanel.getId());
 		

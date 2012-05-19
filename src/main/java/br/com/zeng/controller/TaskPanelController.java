@@ -4,6 +4,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.CategoryDao;
 import br.com.zeng.dao.TaskPanelDao;
 import br.com.zeng.model.Category;
@@ -30,6 +31,7 @@ public class TaskPanelController {
 		result.redirectTo(ProjectController.class).showProject(taskPanel.getProject());
 	}
 
+	@LoggedUser
 	@Path("/addTaskPanel/{category.id}")
 	public Category insertTaskPanelForm(Category category) {
 		return category;

@@ -4,7 +4,6 @@ import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.zeng.model.Task;
-import br.com.zeng.model.TaskPanel;
 
 @Component
 public class TaskDao {

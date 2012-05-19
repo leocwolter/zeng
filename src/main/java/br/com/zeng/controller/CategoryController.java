@@ -4,6 +4,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.CategoryDao;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.model.Category;
@@ -30,6 +31,7 @@ public class CategoryController {
 		result.redirectTo(ProjectController.class).showProject(project);
 	}
 
+	@LoggedUser
 	@Path("/addCategory/{project.id}")
 	public Project insertCategoryForm(Project project) {
 		return project;

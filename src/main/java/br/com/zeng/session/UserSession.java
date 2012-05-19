@@ -21,4 +21,8 @@ public class UserSession {
 	public void logOut() {
 		this.user = null;
 	}
+
+	public boolean isLogged() {
+		return user != null;
+	}
 }

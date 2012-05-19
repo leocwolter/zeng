@@ -24,7 +24,7 @@ public class UserController {
 		this.userValidator = userValidator;
 	}
 
-	@Get("/loginForm/")
+	@Get("/")
 	public void loginForm() {
 	}
 	

@@ -69,7 +69,7 @@ public class TaskController {
 	
 	@LoggedUser
 	@Path("/task/todoTask/{task.id}")
-	public void todo(Task task) {
+	public void stop(Task task) {
 		changeState(task, State.TODO);
 	}
 	

@@ -28,7 +28,7 @@
 							<section class="options-task">
 								<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
 								<a href="${linkTo[TaskController].finalize}${task.id}">Finalizar tarefa</a>/
-								<a href="${linkTo[TaskController].todo}${task.id}">Devolver tarefa</a>/
+								<a href="${linkTo[TaskController].stop}${task.id}">Devolver tarefa</a>/
 							</section>
 						</c:forEach>
 						<a href="${linkTo[TaskController].insertTaskForm}${taskPanel.id}">Adicionar tarefa</a><br/>

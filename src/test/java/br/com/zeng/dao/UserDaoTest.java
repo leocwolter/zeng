@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,7 +36,22 @@ public class UserDaoTest extends DaoTest {
 		assertEquals("user", registredUser.getName());
 		assertEquals("password", registredUser.getPassword());
 	}
+	
+	@Test
+	public void shouldIterateAndReturnAListOfCompleteUsers() {
+		session.save(new User("user", "user@user.com", "password"));
+		session.save(new User("user2", "user2@user.com", "password2"));
 
+		User user1 = new User();
+		user1.setId(1L);
+
+		User user2 = new User();
+		user2.setId(2L);
+		
+		List<User> registredUsers = userDao.getCompleteContributorsByList(Arrays.asList(user1, user2));
+		assertEquals(2, registredUsers.size());
+
+	}
 
 	@Test
 	public void shouldNotLogInWithWrongPasswordOrEmail() {

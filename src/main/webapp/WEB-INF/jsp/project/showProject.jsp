@@ -27,9 +27,13 @@
 							</section>		
 							<section class="options-task">
 								<c:if test="${task.state != 'DONE'}">
-									<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
+									<c:if test="${task.state != 'DOING'}">
+										<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
+									</c:if>
+									<c:if test="${task.state != 'TODO'}">
+										<a href="${linkTo[TaskController].stop}${task.id}">Devolver tarefa</a>/
+									</c:if>
 									<a href="${linkTo[TaskController].finalize}${task.id}">Finalizar tarefa</a>/
-									<a href="${linkTo[TaskController].stop}${task.id}">Devolver tarefa</a>/
 								</c:if>
 							</section>
 						</c:forEach>

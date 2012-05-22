@@ -34,4 +34,8 @@ public class UserDao {
 		}
 		return contributors;
 	}
+
+	public void update(User user) {
+		session.update(user);
+	}
 }

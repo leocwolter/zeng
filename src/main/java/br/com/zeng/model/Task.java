@@ -101,13 +101,24 @@ public class Task {
 	public State getState() {
 		return state;
 	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
 	
 	public Project getProject() {
 		return taskPanel.getProject();
+	}
+
+	public boolean isFinalized() {
+		return state.equals(State.DONE);
+	}
+
+	public void start() {
+		this.state = State.DOING;
+	}
+
+	public void stop() {
+		this.state = State.TODO;
+	}
+	public void finalize() {
+		this.state = State.DONE;
 	}
 
 }

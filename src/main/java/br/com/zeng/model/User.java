@@ -16,6 +16,12 @@ public class User {
 
 	private String email;
 
+	private int finalizedTasks;
+
+	public User() {
+		finalizedTasks = 0;
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -31,8 +37,6 @@ public class User {
 
 	}
 
-	public User() {
-	}
 
 	public String getName() {
 		return name;
@@ -56,5 +60,9 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public void incrementFinalizedTasks() {
+		finalizedTasks++;
 	}
 }

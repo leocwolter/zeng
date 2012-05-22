@@ -14,6 +14,7 @@ import br.com.zeng.model.State;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskPanel;
 import br.com.zeng.model.User;
+import br.com.zeng.session.UserSession;
 
 @Resource
 public class TaskController {
@@ -21,12 +22,14 @@ public class TaskController {
 	private final Result result;
 	private final TaskPanelDao taskPanelDao;
 	private final UserDao userDao;
+	private final UserSession userSession;
 
-	public TaskController(TaskDao taskDao,TaskPanelDao taskPanelDao, UserDao userDao, Result result) {
+	public TaskController(TaskDao taskDao,TaskPanelDao taskPanelDao, UserDao userDao, Result result, UserSession userSession) {
 		this.taskDao = taskDao;
 		this.taskPanelDao = taskPanelDao;
 		this.userDao = userDao;
 		this.result = result;
+		this.userSession = userSession;
 	}
 
 
@@ -58,38 +61,39 @@ public class TaskController {
 	@LoggedUser
 	@Path("/task/startTask/{task.id}")
 	public void start(Task task) {
-		changeState(task, State.DOING);
+		Task taskComplete = taskDao.getTaskWithId(task.getId());
+		if(!taskComplete.isFinalized()) {
+			taskComplete.start();
+			taskDao.update(taskComplete);
+		}
+		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
-	
+
 	@LoggedUser
 	@Path("/task/finalizeTask/{task.id}")
 	public void finalize(Task task) {
-		changeState(task, State.DONE);
+		Task taskComplete = taskDao.getTaskWithId(task.getId());
+		if(!taskComplete.isFinalized()) {
+			User user = userSession.getUser();
+			user.incrementFinalizedTasks();
+			userDao.update(user);
+
+			taskComplete.finalize();
+			taskDao.update(taskComplete);
+		}
+		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
-	
+
 	@LoggedUser
 	@Path("/task/todoTask/{task.id}")
 	public void stop(Task task) {
-		changeState(task, State.TODO);
-	}
-	
-	@LoggedUser
-	@Path("/task/aprove/{task.id}")
-	public void aprove(Task task) {
-		changeState(task, State.APROVED);
-	}
-	
-	@LoggedUser
-	@Path("/task/deny/{task.id}")
-	public void deny(Task task) {
-		changeState(task, State.DENIED);
-	}
-	
-	private void changeState(Task task, State state) {
 		Task taskComplete = taskDao.getTaskWithId(task.getId());
-		taskComplete.setState(state);
-		taskDao.update(taskComplete);
+		if(!taskComplete.isFinalized()) {
+			taskComplete.stop();
+			taskDao.update(taskComplete);
+		}
 		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
+	
 
 }

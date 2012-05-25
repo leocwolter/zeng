@@ -54,7 +54,8 @@ public class Project {
 	}
 	
 	public void addContributor(User contributor) {
-		this.contributors.add(contributor);
+		if(!contributors.contains(contributor))
+			this.contributors.add(contributor);
 	}
 
 	public List<Category> getCategories() {

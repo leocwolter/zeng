@@ -48,7 +48,7 @@ public class UserDaoTest extends DaoTest {
 		User user2 = new User();
 		user2.setId(2L);
 		
-		List<User> registredUsers = userDao.getCompleteContributorsByList(Arrays.asList(user1, user2));
+		List<User> registredUsers = userDao.getCompleteContributorsById(Arrays.asList(user1, user2));
 		assertEquals(2, registredUsers.size());
 
 	}

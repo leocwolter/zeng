@@ -14,5 +14,7 @@
 				<a class="titulo-project" href='<c:url value="/projects/"/>${project.url}/${project.id}'>${project.name}</a><br />
 			</section>
 		</c:forEach>
+		
+		<a href="${linkTo[ProjectController].insertProjectForm}">Adicionar novo projeto</a>
 	</body>
 </html>

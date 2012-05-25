@@ -37,4 +37,8 @@ public class ProjectDao {
 
 	}
 
+	public void insert(Project project) {
+		session.save(project);
+	}
+
 }

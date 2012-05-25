@@ -28,9 +28,9 @@ public class UserDao {
 				.uniqueResult();
 	}
 
-	public List<User> getCompleteContributorsByList(List<User> contributors) {
+	public List<User> getCompleteContributorsById(List<User> contributors) {
 		for (User user : contributors) {
-			user = (User) session.get(User.class, user.getId());
+			user = (User) session.get(User.class,user.getId());
 		}
 		return contributors;
 	}
@@ -38,4 +38,9 @@ public class UserDao {
 	public void update(User user) {
 		session.update(user);
 	}
+
+	public User getUserByEmail(User user) {
+		return (User) session.createCriteria(User.class).add(Restrictions.like("email", user.getEmail())).uniqueResult();
+	}
+
 }

@@ -28,7 +28,7 @@ public class CategoryController {
 		Project projectComplete = projectDao.getProjectWithId(project.getId());
 		category.setProject(projectComplete);
 		categoryDao.insert(category);
-		result.redirectTo(ProjectController.class).showProject(project);
+		result.redirectTo(ProjectController.class).showProject(category.getProject());
 	}
 
 	@LoggedUser

@@ -10,7 +10,6 @@ import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskPanelDao;
 import br.com.zeng.dao.UserDao;
-import br.com.zeng.model.State;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskPanel;
 import br.com.zeng.model.User;
@@ -35,10 +34,12 @@ public class TaskController {
 
 	@Post("/taskpanel/task/add")
 	public void insert(Task task, TaskPanel taskPanel, List<User> contributors) {
-		List<User> completeContributorsByList = userDao.getCompleteContributorsByList(contributors);
-		TaskPanel taskPanelComplete = taskPanelDao.getTaskPanelWithId(taskPanel.getId());
+		if(contributors != null) {
+			List<User> completeContributorsByList = userDao.getCompleteContributorsById(contributors);			
+			task.setContributors(completeContributorsByList);
+		}
 		
-		task.setContributors(completeContributorsByList);
+		TaskPanel taskPanelComplete = taskPanelDao.getTaskPanelWithId(taskPanel.getId());
 		task.setTaskPanel(taskPanelComplete);
 		
 		taskDao.insert(task);

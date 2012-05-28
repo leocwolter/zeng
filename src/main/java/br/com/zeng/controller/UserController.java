@@ -28,6 +28,16 @@ public class UserController {
 	public void loginForm() {
 	}
 	
+	@Get("/register/")
+	public void registrationForm() {
+	}
+	
+	@Post("/register")
+	public void register(User user) {
+		userDao.register(user);
+		logIn(user);
+	}
+	
 	@Post("/login/")
 	public void logIn(User user) {
 		User registredUser = userDao.getRegistredUser(user.getEmail(),user.getPassword()) ;

@@ -43,4 +43,8 @@ public class UserDao {
 		return (User) session.createCriteria(User.class).add(Restrictions.like("email", user.getEmail())).uniqueResult();
 	}
 
+	public void register(User user) {
+		session.save(user);
+	}
+
 }

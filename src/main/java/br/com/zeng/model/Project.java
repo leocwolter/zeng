@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,6 +25,9 @@ public class Project {
 
 	@OneToMany(mappedBy = "project")
 	private List<Category> categories;
+	
+	@Column(unique = true)
+	private String url;
 	
 	public Project() {
 		contributors = new ArrayList<User>();
@@ -48,14 +52,18 @@ public class Project {
 	public List<User> getContributors() {
 		return Collections.unmodifiableList(contributors);
 	}
-	
-	public String getUrl() {
-		return name.replace(" ", "-").toLowerCase();
-	}
-	
+
 	public void addContributor(User contributor) {
 		if(!contributors.contains(contributor))
 			this.contributors.add(contributor);
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+	
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public List<Category> getCategories() {

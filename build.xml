@@ -1,0 +1,123 @@
+<project name="Sistema de Gerenciamento de Projetos - Zeng" default="compile">
+
+	<property file="build.properties" />
+	<property file="user-build.properties" />
+
+	<path id="libs.classpath" path=".">
+		<fileset dir="${libs.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="compile.classpath">
+		<path refid="libs.classpath" />
+	</path>
+
+	<path id="tests.classpath">
+		<path refid="compile.classpath" />
+		<fileset dir="${test.libs.dir}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement path="${tmp.classes.dir}" />
+	</path>
+
+	<path id="cobertura.classpath">
+		<fileset dir="${cobertura.dir}">
+			<include name="cobertura.jar" />
+			<include name="lib/**/*.jar" />
+		</fileset>
+	</path>
+
+	<fileset dir="${tmp.test-classes.dir}" id="unittests.fileset">
+		<include name="**/*Test.class" />
+		<exclude name="**/TestesDeAceitacao.class"/>
+		<exclude name="**/DaoTest.class"/>
+	</fileset>
+	
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+
+	<target name="clean">
+		<delete file="cobertura.ser" />
+		<delete dir="target/" />
+	</target>
+
+	<target name="prepare">
+		<mkdir dir="${tmp.dir}" />
+		<mkdir dir="${tmp.webinf.dir}" />
+		<mkdir dir="${tmp.classes.dir}" />
+		<mkdir dir="${tmp.test-classes.dir}" />
+		<mkdir dir="${artifacts.dir}/cobertura" />
+		<mkdir dir="${artifacts.dir}/cobertura/coverage" />
+		<mkdir dir="${cobertura.instrumented.dir}" />
+	</target>
+
+	<target name="compile" depends="prepare">
+		<javac destdir="${tmp.classes.dir}" srcdir="${src.dir}" classpathref="compile.classpath" debug="true" encoding="UTF-8" />
+		<javac destdir="${tmp.test-classes.dir}" srcdir="${test-src.dir}" classpathref="tests.classpath" debug="true" encoding="UTF-8" />
+	</target>
+			
+	<target name="run-test" depends="compile, cobertura-instrument">
+		<echo message="Running unit tests..." />
+		<copy todir="${cobertura.instrumented.dir}">
+			<fileset dir="${resources.dir}" />
+			<fileset dir="${resources-test.dir}" />
+		</copy>
+		<junit fork="yes" forkmode="once"  printsummary="true" showoutput="true" failureproperty="failed-test" haltonfailure="true" >
+			<formatter type="plain" usefile="false" />
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="cobertura.ser" />
+			<classpath location="${cobertura.instrumented.dir}" />
+			<classpath location="${tmp.test-classes.dir}" />
+			<classpath refid="cobertura.classpath" />
+			<classpath refid="tests.classpath" />
+			<batchtest fork="yes" todir="${artifacts.dir}/reports">
+				<fileset refid="${filesetId}" />
+			</batchtest>
+		</junit>
+
+	</target>
+	
+	<target name="test">
+		<antcall target="run-test">
+			<param name="filesetId" value="unittests.fileset"/>
+		</antcall>
+	</target>
+	
+	<target name="war" depends="test">
+		<delete file="${artifacts.dir}/${war.file}" />
+		<delete file="${tomcat.home}/webapps/${war.file}" />
+		<copy todir="${tmp.classes.dir}">
+			<fileset dir="${resources.dir}"> 
+				<exclude name="WEB-INF/hibernate.cfg.xml" />
+				<exclude name="WEB-INF/import.sql" />
+			</fileset>
+		</copy>
+		<move file="${tmp.classes.dir}/hibernate.producao.cfg.xml" tofile="${tmp.classes.dir}/hibernate.cfg.xml"/>
+		
+		<war destfile="${artifacts.dir}/${war.file}" webxml="${webapp.dir}/WEB-INF/web.xml" compress="true">
+			<fileset dir="${webapp.dir}">
+				<exclude name="WEB-INF/web.xml" />
+			</fileset>
+			<classes dir="${tmp.classes.dir}" />
+		</war>
+	</target>
+
+	<target name="cobertura-instrument" depends="compile">
+		<delete file="cobertura.ser" />
+		<copy todir="${cobertura.instrumented.dir}">
+			<fileset dir="${test.libs.dir}" />
+		</copy>
+		<cobertura-instrument todir="${cobertura.instrumented.dir}">
+			<includeClasses regex="br\.com\.zeng.*" />
+			<excludeClasses regex=".*\.Test.*" />
+			<instrumentationClasspath>
+				<path refid="tests.classpath" />
+			</instrumentationClasspath>
+		</cobertura-instrument>
+	</target>
+				
+	<target name="coverage" depends="test">
+		<delete dir="${artifacts.dir}/cobertura/coverage" />
+	    <cobertura-report srcdir="${src.dir}" destdir="${artifacts.dir}/cobertura/coverage" format="html" />
+	</target>
+	
+</project>

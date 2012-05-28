@@ -11,7 +11,7 @@
 		<h1>Seus Projetos</h1>
 		<c:forEach items="${projects}" var="project">
 			<section class="project">
-				<a class="titulo-project" href='<c:url value="/projects/"/>${project.url}/${project.id}'>${project.name}</a><br />
+				<a class="titulo-project" href='<c:url value="/projects/"/>${project.url}'>${project.name}</a><br />
 			</section>
 		</c:forEach>
 		

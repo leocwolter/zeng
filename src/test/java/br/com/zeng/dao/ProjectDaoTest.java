@@ -35,5 +35,26 @@ public class ProjectDaoTest extends DaoTest{
 		assertEquals(1, projectDao.listProjectsWithUser(user).size());
 	
 	}
+	
+	@Test
+	public void shouldReturnACompleteProjectUsingUrl() {
+		String url = "project-one";
+		String correctName = "Project One";
+		
+		Project project = new Project();
+		project.setUrl(url);
+		project.setName(correctName);
+		session.save(project);
+		
+		Project project2 = new Project();
+		project2.setUrl("project-two");
+		project2.setName("wrong name");
+		session.save(project2);
+		
+		Project projectComplete = projectDao.getProjectWithUrl(url);
+
+		assertEquals(correctName, projectComplete.getName());
+		assertEquals(url, projectComplete.getUrl());
+	}
 
 }

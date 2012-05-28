@@ -29,14 +29,14 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Path("/projects/{project.url}/{project.id}")
+	@Path("/projects/{project.url}")
 	public void showProject(Project project) {
-		Project projectCompleted = projectDao.getProjectWithId(project.getId());
+		Project projectCompleted = projectDao.getProjectWithUrl(project.getUrl());
 		result.include("project", projectCompleted);
 	}
 
 	@LoggedUser
-	@Path("/projects/")
+	@Path("/projects")
 	public void listProjects() {
 		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
 		result.include("projects", listProjectsWithUser);

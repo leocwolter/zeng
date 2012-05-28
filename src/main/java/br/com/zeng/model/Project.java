@@ -1,5 +1,6 @@
 package br.com.zeng.model;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -47,6 +48,7 @@ public class Project {
 
 	public void setName(String name) {
 		this.name = name;
+		this.setUrl(name);
 	}
 
 	public List<User> getContributors() {
@@ -63,7 +65,12 @@ public class Project {
 	}
 	
 	public void setUrl(String url) {
-		this.url = url;
+		System.out.println(url);
+		this.url = Normalizer.normalize(url, Normalizer.Form.NFD)
+				.replaceAll("[^\\p{ASCII}]", "")
+				.replaceAll(" ", "-")
+				.toLowerCase();
+		System.out.println(url);
 	}
 
 	public List<Category> getCategories() {

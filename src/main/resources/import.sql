@@ -1,4 +1,4 @@
-INSERT INTO `Project` (`name`) VALUES ('Zeng');
+INSERT INTO `Project` (`name`, `url`) VALUES ('Zeng', 'zeng');
 INSERT INTO `Category` (`name`, `project_id`) VALUES ('ToDo',1), ('Doing',1), ('Done',1), ('Tests',1), ('Lolo',1);
 INSERT INTO `TaskPanel` (`name`, `category_id`) VALUES ('Layout',1), ('Back-end',1), ('Documentation',1);
 INSERT INTO `TaskPanel` (`name`, `category_id`) VALUES ('Layout',2), ('Back-end',2), ('Documentation',2);

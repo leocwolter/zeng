@@ -1,6 +1,4 @@
 @charset "utf-8";
-
-/* --- GENERIC ITENS --- */
 * {
 	
 	padding:0;
@@ -67,9 +65,7 @@ a:hover {
 }
 
 textarea, input {
-	
 	font-family:Arial, Helvetica, sans-serif;
-	
 }
 
 img, a img, input {
@@ -93,3 +89,4 @@ hr {
 	background:#333;
 	
 }
+

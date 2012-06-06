@@ -38,6 +38,5 @@ $(document).ready(function(){
 
 		
 		$('#left_container').children().css({'width':width, 'padding-right':padding});	
-	}
-	
+	}	
 });

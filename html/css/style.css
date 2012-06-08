@@ -155,11 +155,11 @@ hr {
 	
 	height:100%;
 	
-	width:auto;
+	width:251px;
 	
 	float:left;
 	
-	background:#FFFFFF;
+	background:#AAA;
 	
 	position:fixed;
 	
@@ -170,6 +170,19 @@ hr {
 	overflow:hidden;
 	
 }
+
+#project_sidebar_content {
+	
+	height:100%;
+	
+	width:auto;
+	
+	background:#FFFFFF;
+	
+	overflow:hidden;
+	
+}
+
 
 #project_sidebar_click_area_return {
 	
@@ -202,20 +215,6 @@ hr {
 	opacity:1;
 	
 	cursor:pointer;
-	
-}
-
-#project_sidebar_content {
-	
-	height:100%;
-	
-	width:240px;
-	
-	float:left;
-	
-	background:#FFFFFF;
-	
-	overflow:hidden;
 	
 }
 

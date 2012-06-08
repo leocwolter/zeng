@@ -35,6 +35,7 @@ $(document).ready(function(){
 		
 		var width = leftContainerWidth - projectSidebarWidth;
 		var padding = projectSidebarWidth+2;
+
 		
 		$('#left_container').children().css({'width':width, 'padding-right':padding});	
 	}

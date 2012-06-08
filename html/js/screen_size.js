@@ -1,26 +1,20 @@
 // JavaScript Document
 
 $(document).ready(function(){
-	$(window).resize(function(){
-		adjustsSizes();
-	});
-	
 	var projectSidebarWidth = $('#project_sidebar').width();
 	
 	//Set the header, menu_bar, content right padding
 	adjustsSizes();
+
+	$(window).resize(function(){
+		adjustsSizes();
+	});
 	
 	$('#project_sidebar_click_area').toggle(
 		function(){
-			$('#project_sidebar').animate({'width':'10px'}, function(){
-				
-				adjustsSizes();
-				
-			});
+			$('#project_sidebar').animate({'width':'10px'});
 		},function(){
-			$('#project_sidebar').animate({'width':projectSidebarWidth}, function(){
-				adjustsSizes();
-			});				
+			$('#project_sidebar').animate({'width':projectSidebarWidth});				
 		}
 	);
 	

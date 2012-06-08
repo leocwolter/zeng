@@ -1,7 +1,6 @@
 // JavaScript Document
 
 $(document).ready(function(){
-	//Get Width of elements on the load
 	var projectSidebarWidth = $('#project_sidebar').width();
 	var projectSidebarClickAreaWidth = $('#project_sidebar_click_area').width();
 	
@@ -20,9 +19,7 @@ $(document).ready(function(){
 				adjustsSizes();
 			});
 		},function(){
-			$('#project_sidebar').animate({'width':projectSidebarWidth}, function(){
-				adjustsSizes();
-			});				
+			$('#project_sidebar').animate({'width':projectSidebarWidth});				
 		}
 	);
 	

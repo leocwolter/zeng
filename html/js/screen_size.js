@@ -37,7 +37,7 @@ $(document).ready(function(){
 		var width = leftContainerWidth - projectSidebarWidth;
 		var padding = projectSidebarWidth+2;
 		
-		$('header, #menu_bar, #content').css({'width':width, 'padding-right':padding});	
+		$('header, #menu_bar, #content, footer, #copyright').css({'width':width, 'padding-right':padding});	
 	}
 	
 });

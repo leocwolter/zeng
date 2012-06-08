@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 	var projectSidebarWidth = $('#project_sidebar').width();
-	
+	var projectSidebarClickAreaWidth = $('#project_sidebar_click_area').width();
 	//Set the header, menu_bar, content right padding
 	adjustsSizes();
 
@@ -10,9 +10,10 @@ $(document).ready(function(){
 		adjustsSizes();
 	});
 	
+	
 	$('#project_sidebar_click_area').toggle(
 		function(){
-			$('#project_sidebar').animate({'width':'10px'}, function(){
+			$('#project_sidebar').animate({'width':projectSidebarClickAreaWidth}, function(){
 				adjustsSizes();
 			});
 		},function(){

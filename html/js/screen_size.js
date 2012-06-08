@@ -19,7 +19,9 @@ $(document).ready(function(){
 				adjustsSizes();
 			});
 		},function(){
-			$('#project_sidebar').animate({'width':projectSidebarWidth});				
+			$('#project_sidebar').animate({'width':projectSidebarWidth}, function(){
+				adjustsSizes();
+			});				
 		}
 	);
 	

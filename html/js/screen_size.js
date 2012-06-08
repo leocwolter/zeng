@@ -12,9 +12,13 @@ $(document).ready(function(){
 	
 	$('#project_sidebar_click_area').toggle(
 		function(){
-			$('#project_sidebar').animate({'width':'10px'});
+			$('#project_sidebar').animate({'width':'10px'}, function(){
+				adjustsSizes();
+			});
 		},function(){
-			$('#project_sidebar').animate({'width':projectSidebarWidth});				
+			$('#project_sidebar').animate({'width':projectSidebarWidth}, function(){
+				adjustsSizes();
+			});				
 		}
 	);
 	

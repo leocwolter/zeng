@@ -26,7 +26,6 @@ $(document).ready(function(){
 		}
 	);
 	
-	
 	function adjustsSizes(){
 		var leftContainerWidth = $('#left_container').width();
 		var projectSidebarWidth = $('#project_sidebar').width();

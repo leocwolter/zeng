@@ -3,7 +3,7 @@
 $(document).ready(function(){
 	var projectSidebarWidth = $('#project_sidebar').width();
 	var projectSidebarClickAreaWidth = $('#project_sidebar_click_area').width();
-	
+
 	//Set the header, menu_bar, content right padding
 	adjustsSizes();
 

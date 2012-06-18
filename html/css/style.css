@@ -50,7 +50,7 @@ h2, h3, h4, h5, h6 {
 
 a {
 	
-	color:#2D4D8D;
+	color:#1F3C78;
 	
 	text-decoration:none;
 	
@@ -72,6 +72,18 @@ img, a img, input {
 	
 	border:none;
 
+}
+
+input {
+
+	border-radius:3px;	
+	
+}
+
+input.text {
+	
+	border:2px solid #1f3c78;
+	
 }
 
 label {

@@ -56,6 +56,32 @@
 	
 }
 
+#project_sidebar_members_area {
+	
+	height:100px;
+	
+	width:221px;
+	
+	padding:5px 9px;
+	
+	border-bottom:solid 1px #AAAAAA;
+	
+}
+
+#project_members_photo_link {
+	
+	height:40px;
+	
+	width:40px;
+	
+	display:block;
+	
+	float:left;
+	
+	margin:5px 2px;
+	
+}
+
 .project_sidebar_click_area {
 	
 	height:100%;
@@ -116,9 +142,89 @@ header {
 	
 	width:57px;
 	
+	float:left;
+	
 	margin:5px 10px;
 	
 	background:url(../img/small_logo.png) no-repeat;
+	
+}
+
+#search_form {
+	
+	display:block;
+	
+	height:28px;
+	
+	width:364px;
+	
+	float:left;
+	
+	margin:11px 0 0 191px;
+	
+}
+
+#search_field {
+	
+	height:24px;
+	
+	width:300px;
+	
+	border-radius:3px 0 0 3px;
+	
+	float:left;
+	
+}
+
+#search_field_button {
+	
+	height:28px;
+	
+	width:60px;
+	
+	line-height:28px;
+	
+	float:left;
+	
+	color:#FFFFFF;
+	
+	background:#1f3c78;
+		
+	border-radius:0 3px 3px 0;
+	
+}
+
+#search_field_button:hover {
+		
+	color:#000000;
+	
+	cursor:pointer;
+	
+}
+
+#user_photo_link {
+	
+	display:block;
+	
+	height:40px;
+	
+	width:40px;
+	
+	float:right;
+	
+	margin:5px 10px 0 150px;
+	
+}
+
+#user_photo_link:hover {
+	
+	opacity:0.7;
+	
+	cursor:pointer;
+	
+}
+
+#message_icon {
 	
 }
 
@@ -168,11 +274,27 @@ header {
 	
 	margin: 5px 20px;
 	
+	padding:0 5px;
+	
 	float:left;
 		
 	width:auto;
 	
 	line-height:25px;
+	
+}
+
+#menu li a:hover {
+	
+	border-radius:4px;
+	
+	background:#A3C1FF;
+	
+	color:#FFFFFF;
+	
+	padding:0 5px;
+	
+	cursor:pointer;
 	
 }
 

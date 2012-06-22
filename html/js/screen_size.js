@@ -38,6 +38,6 @@ $(document).ready(function(){
 		var padding = projectSidebarWidth+2;
 
 		
-		$('#left_container').children().css({'width':width, 'padding-right':padding});	
+		$('#left_container, #content, footer').children().css({'width':width, 'padding-right':padding});	
 	}	
 });

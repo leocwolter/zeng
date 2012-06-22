@@ -94,7 +94,9 @@
 	
 	opacity:0.5;
 	
-	border:solid 1px #666666;
+	border-left:solid 1px #666666;
+	
+	border-right:solid 1px #666666;
 	
 }
 
@@ -216,9 +218,15 @@ header {
 	
 }
 
-#user_photo_link:hover {
+.photo_link {
 	
 	opacity:0.7;
+	
+}
+
+.photo_link:hover {
+	
+	opacity:1;
 	
 	cursor:pointer;
 	
@@ -251,6 +259,8 @@ header {
 #menu {
 	
 	display:inline-block;
+	
+	height:35px;
 	
 	list-style:none;
 	
@@ -321,6 +331,192 @@ header {
 	overflow:hidden;
 	
 	position:relative;
+	
+}
+
+.category {
+	
+	height:auto;
+	
+	min-height:120px;
+	
+	width:auto;
+	
+	padding:10px;
+	
+	overflow:hidden;
+	
+}
+
+.category:nth-child(odd) {
+	
+	background:#FFFFFF;
+	
+}
+
+.category:nth-child(even) {
+	
+	background:#CCDDFF;
+	
+}
+
+.category h2 {
+	
+	display:block;
+	
+	margin:0 0 10px 0;
+	
+}
+
+.task_area {
+	
+	height:auto;
+	
+	min-height:120px;
+	
+	max-height:320px;
+	
+	width:295px;
+		
+	margin:0 10px;
+	
+	float:left;
+	
+	overflow:hidden;
+	
+	border-radius:3px;
+	
+	background:url(../img/task_background.png) repeat;
+	
+}
+
+.task_area h3 {
+	
+	display:block;
+	
+	line-height:25px;
+	
+	width:285px;
+	
+	padding: 0 5px;
+	
+	border-radius:3px 3px 0 0;
+	
+	background:#1F3C78;
+	
+	color:#FFFFFF;
+	
+	overflow:hidden;
+	
+}
+
+.task_menu_bar {
+	
+	border: 1px solid #AAAAAA;
+	
+	padding:0 5px;
+	
+	overflow:hidden;
+	
+	height:25px;
+	
+}
+
+.task_menu_bar, .task_menu {
+	
+	display:block;
+		
+	height:29px;
+	
+	width:283px;
+		
+	background:#CCCCCC;
+	
+	list-style:none;
+	
+}
+
+.task_menu {
+	
+	margin:4px 0;
+	
+}
+
+.task_menu li {
+	
+	display:inline-block;
+	
+	margin:0 5px;
+		
+}
+
+.task_menu li a {
+	
+	display:block;
+	
+	padding:0 5px;
+				
+	width:auto;
+	
+	line-height:21px;
+	
+	border-radius:2px;
+	
+}
+
+.task_menu li a:hover {
+	
+	background:#AAAAAA;
+	
+	color:#FFFFFF;
+	
+	cursor:pointer;
+	
+}
+
+.task_philter_selected {
+	
+	border-radius:3px;
+	
+	background:#1F3C78;
+	
+	color:#FFFFFF;
+	
+}
+
+.task_list {
+	
+	height:269px;
+	
+	width:293px;
+	
+	overflow:auto;
+	
+	border-left:1px solid #AAAAAA;
+	
+	border-right:1px solid #AAAAAA;
+	
+	border-bottom:1px solid #AAAAAA;
+	
+}
+
+.task_box {
+	
+	height:auto;
+	
+	min-height:50px;
+	
+	width:293px;
+		
+	border-bottom: 1px solid #CCCCCC;
+	
+	border-top: 1px solid #FFFFFF;
+	
+	border-collapse: separate;
+	
+	border-spacing: 5px 0;
+	
+	background:#F4F4F4;
 	
 }
 

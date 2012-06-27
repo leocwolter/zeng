@@ -10,6 +10,8 @@
 	
 	overflow:hidden;
 	
+	background:url(../img/fabric_plaid.png) repeat;
+	
 }
 
 #left_container {
@@ -146,7 +148,7 @@ header {
 	
 	float:left;
 	
-	margin:5px 10px;
+	margin:5px 10px 5px 0;
 	
 	background:url(../img/small_logo.png) no-repeat;
 	
@@ -242,7 +244,7 @@ header {
 	
 	width:100%;
 		
-	background:#CCDDFF;
+	background:#DEE6F6;
 	
 	line-height:35px;
 	
@@ -330,6 +332,8 @@ header {
 		
 	overflow:hidden;
 	
+	padding:10px 0;
+	
 	position:relative;
 	
 }
@@ -338,25 +342,11 @@ header {
 	
 	height:auto;
 	
-	min-height:120px;
+	min-height:600px;
 	
-	width:auto;
-	
-	padding:10px;
+	width:100%;
 	
 	overflow:hidden;
-	
-}
-
-.category:nth-child(odd) {
-	
-	background:#FFFFFF;
-	
-}
-
-.category:nth-child(even) {
-	
-	background:#CCDDFF;
 	
 }
 
@@ -376,9 +366,9 @@ header {
 	
 	max-height:320px;
 	
-	width:295px;
+	width:355px;
 		
-	margin:0 10px;
+	margin:0 20px 20px 0;
 	
 	float:left;
 	
@@ -396,7 +386,7 @@ header {
 	
 	line-height:25px;
 	
-	width:285px;
+	width:345px;
 	
 	padding: 0 5px;
 	
@@ -428,7 +418,7 @@ header {
 		
 	height:29px;
 	
-	width:283px;
+	width:343px;
 		
 	background:#CCCCCC;
 	
@@ -488,7 +478,7 @@ header {
 	
 	height:269px;
 	
-	width:293px;
+	width:353px;
 	
 	overflow:auto;
 	
@@ -506,7 +496,7 @@ header {
 	
 	min-height:50px;
 	
-	width:293px;
+	width:353px;
 		
 	border-bottom: 1px solid #CCCCCC;
 	

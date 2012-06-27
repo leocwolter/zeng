@@ -34,10 +34,13 @@ $(document).ready(function(){
 		
 		var menuWidth = $('#menu').width();
 		
-		var width = leftContainerWidth - projectSidebarWidth;
-		var padding = projectSidebarWidth+2;
+		var paddingRight = projectSidebarWidth + 10;
+		
+		var paddingLeft = 10;
+		
+		var width = leftContainerWidth - (paddingRight + paddingLeft);
 
 		
-		$('#left_container, #content, footer').children().css({'width':width, 'padding-right':padding});	
+		$('.resizeble').css({'width':width, 'padding-right':paddingRight, 'padding-left':paddingLeft});	
 	}	
 });

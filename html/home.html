@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Untitled Document</title>
+<title>Zeng</title>
 
 <!-- GENERIC STYLE -->
 <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -10,14 +10,23 @@
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="css/project.css" />
 
+<!-- STRUCTURE STYLE -->
+<link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+
 <!-- JQUERY -->
 <script type="text/javascript" src="js/jquery.js"></script>
 
 <!-- JQUERY UI -->
 <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
 
+<!-- JQUERY COLORBOX -->
+<script type="text/javascript" src="js/jquery.colorbox-min.js"></script>
+
 <!-- SCREEN SIZE SCRIPT -->
 <script type="text/javascript" src="js/screen_size.js"></script>
+
+<!-- NEW CATEGORY SCRIPT -->
+<script type="text/javascript" src="js/category.js"></script>
 
 
 <style>
@@ -27,74 +36,14 @@
 	#tabs { margin-top: 1em; }
 	#tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
 	#add_tab { cursor: pointer; }
-	</style>
-	<script>
-	$(function() {
-		var $tab_title_input = $( "#tab_title"),
-			$tab_content_input = $( "#tab_content" );
-		var tab_counter = 2;
-
-		// tabs init with a custom tab template and an "add" callback filling in the content
-		var $tabs = $( "#menu_bar").tabs({
-			tabTemplate: "<li><a href='#{href}' title='#{label}'>#{label}</a></li>",
-			add: function( event, ui ) {
-				var tab_content = $tab_content_input.val() || "Tab " + tab_counter + " content.";
-				$( '#category_'+tab_counter ).append( "<p>" + tab_content + "</p>" );
-			}
-		});
-
-		// modal dialog init: custom buttons and a "close" callback reseting the form inside
-		var $dialog = $( "#dialog" ).dialog({
-			autoOpen: false,
-			modal: true,
-			buttons: {
-				Add: function() {
-					addTab();
-					$( this ).dialog( "close" );
-				},
-				Cancel: function() {
-					$( this ).dialog( "close" );
-				}
-			},
-			open: function() {
-				$tab_title_input.focus();
-			},
-			close: function() {
-				$form[ 0 ].reset();
-			}
-		});
-
-		// addTab form: calls addTab function on submit and closes the dialog
-		var $form = $( "form", $dialog ).submit(function() {
-			addTab();
-			$dialog.dialog( "close" );
-			return false;
-		});
-
-		// actual addTab function: adds new tab using the title input from the form above
-		function addTab() {
-			var tab_title = $tab_title_input.val() || "Tab " + tab_counter;
-			$tabs.tabs( "add", "#category_" + tab_counter, tab_title );
-			tab_counter++;
-		}
-
-		// addTab button: just opens the dialog
-		$( "#add_tab" )
-			.button()
-			.click(function() {
-				$dialog.dialog( "open" );
-			});
-
-		// close icon: removing the tab on click
-		// note: closable tabs gonna be an option in the future - see http://dev.jqueryui.com/ticket/3924
-		$( "#tabs span.ui-icon-close" ).live( "click", function() {
-			var index = $( "li", $tabs ).index( $( this ).parent() );
-			$tabs.tabs( "remove", index );
-		});
-	});
-	</script>
-
-
+</style>
+<script>
+$(function(){
+	$("#new_category").click(function(){
+		$.colorbox({href:"/new_category_form.html"});
+	});	
+})
+</script>
 </head>
 
 <body>
@@ -118,18 +67,8 @@
                     <li><a href="#category_1" title="Categoria 1" id="category_selected">Categoria 1</a></li>
                     <li><a href="#" title="Categoria 2">Categoria 2</a></li>
                     <li><a href="#" title="Categoria 3">Categoria 3</a></li>
+					<li><a href="#" title="Adicionar Categoria" id="new_category">Nova Categoria</a></li>
                 </ul>
-                <div id="dialog" title="Tab data">
-                    <form>
-                        <fieldset class="ui-helper-reset">
-                            <label for="tab_title">Title</label>
-                            <input type="text" name="tab_title" id="tab_title" value="" class="ui-widget-content ui-corner-all" />
-                            <label for="tab_content">Content</label>
-                            <textarea name="tab_content" id="tab_content" class="ui-widget-content ui-corner-all"></textarea>
-                        </fieldset>
-                    </form>
-				</div>
-				<button id="add_tab">Add Tab</button>
             </nav>
             <section id="content">
             	<section class="category resizeble" id="category_1">

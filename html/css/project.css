@@ -206,17 +206,21 @@ header {
 	
 }
 
-#user_photo_link {
+#user_name_link {
 	
 	display:block;
 	
-	height:40px;
+	height:20px;
 	
-	width:40px;
+	width:auto;
 	
 	float:right;
 	
-	margin:5px 10px 0 150px;
+	line-height:50px;
+	
+	font-size:14px;
+	
+	color:#FFFFFF;
 	
 }
 

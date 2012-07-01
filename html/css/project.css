@@ -180,7 +180,7 @@ header {
 	
 }
 
-#search_field_button {
+#search_button {
 	
 	height:28px;
 	
@@ -198,7 +198,7 @@ header {
 	
 }
 
-#search_field_button:hover {
+#search_button:hover {
 		
 	color:#000000;
 	
@@ -541,5 +541,63 @@ footer {
 	line-height:20px;
 	
 	text-align:center;
+	
+}
+
+.button {
+	
+	width:auto;
+	
+	height:auto;
+	
+	padding:7px;
+	
+	background:#2D4D8D;
+	
+	color:#FFFFFF;
+	
+}
+
+.button:hover {
+	
+	background:#A3C1FF;
+	
+	color:#000000;
+	
+	cursor:pointer;
+	
+}
+
+/* LIGHTBOX */
+
+/* CATEGORY INSERT FORM */
+
+#category_insert_form {
+	
+	display:block;
+	
+	padding:10px;
+	
+}
+
+#category_insert_form h1 {
+	
+	font-size:14px;
+	
+}
+
+#category_name_field {
+	
+	height:20px;
+	
+	width:200px;
+	
+	border-radius:3px;
+	
+}
+
+#category_insert_button {
+	
+	float:right;
 	
 }

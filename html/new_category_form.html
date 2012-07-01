@@ -2,9 +2,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Nova Categoria</title>
+        <title>Zeng - Nova Categoria</title>
+        
+        <!-- GENERIC STYLE -->
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        
+        <!-- STRUCTURE STYLE -->
+        <link rel="stylesheet" type="text/css" href="css/project.css" />
     </head>
     <body>
-        <section>Teste</section>
+        <form action="category_insert.jsp" method="get" id="category_insert_form">
+        	<h1>Crie uma nova categoria</h1>
+            <br />
+            <br />
+        	<label for="category_name">Nome:</label>
+            <input type="text" name="category_name_field" id="category_name_field" class="text" />
+            <br />
+            <br />
+            <input type="submit" id="category_insert_button" class="button" value="Inserir" title="INSERIR" />
+        </form>
     </body>
 </html>

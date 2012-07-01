@@ -546,11 +546,15 @@ footer {
 
 .button {
 	
+	display:inline-block;
+	
 	width:auto;
 	
-	height:auto;
+	padding:0 5px;
 	
-	padding:7px;
+	line-height:25px;
+	
+	border-radius:3px;
 	
 	background:#2D4D8D;
 	

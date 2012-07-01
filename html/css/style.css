@@ -104,3 +104,30 @@ hr {
 	
 }
 
+.button {
+	
+	display:inline-block;
+	
+	width:auto;
+	
+	padding:0 5px;
+	
+	line-height:25px;
+	
+	border-radius:3px;
+	
+	background:#2D4D8D;
+	
+	color:#FFFFFF;
+	
+}
+
+.button:hover {
+	
+	background:#A3C1FF;
+	
+	color:#000000;
+	
+	cursor:pointer;
+	
+}

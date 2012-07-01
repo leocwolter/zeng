@@ -39,9 +39,7 @@
 </style>
 <script>
 $(function(){
-	$("#new_category").click(function(){
-		$.colorbox({href:"home.html"});
-	});	
+	$("#new_category").colorbox({iframe:true, width:"80%", height:"80%"});
 })
 </script>
 </head>
@@ -67,8 +65,8 @@ $(function(){
                     <li><a href="#category_1" title="Categoria 1" id="category_selected">Categoria 1</a></li>
                     <li><a href="#" title="Categoria 2">Categoria 2</a></li>
                     <li><a href="#" title="Categoria 3">Categoria 3</a></li>
-					<li><a href="#" title="Adicionar Categoria" id="new_category">Nova Categoria</a></li>
                 </ul>
+				<a href="new_category_form.html" title="Adicionar Categoria" id="new_category">Nova Categoria</a>
             </nav>
             <section id="content">
             	<section class="category resizeble" id="category_1">

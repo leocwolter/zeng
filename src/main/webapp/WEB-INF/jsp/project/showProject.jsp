@@ -68,8 +68,10 @@ $(function(){
 	                    	<li><a href="#category_${category.id}" title="Categoria ${category.id}" id="category_selected">${category.name}</a></li>
 	                	</c:forEach>
 	                </ul>
-	                <a href="${linkTo[CategoryController].insertCategoryForm}${project.id}" id="new_category" title="Adicionar Categoria">Adicionar categoria</a>
-                	<a href="${linkTo[TaskPanelController].insertTaskPanelForm}${category.id}" title="Adicionar Lista" id="new_task_list" class="button">+ Nova Lista</a>
+                    <section id="menu_bar_buttons">
+                        <a href="${linkTo[CategoryController].insertCategoryForm}${project.id}" id="new_category" title="Adicionar Categoria">Adicionar categoria</a>
+                        <a href="${linkTo[TaskPanelController].insertTaskPanelForm}${category.id}" title="Adicionar Lista" id="new_task_list" class="button">+ Nova Lista</a>
+                    </section>
 	            </nav>
 	            <section id="content">
 	            	<section class="category resizeble" id="category_1">

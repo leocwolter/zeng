@@ -42,7 +42,7 @@
 </style>
 <script>
 $(function(){
-	$("#new_category").colorbox({iframe:true, width:"80%", height:"80%"});
+	$("#new_category").colorbox({iframe:true, width:"305px", height:"200px"});
 })
 </script>
 </head>

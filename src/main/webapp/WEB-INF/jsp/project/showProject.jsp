@@ -46,7 +46,6 @@ $(function(){
 })
 </script>
 </head>
-	
 	<body>
 		<section id="container">
 	    	<section id="left_container">
@@ -56,11 +55,11 @@ $(function(){
 	                	<input type="text" name="search_field" id="search_field" class="text" />
 	                    <input type="submit" id="search_field_button" value="BUSCAR" />
 	                </form>
-	                <a href="#" title="Enzo Toshio" id="user_name_link">
+	                <a href="#" title="${userSession.user.name}" id="user_name_link">
 	                	${userSession.user.name}
 	                </a>
-	                <a href="#" title="Menssages" id="message_icon">&nbsp;</a>
 	                <a href="#" title="Atualization" id="atualization_icon">&nbsp;</a>
+	                <a href="#" title="Menssages" id="message_icon">&nbsp;</a>
 	            </header>
 	            <nav id="menu_bar" class="resizeble">
 	            	<h1>${project.name}</h1>
@@ -70,6 +69,7 @@ $(function(){
 	                	</c:forEach>
 	                </ul>
 	                <a href="${linkTo[CategoryController].insertCategoryForm}${project.id}" id="new_category" title="Adicionar Categoria">Adicionar categoria</a>
+                	<a href="${linkTo[TaskPanelController].insertTaskPanelForm}${category.id}" title="Adicionar Lista" id="new_task_list" class="button">+ Nova Lista</a>
 	            </nav>
 	            <section id="content">
 	            	<section class="category resizeble" id="category_1">

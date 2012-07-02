@@ -33,6 +33,7 @@ public class ProjectController {
 	public void showProject(Project project) {
 		Project projectCompleted = projectDao.getProjectWithUrl(project.getUrl());
 		result.include("project", projectCompleted);
+		result.include("category", projectCompleted.getCategories().get(0));
 	}
 
 	@LoggedUser

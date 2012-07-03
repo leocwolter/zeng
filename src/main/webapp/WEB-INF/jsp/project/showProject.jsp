@@ -53,7 +53,7 @@ $(function(){
 	            	<a href="home.html" id="small_logo"></a>
 	                <form action="search.jsp" method="get" id="search_form">
 	                	<input type="text" name="search_field" id="search_field" class="text" />
-	                    <input type="submit" id="search_field_button" value="BUSCAR" />
+	                    <input type="submit" id="search_button" value="BUSCAR" />
 	                </form>
 	                <a href="#" title="${userSession.user.name}" id="user_name_link">
 	                	${userSession.user.name}

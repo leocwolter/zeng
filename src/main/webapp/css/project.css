@@ -499,6 +499,8 @@ header {
 	
 	overflow:auto;
 	
+	overflow-x:hidden;
+	
 	border-left:1px solid #AAAAAA;
 	
 	border-right:1px solid #AAAAAA;
@@ -513,7 +515,7 @@ header {
 	
 	min-height:50px;
 	
-	width:353px;
+	width:auto;
 		
 	border-bottom: 1px solid #CCCCCC;
 	

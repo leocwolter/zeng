@@ -64,8 +64,9 @@ $(function(){
 	            <nav id="menu_bar" class="resizeble">
 	            	<h1>${project.name}</h1>
 	                <ul id="menu">
+	                	<li><a href="#category_${category.id}" title="Categoria ${category.id}" id="category_selected">${category.name}</a></li>
 	                	<c:forEach items="${project.categories}" var="category">
-	                    	<li><a href="#category_${category.id}" title="Categoria ${category.id}" id="category_selected">${category.name}</a></li>
+	                    	<li><a href="#category_${category.id}" title="Categoria ${category.id}">${category.name}</a></li>
 	                	</c:forEach>
 	                </ul>
                     <section id="menu_bar_buttons">

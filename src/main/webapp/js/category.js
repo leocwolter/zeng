@@ -1,23 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(function() {
 		var $tab_title_input = $( "#tab_title"),
 			$tab_content_input = $( "#tab_content" );

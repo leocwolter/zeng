@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="zeng" %>
+<%@ taglib tagdir="/WEB-INF/tags/messages" prefix="zeng-messages" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<form method="POST" action='${linkTo[UserController].logIn}'>
-			<zeng:error/>
+			<zeng-messages:error/>
 			<fieldset>
 				<legend>Login</legend>
 				<label for="user-email">Email:	</label>

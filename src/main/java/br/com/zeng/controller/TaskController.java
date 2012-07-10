@@ -33,24 +33,24 @@ public class TaskController {
 
 
 	@Post("/taskpanel/task/add")
-	public void insert(Task task, TaskPanel taskPanel, List<User> contributors) {
+	public void insert(Task task, Long taskPanelId, List<User> contributors) {
 		if(contributors != null) {
 			List<User> completeContributorsByList = userDao.getCompleteContributorsById(contributors);			
 			task.setContributors(completeContributorsByList);
 		}
 		
-		TaskPanel taskPanelComplete = taskPanelDao.getTaskPanelWithId(taskPanel.getId());
-		task.setTaskPanel(taskPanelComplete);
+		TaskPanel taskPanel = taskPanelDao.getTaskPanelWithId(taskPanelId);
+		task.setTaskPanel(taskPanel);
 		
 		taskDao.insert(task);
 		result.redirectTo(ProjectController.class).showProject(task.getProject());
 	}
 
 	@LoggedUser
-	@Path("/taskpanel/addTask/{taskPanel.id}")
-	public void insertTaskForm(TaskPanel taskPanel) {
-		TaskPanel taskPanelComplete = taskPanelDao.getTaskPanelWithId(taskPanel.getId());
-		result.include("taskPanel",taskPanelComplete);
+	@Path("/taskpanel/addTask/{taskPanelId}")
+	public void insertTaskForm(Long taskPanelId) {
+		TaskPanel taskPanel = taskPanelDao.getTaskPanelWithId(taskPanelId);
+		result.include("taskPanel",taskPanel);
 	}	
 	
 	@LoggedUser

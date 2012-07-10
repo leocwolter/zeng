@@ -41,7 +41,7 @@ public class ProjectController {
 		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
 		result.include("projects", listProjectsWithUser);
 	}
-	
+
 	@LoggedUser
 	@Post("/project/add")
 	public void insert(Project project, List<User> contributors) {
@@ -52,10 +52,10 @@ public class ProjectController {
 		projectDao.insert(project);
 		result.redirectTo(ProjectController.class).listProjects();
 	}
-	
+
 	@LoggedUser
 	@Get("/project/add")
 	public void insertProjectForm() {
-		
+
 	}
 }

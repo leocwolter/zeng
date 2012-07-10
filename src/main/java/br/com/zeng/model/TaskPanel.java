@@ -58,4 +58,7 @@ public class TaskPanel {
 		return category.getProject();
 	}
 
+	public List<User> getProjectContributors(){
+		return this.getProject().getContributors();
+	}
 }

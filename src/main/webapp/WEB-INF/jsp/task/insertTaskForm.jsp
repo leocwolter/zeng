@@ -16,7 +16,7 @@
 		<input type="text" id="task-description" name="task.description" /><br/>
 	
 		<label for="task-contributors">Colaboradores: </label><br/>
-		<c:forEach items="${taskPanel.category.project.contributors}" var="contributor" varStatus="i">
+		<c:forEach items="${taskPanel.projectContributors}" var="contributor" varStatus="i">
 			<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="contributors[${i.count}].id"/>
 			<label for="task-contributors[${i.count}]">${contributor.name} </label><br/> 
 		</c:forEach>

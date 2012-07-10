@@ -22,7 +22,7 @@
 			<input type="text" id="category_name_field" class="text" name="category.name" />
 			<br />
 	        <br />
-			<input type="hidden" name="project.id" value="${project.id}"/>
+			<input type="hidden" name="projectId" value="${projectId}"/>
 			<input type="submit" id="category_insert_button" class="button" value="Inserir">
 		</form>
 	</body>

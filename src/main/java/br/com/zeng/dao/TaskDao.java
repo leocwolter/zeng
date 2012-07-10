@@ -6,7 +6,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.zeng.model.Project;
 import br.com.zeng.model.Task;
 
 @Component

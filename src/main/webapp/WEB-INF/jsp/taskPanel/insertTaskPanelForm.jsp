@@ -12,7 +12,11 @@
 		<label for="taskPanel-name">Nome: </label>
 		<input type="text" id="taskPanel-name" name="taskPanel.name" />
 
-		<input type="hidden" name="category.id" value="${category.id}"/>
+		<select id="taskPanel-category" name="categoryId">
+			<c:forEach items="${project.categories}" var="category">
+				<option value="${category.id}">${category.name}</option>
+			</c:forEach>
+		</select><br/> 
 
 		<input type="submit" value="Inserir">
 	</form>

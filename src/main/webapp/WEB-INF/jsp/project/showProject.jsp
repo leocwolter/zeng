@@ -21,24 +21,18 @@ $(function(){
 	<body>
 		<section id="container">
 	    	<section id="left_container">
-	    	
 				<c:import url="/WEB-INF/imports/header.jsp"/>
 				<c:import url="/WEB-INF/imports/category_menu.jsp"/>
-	            
 	            <section id="content">
 	            	<section id="category_container" class="resizeble">
 		            	<c:forEach items="${project.categories}" var="category">
-		            		<zeng-structure:category/>
+		            		<zeng-structure:category category="${category}"/>
 	            		</c:forEach>
             		</section>
 				</section>
-				
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
-				
 	        </section>
-	        
 	        <zeng-structure:sideBar/>
-        
         </section>
 	</body>
 

@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 		var $tab_title_input = $( "#tab_title"),
 			$tab_content_input = $( "#tab_content" );
 		var tab_counter = 2;
@@ -61,3 +61,4 @@ $(function() {
 			$tabs.tabs( "remove", index );
 		});
 	});
+*/

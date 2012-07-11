@@ -9,6 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - ${project.name}</title>
 
+<!-- PROJECT STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
+
 <c:import url="/WEB-INF/imports/script-css.jsp"/>
  
 <script>

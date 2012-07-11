@@ -12,6 +12,7 @@
 	        <li><a href="#">Done</a></li>
 	        <li><a href="#">Accepted</a></li>
 	        <li><a href="#">Rejected</a></li>
+	        <li><a href="#">+Add</a>
 	    </ul>
 	</nav>
 	<section class="task_list">

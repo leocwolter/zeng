@@ -365,6 +365,15 @@ header {
 	
 	overflow:hidden;
 	
+	float:left;
+	
+}
+
+#category_container {
+	
+	overflow:hidden;
+	
+	height:auto;
 }
 
 .category h2 {
@@ -383,7 +392,7 @@ header {
 	
 	max-height:320px;
 	
-	width:355px;
+	width:407px;
 		
 	margin:0 20px 20px 0;
 	
@@ -403,7 +412,7 @@ header {
 	
 	line-height:25px;
 	
-	width:345px;
+	width:397px;
 	
 	padding: 0 5px;
 	
@@ -425,7 +434,7 @@ header {
 	
 	overflow:hidden;
 	
-	height:25px;
+	height:29px;
 	
 }
 
@@ -433,9 +442,7 @@ header {
 	
 	display:block;
 		
-	height:29px;
-	
-	width:343px;
+	width:395px;
 		
 	background:#CCCCCC;
 	
@@ -446,6 +453,8 @@ header {
 .task_menu {
 	
 	margin:4px 0;
+	
+	height:21px;
 	
 }
 
@@ -495,7 +504,7 @@ header {
 	
 	height:269px;
 	
-	width:353px;
+	width:405px;
 	
 	overflow:auto;
 	

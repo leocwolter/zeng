@@ -4,9 +4,9 @@
 <link rel="stylesheet" type="text/css" href='<c:url value="/css/style.css"/>' />
 
 <!-- STRUCTURE STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/generic.css"/>" />
 
-<!-- STRUCTURE STYLE -->
+<!-- COLORBOX STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
 
 <!-- JQUERY -->

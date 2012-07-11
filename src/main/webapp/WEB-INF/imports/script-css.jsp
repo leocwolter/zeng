@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href='<c:url value="/css/style.css"/>' />
 
 <!-- STRUCTURE STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/generic.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/structure.css"/>" />
 
 <!-- JQUERY -->
 <script type="text/javascript" src="<c:url value="/js/jquery.js"/>"></script>

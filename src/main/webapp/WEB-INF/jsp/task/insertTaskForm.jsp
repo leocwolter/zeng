@@ -1,32 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Inserir Tarefa</title>
+<title>Zeng - Nova Tarefa</title>
+
+<c:import url="/WEB-INF/imports/script-css.jsp"/>
+
+<!-- STRUCTURE STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
+
 </head>
 <body>
-	<form action="${linkTo[TaskController].insert}" method="post">
-		<label for="task-name">Nome: </label>
-		<input type="text" id="task-name" name="task.name" /><br/>
+	<form action="${linkTo[TaskController].insert}" method="POST" class="insert_form">
+		<fieldset>
+			<legend>Criar Tarefa</legend>
+			
+			<label for="task-name">Nome: </label>
+			<input type="text" id="task-name" name="task.name" /><br/>
+			
+			<label for="task-description">Descrição: </label>
+			<input type="text" id="task-description" name="task.description" /><br/>
 		
-		<label for="task-description">Descrição: </label>
-		<input type="text" id="task-description" name="task.description" /><br/>
+			<label for="task-contributors">Colaboradores: </label><br/>
+			<c:forEach items="${taskPanel.projectContributors}" var="contributor" varStatus="i">
+				<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="contributors[${i.count}].id"/>
+				<label for="task-contributors[${i.count}]">${contributor.name} </label><br/> 
+			</c:forEach>
+		
+			<label for="task-expirationDate">Data de expiração: </label>
+			<input type="text" id="task-expirationDate" name="task.expirationDate" /><br/>
 	
-		<label for="task-contributors">Colaboradores: </label><br/>
-		<c:forEach items="${taskPanel.projectContributors}" var="contributor" varStatus="i">
-			<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="contributors[${i.count}].id"/>
-			<label for="task-contributors[${i.count}]">${contributor.name} </label><br/> 
-		</c:forEach>
+			<input type="hidden" name="taskPanel.id" value="${taskPanel.id}"/>
 	
-		<label for="task-expirationDate">Data de expiração: </label>
-		<input type="text" id="task-expirationDate" name="task.expirationDate" /><br/>
-
-		<input type="hidden" name="taskPanel.id" value="${taskPanel.id}"/>
-
-		<input type="submit" value="Inserir">
+			<input type="submit" class="button" value="Inserir">
+		</fieldset>
 	</form>
 </body>
 </html>
+

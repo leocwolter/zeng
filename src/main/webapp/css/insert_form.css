@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+/* CATEGORY INSERT FORM */
+
+.insert_form {
+	
+	display:block;
+	
+	padding:10px;
+	
+}
+
+.insert_form fieldset{
+	width:225px;
+	height:105px;
+	border:none;
+}
+
+.insert_form fieldset legend {
+	
+	font-size:14px;
+	
+}
+
+.insert_form fieldset input,select{
+	margin-top:10px;
+}
+
+.insert_form fieldset input[type=text],select {
+	height:20px;
+	
+	width:100%;
+	
+	border-radius:3px;
+
+}
+
+.insert_form fieldset input[type=submit] {
+	float:right;
+}

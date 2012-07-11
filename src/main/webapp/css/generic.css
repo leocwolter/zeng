@@ -18,6 +18,21 @@ header {
 	
 }
 
+#container {
+	
+	min-height:100%;
+	
+	width:100%;
+	
+	position:relative;
+	
+	overflow:hidden;
+
+	background:url(../img/fabric_plaid.png) repeat;
+	
+}
+
+
 #content {
 	
 	height:auto;
@@ -62,6 +77,27 @@ footer {
 	text-align:center;
 	
 }
+
+/*USER*/
+
+#user_name_link {
+	
+	display:block;
+	
+	height:20px;
+	
+	width:auto;
+	
+	float:right;
+	
+	line-height:50px;
+	
+	font-size:14px;
+	
+	color:#FFFFFF;
+	
+}
+
 
 
 /*MENU*/
@@ -211,6 +247,35 @@ footer {
 
 #search_button:hover {
 		
+	color:#000000;
+	
+	cursor:pointer;
+	
+}
+
+/*BUTTONS*/
+.button {
+	
+	display:inline-block;
+	
+	width:auto;
+	
+	padding:0 5px;
+	
+	line-height:25px;
+	
+	border-radius:3px;
+	
+	background:#2D4D8D;
+	
+	color:#FFFFFF;
+	
+}
+
+.button:hover {
+	
+	background:#A3C1FF;
+	
 	color:#000000;
 	
 	cursor:pointer;

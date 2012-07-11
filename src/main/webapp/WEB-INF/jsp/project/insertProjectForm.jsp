@@ -5,17 +5,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Inserir Projeto</title>
+<title>Zeng - Novo Projeto</title>
+
+<c:import url="/WEB-INF/imports/script-css.jsp"/>
+
+<!-- STRUCTURE STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
+
+		
 </head>
 <body>
-	<form action="${linkTo[ProjectController].insert}" method="post">
-		<label for="project-name">Nome: </label>
-		<input type="text" id="project-name" name="project.name" /><br/>
-	
-		<label for="project-contributors">Colaboradores: </label><br/>
-		<input id="project-contributors[${i.count}]" type="text" name="contributors[${i.count}].email"/>
-	
-		<input type="submit" value="Inserir">
+	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert_form">
+		<fieldset>
+			<legend>Criar Projeto</legend>
+		
+			<label for="project-name">Nome: </label>
+			<input type="text" id="project-name" name="project.name" /><br/>
+		
+			<label for="project-contributors">Colaboradores: </label><br/>
+			<input id="project-contributors[${i.count}]" type="text" name="contributors[${i.count}].email"/>
+		
+			<input type="submit" class="button" value="Inserir">
+		</fieldset>
 	</form>
 </body>
 </html>

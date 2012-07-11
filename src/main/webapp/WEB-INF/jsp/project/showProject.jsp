@@ -9,14 +9,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - ${project.name}</title>
 
+<c:import url="/WEB-INF/imports/script-css.jsp"/>
+
 <!-- PROJECT STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
 
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
+<!-- COLORBOX STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
+
+<!-- JQUERY COLORBOX -->
+<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+
+<!-- SCREEN SIZE SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
+
  
 <script>
 $(function(){
-	$("#new_category").colorbox({iframe:true, width:"305px", height:"200px"});
+	$(".colorbox").colorbox({iframe:true, width:"305px", height:"230px"});
 });
 
 </script>

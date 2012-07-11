@@ -1,20 +1,5 @@
 @CHARSET "UTF-8";
 
-#container {
-	
-	min-height:100%;
-	
-	width:100%;
-	
-	position:relative;
-	
-	overflow:hidden;
-	
-
-	background:url(../img/fabric_plaid.png) repeat;
-	
-}
-
 #left_container {
 	
 	width:100%;
@@ -27,6 +12,7 @@
 		
 }
 
+/*SIDE BAR*/
 #project_sidebar {
 	
 	height:100%;
@@ -111,25 +97,6 @@
 	
 }
 
-
-#user_name_link {
-	
-	display:block;
-	
-	height:20px;
-	
-	width:auto;
-	
-	float:right;
-	
-	line-height:50px;
-	
-	font-size:14px;
-	
-	color:#FFFFFF;
-	
-}
-
 .photo_link {
 	
 	opacity:0.7;
@@ -144,6 +111,8 @@
 	
 }
 
+
+/*CATEGORY*/
 #category_selected {
 				
 	border-radius:4px;
@@ -156,11 +125,6 @@
 		
 }
 
-#new_task_list {
-	
-	margin:0 0 0 20px;
-	
-}
 
 .category {
 	
@@ -188,6 +152,13 @@
 	display:block;
 	
 	margin:0 0 10px 0;
+	
+}
+
+/*TASK LIST*/
+#new_task_list {
+	
+	margin:0 0 0 20px;
 	
 }
 
@@ -342,40 +313,5 @@
 	border-spacing: 5px 0;
 	
 	background:#F4F4F4;
-	
-}
-
-
-/* LIGHTBOX */
-
-/* CATEGORY INSERT FORM */
-
-#category_insert_form {
-	
-	display:block;
-	
-	padding:10px;
-	
-}
-
-#category_insert_form h1 {
-	
-	font-size:14px;
-	
-}
-
-#category_name_field {
-	
-	height:20px;
-	
-	width:200px;
-	
-	border-radius:3px;
-	
-}
-
-#category_insert_button {
-	
-	float:right;
 	
 }

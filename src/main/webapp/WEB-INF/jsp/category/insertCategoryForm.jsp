@@ -7,23 +7,23 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Zeng - Nova Categoria</title>
         
-        <!-- GENERIC STYLE -->
-		<link rel="stylesheet" type="text/css" href='<c:url value="/css/style.css"/>' />
-		
-		<!-- STRUCTURE STYLE -->
-		<link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
+        <c:import url="/WEB-INF/imports/script-css.jsp"/>
+        
+        <!-- STRUCTURE STYLE -->
+		<link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
     </head>
 	<body>
-		<form action="${linkTo[CategoryController].insert}" method="post" id="category_insert_form">
-			<h1>Crie uma nova categoria</h1>
-	        <br />
-	        <br />
-			<label for="category-name">Nome: </label>
-			<input type="text" id="category_name_field" class="text" name="category.name" />
-			<br />
-	        <br />
-			<input type="hidden" name="projectId" value="${projectId}"/>
-			<input type="submit" id="category_insert_button" class="button" value="Inserir">
+		<form action="${linkTo[CategoryController].insert}" method="POST" class="insert_form">
+			<fieldset>
+				<legend>Criar Categoria</legend>
+				
+				<label for="category-name">Nome: </label>
+				<input type="text" name="category.name" />
+				
+				<input type="hidden" name="projectId" value="${projectId}"/>
+				
+				<input type="submit" class="button" value="Inserir">
+			</fieldset>
 		</form>
 	</body>
 </html>

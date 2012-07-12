@@ -6,7 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.zeng.model.TaskPanel;
+import br.com.zeng.model.TaskList;
 import br.com.zeng.model.User;
 
 @Component
@@ -18,7 +18,7 @@ public class UserDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<TaskPanel> getUserById(Long id) {
+	public List<TaskList> getUserById(Long id) {
 		return session.createCriteria(User.class).add(Restrictions.eq("id", id)).list();
 	}
 

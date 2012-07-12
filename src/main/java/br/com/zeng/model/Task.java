@@ -27,7 +27,7 @@ public class Task {
 	private List<User> contributors;
 
 	@ManyToOne
-	private TaskPanel taskPanel;
+	private TaskList taskList;
 
 	private State state;
 
@@ -46,8 +46,8 @@ public class Task {
 		return id;
 	}
 	
-	public TaskPanel getTaskPanel() {
-		return taskPanel;
+	public TaskList getTaskList() {
+		return taskList;
 	}
 	
 	public void setId(Long id) {
@@ -66,8 +66,8 @@ public class Task {
 		this.contributors = contributors;
 	}
 
-	public void setTaskPanel(TaskPanel taskPanel) {
-		this.taskPanel = taskPanel;
+	public void setTaskList(TaskList taskPanel) {
+		this.taskList = taskPanel;
 	}
 
 	public void setExpirationDate(DateTime expirationDate) {
@@ -103,7 +103,7 @@ public class Task {
 	}
 	
 	public Project getProject() {
-		return taskPanel.getProject();
+		return taskList.getProject();
 	}
 
 	public boolean isFinalized() {

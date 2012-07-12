@@ -8,10 +8,10 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.TaskDao;
-import br.com.zeng.dao.TaskPanelDao;
+import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.model.Task;
-import br.com.zeng.model.TaskPanel;
+import br.com.zeng.model.TaskList;
 import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
 
@@ -19,13 +19,13 @@ import br.com.zeng.session.UserSession;
 public class TaskController {
 	private final TaskDao taskDao;
 	private final Result result;
-	private final TaskPanelDao taskPanelDao;
+	private final TaskListDao taskListDao;
 	private final UserDao userDao;
 	private final UserSession userSession;
 
-	public TaskController(TaskDao taskDao,TaskPanelDao taskPanelDao, UserDao userDao, Result result, UserSession userSession) {
+	public TaskController(TaskDao taskDao,TaskListDao taskListDao, UserDao userDao, Result result, UserSession userSession) {
 		this.taskDao = taskDao;
-		this.taskPanelDao = taskPanelDao;
+		this.taskListDao = taskListDao;
 		this.userDao = userDao;
 		this.result = result;
 		this.userSession = userSession;
@@ -33,24 +33,24 @@ public class TaskController {
 
 
 	@Post("/taskpanel/task/add")
-	public void insert(Task task, Long taskPanelId, List<User> contributors) {
+	public void insert(Task task, Long taskListId, List<User> contributors) {
 		if(contributors != null) {
 			List<User> completeContributorsByList = userDao.getCompleteContributorsById(contributors);			
 			task.setContributors(completeContributorsByList);
 		}
 		
-		TaskPanel taskPanel = taskPanelDao.getTaskPanelWithId(taskPanelId);
-		task.setTaskPanel(taskPanel);
+		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
+		task.setTaskList(taskList);
 		
 		taskDao.insert(task);
 		result.redirectTo(ProjectController.class).showProject(task.getProject());
 	}
 
 	@LoggedUser
-	@Path("/taskpanel/addTask/{taskPanelId}")
-	public void insertTaskForm(Long taskPanelId) {
-		TaskPanel taskPanel = taskPanelDao.getTaskPanelWithId(taskPanelId);
-		result.include("taskPanel",taskPanel);
+	@Path("/taskpanel/addTask/{taskListId}")
+	public void insertTaskForm(Long taskListId) {
+		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
+		result.include("taskList",taskList);
 	}	
 	
 	@LoggedUser

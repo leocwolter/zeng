@@ -20,7 +20,7 @@ public class Category {
 	private Project project;
 
 	@OneToMany(mappedBy = "category")
-	private List<TaskPanel> taskPanels;
+	private List<TaskList> taskLists;
 
 	public void setId(Long id) {
 		this.id = id;
@@ -34,8 +34,8 @@ public class Category {
 		this.project = project;
 	}
 
-	public void setTaskPanels(List<TaskPanel> taskPanels) {
-		this.taskPanels = taskPanels;
+	public void setTaskLists(List<TaskList> taskLists) {
+		this.taskLists = taskLists;
 	}
 
 	public Long getId() {
@@ -50,8 +50,8 @@ public class Category {
 		return name;
 	}
 
-	public List<TaskPanel> getTaskPanels() {
-		return taskPanels;
+	public List<TaskList> getTaskLists() {
+		return taskLists;
 	}
 
 }

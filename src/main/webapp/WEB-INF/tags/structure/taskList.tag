@@ -1,9 +1,9 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ attribute name="taskPanel" required="true" type="br.com.zeng.model.TaskPanel" %>
+<%@ attribute name="taskList" required="true" type="br.com.zeng.model.TaskList" %>
 
 <section class="task_area">
-	<h3>${taskPanel.name}</h3>
+	<h3>${taskList.name}</h3>
 	<nav class="task_menu_bar">
 		<ul class="task_menu">
 	    	<li><a href="#" class="task_philter_selected">All</a></li>
@@ -16,7 +16,7 @@
 	    </ul>
 	</nav>
 	<section class="task_list">
-		<c:forEach items="${taskPanel.tasks}" var="task">
+		<c:forEach items="${taskList.tasks}" var="task">
 			<div class="task_box">${task.name }</div>
 			<section class="options-task">
 				<c:if test="${task.state != 'DONE'}">

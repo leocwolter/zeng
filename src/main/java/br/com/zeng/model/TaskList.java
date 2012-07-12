@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class TaskPanel {
+public class TaskList {
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -19,7 +19,7 @@ public class TaskPanel {
 	@ManyToOne
 	private Category category;
 
-	@OneToMany(mappedBy = "taskPanel")
+	@OneToMany(mappedBy = "taskList")
 	private List<Task> tasks;
 
 	public List<Task> getTasks() {

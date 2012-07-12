@@ -17,15 +17,15 @@
 
 </head>
 <body>
-	<form action="${linkTo[TaskPanelController].insert}" method="post" class="insert_form">
+	<form action="${linkTo[TaskListController].insert}" method="post" class="insert_form">
 		<fieldset>
 			<legend>Criar Lista de Tarefas </legend>
 		
-			<label for="taskPanel-name">Nome: </label>
-			<input type="text" id="taskPanel-name" name="taskPanel.name" />
+			<label for="taskList-name">Nome: </label>
+			<input type="text" id="taskList-name" name="taskList.name" />
 	
-			<label for="taskPanel-category">Categoria: </label>
-			<select id="taskPanel-category" name="categoryId">
+			<label for="taskList-category">Categoria: </label>
+			<select id="taskList-category" name="categoryId">
 				<c:forEach items="${project.categories}" var="category">
 					<option value="${category.id}">${category.name}</option>
 				</c:forEach>

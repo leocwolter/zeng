@@ -7,20 +7,20 @@ import br.com.caelum.vraptor.Result;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.CategoryDao;
 import br.com.zeng.dao.ProjectDao;
-import br.com.zeng.dao.TaskPanelDao;
+import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.model.Category;
 import br.com.zeng.model.Project;
-import br.com.zeng.model.TaskPanel;
+import br.com.zeng.model.TaskList;
 
 @Resource
-public class TaskPanelController {
+public class TaskListController {
 	private final Result result;
-	private final TaskPanelDao taskPanelDao;
+	private final TaskListDao taskListDao;
 	private final CategoryDao categoryDao;
 	private final ProjectDao projectDao;
 
-	public TaskPanelController(TaskPanelDao taskPanelDao, CategoryDao categoryDao, ProjectDao projectDao, Result result) {
-		this.taskPanelDao = taskPanelDao;
+	public TaskListController(TaskListDao taskListDao, CategoryDao categoryDao, ProjectDao projectDao, Result result) {
+		this.taskListDao = taskListDao;
 		this.categoryDao = categoryDao;
 		this.projectDao = projectDao;
 		this.result = result;
@@ -28,16 +28,16 @@ public class TaskPanelController {
 
 
 	@Post("/addTaskPanel/")
-	public void insert(TaskPanel taskPanel, Long categoryId) {
+	public void insert(TaskList taskList, Long categoryId) {
 		Category category = categoryDao.getCategoryWithId(categoryId);
-		taskPanel.setCategory(category);
-		taskPanelDao.insert(taskPanel);
-		result.redirectTo(ProjectController.class).showProject(taskPanel.getProject());
+		taskList.setCategory(category);
+		taskListDao.insert(taskList);
+		result.redirectTo(ProjectController.class).showProject(taskList.getProject());
 	}
 
 	@LoggedUser
 	@Path("/addTaskPanel/{projectId}")
-	public Project insertTaskPanelForm(Long projectId) {
+	public Project insertTaskListForm(Long projectId) {
 		return projectDao.getProjectWithId(projectId);
 	}	
 

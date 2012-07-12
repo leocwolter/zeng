@@ -19,7 +19,7 @@
 		<mapping class="br.com.zeng.model.Project"/> 
 		<mapping class="br.com.zeng.model.Category"/> 
 		<mapping class="br.com.zeng.model.Task"/> 
-		<mapping class="br.com.zeng.model.TaskPanel"/> 
+		<mapping class="br.com.zeng.model.TaskList"/> 
 		<mapping class="br.com.zeng.model.User"/> 
 		<mapping class="br.com.zeng.model.Step"/> 
 

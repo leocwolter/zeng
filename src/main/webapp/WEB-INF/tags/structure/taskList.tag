@@ -31,5 +31,5 @@
 			</section>
 		</c:forEach>
 	</section>
-	<a class="add_task_button">+Add Task</a>
+	<a class="add_task_button colorbox " href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
 </section>

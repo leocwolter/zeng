@@ -36,7 +36,7 @@
 			<label for="task-expirationDate">Data de expiração: </label>
 			<input type="text" id="task-expirationDate" name="task.expirationDate" /><br/>
 	
-			<input type="hidden" name="taskList.id" value="${taskList.id}"/>
+			<input type="hidden" name="taskListId" value="${taskList.id}"/>
 	
 			<input type="submit" class="button" id="close_colorbox" value="Inserir">
 		</fieldset>

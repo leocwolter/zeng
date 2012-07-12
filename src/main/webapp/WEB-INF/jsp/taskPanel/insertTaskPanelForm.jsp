@@ -12,6 +12,9 @@
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 
+<!-- INSERT_FORM SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/insert_form.js" />"></script>
+
 </head>
 <body>
 	<form action="${linkTo[TaskPanelController].insert}" method="post" class="insert_form">
@@ -28,7 +31,7 @@
 				</c:forEach>
 			</select><br/> 
 	
-			<input type="submit" class="button" value="Inserir">
+			<input type="submit" class="button" id="close_colorbox" value="Inserir">
 		</fieldset>
 	</form>
 </body>

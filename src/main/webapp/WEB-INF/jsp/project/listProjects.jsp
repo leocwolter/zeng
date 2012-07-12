@@ -10,6 +10,16 @@
 <title>Projetos</title>
 
 <c:import url="/WEB-INF/imports/script-css.jsp"/>
+
+<!-- COLORBOX STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
+
+<!-- JQUERY COLORBOX -->
+<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+
+<!-- INSERT_FORM SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
+
 	
 </head>
 	<body>
@@ -25,7 +35,7 @@
 						</c:forEach>
 					</ul>
 					<section id="menu_bar_buttons">
-						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button">Adicionar projeto</a>
+						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button colorbox">Adicionar projeto</a>
 					</section>
 				</nav>
 	            <section id="content">

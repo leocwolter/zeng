@@ -23,12 +23,9 @@
 <!-- SCREEN SIZE SCRIPT -->
 <script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 
- 
-<script>
-$(function(){
-	$(".colorbox").colorbox({iframe:true, width:"305px", height:"230px"});
-});
-</script>
+<!-- GENERIC SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
+
 </head>
 	<body>
 		<section id="container">

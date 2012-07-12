@@ -12,7 +12,7 @@
 	        <li><a href="#">Done</a></li>
 	        <li><a href="#">Accepted</a></li>
 	        <li><a href="#">Rejected</a></li>
-	        <li><a href="#">+Add</a>
+	        <li><a href="#">Mine</a>
 	    </ul>
 	</nav>
 	<section class="task_list">
@@ -31,4 +31,5 @@
 			</section>
 		</c:forEach>
 	</section>
+	<a class="add_task_button">+Add Task</a>
 </section>

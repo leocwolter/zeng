@@ -28,7 +28,6 @@
 $(function(){
 	$(".colorbox").colorbox({iframe:true, width:"305px", height:"230px"});
 });
-
 </script>
 </head>
 	<body>

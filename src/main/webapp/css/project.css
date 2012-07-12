@@ -168,7 +168,7 @@
 	
 	min-height:120px;
 	
-	max-height:320px;
+	max-height:358px;
 	
 	width:379px;
 		
@@ -292,8 +292,6 @@
 	
 	border-right:1px solid #AAAAAA;
 	
-	border-bottom:1px solid #AAAAAA;
-	
 }
 
 .task_box {
@@ -313,5 +311,67 @@
 	border-spacing: 5px 0;
 	
 	background:#F4F4F4;
+	
+}
+
+.add_task_button {
+	
+	display:block;
+	
+	line-height:30px;
+	
+	width:100%;
+	
+	background:#1FA12B;
+	
+	text-align:center;
+	
+	color:#FFFFFF;
+	
+	font-size:16px;
+		
+	border: solid 1px #196415;
+	
+	background: linear-gradient(bottom, rgb(32,125,27) 0%, rgb(45,175,38) 100%);
+	
+	background: -o-linear-gradient(bottom, rgb(32,125,27) 0%, rgb(45,175,38) 100%);
+	
+	background: -moz-linear-gradient(bottom, rgb(32,125,27) 0%, rgb(45,175,38) 100%);
+	
+	background: -webkit-linear-gradient(bottom, rgb(32,125,27) 0%, rgb(45,175,38) 100%);
+	
+	background: -ms-linear-gradient(bottom, rgb(32,125,27) 0%, rgb(45,175,38) 100%);
+	
+	background: -webkit-gradient(linear, left bottom, left top,	color-stop(0, rgb(32,125,27)), color-stop(1, rgb(45,175,38)));
+	
+	-webkit-box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
+	
+	-moz-box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
+	
+	box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
+	
+	cursor:pointer;
+	
+}
+
+.add_task_button:hover {
+	color:#196415;
+}
+
+.add_task_button:active {
+	
+	color:#FFFFFF;
+	
+	background: linear-gradient(bottom, rgb(45,175,38) 0%, rgb(32,125,27) 100%);
+	
+	background: -o-linear-gradient(bottom, rgb(45,175,38) 0%, rgb(32,125,27) 100%);
+	
+	background: -moz-linear-gradient(bottom, rgb(45,175,38) 0%, rgb(32,125,27) 100%);
+	
+	background: -webkit-linear-gradient(bottom, rgb(45,175,38) 0%, rgb(32,125,27) 100%);
+	
+	background: -ms-linear-gradient(bottom, rgb(45,175,38) 0%, rgb(32,125,27) 100%);
+	
+	background: -webkit-gradient(linear, left bottom, left top,	color-stop(0, rgb(45,175,38)), color-stop(1, rgb(32,125,27)));
 	
 }

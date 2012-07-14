@@ -23,6 +23,9 @@
 <!-- SCREEN SIZE SCRIPT -->
 <script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 
+<!-- CATEGORY SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
+
 <!-- GENERIC SCRIPT -->
 <script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
 
@@ -30,8 +33,10 @@
 	<body>
 		<section id="container">
 	    	<section id="left_container">
-				<c:import url="/WEB-INF/imports/header.jsp"/>
-				<c:import url="/WEB-INF/imports/category_menu.jsp"/>
+				<section id="top">
+					<c:import url="/WEB-INF/imports/header.jsp"/>
+					<c:import url="/WEB-INF/imports/category_menu.jsp"/>
+				</section>
 	            <section id="content">
 	            	<section id="category_container" class="resizeble">
 		            	<c:forEach items="${project.categories}" var="category">

@@ -12,9 +12,7 @@ $(document).ready(function(){
 
 	//Readjusts size of elements on resize event.
 	$(window).resize(function(){
-		
 		adjustsSizes();
-		
 	});
 	
 	//Minimize / Maximize Sidebar and readjusts elements
@@ -23,17 +21,13 @@ $(document).ready(function(){
 		function(){
 			
 			$('#project_sidebar').animate({'width':projectSidebarClickAreaWidth}, function(){
-				
 				adjustsSizes();
-				
 			});
 			
 		},function(){
 			
 			$('#project_sidebar').animate({'width':projectSidebarWidth}, function(){
-				
 				adjustsSizes();
-				
 			});	
 			
 		}
@@ -46,17 +40,13 @@ $(document).ready(function(){
 		
 		var projectSidebarWidth = $('#project_sidebar').width();
 		
-		var projectSidebarContentWidth = $('#project_sidebar_content').width();		
-		
-		var menuWidth = $('#menu').width();
-		
 		var paddingRight = projectSidebarWidth + 10;
 		
 		var paddingLeft = 10;
 		
 		var width = leftContainerWidth - (paddingRight + paddingLeft);
 
-		$('.resizeble').css({'width':width, 'padding-right':paddingRight, 'padding-left':paddingLeft});
+		$('.resizeble').animate({'width':width, 'padding-right':paddingRight, 'padding-left':paddingLeft});
 		
 	}
 	

@@ -19,3 +19,9 @@ $(window).scroll(function () {
     );
     
 });
+
+$(function() {
+	$( ".task_area" ).children().sortable({
+		connectWith: ".task_list"
+	}).disableSelection();
+});

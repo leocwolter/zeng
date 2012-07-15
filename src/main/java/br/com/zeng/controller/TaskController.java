@@ -96,5 +96,11 @@ public class TaskController {
 		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
 	
+	@LoggedUser
+	@Path("/task/moveTask")
+	public void moveTask(Task task, TaskList taskList) {
+		task.setTaskList(taskList);
+		taskDao.update(task);
+	}
 
 }

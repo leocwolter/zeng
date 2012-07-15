@@ -170,10 +170,9 @@
 }
 
 /*TASK LIST*/
+
 #new_task_list {
-	
 	margin:0 0 0 20px;
-	
 }
 
 .task_area {
@@ -308,24 +307,8 @@
 	
 }
 
-.task_box {
-	
-	height:auto;
-	
-	min-height:50px;
-	
-	width:auto;
-		
-	border-bottom: 1px solid #CCCCCC;
-	
-	border-top: 1px solid #FFFFFF;
-	
-	border-collapse: separate;
-	
-	border-spacing: 5px 0;
-	
-	background:#F4F4F4;
-	
+.task_list li{
+	list-style: none;
 }
 
 .add_task_button {
@@ -387,5 +370,31 @@
 	background: -ms-linear-gradient(bottom, rgb(45,175,38) 0%, rgb(32,125,27) 100%);
 	
 	background: -webkit-gradient(linear, left bottom, left top,	color-stop(0, rgb(45,175,38)), color-stop(1, rgb(32,125,27)));
+}
+
+
+/* TASK  */
+
+.task_box {
+	height:auto;
 	
+	min-height:50px;
+	
+	width:auto;
+		
+	border-bottom: 1px solid #CCCCCC;
+	
+	border-top: 1px solid #FFFFFF;
+	
+	border-collapse: separate;
+	
+	border-spacing: 5px 0;
+	
+	background:#F4F4F4;
+}
+
+.task_box h4{
+	font-family: Verdana;
+	font-weight:bold;
+	color:#1F3C78;
 }

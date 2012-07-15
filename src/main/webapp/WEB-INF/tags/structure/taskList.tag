@@ -15,21 +15,25 @@
 	        <li><a href="#">Mine</a>
 	    </ul>
 	</nav>
-	<section class="task_list">
+	<ul class="task_list">
 		<c:forEach items="${taskList.tasks}" var="task">
-			<div class="task_box">${task.name }</div>
-			<section class="options-task">
-				<c:if test="${task.state != 'DONE'}">
-					<c:if test="${task.state != 'DOING'}">
-					<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
-					</c:if>
-					<c:if test="${task.state != 'TODO'}">
-					<a href="${linkTo[TaskController].stop}${task.id}">Devolver tarefa</a>/
-					</c:if>
-					<a href="${linkTo[TaskController].finalize}${task.id}">Finalizar tarefa</a>/
-				</c:if>
-			</section>
+			<li>
+				<section class="task_box">
+					<h4>${task.name}</h4>
+					<div class="options-task">
+						<c:if test="${task.state != 'DONE'}">
+							<c:if test="${task.state != 'DOING'}">
+							<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
+							</c:if>
+							<c:if test="${task.state != 'TODO'}">
+							<a href="${linkTo[TaskController].stop}${task.id}">Devolver tarefa</a>/
+							</c:if>
+							<a href="${linkTo[TaskController].finalize}${task.id}">Finalizar tarefa</a>/
+						</c:if>
+					</div>
+				</section>
+			</li>
 		</c:forEach>
-	</section>
+	</ul>
 	<a class="add_task_button colorbox " href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
 </section>

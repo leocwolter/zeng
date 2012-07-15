@@ -7,19 +7,6 @@ $(function(){
 	});
 });
 
-$(window).scroll(function () {
-	var scrollProsition = $(document).scrollTop();
-	
-    $('#top').animate({
-    	
-        top: scrollProsition+'px'
-        
-        },{duration:500,queue:false}
-        
-    );
-    
-});
-
 $(function() {
 	$( ".task_area" ).children().sortable({
 		connectWith: ".task_list"

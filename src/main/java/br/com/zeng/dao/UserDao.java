@@ -46,5 +46,5 @@ public class UserDao {
 	public void register(User user) {
 		session.save(user);
 	}
-
+	
 }

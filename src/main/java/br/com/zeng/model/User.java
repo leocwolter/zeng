@@ -17,6 +17,8 @@ public class User {
 	private String email;
 
 	private int finalizedTasks;
+	
+	private String photo;
 
 	public User() {
 		finalizedTasks = 0;
@@ -81,6 +83,14 @@ public class User {
 		} else if (!email.equals(other.email))
 			return false;
 		return true;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 	

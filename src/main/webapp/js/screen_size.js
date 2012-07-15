@@ -49,5 +49,4 @@ $(document).ready(function(){
 		$('.resizeble').animate({'width':width, 'padding-right':paddingRight, 'padding-left':paddingLeft});
 		
 	}
-	
 });

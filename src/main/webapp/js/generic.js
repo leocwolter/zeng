@@ -6,3 +6,16 @@ $(function(){
 		onClosed:function(){window.location.reload();}
 	});
 });
+
+$(window).scroll(function () {
+	var scrollProsition = $(document).scrollTop();
+	
+    $('#top').animate({
+    	
+        top: scrollProsition+'px'
+        
+        },{duration:500,queue:false}
+        
+    );
+    
+});

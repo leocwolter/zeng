@@ -60,18 +60,4 @@ $(document).ready(function(){
 		
 	}
 	
-	$(window).scroll(function () {
-		
-    	var scrollProsition = $(document).scrollTop();
-    	
-        $('#top').animate({
-        	
-            top: scrollProsition+'px'
-            
-            },{duration:500,queue:false}
-            
-        );
-        
-    });
-	
 });

@@ -6,9 +6,15 @@ $(function(){
 		onClosed:function(){window.location.reload();}
 	});
 });
-
-$(function() {
-	$( ".task_area" ).children().sortable({
-		connectWith: ".task_list"
-	}).disableSelection();
+$(window).scroll(function () {
+	var scrollProsition = $(document).scrollTop();
+	
+    $('#top').animate({
+    	
+        top: scrollProsition+'px'
+        
+        },{duration:500,queue:false}
+        
+    );
+    
 });

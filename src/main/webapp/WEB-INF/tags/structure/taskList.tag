@@ -15,9 +15,9 @@
 	        <li><a href="#">Mine</a>
 	    </ul>
 	</nav>
-	<ul class="task_list">
+	<ul class="task_list" class="${task.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
-			<li>
+			<li class="${task.id}">
 				<section class="task_box">
 					<h4>${task.name}</h4>
 					<div class="options-task">

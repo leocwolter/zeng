@@ -26,8 +26,9 @@
 <!-- CATEGORY SCRIPT -->
 <script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
 
-<!-- GENERIC SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
+<!-- TASK SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/task.js" />"></script>
+
 
 </head>
 	<body>

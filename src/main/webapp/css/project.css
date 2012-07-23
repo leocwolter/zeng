@@ -376,6 +376,7 @@
 /* TASK  */
 
 .task_box {
+	
 	height:auto;
 	
 	min-height:50px;
@@ -391,10 +392,23 @@
 	border-spacing: 5px 0;
 	
 	background:#F4F4F4;
+	
+	padding:5px;
+	
 }
 
 .task_box h4{
+	
 	font-family: Verdana;
+	
 	font-weight:bold;
+	
 	color:#122448;
+	
+}
+
+.task_box p{
+	
+	margin:5px 0;
+	
 }

@@ -20,6 +20,7 @@
 			<li class="${task.id}">
 				<section class="task_box">
 					<h4>${task.name}</h4>
+					<p>${task.description}</p>
 					<div class="options-task">
 						<c:if test="${task.state != 'DONE'}">
 							<c:if test="${task.state != 'DOING'}">

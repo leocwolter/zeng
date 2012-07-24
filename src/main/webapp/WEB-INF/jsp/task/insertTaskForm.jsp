@@ -20,21 +20,30 @@
 	<form action="${linkTo[TaskController].insert}" method="POST" class="insert_form">
 		<fieldset>
 			<legend>Criar Tarefa</legend>
+			<br/>
 			
 			<label for="task-name">Nome: </label>
-			<input type="text" id="task-name" name="task.name" /><br/>
+			<br/>
+			<input type="text" id="task-name" name="task.name" />
+			<br/>
 			
 			<label for="task-description">Descrição: </label>
-			<input type="text" id="task-description" name="task.description" /><br/>
+			<br/>
+			<input type="text" id="task-description" name="task.description" />
+			<br/>
 		
-			<label for="task-contributors">Colaboradores: </label><br/>
+			<label for="task-contributors">Colaboradores: </label>
+			<br/>
 			<c:forEach items="${taskList.projectContributors}" var="contributor" varStatus="i">
 				<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="contributors[${i.count}].id"/>
-				<label for="task-contributors[${i.count}]">${contributor.name} </label><br/> 
+				<label for="task-contributors[${i.count}]">${contributor.name} </label>
+				<br/> 
 			</c:forEach>
 		
 			<label for="task-expirationDate">Data de expiração: </label>
-			<input type="text" id="task-expirationDate" name="task.expirationDate" /><br/>
+			<br/>
+			<input type="text" id="task-expirationDate" name="task.expirationDate" />
+			<br/>
 	
 			<input type="hidden" name="taskListId" value="${taskList.id}"/>
 	

@@ -21,12 +21,17 @@
 	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert_form">
 		<fieldset>
 			<legend>Criar Projeto</legend>
-		
+			<br/>
+			
 			<label for="project-name">Nome: </label>
-			<input type="text" id="project-name" name="project.name" /><br/>
+			<br/>
+			<input type="text" id="project-name" name="project.name" />
+			<br/>
 		
-			<label for="project-contributors">Colaboradores: </label><br/>
+			<label for="project-contributors">Colaboradores: </label>
+			<br/>
 			<input id="project-contributors[${i.count}]" type="text" name="contributors[${i.count}].email"/>
+			<br/>
 		
 			<input type="submit" class="button" id="close_colorbox" value="Inserir">
 		</fieldset>

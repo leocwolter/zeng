@@ -22,9 +22,12 @@
 		<form action="${linkTo[CategoryController].insert}" method="POST" class="insert_form">
 			<fieldset>
 				<legend>Criar Categoria</legend>
+				<br/>
 				
 				<label for="category-name">Nome: </label>
+				<br/>
 				<input type="text" name="category.name" />
+				<br/>
 				
 				<input type="hidden" name="projectId" value="${projectId}"/>
 				

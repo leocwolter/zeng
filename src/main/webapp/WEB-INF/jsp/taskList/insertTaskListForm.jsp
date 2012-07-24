@@ -20,16 +20,21 @@
 	<form action="${linkTo[TaskListController].insert}" method="post" class="insert_form">
 		<fieldset>
 			<legend>Criar Lista de Tarefas </legend>
+			<br/>
 		
 			<label for="taskList-name">Nome: </label>
+			<br/>
 			<input type="text" id="taskList-name" name="taskList.name" />
+			<br/>
 	
 			<label for="taskList-category">Categoria: </label>
+			<br/>
 			<select id="taskList-category" name="categoryId">
 				<c:forEach items="${project.categories}" var="category">
 					<option value="${category.id}">${category.name}</option>
 				</c:forEach>
-			</select><br/> 
+			</select>
+			<br/> 
 	
 			<input type="submit" class="button" id="close_colorbox" value="Inserir">
 		</fieldset>

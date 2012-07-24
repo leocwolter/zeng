@@ -1,8 +1,8 @@
 $(function(){
 	$(".colorbox").colorbox({
 		iframe:true,
-		width:"305px",
-		height:"230px",
+		width:"500px",
+		height:"400px",
 		onClosed:function(){window.location.reload();}
 	});
 });

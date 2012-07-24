@@ -8,26 +8,47 @@
 	
 	padding:10px;
 	
+	overflow:hidden
+	
 }
 
 .insert_form fieldset{
-	width:225px;
+	
+	width:438px;
+	
 	height:105px;
+	
 	border:none;
+	
+	display:block;
+	
 }
 
 .insert_form fieldset legend {
 	
 	font-size:14px;
 	
+	margin:0 0 5px 0;
+	
+}
+
+.insert_form fieldset label {
+	
+	display:inline-block;
+	
+	margin:10px 0 0 0;
+	
 }
 
 .insert_form fieldset input,select{
+	
 	margin-top:10px;
+	
 }
 
 .insert_form fieldset input[type=text],select {
-	height:20px;
+	
+	height:25px;
 	
 	width:100%;
 	
@@ -36,5 +57,7 @@
 }
 
 .insert_form fieldset input[type=submit] {
+	
 	float:right;
+	
 }

@@ -45,5 +45,6 @@ public class UserController {
 		userSession.logIn(registredUser);
 		result.redirectTo(ProjectController.class).listProjects();
 	}
+
 	
 }

@@ -34,10 +34,10 @@
 	<body>
 		<section id="container">
 	    	<section id="left_container">
-				<section id="top">
+				<header id="top">
 					<c:import url="/WEB-INF/imports/header.jsp"/>
 					<c:import url="/WEB-INF/imports/category_menu.jsp"/>
-				</section>
+				</header>
 	            <section id="content">
 	            	<section id="category_container" class="resizeble">
 		            	<c:forEach items="${project.categories}" var="category">

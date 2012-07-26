@@ -16,12 +16,10 @@ public class User {
 
 	private String email;
 
-	private int finalizedTasks;
 	
 	private String photo;
 
 	public User() {
-		finalizedTasks = 0;
 	}
 	
 	public void setId(Long id) {
@@ -62,10 +60,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public void incrementFinalizedTasks() {
-		finalizedTasks++;
 	}
 
 	@Override

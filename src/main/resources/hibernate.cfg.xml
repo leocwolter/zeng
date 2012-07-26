@@ -22,6 +22,7 @@
 		<mapping class="br.com.zeng.model.TaskList"/> 
 		<mapping class="br.com.zeng.model.User"/> 
 		<mapping class="br.com.zeng.model.Step"/> 
+		<mapping class="br.com.zeng.model.TaskPerContributor"/> 
 
     </session-factory>
 </hibernate-configuration>

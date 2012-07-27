@@ -104,8 +104,10 @@ public class TaskController {
 	@LoggedUser
 	@Path("/task/moveTask")
 	public void moveTask(Task task, TaskList taskList) {
-		task.setTaskList(taskList);
-		taskDao.update(task);
+		Task taskComplete = taskDao.getTaskWithId(task.getId());
+		taskComplete.setTaskList(taskList);
+		taskDao.update(taskComplete);
+		result.nothing();
 	}
 
 }

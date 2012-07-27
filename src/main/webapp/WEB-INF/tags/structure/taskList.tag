@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ attribute name="taskList" required="true" type="br.com.zeng.model.TaskList" %>
 
-<section class="task_area">
+<section class="task_area" >
 	<h3>${taskList.name}</h3>
 	<nav class="task_menu_bar">
 		<ul class="task_menu">
@@ -15,9 +15,9 @@
 	        <li><a href="#">Mine</a>
 	    </ul>
 	</nav>
-	<ul class="task_list" class="${task.id}" id="teste">
+	<ul class="task_list" id="taskList-${taskList.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
-			<li class="${task.id}" id="${task.id}">
+			<li class="task" id="task-${task.id}">
 				<section class="task_box">
 					<h4>${task.name}</h4>
 					<p>${task.description}</p>

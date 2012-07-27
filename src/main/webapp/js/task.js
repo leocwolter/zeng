@@ -6,17 +6,16 @@
 		console.log(taskId);
 		var taskListId = $(this).attr("class");
 		console.log(taskListId);
-		$.post("./task/moveTask", {"task.id": taskId, "taskList.id": taskListId} );	
 	}).disableSelection();
 });*/
 
 $(function() {
 	$( ".task_list" ).sortable({
 		connectWith: ".task_list",
-		update: function(event, ui) {
-            var result = $(this).sortable('toArray'); //$(this).attr("id");
-            var ListOwner = $(this).parent().attr("id");
-            alert(result + " - " + ListOwner);
+		receive: function(event, ui) {
+			$.post("../task/moveTask", {"task.id": taskId, "taskList.id": taskListId} );	
+            var taskListId = ui.item.closest("ul").attr("id").split("-")[1];
+            var taskId = ui.item.attr("id").split("-")[1];
         }
 	}).disableSelection();
 	

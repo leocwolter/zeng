@@ -24,17 +24,17 @@ public class CategoryController {
 
 
 	@Post("/addCategory/")
-	public void insert(Category category, Long projectId) {
-		Project project = projectDao.getProjectWithId(projectId);
+	public void insert(Category category, String projectUrl) {
+		Project project = projectDao.getProjectWithUrl(projectUrl);
 		category.setProject(project);
 		categoryDao.insert(category);
 		result.redirectTo(ProjectController.class).showProject(category.getProject());
 	}
 
 	@LoggedUser
-	@Path("/addCategory/{projectId}")
-	public void insertCategoryForm(Long projectId) {
-		result.include("projectId", projectId);
+	@Path("/addCategoryForm/{projectUrl}")
+	public void insertCategoryForm(String projectUrl) {
+		result.include("projectUrl", projectUrl);
 	}	
 
 }

@@ -25,6 +25,7 @@ public class TaskPerContributorDao {
 	public List<TaskPerContributor> getDataWithUsers(List<User> contributors) {
 		List<TaskPerContributor> data = new ArrayList<TaskPerContributor>();
 		for (User user : contributors) {
+			@SuppressWarnings("unchecked")
 			List<TaskPerContributor> datum = session.createCriteria(TaskPerContributor.class).add(Restrictions.eq("contributor.id", user.getId())).list();
 			data.addAll(datum);
 		}

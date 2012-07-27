@@ -8,9 +8,9 @@
 		</c:forEach>
 	</ul>
 	<section id="menu_bar_buttons">
-		<a href="${linkTo[CategoryController].insertCategoryForm}${project.id}"
+		<a href="${linkTo[CategoryController].insertCategoryForm}${project.url}"
 			id="new_category" title="Adicionar Categoria" class="button colorbox">Adicionar categoria</a>
-		<a href="${linkTo[TaskListController].insertTaskListForm}${project.id}"
+		<a href="${linkTo[TaskListController].insertTaskListForm}${project.url}"
 			title="Adicionar Lista" id="new_task_list" class="button colorbox">Adicionar 
 			Lista</a>
 	</section>

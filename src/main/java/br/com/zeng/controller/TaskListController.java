@@ -9,7 +9,6 @@ import br.com.zeng.dao.CategoryDao;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.model.Category;
-import br.com.zeng.model.Project;
 import br.com.zeng.model.TaskList;
 
 @Resource
@@ -36,9 +35,9 @@ public class TaskListController {
 	}
 
 	@LoggedUser
-	@Path("/addTaskPanel/{projectId}")
-	public Project insertTaskListForm(Long projectId) {
-		return projectDao.getProjectWithId(projectId);
+	@Path("/addTaskPanelForm/{projectUrl}")
+	public void insertTaskListForm(String projectUrl) {
+		result.include(projectDao.getProjectWithUrl(projectUrl));
 	}	
 
 }

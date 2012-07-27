@@ -1,6 +1,5 @@
 package br.com.zeng.model;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import br.com.zeng.infra.Sanitizer;
 
 @Entity
 public class Project {
@@ -66,10 +67,7 @@ public class Project {
 	
 	public void setUrl(String url) {
 		System.out.println(url);
-		this.url = Normalizer.normalize(url, Normalizer.Form.NFD)
-				.replaceAll("[^\\p{ASCII}]", "")
-				.replaceAll(" ", "-")
-				.toLowerCase();
+		this.url = Sanitizer.toSlug(url);
 		System.out.println(url);
 	}
 

@@ -36,7 +36,7 @@ public class TaskController {
 		this.taskPerContributorDao = taskPerContributorDao;
 	}
 
-	@Post("/taskpanel/task/add")
+	@Post("/taskpanel/addTask")
 	public void insert(Task task, Long taskListId, List<User> contributors) {
 		if (contributors != null) {
 			List<User> completeContributorsByList = userDao.getCompleteContributorsById(contributors);
@@ -51,7 +51,7 @@ public class TaskController {
 	}
 
 	@LoggedUser
-	@Path("/taskpanel/addTask/{taskListId}")
+	@Path("/taskpanel/addTaskForm/{taskListId}")
 	public void insertTaskForm(Long taskListId) {
 		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
 		result.include("taskList", taskList);

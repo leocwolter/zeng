@@ -29,7 +29,7 @@
 				<input type="text" name="category.name" />
 				<br/>
 				
-				<input type="hidden" name="projectId" value="${projectId}"/>
+				<input type="hidden" name="projectUrl" value="${projectUrl}"/>
 				
 				<input type="submit" class="button" id="close_colorbox" value="Inserir">
 			</fieldset>

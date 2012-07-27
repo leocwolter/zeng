@@ -49,7 +49,7 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Post("/project/add")
+	@Post("/addProject")
 	public void insert(Project project, List<User> contributors) {
 		for (User contributor : contributors) {
 			project.addContributor(userDao.getUserByEmail(contributor));
@@ -60,7 +60,7 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Get("/project/add")
+	@Get("/addProjectForm")
 	public void insertProjectForm() {
 	}
 

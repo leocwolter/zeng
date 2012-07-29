@@ -6,13 +6,13 @@
 	<h3>${taskList.name}</h3>
 	<nav class="task_menu_bar">
 		<ul class="task_menu">
-	    	<li><a href="#" class="task_philter_selected">All</a></li>
-	    	<li><a href="#">To do</a></li>
-	        <li><a href="#">Doing</a></li>
-	        <li><a href="#">Done</a></li>
-	        <li><a href="#">Accepted</a></li>
-	        <li><a href="#">Rejected</a></li>
-	        <li><a href="#">Mine</a>
+	    	<li><a class="task-filter-selected" href="#" >All</a></li>
+	    	<li><a class="task-filter" href="#">To do</a></li>
+	        <li><a class="task-filter" href="#">Doing</a></li>
+	        <li><a class="task-filter" href="#">Done</a></li>
+	        <li><a class="task-filter" href="#">Accepted</a></li>
+	        <li><a class="task-filter" href="#">Rejected</a></li>
+	        <li><a class="task-filter" href="#">Mine</a>
 	    </ul>
 	</nav>
 	<ul class="task_list" id="taskList-${taskList.id}">
@@ -24,12 +24,14 @@
 					<div class="options-task">
 						<c:if test="${task.state != 'DONE'}">
 							<c:if test="${task.state != 'DOING'}">
-							<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
+								<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
 							</c:if>
 							<c:if test="${task.state != 'TODO'}">
-							<a href="${linkTo[TaskController].stop}${task.id}">Devolver tarefa</a>/
+								<a href="${linkTo[TaskController].stop}${task.id}">Devolver tarefa</a>/
 							</c:if>
-							<a href="${linkTo[TaskController].finalize}${task.id}">Finalizar tarefa</a>/
+							<c:if test="${task.state == 'DOING'}" >
+								<a href="${linkTo[TaskController].finalize}${task.id}">Finalizar tarefa</a>/
+							</c:if>
 						</c:if>
 					</div>
 				</section>

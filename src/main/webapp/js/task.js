@@ -1,5 +1,3 @@
-
-
 $(function() {
 	$( ".task_list" ).sortable({
 		connectWith: ".task_list",
@@ -12,7 +10,7 @@ $(function() {
 	
 	$( ".task_box" ).click(
 			function(){
-				$.fn.colorbox({iframe:true, width:"500px", height:"300px", href:"/zeng/addTaskPanel/1"});
+				$.fn.colorbox({iframe:true, width:"500px", height:"300px", href:"/zeng/task/1"});
 			}
 	);
 });

@@ -148,7 +148,7 @@
 	margin: 0 3px;
 }
 
-.task_menu li a {
+.task_filter{
 	display: block;
 	padding: 0 5px;
 	width: auto;
@@ -156,13 +156,13 @@
 	border-radius: 2px;
 }
 
-.task_menu li a:hover {
+.task_filter:hover {
 	background: #AAAAAA;
 	color: #FFFFFF;
 	cursor: pointer;
 }
 
-.task_philter_selected {
+.task-filter-selected {
 	border-radius: 3px;
 	background: #1F3C78;
 	color: #FFFFFF;

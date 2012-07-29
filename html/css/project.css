@@ -118,7 +118,7 @@ header {
 	
 	overflow:hidden;
 	
-	background:#2D4D8D;
+	background:#38291A;
 	
 	margin:0px;
 	
@@ -190,9 +190,9 @@ header {
 	
 	float:left;
 	
-	color:#FFFFFF;
+	color:#E3E1D5;
 	
-	background:#1f3c78;
+	background:#61472D;
 		
 	border-radius:0 3px 3px 0;
 	
@@ -220,7 +220,7 @@ header {
 	
 	font-size:14px;
 	
-	color:#FFFFFF;
+	color:#E3E1D5;
 	
 }
 
@@ -248,7 +248,7 @@ header {
 	
 	width:100%;
 		
-	background:#DEE6F6;
+	background:#61472D;
 	
 	line-height:35px;
 	

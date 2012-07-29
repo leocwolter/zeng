@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - ${project.name}</title>
 
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
 
 <!-- PROJECT STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
@@ -17,17 +16,6 @@
 <!-- COLORBOX STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
 
-<!-- JQUERY COLORBOX -->
-<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-
-<!-- SCREEN SIZE SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
-
-<!-- CATEGORY SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
-
-<!-- TASK SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/task.js" />"></script>
 
 
 </head>
@@ -49,6 +37,16 @@
 	        </section>
 	        <zeng-structure:sideBar/>
         </section>
+
+		<c:import url="/WEB-INF/imports/script-css.jsp"/>
+		<!-- JQUERY COLORBOX -->
+		<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+		<!-- SCREEN SIZE SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
+		<!-- CATEGORY SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
+		<!-- TASK SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/task.js" />"></script>
 	</body>
 
 </html>

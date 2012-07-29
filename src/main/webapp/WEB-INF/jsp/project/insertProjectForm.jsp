@@ -12,8 +12,6 @@
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 
-<!-- INSERT_FORM SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/insert_form.js" />"></script>
 
 		
 </head>
@@ -36,5 +34,7 @@
 			<input type="submit" class="button" id="close_colorbox" value="Inserir">
 		</fieldset>
 	</form>
+	<!-- INSERT_FORM SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/insert_form.js" />"></script>
 </body>
 </html>

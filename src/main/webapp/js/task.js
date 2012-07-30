@@ -10,11 +10,7 @@ $(function() {
 	
 	$( ".task_box" ).click(
 			function(){
-<<<<<<< HEAD
-				$.fn.colorbox({iframe:true, width:"500px", height:"300px", href:"/zeng/task/1"});
-=======
 				$.fn.colorbox({iframe:true, width:"600px", height:"600px", scrolling:true, href:"/zeng/task/1"});
->>>>>>> Colorbox (modal) das tasks
 			}
 	);
 });

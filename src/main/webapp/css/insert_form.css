@@ -2,7 +2,7 @@
 
 /* CATEGORY INSERT FORM */
 
-.insert_form {
+.insert-form {
 	
 	display:block;
 	
@@ -12,7 +12,7 @@
 	
 }
 
-.insert_form fieldset{
+.insert-form fieldset{
 	
 	width:438px;
 	
@@ -24,7 +24,7 @@
 	
 }
 
-.insert_form fieldset legend {
+.insert-form fieldset legend {
 	
 	font-size:14px;
 	
@@ -32,7 +32,7 @@
 	
 }
 
-.insert_form fieldset label {
+.insert-form fieldset label {
 	
 	display:inline-block;
 	
@@ -40,13 +40,13 @@
 	
 }
 
-.insert_form fieldset input,select{
+.insert-form fieldset input,select{
 	
 	margin-top:10px;
 	
 }
 
-.insert_form fieldset input[type=text],select {
+.insert-form fieldset input[type=text],select {
 	
 	height:25px;
 	
@@ -56,7 +56,7 @@
 
 }
 
-.insert_form fieldset input[type=submit] {
+.insert-form fieldset input[type=submit] {
 	
 	float:right;
 	

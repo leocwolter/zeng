@@ -2,10 +2,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ attribute name="taskList" required="true" type="br.com.zeng.model.TaskList" %>
 
-<section class="task_area" >
+<section class="task-area" id="task-area-${taskList.id}">
 	<h3>${taskList.name}</h3>
-	<nav class="task_menu_bar">
-		<ul class="task_menu">
+	<nav class="task-menu-bar">
+		<ul>
 	    	<li><a class="task-filter-selected" href="#" >All</a></li>
 	    	<li><a class="task-filter" href="#">To do</a></li>
 	        <li><a class="task-filter" href="#">Doing</a></li>
@@ -15,10 +15,10 @@
 	        <li><a class="task-filter" href="#">Mine</a>
 	    </ul>
 	</nav>
-	<ul class="task_list" id="taskList-${taskList.id}">
+	<ul class="task-list" id="task-list-${taskList.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
 			<li class="task" id="task-${task.id}">
-				<section class="task_box">
+				<section class="task-box">
 					<h4>${task.name}</h4>
 					<p>${task.description}</p>
 					<div class="options-task">
@@ -38,5 +38,5 @@
 			</li>
 		</c:forEach>
 	</ul>
-	<a class="add_task_button colorbox " href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
+	<a class="add-task-button colorbox" href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
 </section>

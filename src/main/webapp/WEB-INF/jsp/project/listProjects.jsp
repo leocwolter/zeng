@@ -25,16 +25,16 @@
 	<body>
 		<body>
 		<section id="container">
-	    	<section id="left_container">
+	    	<section id="left-container">
 				<c:import url="/WEB-INF/imports/header.jsp"/>
-				<nav id="menu_bar" class="resizeble">
+				<nav id="menu-bar" class="resizeble">
 					<h1>Meus Projetos:</h1>
 					<ul id="menu">
 						<c:forEach items="${projects}" var="project">
 							<li><a href="${linkTo[ProjectController].showProject}${project.url}"	title="Project ${project.id}">${project.name}</a></li>
 						</c:forEach>
 					</ul>
-					<section id="menu_bar_buttons">
+					<section id="menu-bar-buttons">
 						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button colorbox">Adicionar projeto</a>
 					</section>
 				</nav>

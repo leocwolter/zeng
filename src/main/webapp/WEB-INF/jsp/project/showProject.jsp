@@ -8,26 +8,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - ${project.name}</title>
-
-
 <!-- PROJECT STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
-
 <!-- COLORBOX STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
-
-
-
 </head>
 	<body>
 		<section id="container">
-	    	<section id="left_container">
+	    	<section id="left-container">
 				<header id="top">
 					<c:import url="/WEB-INF/imports/header.jsp"/>
 					<c:import url="/WEB-INF/imports/category_menu.jsp"/>
 				</header>
 	            <section id="content">
-	            	<section id="category_container" class="resizeble">
+	            	<section id="category-container" class="resizeble">
 		            	<c:forEach items="${project.categories}" var="category">
 		            		<zeng-structure:category category="${category}"/>
 	            		</c:forEach>

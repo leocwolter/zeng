@@ -75,9 +75,7 @@ public class ProjectController {
 		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
 		List<User> contributors = projectComplete.getContributors();
 		List<TaskPerContributor> tasksPerContributors = taskPerContributorDao.getDataWithUsers(contributors);
-		for (TaskPerContributor taskPerContributor : tasksPerContributors) {
-			System.out.println("TASK PER CONTRIBUTOR: "+ taskPerContributor);
-		}
+		
 		result.use(json()).from(tasksPerContributors, "tasksPerContributors").include("contributor","task","date").serialize();
 	}
 }

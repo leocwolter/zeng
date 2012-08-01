@@ -1,5 +1,7 @@
 package br.com.zeng.controller;
 
+import static br.com.caelum.vraptor.view.Results.json;
+
 import java.util.List;
 
 import br.com.caelum.vraptor.Path;
@@ -109,5 +111,12 @@ public class TaskController {
 		taskDao.update(taskComplete);
 		result.nothing();
 	}
-
+	
+	@LoggedUser
+	@Path("/task/filter")
+	public void filterByState(String taskState, Long taskListId) {
+		String stateUpperCase = taskState.toUpperCase().trim();
+		List<Task> tasks = taskDao.getTasksWithState(stateUpperCase,taskListId);
+		result.use(json()).from(tasks, "tasks").serialize();
+	}
 }

@@ -110,7 +110,7 @@ footer {
 
 #menu li a:hover {
 	border-radius: 4px;
-	background: #38291A;
+	background: #AE7F50;
 	color: #E3E1D5;
 	padding: 0 5px;
 	cursor: pointer;
@@ -164,7 +164,7 @@ footer {
 
 #search-form input[type="submit"]:hover {
 	background: #84603D;
-	color: #000000;
+	color: #E3E1D5;
 	cursor: pointer;
 }
 
@@ -180,7 +180,7 @@ footer {
 }
 
 .button:hover {
-	background: #A3C1FF;
-	color: #000000;
+	background: #AE7F50;
+	color: #E3E1D5;
 	cursor: pointer;
 }

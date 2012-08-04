@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<nav id="menu-bar" class="resizeble">
+<nav id="menu-bar" class="resizable">
 	<h1>${project.name}</h1>
 	<ul id="menu">
 		<c:forEach items="${project.categories}" var="category">

@@ -95,6 +95,7 @@
 .category h2 {
 	display: block;
 	margin: 0 0 10px 0;
+	font-weight: bold;
 }
 
 /*TASK LIST*/

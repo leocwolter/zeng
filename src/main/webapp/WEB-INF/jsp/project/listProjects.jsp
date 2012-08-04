@@ -27,7 +27,7 @@
 		<section id="container">
 	    	<section id="left-container">
 				<c:import url="/WEB-INF/imports/header.jsp"/>
-				<nav id="menu-bar" class="resizeble">
+				<nav id="menu-bar" class="resizable">
 					<h1>Meus Projetos:</h1>
 					<ul id="menu">
 						<c:forEach items="${projects}" var="project">

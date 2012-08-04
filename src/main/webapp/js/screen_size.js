@@ -6,7 +6,7 @@ $(document).ready(
 			var projectSidebarWidth = $('#project-sidebar').width();
 			var projectSidebarClickAreaWidth = $('#project-sidebar-click-area')
 					.width();
-			// Set the header, menu_bar, content right padding
+			// Set the header, menu_bar, content right padding and width
 			adjustsSizes();
 			// Readjusts size of elements on resize event.
 			$(window).resize(function() {
@@ -33,6 +33,7 @@ $(document).ready(
 				}
 			);
 
+			// Set the width and padding of elements with resizable class
 			function adjustsSizes() {
 
 				var leftContainerWidth = $('#left-container').width();
@@ -44,12 +45,23 @@ $(document).ready(
 				var paddingLeft = 10;
 
 				var width = leftContainerWidth - (paddingRight + paddingLeft);
+				
+				if(width <= 0){
+					width = "100%";
+				}
 
-				$('.resizeble').animate({
+				$('.resizable').animate({
 					'width' : width,
 					'padding-right' : paddingRight,
 					'padding-left' : paddingLeft
 				});
 
 			}
-		});
+			
+			// Set the content's top margin 
+			var headerHeight = $('header').height();
+			
+			$('#content').css('margin-top', headerHeight);
+			
+		}
+);

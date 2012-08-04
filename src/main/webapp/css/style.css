@@ -42,10 +42,6 @@ input {
 	border-radius: 3px;
 }
 
-input[type=text],input[type=password] {
-	border: 2px solid #1f3c78;
-}
-
 label {
 	display: inline;
 }

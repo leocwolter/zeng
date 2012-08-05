@@ -9,9 +9,9 @@
 	</ul>
 	<section id="menu-bar-buttons">
 		<a href="${linkTo[CategoryController].insertCategoryForm}${project.url}"
-			id="new-category" title="Adicionar Categoria" class="button colorbox">Adicionar categoria</a>
+			id="new-category" title="Adicionar Categoria" class="button colorbox">Add category</a>
 		<a href="${linkTo[TaskListController].insertTaskListForm}${project.url}"
-			title="Adicionar Lista" id="new-task-list" class="button colorbox">Adicionar 
-			Lista</a>
+			title="Adicionar Lista" id="new-task-list" class="button colorbox">Add 
+			List</a>
 	</section>
 </nav>

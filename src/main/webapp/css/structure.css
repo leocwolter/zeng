@@ -13,6 +13,10 @@ header {
 	position: fixed;
 }
 
+header a {
+	color: #E3E1D5;
+}
+
 #top {
 	background: #61472D;
 	height: 50px;

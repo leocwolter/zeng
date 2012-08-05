@@ -120,7 +120,7 @@
 	width: 369px;
 	padding: 0 5px;
 	border-radius: 3px 3px 0 0;
-	background: #1F3C78;
+	background: #61472D;
 	color: #FFFFFF;
 	overflow: hidden;
 }
@@ -165,7 +165,7 @@
 
 .task-filter-selected {
 	border-radius: 3px;
-	background: #1F3C78;
+	background: #61472D;
 	color: #FFFFFF;
 }
 
@@ -205,11 +205,13 @@
 	-webkit-box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
 	-moz-box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
 	box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
+	text-shadow: #207D1B -1px -1px, #207D1B 1px 1px;
 	cursor: pointer;
 }
 
 .add-task-button:hover {
-	color: #196415;
+	color: #0C320A;
+	text-shadow: #2DAF26 -1px -1px, #2DAF26 1px 1px;
 }
 
 .add-task-button:active {

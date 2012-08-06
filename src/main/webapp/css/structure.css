@@ -101,6 +101,10 @@ footer {
 	border-top: 1px solid #997047;
 }
 
+.user-logout{
+	float:right;
+}
+
 #menu-bar h1 {
 	float: left;
 	margin-left:10px;

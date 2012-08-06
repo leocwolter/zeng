@@ -5,6 +5,7 @@
 		<input type="search" name="q" placeholder="Search" />
 		<input type="submit" value="SEARCH" />
 	</form>
+	<a href="${linkTo[UserController].logOut}" class="user-logout">Logout</a>
 	<a href="${linkTo[ProjectController].listProjects}" title="${userSession.user.name}" id="user-name-link">
 		${userSession.user.name} </a>
 	<a href="#" title="Atualization" id="atualization-icon">&nbsp;</a>

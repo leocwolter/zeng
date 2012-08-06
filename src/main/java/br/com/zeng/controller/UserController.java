@@ -41,6 +41,11 @@ public class UserController {
 		userSession.logIn(registredUser);
 		result.redirectTo(ProjectController.class).listProjects();
 	}
+	
+	@Post("/logout/")
+	public void logOut() {
+		userSession.logOut();
+	}
 
 	
 }

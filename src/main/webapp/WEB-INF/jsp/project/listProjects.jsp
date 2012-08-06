@@ -40,7 +40,7 @@
 						</section>
 					</nav>
 				</header>
-	            <section id="content">
+	            <section id="generic-content" class="content">
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>

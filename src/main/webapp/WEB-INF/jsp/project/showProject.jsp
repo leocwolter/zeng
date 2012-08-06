@@ -20,7 +20,7 @@
 					<c:import url="/WEB-INF/imports/header.jsp"/>
 					<c:import url="/WEB-INF/imports/category_menu.jsp"/>
 				</header>
-	            <section id="content">
+	            <section id="project-content" class="content">
 	            	<section id="category-container" class="resizable">
 		            	<c:forEach items="${project.categories}" var="category">
 		            		<zeng-structure:category category="${category}"/>

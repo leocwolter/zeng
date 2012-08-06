@@ -34,7 +34,8 @@
 				<input type="submit" value="Login" class="button" />
 			</form>
 		</header>
-		<section id="content">  	
+		<section id="home-content" class="content">
+			
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp"/>
      </section>

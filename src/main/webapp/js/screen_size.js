@@ -61,7 +61,7 @@ $(document).ready(
 			// Set the content's top margin 
 			var headerHeight = $('header').height();
 			
-			$('#content').css('margin-top', headerHeight);
+			$('.content').css('margin-top', headerHeight);
 			
 		}
 );

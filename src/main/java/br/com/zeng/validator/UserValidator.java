@@ -19,6 +19,6 @@ public class UserValidator {
 		if(user == null) {
 			validator.add(new ValidationMessage("Usuario invalido", "error"));
 		}
-		validator.onErrorRedirectTo(UserController.class).loginForm();
+		validator.onErrorRedirectTo(UserController.class).home();
 	}
 }

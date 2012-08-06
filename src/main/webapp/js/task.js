@@ -8,7 +8,7 @@ $(function() {
         }
 	}).disableSelection();
 	
-	$( ".task-box" ).click(
+	$( ".task-box" ).dblclick(
 			function(){
 				$.fn.colorbox({iframe:true, width:"600px", height:"600px", scrolling:true, href:"/zeng/task/1"});
 			}

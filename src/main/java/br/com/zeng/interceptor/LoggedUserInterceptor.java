@@ -35,7 +35,7 @@ public class LoggedUserInterceptor implements Interceptor {
         if (!userSession.isLogged()) {
             result.include("errors", Arrays.asList(new ValidationMessage(
                     "Você precisa efetuar login para visualizar essa página", "erro")));
-            result.forwardTo(UserController.class).loginForm();
+            result.forwardTo(UserController.class).home();
         } else {
             stack.next(method, resourceInstance);
         }

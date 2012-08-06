@@ -25,11 +25,7 @@ public class UserController {
 	}
 
 	@Get("/")
-	public void loginForm() {
-	}
-	
-	@Get("/register/")
-	public void registrationForm() {
+	public void home() {
 	}
 	
 	@Post("/register")

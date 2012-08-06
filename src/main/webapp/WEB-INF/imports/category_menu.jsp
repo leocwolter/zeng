@@ -3,7 +3,7 @@
 	<h1>${project.name}</h1>
 	<ul id="menu">
 		<c:forEach items="${project.categories}" var="category">
-			<li><a href="#"
+			<li><a rel="#category-${category.id}"
 				title="Categoria ${category.id}" class="category-button">${category.name}</a></li>
 		</c:forEach>
 	</ul>

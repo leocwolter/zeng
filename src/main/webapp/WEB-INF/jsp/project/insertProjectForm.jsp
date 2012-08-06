@@ -12,11 +12,9 @@
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 
-
-		
 </head>
 <body>
-	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert_form">
+	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert-form">
 		<fieldset>
 			<legend>Criar Projeto</legend>
 			<br/>

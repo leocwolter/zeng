@@ -6,6 +6,8 @@
 	
 	display:block;
 	
+	height:auto;
+	
 	padding:10px;
 	
 	overflow:hidden
@@ -16,7 +18,7 @@
 	
 	width:438px;
 	
-	height:105px;
+	height:auto;
 	
 	border:none;
 	
@@ -40,24 +42,28 @@
 	
 }
 
-.insert-form fieldset input,select{
+.insert-form fieldset input, .insert-form fieldset select {
 	
 	margin-top:10px;
 	
 }
 
-.insert-form fieldset input[type=text],select {
+.insert-form fieldset input[type="text"], .insert-form fieldset select {
 	
 	height:25px;
 	
-	width:100%;
+	width:97%;
+	
+	border:1px solid #38291A;
 	
 	border-radius:3px;
 
 }
 
-.insert-form fieldset input[type=submit] {
+.insert-form fieldset input[type="submit"] {
 	
 	float:right;
+	
+	margin-right: 3%;
 	
 }

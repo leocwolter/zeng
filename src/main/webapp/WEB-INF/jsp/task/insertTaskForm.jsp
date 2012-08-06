@@ -15,7 +15,7 @@
 
 </head>
 <body>
-	<form action="${linkTo[TaskController].insert}" method="POST" class="insert_form">
+	<form action="${linkTo[TaskController].insert}" method="POST" class="insert-form">
 		<fieldset>
 			<legend>Criar Tarefa</legend>
 			<br/>

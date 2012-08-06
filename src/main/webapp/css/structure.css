@@ -86,6 +86,11 @@ footer {
 /*MENU*/
 #menu-bar-buttons {
 	float: right;
+	height: 35px;
+}
+
+#menu-bar-buttons a {
+	margin: 5px 0;
 }
 
 #menu-bar {
@@ -189,6 +194,7 @@ footer {
 	width: auto;
 	padding: 0 10px;
 	line-height: 25px;
+	height:25px;
 	border-radius: 3px;
 	background: #38291A;
 	color: #E3E1D5;
@@ -199,3 +205,5 @@ footer {
 	color: #E3E1D5;
 	cursor: pointer;
 }
+
+/*MODAL*/

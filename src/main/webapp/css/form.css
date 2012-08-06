@@ -1,0 +1,84 @@
+@CHARSET "UTF-8";
+
+#register-user-form {
+	
+	float: right;
+	
+	margin: 0 78px 0 0;
+	
+}
+
+#register-user-form h1 {
+	
+	display: block;
+	
+	margin: 20px 0;
+	
+	font-size: 35px;
+	
+	text-shadow: #61472D -1px -1px, #61472D 1px 1px;
+	
+}
+
+#register-user-form, #register-user-form fieldset {
+	
+	display: block;
+	
+	width: 311px;
+	
+	height: auto;
+	
+}
+
+#register-user-form fieldset label {
+	
+	display: block;
+	
+	margin: 0 0 5px 0;
+	
+	line-height: 20px;
+	
+}
+
+#register-user-form fieldset input[type="text"], 
+#register-user-form fieldset input[type="email"], 
+#register-user-form fieldset input[type="password"], 
+.insert-form fieldset select {
+	
+	height: 25px;
+	
+	width: 307px;
+	
+	border: 1px solid #38291A;
+	
+	border-radius: 3px;
+	
+	margin: 0 0 10px 0;
+
+}
+
+#register-user-form fieldset input[type="checkbox"] {
+	
+	height: 20px;
+	
+	width: 20px;
+	
+	border: 1px solid #38291A;
+	
+	display: block;
+	
+	float: left;
+	
+}
+
+#register-user-form fieldset #terms-paragraph {
+	
+	margin: 15px 0 15px 0;
+	
+}
+
+#register-user-form fieldset input[type="submit"] {
+	
+	float: right;
+	
+}

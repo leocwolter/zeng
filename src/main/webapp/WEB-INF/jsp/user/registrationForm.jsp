@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/home.css"/>" />
 <!-- PROJECT STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
+<!-- FORM STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/form.css"/>" />
 <!-- COLORBOX STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
 <c:import url="/WEB-INF/imports/script-css.jsp"/>
@@ -28,14 +30,44 @@
 	<section id="container">
 		<header id="top">
 			<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
-			<form action="login.jsp" method="post" id="login-form">
-				<input type="email" name="email" placeholder="email@zeng.com" />
-				<input type="password" name="senha" placeholder="Senha" />
+			<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
+				<zeng-messages:error/>
+				<input type="email" name="user.email" placeholder="email@zeng.com" />
+				<input type="password" name="user.password" placeholder="Password" />
 				<input type="submit" value="Login" class="button" />
 			</form>
 		</header>
 		<section id="home-content" class="content">
-			
+			<form id="register-user-form" action="" method="post">
+				<h1>Sign up</h1>
+				<fieldset>
+					<p>
+						<label for="name">Name:</label>
+						<input id="name" name="name" type="text" class="text" value="" />
+					</p>
+					<p>
+						<label for="email">Email:</label>
+						<input id="email" name="email" type="email" class="text" value="" />
+					</p>
+					<p>
+						<label for="password">Password:</label>
+						<input id="password" name="password" class="text" type="password" />
+					</p>
+					<p>
+						<label for="password">Confirm password:</label>
+						<input id="password" name="password" class="text" type="password" />
+					</p>
+					<p id="terms-paragraph">
+						<input type="checkbox" name="terms" />
+						<label for="acceptTerms">
+							I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
+						</label>
+					</p>
+					<p>
+						<input id="register-button" class="button" type="submit" value="REGISTER" />
+					</p>
+				</fieldset>
+ 			</form>
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp"/>
      </section>

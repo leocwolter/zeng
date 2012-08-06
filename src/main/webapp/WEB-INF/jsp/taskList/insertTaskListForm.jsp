@@ -15,7 +15,7 @@
 
 </head>
 <body>
-	<form action="${linkTo[TaskListController].insert}" method="post" class="insert_form">
+	<form action="${linkTo[TaskListController].insert}" method="post" class="insert-form">
 		<fieldset>
 			<legend>Criar Lista de Tarefas </legend>
 			<br/>

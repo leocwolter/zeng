@@ -66,9 +66,7 @@ public class Project {
 	}
 	
 	public void setUrl(String url) {
-		System.out.println(url);
 		this.url = Sanitizer.toSlug(url);
-		System.out.println(url);
 	}
 
 	public List<Category> getCategories() {

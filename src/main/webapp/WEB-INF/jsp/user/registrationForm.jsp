@@ -38,20 +38,21 @@
 			</form>
 		</header>
 		<section id="home-content" class="content">
-			<form id="register-user-form" action="" method="post">
+			<form id="register-user-form" action="${linkTo[UserController].register}" method="post">
 				<h1>Sign up</h1>
 				<fieldset>
+					<zeng-messages:error/>
 					<p>
 						<label for="name">Name:</label>
-						<input id="name" name="name" type="text" class="text" value="" />
+						<input id="name" name="user.name" type="text" class="text" value="" />
 					</p>
 					<p>
 						<label for="email">Email:</label>
-						<input id="email" name="email" type="email" class="text" value="" />
+						<input id="email" name="user.email" type="email" class="text" value="" />
 					</p>
 					<p>
 						<label for="password">Password:</label>
-						<input id="password" name="password" class="text" type="password" />
+						<input id="password" name="user.password" class="text" type="password" />
 					</p>
 					<p>
 						<label for="password">Confirm password:</label>

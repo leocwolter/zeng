@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.zeng.infra.Criptografador;
 import br.com.zeng.model.User;
 
 public class UserDaoTest extends DaoTest {
@@ -20,28 +21,24 @@ public class UserDaoTest extends DaoTest {
 	@Before
 	public void setUp() {
 		super.setUp();
-		userDao = new UserDao(session);
+		Criptografador criptografador = new Criptografador();
+		userDao = new UserDao(session, criptografador);
+		userDao.save(new User("user", "user@user.com", "password"));
+		userDao.save(new User("user2", "user2@user.com", "password2"));
 	}
 
 	@Test
 	public void shouldReturnACompleteUser() {
-		session.save(new User("user", "user@user.com", "password"));
-		session.save(new User("user2", "user2@user.com", "password2"));
-
 		User registredUser = userDao.getRegistredUser("user@user.com", "password");
 
 		assertNotNull(registredUser);
-
 		assertEquals("user@user.com", registredUser.getEmail());
 		assertEquals("user", registredUser.getName());
-		assertEquals("password", registredUser.getPassword());
+		assertEquals("cf6bc60343678dcbc11567102089f78f8e2ea7f7f20dbe7966ac461b9f6255d8", registredUser.getPassword());
 	}
 	
 	@Test
 	public void shouldIterateAndReturnAListOfCompleteUsers() {
-		session.save(new User("user", "user@user.com", "password"));
-		session.save(new User("user2", "user2@user.com", "password2"));
-
 		User user1 = new User();
 		user1.setId(1L);
 
@@ -55,9 +52,6 @@ public class UserDaoTest extends DaoTest {
 
 	@Test
 	public void shouldNotLogInWithWrongPasswordOrEmail() {
-		session.save(new User("user", "user@user.com", "password"));
-		session.save(new User("user2", "user2@user.com", "password2"));
-		
 		User registredUser = userDao.getRegistredUser("user@invalid.com", "password");
 		User registredUser2 = userDao.getRegistredUser("user@user.com", "invalidPassword");
 		

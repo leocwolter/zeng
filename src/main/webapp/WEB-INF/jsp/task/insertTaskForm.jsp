@@ -40,7 +40,7 @@
 		
 			<label for="task-expirationDate">Data de expiração: </label>
 			<br/>
-			<input type="text" id="task-expirationDate" name="task.expirationDate" />
+			<input type="date" id="task-expirationDate" name="task.expirationDate" />
 			<br/>
 	
 			<input type="hidden" name="taskListId" value="${taskList.id}"/>

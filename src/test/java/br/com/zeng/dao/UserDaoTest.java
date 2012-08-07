@@ -23,8 +23,8 @@ public class UserDaoTest extends DaoTest {
 		super.setUp();
 		Criptografador criptografador = new Criptografador();
 		userDao = new UserDao(session, criptografador);
-		userDao.save(new User("user", "user@user.com", "password"));
-		userDao.save(new User("user2", "user2@user.com", "password2"));
+		userDao.insert(new User("user", "user@user.com", "password"));
+		userDao.insert(new User("user2", "user2@user.com", "password2"));
 	}
 
 	@Test

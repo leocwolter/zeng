@@ -22,6 +22,4 @@ public class CategoryDao {
 		session.save(category);
 	}
 	
-	
-	
 }

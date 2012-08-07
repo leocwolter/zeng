@@ -24,7 +24,6 @@ public class DaoTest {
 		session.getTransaction().rollback();
 		session.close();
 		sf.close();
-
 	}
 
 }

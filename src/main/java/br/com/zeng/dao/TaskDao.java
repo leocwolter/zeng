@@ -30,7 +30,6 @@ public class TaskDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Task> getListTaskWithNameAndDescription(String name, String description) {
-		//return (List<Task>) session.get(Task.class, name);
 		String hql = "select distinct Task from Task task where task.name like:name or task.description like:description";
 		Query query = session.createQuery(hql);
 		query.setParameter("name", "%"+name+"%");

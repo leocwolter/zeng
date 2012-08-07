@@ -30,7 +30,7 @@ public class UserController {
 	
 	@Post("/register")
 	public void register(User user) {
-		userDao.register(user);
+		userDao.save(user);
 		logIn(user);
 	}
 	
@@ -42,9 +42,10 @@ public class UserController {
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
-	@Post("/logout/")
+	@Get("/logout/")
 	public void logOut() {
 		userSession.logOut();
+		result.redirectTo(UserController.class).home();
 	}
 
 	

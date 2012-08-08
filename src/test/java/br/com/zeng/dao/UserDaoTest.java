@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.zeng.infra.Criptografador;
 import br.com.zeng.model.User;
 
 public class UserDaoTest extends DaoTest {
@@ -21,8 +20,7 @@ public class UserDaoTest extends DaoTest {
 	@Before
 	public void setUp() {
 		super.setUp();
-		Criptografador criptografador = new Criptografador();
-		userDao = new UserDao(session, criptografador);
+		userDao = new UserDao(session);
 		userDao.insert(new User("user", "user@user.com", "password"));
 		userDao.insert(new User("user2", "user2@user.com", "password2"));
 	}

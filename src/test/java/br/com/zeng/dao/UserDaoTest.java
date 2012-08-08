@@ -28,11 +28,10 @@ public class UserDaoTest extends DaoTest {
 	@Test
 	public void shouldReturnACompleteUser() {
 		User registredUser = userDao.getRegistredUser("user@user.com", "password");
-
 		assertNotNull(registredUser);
 		assertEquals("user@user.com", registredUser.getEmail());
 		assertEquals("user", registredUser.getName());
-		assertEquals("cf6bc60343678dcbc11567102089f78f8e2ea7f7f20dbe7966ac461b9f6255d8", registredUser.getPassword());
+		assertEquals("password", registredUser.getPassword());
 	}
 	
 	@Test

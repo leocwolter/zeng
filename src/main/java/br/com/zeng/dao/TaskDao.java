@@ -42,14 +42,4 @@ public class TaskDao {
 		session.update(task);
 	}
 
-
-	@SuppressWarnings("unchecked")
-	public List<Task> getTasksWithState(String taskState, Long taskListId) {
-		String hql = "select Task from Task task where task.state like:state and task.taskList.id =:taskListId";
-		Query query = session.createQuery(hql);
-		query.setParameter("state", "%"+taskState+"%");
-		query.setParameter("taskListId", "%"+taskListId+"%");
-		return query.list();
-	}
-
 }

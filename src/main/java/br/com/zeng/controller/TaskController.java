@@ -111,12 +111,4 @@ public class TaskController {
 		taskDao.update(taskComplete);
 		result.nothing();
 	}
-	
-	@LoggedUser
-	@Path("/task/filter")
-	public void filterByState(String taskState, Long taskListId) {
-		String stateUpperCase = taskState.toUpperCase().trim();
-		List<Task> tasks = taskDao.getTasksWithState(stateUpperCase,taskListId);
-		result.use(json()).from(tasks, "tasks").serialize();
-	}
 }

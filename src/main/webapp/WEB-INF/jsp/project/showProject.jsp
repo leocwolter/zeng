@@ -38,7 +38,7 @@
 		<!-- SCREEN SIZE SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 		<!-- PROJECT SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/project.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/js/showProject.js" />"></script>
 	</body>
 
 </html>

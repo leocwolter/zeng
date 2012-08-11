@@ -149,21 +149,20 @@
 	margin: 0 3px;
 }
 
-[class|=task-filter]{
+.task-filter{
 	display: block;
 	padding: 0 5px;
-	width: auto;
 	line-height: 21px;
 	border-radius: 2px;
 }
 
-[class|=task-filter]:hover {
+.task-filter:hover {
 	background: #AAAAAA;
 	color: #FFFFFF;
 	cursor: pointer;
 }
 
-.task-filter-selected {
+.task-filter.task-filter-selected {
 	border-radius: 3px;
 	background: #38291A;
 	color: #FFFFFF;

@@ -6,18 +6,18 @@
 	<h3>${taskList.name}</h3>
 	<nav class="task-menu-bar">
 		<ul>
-	    	<li><a class="task-filter-selected" href="#" >All</a></li>
-	    	<li><a class="task-filter" href="#">To do</a></li>
-	        <li><a class="task-filter" href="#">Doing</a></li>
-	        <li><a class="task-filter" href="#">Done</a></li>
-	        <li><a class="task-filter" href="#">Accepted</a></li>
-	        <li><a class="task-filter" href="#">Rejected</a></li>
-	        <li><a class="task-filter" href="#">Mine</a>
+	    	<li><a class="task-filter task-filter-selected" rel="task-filter-nofilter" href="#" >All</a></li>
+	    	<li><a class="task-filter" rel="task-filter-todo" href="#">To do</a></li>
+	        <li><a class="task-filter" rel="task-filter-doing" href="#">Doing</a></li>
+	        <li><a class="task-filter" rel="task-filter-done" href="#">Done</a></li>
+	        <li><a class="task-filter" rel="task-filter-accepted" href="#">Accepted</a></li>
+	        <li><a class="task-filter" rel="task-filter-rejected" href="#">Rejected</a></li>
+	        <li><a class="task-filter" rel="task-filter-mine" href="#">Mine</a>
 	    </ul>
 	</nav>
 	<ul class="task-list" id="task-list-${taskList.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
-			<li class="task" id="task-${task.id}">
+			<li class="task task-state-${task.state}" id="task-${task.id}">
 				<section class="task-box">
 					<h4>${task.name}</h4>
 					<p>${task.description}</p>

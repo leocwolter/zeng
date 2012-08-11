@@ -15,11 +15,15 @@ $(function() {
 	);
 	
 	$(".task-filter").click(function(){
-		var taskStatus = $(this).html();
-		var taskListId = $(this).closest("section").attr("id").split("-")[1];
-		$.get("../task/filter", {"taskListId": taskListId,"taskState":taskStatus}, function(data){
-			console.log(data);
-		});	
+		var taskStatus = $(this).attr("rel").split("-")[2];
+		var taskArea = $(this).closest(".task-area");
+		if(taskStatus =="nofilter"){
+			taskArea.find(".task").show();
+		}else{
+			taskArea.find(".task").not(".task-state-"+taskStatus.toUpperCase()).hide();
+			taskArea.find(".task-state-"+taskStatus.toUpperCase()).show();
+		}
+		taskArea.find(".task-filter").removeClass("task-filter-selected");
+		$(this).addClass("task-filter-selected");
 	});
-		
 });

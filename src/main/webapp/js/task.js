@@ -15,13 +15,13 @@ $(function() {
 	);
 	
 	$(".task-filter").click(function(){
-		var taskStatus = $(this).attr("rel").split("-")[2];
+		var taskStatus = $(this).attr("rel").split("-")[2].toUpperCase();
 		var taskArea = $(this).closest(".task-area");
-		if(taskStatus =="nofilter"){
+		if(taskStatus == "NOFILTER"){
 			taskArea.find(".task").show();
 		}else{
-			taskArea.find(".task").not(".task-state-"+taskStatus.toUpperCase()).hide();
-			taskArea.find(".task-state-"+taskStatus.toUpperCase()).show();
+			taskArea.find(".task").not(".task-state-"+taskStatus).hide();
+			taskArea.find(".task-state-"+taskStatus).show();
 		}
 		taskArea.find(".task-filter").removeClass("task-filter-selected");
 		$(this).addClass("task-filter-selected");

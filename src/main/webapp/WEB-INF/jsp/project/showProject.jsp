@@ -37,10 +37,8 @@
 		<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
 		<!-- SCREEN SIZE SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
-		<!-- CATEGORY SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
-		<!-- TASK SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/task.js" />"></script>
+		<!-- PROJECT SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/project.js" />"></script>
 	</body>
 
 </html>

@@ -21,65 +21,68 @@
 <!-- COLORBOX STYLE -->
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/css/colorbox.css"/>" />
-<c:import url="/WEB-INF/imports/script-css.jsp" />
-<!-- JQUERY COLORBOX -->
-<script type="text/javascript"
-	src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-<!-- SCREEN SIZE SCRIPT -->
-<script type="text/javascript"
-	src="<c:url value="/js/screen_size.js" />"></script>
-<!-- CATEGORY SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
-<!-- TASK SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/task.js" />"></script>
 </head>
 <body>
 	<section id="container">
 		<header id="top">
 			<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
-			<form action="${linkTo[UserController].logIn}" method="post"
-				id="login-form">
-				<input type="email" name="user.email" placeholder="email@zeng.com" />
+			<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
+				<input type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />
 				<input type="password" name="user.password" placeholder="Password" />
 				<input type="submit" value="Login" class="button" />
 			</form>
 		</header>
 		<section id="home-content" class="content">
 			<zeng-messages:error />
-			<form id="register-user-form"
-				action="${linkTo[UserController].register}" method="post">
-				<h1>Sign up</h1>
+			<form id="register-user-form" action="${linkTo[UserController].register}" method="post">
+				<h1>Sign up for FREE</h1>
 				<fieldset>
+					<zeng-messages:error/>
 					<p>
-						<label for="name">Name:</label> <input id="name" name="user.name"
-							type="text" class="text" value="" />
+						<label for="name">Name:</label>
+						<input id="name" name="user.name" type="text" class="text" value="" />
 					</p>
 					<p>
-						<label for="email">Email:</label> <input id="email"
-							name="user.email" type="email" class="text" value="" />
+						<label for="email">Email:</label>
+						<input id="email" name="user.email" type="email" class="text" value="" />
 					</p>
 					<p>
-						<label for="password">Password:</label> <input id="password"
-							name="user.password" class="text" type="password" />
+						<label for="password">Password:</label>
+						<input id="password" name="user.password" class="text" type="password" />
 					</p>
 					<p>
-						<label for="password">Confirm password:</label> <input
-							id="password" name="password" class="text" type="password" />
+						<label for="confirm-password">Confirm password:</label>
+						<input id="confirm-password" name="user.confirmPassword" class="text" type="password" />
 					</p>
 					<p id="terms-paragraph">
-						<input type="checkbox" name="terms" /> <label for="acceptTerms">
-							I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy
-								Policy</a>
+						<input type="checkbox" name="terms" checked="checked" />
+						<label for="terms">
+							I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
 						</label>
+						<label for="terms" generated="true" class="error"></label>
 					</p>
 					<p>
-						<input id="register-button" class="button" type="submit"
-							value="REGISTER" />
+						<input id="register-button" class="button" type="submit" value="REGISTER" />
 					</p>
 				</fieldset>
-			</form>
+ 			</form>
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp" />
 	</section>
+	<c:import url="/WEB-INF/imports/script-css.jsp" />
+	<!-- JQUERY COLORBOX -->
+	<script type="text/javascript"
+		src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+	<!-- SCREEN SIZE SCRIPT -->
+	<script type="text/javascript"
+		src="<c:url value="/js/screen_size.js" />"></script>
+	<!-- CATEGORY SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
+	<!-- TASK SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/task.js" />"></script>
+	<!-- VALIDATE SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/jquery.validate.js" />"></script>
+	<!-- HOME FORMS VALIDATE SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/home.js" />"></script>
 </body>
 </html>

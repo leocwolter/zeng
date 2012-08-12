@@ -1,7 +1,5 @@
 package br.com.zeng.controller;
 
-import static br.com.caelum.vraptor.view.Results.json;
-
 import java.util.List;
 
 import br.com.caelum.vraptor.Path;

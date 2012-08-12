@@ -7,7 +7,7 @@ $(document).ready(function() {
 			},
 			'user.password': {
 				required: true,
-				minlength: 10
+				minlength: 5
 			}
 		},
 		messages: {

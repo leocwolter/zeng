@@ -1,5 +1,4 @@
 $(function() {
-	
 	//Drag n drop configuration
 	$(".task-list").sortable({
 		connectWith : ".task-list",
@@ -50,4 +49,6 @@ $(function() {
 					.removeClass('selected-category');
 		}
 	});
+
+		
 });

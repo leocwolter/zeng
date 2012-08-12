@@ -6,8 +6,7 @@ $(document).ready(function() {
 				email: true
 			},
 			'user.password': {
-				required: true,
-				minlength: 5
+				required: true
 			}
 		},
 		messages: {

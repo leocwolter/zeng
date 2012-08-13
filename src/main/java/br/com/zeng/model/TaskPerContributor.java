@@ -21,16 +21,16 @@ public class TaskPerContributor {
 	private Task task;
 	
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
-	private DateTime date;
+	private DateTime dateOfCompletion;
 
 	//hibernate eyes only
 	public TaskPerContributor() {
 	}
 	
-	public TaskPerContributor(User user, Task taskComplete) {
-		contributor = user;
-		task = taskComplete;
-		date = new DateTime();
+	public TaskPerContributor(User contributor, Task task) {
+		this.contributor = contributor;
+		this.task = task;
+		this.dateOfCompletion = new DateTime();
 	}
 
 	public Long getId() {

@@ -31,7 +31,6 @@
 	        </section>
 	        <zeng-structure:sideBar/>
         </section>
-
 		<c:import url="/WEB-INF/imports/script-css.jsp"/>
 		<!-- JQUERY COLORBOX -->
 		<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>

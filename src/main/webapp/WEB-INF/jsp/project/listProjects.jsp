@@ -8,19 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Projetos</title>
-
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
-
-<!-- COLORBOX STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
-
-<!-- JQUERY COLORBOX -->
-<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-
-<!-- INSERT_FORM SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
-
-	
 </head>
 	<body>
 		<body>
@@ -44,6 +31,24 @@
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>
+	        <c:import url="/WEB-INF/imports/script-css.jsp"/>
+
+			<!-- COLORBOX STYLE -->
+			<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
+			
+			<!-- SCREEN SIZE SCRIPT -->
+				<script type="text/javascript"
+					src="<c:url value="/js/screen_size.js" />"></script>
+					
+			<!-- HEADER SCRIPT -->
+				<script type="text/javascript"
+					src="<c:url value="/js/header.js" />"></script>
+			
+			<!-- JQUERY COLORBOX -->
+			<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+			
+			<!-- INSERT_FORM SCRIPT -->
+			<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
         </section>
 	</body>
 </html>

@@ -20,7 +20,6 @@ header a {
 #top {
 	background: #61472D;
 	height: 50px;
-	width: 100%;
 	overflow: hidden;
 	margin: 0px;
 	padding: 0px;
@@ -64,7 +63,6 @@ footer {
 
 #copyright {
 	height: 20px;
-	width: 100%;
 	background: #38291A;
 	color: #E3E1D5;
 	font-size: 10px;
@@ -83,6 +81,10 @@ footer {
 	color: #E3E1D5;
 }
 
+#user-name-link:hover {
+	color: #AE7F50;
+}
+
 /*MENU*/
 #menu-bar-buttons {
 	float: right;
@@ -95,7 +97,6 @@ footer {
 
 #menu-bar {
 	height: 35px;
-	width: 100%;
 	background: #84603D;
 	line-height: 35px;
 	border-top: 1px solid #997047;
@@ -210,4 +211,7 @@ footer {
 	cursor: pointer;
 }
 
-/*MODAL*/
+/*RESIZABLE STRUSCTURE*/
+.resizable {
+	padding: 0 10px;
+}

@@ -46,10 +46,6 @@ $(document).ready(
 
 				var width = leftContainerWidth - (paddingRight + paddingLeft);
 				
-				if(width <= 0){
-					width = "100%";
-				}
-
 				$('.resizable').animate({
 					'width' : width,
 					'padding-right' : paddingRight,

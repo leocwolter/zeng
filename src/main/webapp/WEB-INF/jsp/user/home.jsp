@@ -24,7 +24,7 @@
 </head>
 <body>
 	<section id="container">
-		<header id="top">
+		<header id="top" class="resizable">
 			<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
 			<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
 				<input type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />
@@ -73,9 +73,9 @@
 	<!-- JQUERY COLORBOX -->
 	<script type="text/javascript"
 		src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-	<!-- SCREEN SIZE SCRIPT -->
+	<!-- HEADER SCRIPT -->
 	<script type="text/javascript"
-		src="<c:url value="/js/screen_size.js" />"></script>
+		src="<c:url value="/js/header.js" />"></script>
 	<!-- CATEGORY SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
 	<!-- TASK SCRIPT -->

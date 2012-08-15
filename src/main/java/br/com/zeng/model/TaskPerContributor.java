@@ -14,12 +14,15 @@ public class TaskPerContributor {
 	@GeneratedValue
 	private Long id;
 
+	@SuppressWarnings("unused")
 	@OneToOne
 	private User contributor;
 	
+	@SuppressWarnings("unused")
 	@OneToOne
 	private Task task;
 	
+	@SuppressWarnings("unused")
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime dateOfCompletion;
 

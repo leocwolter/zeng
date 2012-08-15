@@ -230,7 +230,7 @@
 }
 
 /* TASK  */
-.task-box {
+.task {
 	height: auto;
 	min-height: 50px;
 	width: auto;
@@ -240,14 +240,21 @@
 	border-spacing: 5px 0;
 	background: #F4F4F4;
 	padding: 5px;
+	position:relative;
 }
 
-.task-box h4 {
+.task-name {
 	font-family: Verdana;
 	font-weight: bold;
 	color: #61472D;
+	margin-bottom:10px;
 }
 
-.task-box p {
-	margin: 5px 0;
+.task-contributors li {
+	display: inline-block;
+}
+
+.task-options{
+	position:absolute;
+	bottom:2px;
 }

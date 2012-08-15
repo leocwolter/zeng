@@ -24,7 +24,7 @@ $(function() {
 	});
 	
 	//Filter tasks
-	$(".task-filter").click(function() {
+	$(".task-filter:not(.task-filter[rel=task-filter-mine])").click(function() {
 		var taskStatus = $(this).attr("rel").split("-")[2].toUpperCase();
 		var taskArea = $(this).closest(".task-area");
 		if (taskStatus == "NOFILTER") {
@@ -36,6 +36,19 @@ $(function() {
 		taskArea.find(".task-filter").removeClass("task-filter-selected");
 		$(this).addClass("task-filter-selected");
 	});
+	
+	$(".task-filter[rel=task-filter-mine]").click(function() {
+		var user = $("#user-name-link").text().trim();
+		var taskArea = $(this).closest(".task-area");
+		console.log(user);
+		taskArea.find(".task-contributors").not(":contains("+user+")").closest(".task").hide();
+		taskArea.find(".task-contributors:contains("+user+")").closest(".task").show();
+		
+		taskArea.find(".task-filter").removeClass("task-filter-selected");
+		$(this).addClass("task-filter-selected");
+	});
+	
+	
 
 	//Select Category Menu
 	$('.category-button').click(function() {

@@ -18,10 +18,14 @@
 	<ul class="task-list" id="task-list-${taskList.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
 			<li class="task task-state-${task.state}" id="task-${task.id}">
-				<section class="task-box">
-					<h4>${task.name}</h4>
-					<p>${task.description}</p>
-					<div class="options-task">
+					<h4 class="task-name">${task.name}</h4>
+					<ul class="task-contributors">
+						<c:forEach items="${task.contributors}" var="contributor">
+							<li>${contributor.name}</li>
+						</c:forEach>
+					</ul>
+					
+					<div class="task-options">
 						<c:if test="${task.state != 'DONE'}">
 							<c:if test="${task.state != 'DOING'}">
 								<a href="${linkTo[TaskController].start}${task.id}">Começar tarefa</a>/
@@ -34,7 +38,6 @@
 							</c:if>
 						</c:if>
 					</div>
-				</section>
 			</li>
 		</c:forEach>
 	</ul>

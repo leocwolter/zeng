@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Zeng - ${project.name}</title>
 <!-- PROJECT STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/showProject.css"/>" />
 <!-- COLORBOX STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
 </head>

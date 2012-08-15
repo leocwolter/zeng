@@ -4,22 +4,23 @@ $(document).ready(
 		function() {
 			// Get Width of elements on the load
 			var projectSidebarWidth = $('#project-sidebar').width();
-			var projectSidebarClickAreaWidth = $('#project-sidebar-click-area')
-					.width();
-			// Set the header, menu_bar, content right padding and width
-			adjustsSizes();
-			// Readjusts size of elements on resize event.
-			$(window).resize(function() {
-				adjustsSizes();
-			});
-			// Minimize / Maximize Sidebar and readjusts elements
+			var projectSidebarClickAreaWidth = $('#project-sidebar-click-area').width();
+			
+			if($('#project-sidebar')[0]){
+				$('.resizable').addClass('opened-sidebar');
+			}
+			else{
+				$('.resizable').addClass('no-sidebar');
+			}
+
+			// Minimize / Maximize Sidebar and readjusts elements class setting
 			$('#project-sidebar-click-area').toggle(
 				function() {
 	
 					$('#project-sidebar').animate({
 						'width' : projectSidebarClickAreaWidth
 					}, function() {
-						adjustsSizes();
+						$('.resizable').addClass('closed-sidebar').removeClass('opened-sidebar');
 					});
 	
 				}, function() {
@@ -27,37 +28,11 @@ $(document).ready(
 					$('#project-sidebar').animate({
 						'width' : projectSidebarWidth
 					}, function() {
-						adjustsSizes();
+						$('.resizable').addClass('opened-sidebar').removeClass('closed-sidebar');
 					});
 	
 				}
 			);
 
-			// Set the width and padding of elements with resizable class
-			function adjustsSizes() {
-
-				var leftContainerWidth = $('#left-container').width();
-
-				var projectSidebarWidth = $('#project-sidebar').width();
-
-				var paddingRight = projectSidebarWidth + 10;
-
-				var paddingLeft = 10;
-
-				var width = leftContainerWidth - (paddingRight + paddingLeft);
-				
-				$('.resizable').animate({
-					'width' : width,
-					'padding-right' : paddingRight,
-					'padding-left' : paddingLeft
-				});
-
-			}
-			
-			// Set the content's top margin 
-			var headerHeight = $('header').height();
-			
-			$('.content').css('margin-top', headerHeight);
-			
 		}
 );

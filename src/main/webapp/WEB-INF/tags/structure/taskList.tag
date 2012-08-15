@@ -6,13 +6,13 @@
 	<h3>${taskList.name}</h3>
 	<nav class="task-menu-bar">
 		<ul>
-	    	<li><a class="task-filter task-filter-selected" rel="task-filter-nofilter" href="#" >All</a></li>
-	    	<li><a class="task-filter" rel="task-filter-todo" href="#">To do</a></li>
-	        <li><a class="task-filter" rel="task-filter-doing" href="#">Doing</a></li>
-	        <li><a class="task-filter" rel="task-filter-done" href="#">Done</a></li>
-	        <li><a class="task-filter" rel="task-filter-accepted" href="#">Accepted</a></li>
-	        <li><a class="task-filter" rel="task-filter-rejected" href="#">Rejected</a></li>
-	        <li><a class="task-filter" rel="task-filter-mine" href="#">Mine</a>
+	    	<li><a class="task-filter task-filter-selected" rel="nofilter" href="#" >All</a></li>
+	    	<li><a class="task-filter" rel="todo" href="#">To do</a></li>
+	        <li><a class="task-filter" rel="doing" href="#">Doing</a></li>
+	        <li><a class="task-filter" rel="done" href="#">Done</a></li>
+	        <li><a class="task-filter" rel="accepted" href="#">Accepted</a></li>
+	        <li><a class="task-filter" rel="rejected" href="#">Rejected</a></li>
+	        <li><a class="task-filter" rel="mine" href="#">Mine</a>
 	    </ul>
 	</nav>
 	<ul class="task-list" id="task-list-${taskList.id}">

@@ -24,8 +24,8 @@ $(function() {
 	});
 	
 	//Filter tasks
-	$(".task-filter:not(.task-filter[rel=task-filter-mine])").click(function() {
-		var taskStatus = $(this).attr("rel").split("-")[2].toUpperCase();
+	$(".task-filter").not(".task-filter[rel=mine]").click(function() {
+		var taskStatus = $(this).attr("rel").toUpperCase();
 		var taskArea = $(this).closest(".task-area");
 		if (taskStatus == "NOFILTER") {
 			taskArea.find(".task").show();
@@ -37,7 +37,7 @@ $(function() {
 		$(this).addClass("task-filter-selected");
 	});
 	
-	$(".task-filter[rel=task-filter-mine]").click(function() {
+	$(".task-filter[rel=mine]").click(function() {
 		var user = $("#user-name-link").text().trim();
 		var taskArea = $(this).closest(".task-area");
 		console.log(user);

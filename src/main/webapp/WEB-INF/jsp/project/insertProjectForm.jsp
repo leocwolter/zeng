@@ -26,13 +26,11 @@
 		
 			<label for="project-contributors">Colaboradores: </label>
 			<br/>
-			<input id="project-contributors[${i.count}]" type="text" name="contributors[${i.count}].email"/>
+			<input id="project-contributors[0]" type="text" name="contributors[0].email"/>
 			<br/>
 		
-			<input type="submit" class="button" id="close_colorbox" value="Inserir">
+			<input type="submit" class="button insert-project" id="close_colorbox" value="Inserir">
 		</fieldset>
 	</form>
-	<!-- INSERT_FORM SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/insert_form.js" />"></script>
 </body>
 </html>

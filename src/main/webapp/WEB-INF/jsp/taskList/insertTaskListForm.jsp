@@ -12,7 +12,6 @@
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 
-
 </head>
 <body>
 	<form action="${linkTo[TaskListController].insert}" method="post" class="insert-form">
@@ -34,10 +33,8 @@
 			</select>
 			<br/> 
 	
-			<input type="submit" class="button" id="close_colorbox" value="Inserir">
+			<input type="submit" class="button insert-task-list" id="close_colorbox" value="Inserir">
 		</fieldset>
 	</form>
-	<!-- INSERT_FORM SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/insert_form.js" />"></script>
 </body>
 </html>

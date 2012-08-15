@@ -1,6 +1,6 @@
 package br.com.zeng.controller;
 
-import static br.com.caelum.vraptor.view.Results.*;
+import static br.com.caelum.vraptor.view.Results.json;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class ProjectController {
 		}
 		project.addContributor(userSession.getUser());
 		projectDao.insert(project);
-		result.redirectTo(ProjectController.class).listProjects();
+		result.use(json()).from(project).serialize();
 	}
 
 	@LoggedUser

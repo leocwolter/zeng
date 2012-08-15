@@ -8,47 +8,44 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Projetos</title>
-</head>
-	<body>
-		<body>
-		<section id="container">
-	    	<section id="left-container">
-	    		<header>
-					<c:import url="/WEB-INF/imports/header.jsp"/>
-					<nav id="menu-bar" class="resizable">
-						<h1>Meus Projetos:</h1>
-						<ul id="menu">
-							<c:forEach items="${projects}" var="project">
-								<li><a href="${linkTo[ProjectController].showProject}${project.url}"	title="Project ${project.id}">${project.name}</a></li>
-							</c:forEach>
-						</ul>
-						<section id="menu-bar-buttons">
-							<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button colorbox">Adicionar projeto</a>
-						</section>
-					</nav>
-				</header>
-	            <section id="generic-content" class="content">
-				</section>
-				<c:import url="/WEB-INF/imports/footer.jsp"/>
-	        </section>
-	        <c:import url="/WEB-INF/imports/script-css.jsp"/>
 
-			<!-- COLORBOX STYLE -->
-			<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
-			
-			<!-- SCREEN SIZE SCRIPT -->
-				<script type="text/javascript"
-					src="<c:url value="/js/screen_size.js" />"></script>
-					
-			<!-- HEADER SCRIPT -->
-				<script type="text/javascript"
-					src="<c:url value="/js/header.js" />"></script>
-			
-			<!-- JQUERY COLORBOX -->
-			<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-			
-			<!-- INSERT_FORM SCRIPT -->
-			<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
+<c:import url="/WEB-INF/imports/script-css.jsp"/>
+
+<!-- COLORBOX STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
+	
+</head>
+<body>
+	<section id="container">
+    	<section id="left-container">
+    		<header>
+				<c:import url="/WEB-INF/imports/header.jsp"/>
+				<nav id="menu-bar" class="resizable">
+					<h1>Meus Projetos:</h1>
+					<ul id="menu">
+						<c:forEach items="${projects}" var="project">
+							<li><a href="${linkTo[ProjectController].showProject}${project.url}"	title="Project ${project.id}">${project.name}</a></li>
+						</c:forEach>
+					</ul>
+					<section id="menu-bar-buttons">
+						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button colorbox">Adicionar projeto</a>
+					</section>
+				</nav>
+			</header>
+            <section id="generic-content" class="content">
+			</section>
+			<c:import url="/WEB-INF/imports/footer.jsp"/>
         </section>
-	</body>
+       </section>
+       
+	<!-- JQUERY COLORBOX -->
+	<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+	
+	<!-- COLORBOX SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
+	
+	<!-- INSERT_FORM SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
+	        
+</body>
 </html>

@@ -1,5 +1,6 @@
 package br.com.zeng.controller;
 
+import static br.com.caelum.vraptor.view.Results.json;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -28,7 +29,7 @@ public class CategoryController {
 		Project project = projectDao.getProjectWithUrl(projectUrl);
 		category.setProject(project);
 		categoryDao.insert(category);
-		result.redirectTo(ProjectController.class).showProject(category.getProject());
+		result.use(json()).from(category).serialize();
 	}
 
 	@LoggedUser

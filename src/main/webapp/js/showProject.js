@@ -48,7 +48,6 @@ $(function() {
 		$(this).addClass("task-filter-selected");
 	});
 	
-	
 
 	//Select Category Menu
 	$('.category-button').click(function() {

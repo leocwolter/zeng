@@ -10,8 +10,6 @@
 	    	<li><a class="task-filter" rel="todo" href="#">To do</a></li>
 	        <li><a class="task-filter" rel="doing" href="#">Doing</a></li>
 	        <li><a class="task-filter" rel="done" href="#">Done</a></li>
-	        <li><a class="task-filter" rel="accepted" href="#">Accepted</a></li>
-	        <li><a class="task-filter" rel="rejected" href="#">Rejected</a></li>
 	        <li><a class="task-filter" rel="mine" href="#">Mine</a>
 	    </ul>
 	</nav>

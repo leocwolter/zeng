@@ -1,5 +1,6 @@
 package br.com.zeng.controller;
 
+import static br.com.caelum.vraptor.view.Results.json;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -31,7 +32,7 @@ public class TaskListController {
 		Category category = categoryDao.getCategoryWithId(categoryId);
 		taskList.setCategory(category);
 		taskListDao.insert(taskList);
-		result.redirectTo(ProjectController.class).showProject(taskList.getProject());
+		result.use(json()).from(taskList).serialize();
 	}
 
 	@LoggedUser

@@ -10,17 +10,11 @@
 <meta charset="UTF-8">
 <title>Zeng - Project management</title>
 <!-- HOME STYLE -->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/css/home.css"/>" />
-<!-- PROJECT STYLE -->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/css/project.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/home.css"/>" />
 <!-- FORM STYLE -->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/css/form.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/form.css"/>" />
 <!-- COLORBOX STYLE -->
-<link rel="stylesheet" type="text/css"
-	href="<c:url value="/css/colorbox.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
 </head>
 <body>
 	<section id="container">
@@ -71,18 +65,13 @@
 	</section>
 	<c:import url="/WEB-INF/imports/script-css.jsp" />
 	<!-- JQUERY COLORBOX -->
-	<script type="text/javascript"
-		src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-	<!-- HEADER SCRIPT -->
-	<script type="text/javascript"
-		src="<c:url value="/js/header.js" />"></script>
-	<!-- CATEGORY SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/category.js" />"></script>
-	<!-- TASK SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/task.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
 	<!-- VALIDATE SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/jquery.validate.js" />"></script>
+	<!-- SCREEN SIZE SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 	<!-- HOME FORMS VALIDATE SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/home.js" />"></script>
+
 </body>
 </html>

@@ -15,7 +15,9 @@
 
 .resizable {
 	width: 100%;
-	transaction: all linear 1s;
+	transition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
 }
 
 .resizable.no-sidebar {

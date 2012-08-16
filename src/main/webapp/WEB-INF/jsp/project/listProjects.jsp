@@ -44,8 +44,5 @@
 	<!-- COLORBOX SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
 	
-	<!-- INSERT_FORM SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
-	        
 </body>
 </html>

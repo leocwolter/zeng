@@ -15,5 +15,8 @@
 <!-- JQUERY UI -->
 <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.18.custom.min.js"/>"></script>
 
+<!-- COLORBOX SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js"/>"></script>
+
 <!-- GENERIC SCRIPT -->
 <script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>

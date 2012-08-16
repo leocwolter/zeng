@@ -29,5 +29,7 @@
 				<input type="submit" class="button insert-category" id="close_colorbox" value="Inserir">
 			</fieldset>
 		</form>
+		<!-- INSERT_FORM SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
 	</body>
 </html>

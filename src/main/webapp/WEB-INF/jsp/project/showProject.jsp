@@ -41,8 +41,6 @@
 			src="<c:url value="/js/header.js" />"></script>
 		<!-- SHOWPROJECT SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/showProject.js" />"></script>
-		<!-- INSERT_FORM SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
 	</body>
 
 </html>

@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - Nova Lista de Tarefas</title>
 
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
 
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
@@ -36,6 +35,7 @@
 			<input type="submit" class="button insert-task-list" id="close_colorbox" value="Inserir">
 		</fieldset>
 	</form>
+	<c:import url="/WEB-INF/imports/script-css.jsp"/>
 	<!-- INSERT_FORM SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
 </body>

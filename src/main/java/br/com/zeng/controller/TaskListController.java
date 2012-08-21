@@ -27,7 +27,7 @@ public class TaskListController {
 	}
 
 
-	@Post("/addTaskPanel/")
+	@Post("/addTaskList/")
 	public void insert(TaskList taskList, Long categoryId) {
 		Category category = categoryDao.getCategoryWithId(categoryId);
 		taskList.setCategory(category);
@@ -36,7 +36,7 @@ public class TaskListController {
 	}
 
 	@LoggedUser
-	@Path("/addTaskPanelForm/{projectUrl}")
+	@Path("/addTaskListForm/{projectUrl}")
 	public void insertTaskListForm(String projectUrl) {
 		result.include(projectDao.getProjectWithUrl(projectUrl));
 	}	

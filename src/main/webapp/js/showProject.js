@@ -13,7 +13,7 @@ $(function() {
 	});
 	
 	//Open task description when dbclick
-	$(".task-box").dblclick(function() {
+	$(".task-box").live("dblclick",function() {
 		$.fn.colorbox({
 			iframe : true,
 			width : "600px",
@@ -24,7 +24,7 @@ $(function() {
 	});
 	
 	//Filter tasks
-	$(".task-filter").not(".task-filter[rel=mine]").click(function() {
+	$(".task-filter").not(".task-filter[rel=mine]").live("click", function() {
 		var taskStatus = $(this).attr("rel").toUpperCase();
 		var taskArea = $(this).closest(".task-area");
 		if (taskStatus == "NOFILTER") {
@@ -37,7 +37,7 @@ $(function() {
 		$(this).addClass("task-filter-selected");
 	});
 	
-	$(".task-filter[rel=mine]").click(function() {
+	$(".task-filter[rel=mine]").live("click", function() {
 		var user = $("#user-name-link").text().trim();
 		var taskArea = $(this).closest(".task-area");
 		console.log(user);
@@ -50,14 +50,14 @@ $(function() {
 	
 
 	//Select Category Menu
-	$('.category-button').click(function() {
+	$('.category-button').live("click", function() {
 		var categoryButtonStatus = $(this).attr('id');
 		if (!(categoryButtonStatus == "selected-category-button")) {
 			$("#selected-category-button").removeAttr('id');
 			$(this).attr('id', 'selected-category-button');
 			var categoryButtonDestination = $(this).attr("rel");
 			$(categoryButtonDestination).addClass('selected-category');
-			$('.category:not(' + categoryButtonDestination + ')')
+			$('.category').not(categoryButtonDestination)
 					.removeClass('selected-category');
 		}
 	});

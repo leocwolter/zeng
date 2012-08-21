@@ -40,9 +40,10 @@
        
 	<!-- JQUERY COLORBOX -->
 	<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-	
 	<!-- COLORBOX SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
+	<!-- HEADER MARGIN SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 	
 </body>
 </html>

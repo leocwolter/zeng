@@ -36,11 +36,9 @@
 		<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
 		<!-- SCREEN SIZE SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
-		<!-- HEADER SCRIPT -->
-		<script type="text/javascript"
-			src="<c:url value="/js/header.js" />"></script>
+		<!-- HEADER MARGIN SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 		<!-- SHOWPROJECT SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/showProject.js" />"></script>
 	</body>
-
 </html>

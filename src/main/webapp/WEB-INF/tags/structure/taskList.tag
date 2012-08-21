@@ -19,7 +19,7 @@
 					<h4 class="task-name">${task.name}</h4>
 					<ul class="task-contributors">
 						<c:forEach items="${task.contributors}" var="contributor">
-							<li>${contributor.name}</li>
+							<li>${contributor.name};</li>
 						</c:forEach>
 					</ul>
 					

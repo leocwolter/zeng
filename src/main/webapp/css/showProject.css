@@ -232,7 +232,7 @@
 /* TASK  */
 .task {
 	height: auto;
-	min-height: 50px;
+	min-height: 63px;
 	width: auto;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #FFFFFF;

@@ -61,6 +61,22 @@ $(function() {
 					.removeClass('selected-category');
 		}
 	});
-
+	
+	//Notifications Atualization
+	setInterval(function updateNotifications(){
+		var projectUrl = $("#project-name a").attr("href").split("/")[3];
+		$.get("/zeng/project/"+projectUrl+"/updateNotifications", function(data){
+			var notifications = $("<dl>");
+			$(data.notifications).each(function(index, notification){
+				var author = $("<dt>").html(notification.author.name);
+				var action = $("<dd>").html(notification.action)
+				notifications.append(author).append(action).append("<br>");
+			});
+			$("#project-notifications").html(notifications);
+		});
+	
+	}, 3000);
 		
+	
+	
 });

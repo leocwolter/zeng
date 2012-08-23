@@ -13,6 +13,7 @@ import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskPerContributorDao;
 import br.com.zeng.dao.UserDao;
+import br.com.zeng.model.Notification;
 import br.com.zeng.model.Project;
 import br.com.zeng.model.TaskPerContributor;
 import br.com.zeng.model.User;
@@ -77,5 +78,15 @@ public class ProjectController {
 		List<TaskPerContributor> tasksPerContributors = taskPerContributorDao.getDataWithUsers(contributors);
 		
 		result.use(json()).from(tasksPerContributors, "tasksPerContributors").include("contributor","task","dateOfCompletion").serialize();
+	}
+	
+	@LoggedUser
+	@Get("/project/{project.url}/updateNotifications")
+	public void updateNotifications(Project project){
+		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
+
+		List<Notification> notifications = projectComplete.getNotifications();
+		
+		result.use(json()).from(notifications, "notifications").include("author").serialize();
 	}
 }

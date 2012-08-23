@@ -17,4 +17,6 @@ public class NotificationDao {
 	public void insert(Notification notification){
 		session.save(notification);
 	}
+	
+	
 }

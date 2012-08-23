@@ -15,8 +15,8 @@
 		<section id="project-notifications">
 			<dl>
 				<c:forEach items="${project.notifications}" var="notification">
-					<dt>${notification.author.name}</dt><br/>
-					<dd>${notification.action}</dd>
+					<dt>${notification.author.name}</dt>
+					<dd>${notification.action}</dd><br/>
 				</c:forEach>
 			</dl>
 		</section>

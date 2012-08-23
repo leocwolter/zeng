@@ -1,6 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav id="menu-bar" class="resizable">
-	<h1>${project.name}</h1>
+	<h1 id="project-name"><a href="${linkTo[ProjectController].showProject}${project.url}">${project.name}</a></h1>
 	<ul id="menu">
 		<c:forEach items="${project.categories}" var="category">
 			<li><a rel="#category-${category.id}"

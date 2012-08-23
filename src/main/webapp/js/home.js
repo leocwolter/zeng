@@ -32,7 +32,7 @@ $(document).ready(function() {
 			},
 			'user.password': {
 				required: true,
-				minlength: 10
+				minlength: 8
 			},
 			'user.confirmPassword': {
 				required: true,
@@ -53,7 +53,7 @@ $(document).ready(function() {
 			},
 			'user.password': {
 				required: "Please provide a password",
-				minlength: "Your password must be at least 10 characters long"
+				minlength: "Your password must be at least 8 characters long"
 			},
 			'user.confirmPassword': {
 				required: "Please confirm your password",

@@ -31,6 +31,13 @@ public class Project {
 	@Column(unique = true)
 	private String url;
 	
+	@OneToMany
+	private List<Notification> notifications;
+	
+	public List<Notification> getNotifications() {
+		return notifications;
+	}
+
 	public Project() {
 		contributors = new ArrayList<User>();
 	}
@@ -71,6 +78,10 @@ public class Project {
 
 	public List<Category> getCategories() {
 		return categories;
+	}
+
+	public void addNotification(Notification notification) {
+		notifications.add(notification);
 	}
 
 }

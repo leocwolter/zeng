@@ -9,10 +9,12 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.zeng.annotation.LoggedUser;
+import br.com.zeng.dao.NotificationDao;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.dao.TaskPerContributorDao;
 import br.com.zeng.dao.UserDao;
+import br.com.zeng.model.Notification;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskList;
 import br.com.zeng.model.TaskPerContributor;
@@ -27,15 +29,17 @@ public class TaskController {
 	private final UserDao userDao;
 	private final UserSession userSession;
 	private TaskPerContributorDao taskPerContributorDao;
+	private final NotificationDao notificationDao;
 
 	public TaskController(TaskDao taskDao, TaskListDao taskListDao, UserDao userDao, Result result,
-			UserSession userSession, TaskPerContributorDao taskPerContributorDao) {
+			UserSession userSession, TaskPerContributorDao taskPerContributorDao, NotificationDao notificationDao) {
 		this.taskDao = taskDao;
 		this.taskListDao = taskListDao;
 		this.userDao = userDao;
 		this.result = result;
 		this.userSession = userSession;
 		this.taskPerContributorDao = taskPerContributorDao;
+		this.notificationDao = notificationDao;
 	}
 
 	@Post("/taskList/addTask")
@@ -48,6 +52,10 @@ public class TaskController {
 		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
 		task.setTaskList(taskList);
 		taskDao.insert(task);
+
+		String stringNotification = "Adicionou a task "+task.getName()+" na lista "+taskList.getName()+" da categoria "+taskList.getCategory().getName();
+		Notification notification = new Notification(stringNotification, userSession.getUser(),task.getProject());
+		notificationDao.insert(notification);
 		
 		result.use(json()).from(task).serialize();
 	}
@@ -73,6 +81,11 @@ public class TaskController {
 			taskComplete.start();
 			taskDao.update(taskComplete);
 		}
+		
+		String stringNotification = "Começou a task "+taskComplete.getName();
+		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
+		notificationDao.insert(notification);
+		
 		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
 
@@ -88,6 +101,11 @@ public class TaskController {
 
 			taskComplete.finalize();
 			taskDao.update(taskComplete);
+		
+			String stringNotification = "Finalizou a task "+taskComplete.getName();
+			Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
+			notificationDao.insert(notification);
+			
 		}
 		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
@@ -99,6 +117,11 @@ public class TaskController {
 		if (!taskComplete.isFinalized()) {
 			taskComplete.stop();
 			taskDao.update(taskComplete);
+		
+			String stringNotification = "Parou a task "+taskComplete.getName();
+			Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
+			notificationDao.insert(notification);
+		
 		}
 		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
 	}
@@ -107,8 +130,15 @@ public class TaskController {
 	@Path("/task/moveTask")
 	public void moveTask(Task task, TaskList taskList) {
 		Task taskComplete = taskDao.getTaskWithId(task.getId());
-		taskComplete.setTaskList(taskList);
+		TaskList taskListComplete = taskListDao.getTaskListWithId(taskList.getId());
+		
+		taskComplete.setTaskList(taskListComplete);
 		taskDao.update(taskComplete);
+		
+		String stringNotification = "Moveu a task "+taskComplete.getName()+" para a lista "+taskListComplete.getName();
+		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
+		notificationDao.insert(notification);
+	
 		result.nothing();
 	}
 }

@@ -1,5 +1,7 @@
 package br.com.zeng.controller;
 
+import static br.com.caelum.vraptor.view.Results.json;
+
 import java.util.List;
 
 import br.com.caelum.vraptor.Path;
@@ -36,7 +38,7 @@ public class TaskController {
 		this.taskPerContributorDao = taskPerContributorDao;
 	}
 
-	@Post("/taskpanel/addTask")
+	@Post("/taskList/addTask")
 	public void insert(Task task, Long taskListId, List<User> contributors) {
 		if (contributors != null) {
 			List<User> completeContributorsByList = userDao.getCompleteContributorsById(contributors);
@@ -45,13 +47,13 @@ public class TaskController {
 
 		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
 		task.setTaskList(taskList);
-
 		taskDao.insert(task);
-		result.redirectTo(ProjectController.class).showProject(task.getProject());
+		
+		result.use(json()).from(task).serialize();
 	}
 
 	@LoggedUser
-	@Path("/taskpanel/addTaskForm/{taskListId}")
+	@Path("/taskList/addTaskForm/{taskListId}")
 	public void insertTaskForm(Long taskListId) {
 		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
 		result.include("taskList", taskList);

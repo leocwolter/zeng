@@ -24,7 +24,7 @@ $(function() {
 	});
 	
 	//Filter tasks
-	$(".task-filter").not(".task-filter[rel=mine]").live("click", function() {
+	$(".task-filter:not([rel=mine])").live("click", function() {
 		var taskStatus = $(this).attr("rel").toUpperCase();
 		var taskArea = $(this).closest(".task-area");
 		if (taskStatus == "NOFILTER") {

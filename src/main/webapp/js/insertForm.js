@@ -11,7 +11,6 @@ $(function(){
 		
 		var url = $(element).closest("form").attr("action");
 
-		console.log(formData);
 		$.post(url, formData, function(data){
 			callBack(data);
 		});
@@ -23,9 +22,9 @@ $(function(){
 	$("input.insert-project").click(function(event){
 		insere(event, this,  function(data){
 			var menu = $("#menu", parent.document);
-			var item = $("<li><a></a></li>");
-			$(item).find("a").attr({"href":"/zeng/project/"+data.project.url, "title":data.project.name}).html(data.project.name);
-			$(item).appendTo(menu);		
+			var projectButton = $("<li>").append("<a>");
+			$(projectButton).find("a").attr({"href":"/zeng/project/"+data.project.url, "title":data.project.name}).html(data.project.name);
+			$(projectButton).appendTo(menu);		
 		});
 	});
 	$("input.insert-category").click(function(event){	
@@ -40,7 +39,7 @@ $(function(){
 			var item = $("<li>").append(categoryButton);
 			
 			var category = $("<section>").addClass("category").attr("id",categoryId);
-			var categoryTitle = $("<h2>").html(categoryName);
+			var categoryTitle = $("<h2>").text(categoryName);
 			$(category).append(categoryTitle);
 			$(category).appendTo(categoryContainer);
 			$(item).appendTo(menu);		
@@ -51,17 +50,37 @@ $(function(){
 			var menuItems = generateMenuItems();
 			var nav = $("<nav>").addClass("task-menu-bar").append(menuItems);
 			var taskList = $("<ul>").addClass("task-list ui-sortable").attr("id","task-list-"+data.taskList.id);
-			var addTaskButton = $("<a>").addClass("add-task-button colorbox cboxElement").attr("href","/zeng/taskpanel/addTaskForm/"+data.taskList.id).html("+Add Task");
-			var taskListName = $("<h3>").html(data.taskList.name);
+			var addTaskButton = $("<a>").addClass("add-task-button colorbox cboxElement").attr("href","/zeng/taskList/addTaskForm/"+data.taskList.id).html("+Add Task");
+			var taskListName = $("<h3>").text(data.taskList.name);
 
-			var item = $("<section>").addClass("task-area").append(taskListName, nav, taskList, addTaskButton);
+			var taskArea = $("<section>").addClass("task-area").append(taskListName, nav, taskList, addTaskButton);
 			
-			$(item).attr("id","task-area-"+data.taskList.id);
+			$(taskArea).attr("id","task-area-"+data.taskList.id);
 	
-			var category = $(".category", parent.document);
-			$(item).appendTo(category);		
+			var categoryId = $("[name='categoryId']").val();
+			var category = $("#category-"+categoryId, parent.document);
+			$(taskArea).appendTo(category);		
 		});
 	});
+	$("input.insert-task").click(function(event){
+		insere(event, this,  function(data){
+			var taskListId = $("input[name='taskListId']").val();
+			var taskList = $("#task-list-"+taskListId, parent.document);
+			var task = $("<li>").addClass("task task-state-TODO").attr("id","task-"+data.task.id);
+			var taskName = $("<h4>").addClass("task-name").text(data.task.name);
+			var taskOptions = generateTaskOptions(data.task.id);
+			
+			$(task).append(taskName);
+			$(task).append(taskOptions);
+			
+			$(taskList).append(task);
+		});
+	});
+	function generateTaskOptions(taskId){
+		var taskOptions = $("<div>").addClass("task-options");
+		var option = $("<a>").attr("href","/zeng/task/startTask/"+taskId).text("Começar tarefa");
+		return taskOptions.append(option);
+	}
 	function generateMenuItems(){
 		return $("<ul>").append(generateMenuItem("nofilter","All",true))
 			.append(generateMenuItem("todo","To do",false))

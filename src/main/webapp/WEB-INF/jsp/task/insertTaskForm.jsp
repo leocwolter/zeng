@@ -45,11 +45,11 @@
 	
 			<input type="hidden" name="taskListId" value="${taskList.id}"/>
 	
-			<input type="submit" class="button" id="close_colorbox" value="Inserir">
+			<input type="submit" class="insert-task button" id="close_colorbox" value="Inserir">
 		</fieldset>
 	</form>
 	<!-- INSERT_FORM SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/insert_form.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
 </body>
 </html>
 

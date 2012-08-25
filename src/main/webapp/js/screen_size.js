@@ -9,9 +9,6 @@ $(document).ready(
 			if($('#project-sidebar')[0]){
 				$('.resizable').addClass('opened-sidebar');
 			}
-			else{
-				$('.resizable').addClass('no-sidebar');
-			}
 
 			// Minimize / Maximize Sidebar and readjusts elements class setting
 			$('#project-sidebar-click-area').toggle(

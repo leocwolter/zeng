@@ -72,6 +72,8 @@
 	<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 	<!-- HOME FORMS VALIDATE SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/home.js" />"></script>
+	<!-- HEADER MARGIN SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 
 </body>
 </html>

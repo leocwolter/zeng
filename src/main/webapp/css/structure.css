@@ -1,37 +1,6 @@
 @CHARSET "UTF-8";
 
 /*Structure*/
-@media all and (max-width: 1035px) {
-
-	#project-sidebar {
-		display: none;
-	}
-	
-	.resizable {
-		padding-right: 10px !important;
-	}
-	
-}
-
-.resizable {
-	width: 100%;
-	transition: all .3s linear;
-	-webkit-transition: all .3s linear;
-	-moz-transition: all .3s linear;
-}
-
-.resizable.no-sidebar {
-	padding-right: 10px !important;
-}
-
-.resizable.opened-sidebar {
-	padding-right: 261px !important;
-}
-
-.resizable.closed-sidebar {
-	padding-right: 20px !important;
-}
-
 header {
 	width: 100%;
 	height: auto;
@@ -106,9 +75,10 @@ footer {
 	height: 20px;
 	width: auto;
 	float: right;
-	line-height: 50px;
+	line-height: 20px;
 	font-size: 14px;
 	color: #E3E1D5;
+	margin: 20px 10px 0 0;
 }
 
 #user-name-link:hover {
@@ -133,7 +103,8 @@ footer {
 }
 
 .user-logout{
-	float:right;
+	float: right;
+	margin: 7px 0 0 0;
 }
 
 #menu-bar h1 {
@@ -241,6 +212,38 @@ footer {
 }
 
 /*RESIZABLE STRUSCTURE*/
+@media all and (max-width: 1035px) {
+
+	#project-sidebar {
+		display: none;
+	}
+	
+	.resizable.opened-sidebar {
+		padding-right: 20px;
+	}
+	
+	.resizable.closed-sidebar {
+		padding-right: 20px;
+	}
+	
+}
+
 .resizable {
+	width: 100%;
+	padding-right: 20px;
 	padding-left: 10px;
+}
+
+.opened-sidebar {
+	padding-right: 261px;
+	transition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+}
+
+.closed-sidebar {
+	padding-right: 20px;
+	transition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
 }

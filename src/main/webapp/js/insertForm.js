@@ -1,6 +1,6 @@
 $(function(){
 	function insere(event, element, callBack){
-		var inputs = $(element).closest("form").find("select, input:not([type='submit'])");	
+		var inputs = $(element).closest("form").find("select, input:not([type='submit'], [type='checkbox']), input[type='checkbox']:checked");	
 		var formData = {};
 		
 		$(inputs).each(function(index, input){
@@ -8,7 +8,7 @@ $(function(){
 			var value = $(input).val();
 			formData[name] = value;
 		});
-		
+		console.log(formData);
 		var url = $(element).closest("form").attr("action");
 
 		$.post(url, formData, function(data){

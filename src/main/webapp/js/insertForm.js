@@ -1,6 +1,6 @@
 $(function(){
 	function insere(event, element, callBack){
-		var inputs = $(element).closest("form").find("select, input:not([type='submit'], [type='checkbox']), input[type='checkbox']:checked");	
+		var inputs = $(element).closest("form").find("select, input:not([type='submit'])");	
 		var formData = {};
 		
 		$(inputs).each(function(index, input){
@@ -8,7 +8,7 @@ $(function(){
 			var value = $(input).val();
 			formData[name] = value;
 		});
-		console.log(formData);
+		
 		var url = $(element).closest("form").attr("action");
 
 		$.post(url, formData, function(data){
@@ -19,16 +19,20 @@ $(function(){
 		
 		event.preventDefault();
 	};
+	
+	//Project insertion
 	$("input.insert-project").click(function(event){
-		insere(event, this,  function(data){
+		insert(event, this,  function(data){
 			var menu = $("#menu", parent.document);
 			var projectButton = $("<li>").append("<a>");
 			$(projectButton).find("a").attr({"href":"/zeng/project/"+data.project.url, "title":data.project.name}).html(data.project.name);
 			$(projectButton).appendTo(menu);		
 		});
 	});
+	
+	//Category insertion
 	$("input.insert-category").click(function(event){	
-		insere(event, this, function(data){
+		insert(event, this, function(data){
 			var menu = $("#menu", parent.document);
 			var categoryContainer = $("#category-container", parent.document);
 			
@@ -45,8 +49,10 @@ $(function(){
 			$(item).appendTo(menu);		
 		});
 	});
+	
+	//Task list insertion
 	$("input.insert-task-list").click(function(event){	
-		insere(event, this, function(data){
+		insert(event, this, function(data){
 			var menuItems = generateMenuItems();
 			var nav = $("<nav>").addClass("task-menu-bar").append(menuItems);
 			var taskList = $("<ul>").addClass("task-list ui-sortable").attr("id","task-list-"+data.taskList.id);
@@ -62,8 +68,10 @@ $(function(){
 			$(taskArea).appendTo(category);		
 		});
 	});
+	
+	//Task insertion
 	$("input.insert-task").click(function(event){
-		insere(event, this,  function(data){
+		insert(event, this,  function(data){
 			var taskListId = $("input[name='taskListId']").val();
 			var taskList = $("#task-list-"+taskListId, parent.document);
 			var task = $("<li>").addClass("task task-state-TODO").attr("id","task-"+data.task.id);
@@ -76,11 +84,15 @@ $(function(){
 			$(taskList).append(task);
 		});
 	});
+	
+	//Task options
 	function generateTaskOptions(taskId){
 		var taskOptions = $("<div>").addClass("task-options");
 		var option = $("<a>").attr("href","/zeng/task/startTask/"+taskId).text("Começar tarefa");
 		return taskOptions.append(option);
 	}
+	
+	//Task list filter menu options
 	function generateMenuItems(){
 		return $("<ul>").append(generateMenuItem("nofilter","All",true))
 			.append(generateMenuItem("todo","To do",false))
@@ -88,6 +100,8 @@ $(function(){
 			.append(generateMenuItem("done","Done",false))
 			.append(generateMenuItem("mine","Mine",false));
 	}
+	
+	//Task list filter menu option selected
 	function generateMenuItem(rel,text,isSelected){
 		var selected="";
 		if(isSelected){

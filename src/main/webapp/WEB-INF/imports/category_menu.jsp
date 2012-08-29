@@ -4,7 +4,7 @@
 	<ul id="menu">
 		<c:forEach items="${project.categories}" var="category">
 			<li><a rel="#category-${category.id}"
-				title="Categoria ${category.id}" class="category-button">${category.name}</a></li>
+				title="Categoria ${category.id}" class="category-button"  >${category.name}</a></li>
 		</c:forEach>
 	</ul>
 	<section id="menu-bar-buttons">

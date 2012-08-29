@@ -46,7 +46,7 @@ $(function(){
 			var categoryTitle = $("<h2>").text(categoryName);
 			$(category).append(categoryTitle);
 			$(category).appendTo(categoryContainer);
-			$(item).appendTo(menu);		
+			$(item).appendTo(menu);
 		});
 	});
 	

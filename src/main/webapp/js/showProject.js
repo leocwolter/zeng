@@ -1,5 +1,5 @@
 $(function() {
-	//Drag n drop configuration
+	//Drag n' drop configuration
 	$(".task-list").sortable({
 		connectWith : ".task-list",
 		receive : function(event, ui) {
@@ -62,7 +62,7 @@ $(function() {
 		}
 	});
 	
-	//Notifications Atualization
+	//Notifications updating
 	setInterval(function updateNotifications(){
 		var projectUrl = $("#project-name a").attr("href").split("/")[3];
 		$.get("/zeng/project/"+projectUrl+"/updateNotifications", function(data){
@@ -76,7 +76,5 @@ $(function() {
 		});
 	
 	}, 3000);
-		
-	
 	
 });

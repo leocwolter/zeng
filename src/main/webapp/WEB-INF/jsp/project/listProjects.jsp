@@ -24,7 +24,7 @@
 					<h1>Meus Projetos:</h1>
 					<ul id="menu">
 						<c:forEach items="${projects}" var="project">
-							<li><a href="${linkTo[ProjectController].showProject}${project.url}"	title="Project ${project.id}">${project.name}</a></li>
+							<li><a href="${linkTo[ProjectController].showProject}${project.url}" title="Project - ${project.name}">${project.name}</a></li>
 						</c:forEach>
 					</ul>
 					<section id="menu-bar-buttons">

@@ -3,8 +3,7 @@
 	<h1 id="project-name"><a href="${linkTo[ProjectController].showProject}${project.url}">${project.name}</a></h1>
 	<ul id="menu">
 		<c:forEach items="${project.categories}" var="category">
-			<li><a rel="#category-${category.id}"
-				title="Categoria ${category.id}" class="category-button"  >${category.name}</a></li>
+			<li><a rel="#category-${category.id}" title="Categoria - ${category.name}" class="category-button">${category.name}</a></li>
 		</c:forEach>
 	</ul>
 	<section id="menu-bar-buttons">

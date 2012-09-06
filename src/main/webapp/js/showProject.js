@@ -63,15 +63,19 @@ $(function() {
 	setInterval(function updateNotifications(){
 		var projectUrl = $("#project-name").data("url");
 		$.get("/zeng/project/"+projectUrl+"/updateNotifications", function(data){
-			var notifications = $("<dl>");
-			$(data.notifications).each(function(index, notification){
-				var author = $("<dt>").html(notification.author.name);
-				var action = $("<dd>").html(notification.action);
-				notifications.append(author).append(action).append("<br>");
-			});
+			var notifications = createNotifications(data.notifications);
 			$("#project-notifications").html(notifications);
 		});
-	
 	}, 3000);
+	
+	function createNotifications(notificationsData){
+		var notifications = $("<dl>");
+		$(notificationsData).each(function(index, notification){
+			var author = $("<dt>").html(notification.author.name);
+			var action = $("<dd>").html(notification.action);
+			notifications.append(author).append(action).append("<br>");
+		});
+		return notifications;
+	};
 	
 });

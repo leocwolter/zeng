@@ -24,47 +24,44 @@ $(function() {
 	});
 	
 	//Filter tasks
-	$(".task-filter:not([rel=mine])").live("click", function() {
-		var taskStatus = $(this).attr("rel").toUpperCase();
+	$(".task-filter").live("click", function() {
+		var taskFilter= $(this).data("filter").toUpperCase();
 		var taskArea = $(this).closest(".task-area");
-		if (taskStatus == "NOFILTER") {
+		filterTasksInTaskArea(taskFilter,taskArea);
+		taskArea.find(".task-filter").removeClass("task-filter-selected");
+		$(this).addClass("task-filter-selected");
+	});
+
+	function filterTasksInTaskArea(taskFilter, taskArea){
+		if (taskFilter == "NOFILTER") {
 			taskArea.find(".task").show();
-		} else {
-			taskArea.find(".task").not(".task-state-" + taskStatus).hide();
-			taskArea.find(".task-state-" + taskStatus).show();
+		} else if(taskFilter == "MINE") {
+			showMyTasks(taskArea);
+		} else{
+			taskArea.find(".task").hide();
+			taskArea.find(".task-state-" + taskFilter).show();
 		}
-		taskArea.find(".task-filter").removeClass("task-filter-selected");
-		$(this).addClass("task-filter-selected");
-	});
+	}
 	
-	$(".task-filter[rel=mine]").live("click", function() {
-		var user = $("#user-name-link").text().trim();
-		var taskArea = $(this).closest(".task-area");
-		console.log(user);
-		taskArea.find(".task-contributors").not(":contains("+user+")").closest(".task").hide();
-		taskArea.find(".task-contributors:contains("+user+")").closest(".task").show();
-		
-		taskArea.find(".task-filter").removeClass("task-filter-selected");
-		$(this).addClass("task-filter-selected");
-	});
+	function showMyTasks(taskArea) {
+		var userName = $("#user-name-link").data("user-name");
+		taskArea.find(".task-contributors").closest(".task").hide();
+		taskArea.find(".task-contributors:contains("+userName+")").closest(".task").show();
+	};
 	
 
 	//Select Category Menu
 	$('.category-button').live("click", function() {
-		var categoryButtonStatus = $(this).attr('id');
-		if (!(categoryButtonStatus == "selected-category-button")) {
-			$("#selected-category-button").removeAttr('id');
-			$(this).attr('id', 'selected-category-button');
-			var categoryButtonDestination = $(this).attr("rel");
-			$(categoryButtonDestination).addClass('selected-category');
-			$('.category').not(categoryButtonDestination)
-					.removeClass('selected-category');
-		}
+		$("#selected-category-button").removeAttr('id');
+		$(this).attr('id', 'selected-category-button');
+		var categoryButtonDestination = $(this).data("category");
+		$('.category').removeClass('selected-category');
+		$(categoryButtonDestination).addClass('selected-category');
 	});
 	
 	//Notifications updating
 	setInterval(function updateNotifications(){
-		var projectUrl = $("#project-name a").attr("href").split("/")[3];
+		var projectUrl = $("#project-name").data("url");
 		$.get("/zeng/project/"+projectUrl+"/updateNotifications", function(data){
 			var notifications = $("<dl>");
 			$(data.notifications).each(function(index, notification){

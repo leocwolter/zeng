@@ -6,16 +6,16 @@
 	<h3>${taskList.name}</h3>
 	<nav class="task-menu-bar">
 		<ul>
-	    	<li><a class="task-filter task-filter-selected" rel="nofilter" href="#" >All</a></li>
-	    	<li><a class="task-filter" rel="todo" href="#">To do</a></li>
-	        <li><a class="task-filter" rel="doing" href="#">Doing</a></li>
-	        <li><a class="task-filter" rel="done" href="#">Done</a></li>
-	        <li><a class="task-filter" rel="mine" href="#">Mine</a>
+	    	<li><a class="task-filter task-filter-selected" data-filter="nofilter" href="#" >All</a></li>
+	    	<li><a class="task-filter" data-filter="todo" href="#">To do</a></li>
+	        <li><a class="task-filter" data-filter="doing" href="#">Doing</a></li>
+	        <li><a class="task-filter" data-filter="done" href="#">Done</a></li>
+	        <li><a class="task-filter" data-filter="mine" href="#">Mine</a>
 	    </ul>
 	</nav>
-	<ul class="task-list" id="task-list-${taskList.id}">
+	<ul class="task-list" id="task-list-${taskList.id}" data-taskListId="${taskList.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
-			<li class="task task-state-${task.state}" id="task-${task.id}">
+			<li class="task task-state-${task.state}" id="task-${task.id}" data-taskId="${task.id}">
 					<h4 class="task-name">${task.name}</h4>
 					<ul class="task-contributors">
 						<c:forEach items="${task.contributors}" var="contributor">

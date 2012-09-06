@@ -3,8 +3,8 @@ $(function() {
 	$(".task-list").sortable({
 		connectWith : ".task-list",
 		receive : function(event, ui) {
-			var taskListId = ui.item.closest("ul").attr("id").split("-")[2];
-			var taskId = ui.item.attr("id").split("-")[1];
+			var taskListId = ui.item.closest("ul").attr("id").split("-")[2],
+				taskId = ui.item.attr("id").split("-")[1];
 			$.post("../task/moveTask", {
 				"task.id" : taskId,
 				"taskList.id" : taskListId
@@ -25,10 +25,12 @@ $(function() {
 	
 	//Filter tasks
 	$(".task-filter").live("click", function() {
-		var taskFilter= $(this).data("filter").toUpperCase();
-		var taskArea = $(this).closest(".task-area");
+		var taskFilter= $(this).data("filter").toUpperCase(),
+			taskArea = $(this).closest(".task-area");
 		filterTasksInTaskArea(taskFilter,taskArea);
-		taskArea.find(".task-filter").removeClass("task-filter-selected");
+		taskArea
+			.find(".task-filter")
+			.removeClass("task-filter-selected");
 		$(this).addClass("task-filter-selected");
 	});
 
@@ -71,9 +73,12 @@ $(function() {
 	function createNotifications(notificationsData){
 		var notifications = $("<dl>");
 		$(notificationsData).each(function(index, notification){
-			var author = $("<dt>").html(notification.author.name);
-			var action = $("<dd>").html(notification.action);
-			notifications.append(author).append(action).append("<br>");
+			var author = $("<dt>").html(notification.author.name),
+				action = $("<dd>").html(notification.action);
+			notifications
+				.append(author)
+				.append(action)
+				.append("<br>");
 		});
 		return notifications;
 	};

@@ -3,8 +3,8 @@ $(function() {
 	$(".task-list").sortable({
 		connectWith : ".task-list",
 		receive : function(event, ui) {
-			var taskListId = ui.item.closest("ul").attr("id").split("-")[2],
-				taskId = ui.item.attr("id").split("-")[1];
+			var taskListId = ui.item.closest("ul").data("tasklist-id"),
+				taskId = ui.item.data("task-id");
 			$.post("../task/moveTask", {
 				"task.id" : taskId,
 				"taskList.id" : taskListId

@@ -13,9 +13,9 @@
 	        <li><a class="task-filter" data-filter="mine" href="#">Mine</a>
 	    </ul>
 	</nav>
-	<ul class="task-list" id="task-list-${taskList.id}" data-taskListId="${taskList.id}">
+	<ul class="task-list" id="task-list-${taskList.id}" data-tasklist-id="${taskList.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
-			<li class="task task-state-${task.state}" id="task-${task.id}" data-taskId="${task.id}">
+			<li class="task task-state-${task.state}" id="task-${task.id}" data-task-id="${task.id}">
 					<h4 class="task-name">${task.name}</h4>
 					<ul class="task-contributors">
 						<c:forEach items="${task.contributors}" var="contributor">

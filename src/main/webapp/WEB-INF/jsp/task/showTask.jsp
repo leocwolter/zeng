@@ -6,9 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Tarefa - ${task.name}</title>
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
-<!-- JQUERY COLORBOX -->
-<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
 </head>
 <body>
 	<h1>${task.name}</h1>

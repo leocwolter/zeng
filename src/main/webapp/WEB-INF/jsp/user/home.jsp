@@ -13,8 +13,8 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/home.css"/>" />
 <!-- FORM STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/form.css"/>" />
-<!-- COLORBOX STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
+<!-- CSS IMPORT -->
+<c:import url="/WEB-INF/imports/css-import.jsp" />
 </head>
 <body>
 	<section id="container">
@@ -63,9 +63,8 @@
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp" />
 	</section>
-	<c:import url="/WEB-INF/imports/script-css.jsp" />
-	<!-- JQUERY COLORBOX -->
-	<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+	<!-- SCRIPTS IMPORT -->
+	<c:import url="/WEB-INF/imports/script-import.jsp" />
 	<!-- VALIDATE SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/jquery.validate.js" />"></script>
 	<!-- SCREEN SIZE SCRIPT -->

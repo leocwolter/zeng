@@ -6,13 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - Nova Tarefa</title>
-
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
-
+<!-- CSS IMPORT -->
+<c:import url="/WEB-INF/imports/css-import.jsp" />
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
-
-
 </head>
 <body>
 	<form action="${linkTo[TaskController].insert}" method="POST" class="insert-form">
@@ -45,9 +42,11 @@
 	
 			<input type="hidden" name="taskListId" value="${taskList.id}"/>
 	
-			<input type="submit" class="insert-task button" id="close_colorbox" value="Inserir">
+			<input type="submit" class="insert-task button" value="Inserir">
 		</fieldset>
 	</form>
+	<!-- SCRIPTS IMPORT -->
+	<c:import url="/WEB-INF/imports/script-import.jsp" />
 	<!-- INSERT_FORM SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
 </body>

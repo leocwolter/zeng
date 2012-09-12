@@ -8,9 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - ${project.name}</title>
-
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
-
+<!-- CSS IMPORT -->
+<c:import url="/WEB-INF/imports/css-import.jsp" />
 <!-- PROJECT STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
 
@@ -27,7 +26,10 @@
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>
         </section>
-
+		
+		<!-- SCRIPTS IMPORT -->
+		<c:import url="/WEB-INF/imports/script-import.jsp" />
+		
 		<!-- GOOGLE API -->
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		

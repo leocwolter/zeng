@@ -10,8 +10,8 @@
 <title>Zeng - ${project.name}</title>
 <!-- PROJECT STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/showProject.css"/>" />
-<!-- COLORBOX STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
+<!-- CSS IMPORT -->
+<c:import url="/WEB-INF/imports/css-import.jsp" />
 </head>
 	<body>
 		<section id="container">
@@ -31,9 +31,10 @@
 	        </section>
 	        <zeng-structure:sideBar/>
         </section>
-		<c:import url="/WEB-INF/imports/script-css.jsp"/>
-		<!-- JQUERY COLORBOX -->
-		<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
+		<!-- SCRIPTS IMPORT -->
+		<c:import url="/WEB-INF/imports/script-import.jsp" />
+		<!-- GENERIC MODAL SCRIPT - BIND -->
+		<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
 		<!-- SCREEN SIZE SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 		<!-- HEADER MARGIN SCRIPT -->

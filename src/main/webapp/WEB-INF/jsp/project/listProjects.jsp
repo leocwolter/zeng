@@ -8,12 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Projetos</title>
-
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
-
-<!-- COLORBOX STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/colorbox.css"/>" />
-	
+<!-- CSS IMPORT -->
+<c:import url="/WEB-INF/imports/css-import.jsp" />
 </head>
 <body>
 	<section id="container">
@@ -28,7 +24,7 @@
 						</c:forEach>
 					</ul>
 					<section id="menu-bar-buttons">
-						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button colorbox">Adicionar projeto</a>
+						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button modal">Adicionar projeto</a>
 					</section>
 				</nav>
 			</header>
@@ -37,13 +33,11 @@
 			<c:import url="/WEB-INF/imports/footer.jsp"/>
         </section>
        </section>
-       
-	<!-- JQUERY COLORBOX -->
-	<script type="text/javascript" src="<c:url value="/js/jquery.colorbox-min.js" />"></script>
-	<!-- COLORBOX SCRIPT -->
+    <!-- SCRIPTS IMPORT -->
+	<c:import url="/WEB-INF/imports/script-import.jsp" />
+	<!-- GENERIC MODAL SCRIPT - BIND -->
 	<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
 	<!-- HEADER MARGIN SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
-	
 </body>
 </html>

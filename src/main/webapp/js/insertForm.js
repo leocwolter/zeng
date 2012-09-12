@@ -7,7 +7,7 @@ $(function(){
 		$.post(url, formData, function(data){
 			callBack(data);
 		});
-		$("#cboxClose", parent.document).click();
+		$(".messi-closebtn", parent.document).click();
 		event.preventDefault();
 	};
 	
@@ -27,10 +27,10 @@ $(function(){
 			var menu = $("#menu", parent.document),
 				projectButton = $("<li>").append("<a>");
 			$(projectButton)
+				.appendTo(menu)
 				.find("a")
 				.attr({"href":"/zeng/project/"+data.project.url, "title":data.project.name})
-				.html(data.project.name)
-				.appendTo(menu);		
+				.html(data.project.name);
 		});
 	});
 	
@@ -78,7 +78,7 @@ $(function(){
 		var taskList = $("<ul>").addClass("task-list ui-sortable").attr("id","task-list-"+taskListData.id),
 			taskListTitle = $("<h3>").text(taskListData.name),
 			nav = createTaskAreaNavBar(),
-			addTaskButton = $("<a>").addClass("add-task-button colorbox cboxElement").attr("href","/zeng/taskList/addTaskForm/"+taskListData.id).html("+Add Task"),
+			addTaskButton = $("<a>").addClass("add-task-button modal").attr("href","/zeng/taskList/addTaskForm/"+taskListData.id).html("+Add Task"),
 			taskArea = $("<section>").addClass("task-area").append(taskListTitle, nav, taskList, addTaskButton);
 		$(taskArea).attr("id","task-area-"+taskListData.id);
 		return taskArea;

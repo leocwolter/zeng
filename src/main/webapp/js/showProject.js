@@ -12,17 +12,6 @@ $(function() {
 		}
 	});
 	
-	//Open task description when dbclick
-	$(".task-box").live("dblclick",function() {
-		$.fn.colorbox({
-			iframe : true,
-			width : "600px",
-			height : "600px",
-			scrolling : true,
-			href : "/zeng/task/1"
-		});
-	});
-	
 	//Filter tasks
 	$(".task-filter").live("click", function() {
 		var taskFilter= $(this).data("filter").toUpperCase(),

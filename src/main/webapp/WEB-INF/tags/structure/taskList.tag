@@ -29,7 +29,7 @@
 								<a href="${linkTo[TaskController].start}${task.id}" class="button">Start Task</a>
 							</c:if>
 							<c:if test="${task.state != 'TODO'}">
-								<a href="${linkTo[TaskController].stop}${task.id}" class="button">Return Task</a>
+								<a href="${linkTo[TaskController].stop}${task.id}" class="button">Give Up</a>
 							</c:if>
 							<c:if test="${task.state == 'DOING'}" >
 								<a href="${linkTo[TaskController].finalize}${task.id}" class="button">End task</a>
@@ -39,5 +39,5 @@
 			</li>
 		</c:forEach>
 	</ul>
-	<a class="add-task-button colorbox" href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
+	<a class="add-task-button modal" href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
 </section>

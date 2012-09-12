@@ -6,12 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Zeng - Novo Projeto</title>
-
-<c:import url="/WEB-INF/imports/script-css.jsp"/>
-
+<!-- CSS IMPORT -->
+<c:import url="/WEB-INF/imports/css-import.jsp" />
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
-
 </head>
 <body>
 	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert-form">
@@ -29,9 +27,11 @@
 			<input id="project-contributors[0]" type="text" name="contributors[0].email"/>
 			<br/>
 		
-			<input type="submit" class="button insert-project" id="close_colorbox" value="Inserir">
+			<input type="submit" class="button insert-project" value="Inserir">
 		</fieldset>
 	</form>
+	<!-- SCRIPTS IMPORT -->
+	<c:import url="/WEB-INF/imports/script-import.jsp" />
 	<!-- INSERT_FORM SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
 </body>

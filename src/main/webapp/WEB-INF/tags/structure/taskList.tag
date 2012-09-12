@@ -4,6 +4,7 @@
 
 <section class="task-area" id="task-area-${taskList.id}">
 	<h3>${taskList.name}</h3>
+	
 	<nav class="task-menu-bar">
 		<ul>
 	    	<li><a class="task-filter task-filter-selected" data-filter="nofilter" href="#" >All</a></li>

@@ -1,6 +1,8 @@
+
 package br.com.zeng.controller;
 
 import static br.com.caelum.vraptor.view.Results.json;
+import static br.com.caelum.vraptor.view.Results.xml;
 
 import java.util.List;
 
@@ -8,6 +10,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.NotificationDao;
 import br.com.zeng.dao.TaskDao;
@@ -85,10 +88,9 @@ public class TaskController {
 		String stringNotification = "Começou a task "+taskComplete.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
 		notificationDao.insert(notification);
-		
-		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
+		result.redirectTo("startedTask.jsp");
 	}
-
+	
 	@LoggedUser
 	@Path("/task/finalizeTask/{task.id}")
 	public void finalize(Task task) {
@@ -107,7 +109,7 @@ public class TaskController {
 			notificationDao.insert(notification);
 			
 		}
-		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
+		result.redirectTo("finalizedTask.jsp");
 	}
 
 	@LoggedUser
@@ -123,7 +125,7 @@ public class TaskController {
 			notificationDao.insert(notification);
 		
 		}
-		result.redirectTo(ProjectController.class).showProject(taskComplete.getProject());
+		result.redirectTo("stoppedTask.jsp");
 	}
 
 	@LoggedUser

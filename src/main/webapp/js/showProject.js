@@ -50,6 +50,13 @@ $(function() {
 		$(categoryButtonDestination).addClass('selected-category');
 	});
 	
+	$('.task-options > a').live("click",function(event){
+		var url = $(this).attr('href');
+		$.post(url,function(data){
+			console.log(data);
+		});
+	});
+	
 	//Notifications updating
 	setInterval(function updateNotifications(){
 		var projectUrl = $("#project-name").data("url");

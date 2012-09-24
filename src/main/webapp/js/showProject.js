@@ -51,10 +51,14 @@ $(function() {
 	});
 	
 	$('.task-options > a').live("click",function(event){
-		var url = $(this).attr('href');
+		var taskListId = $(this).closest(".task-list").data("tasklist-id");
+		var url = $(this).attr('href')+taskListId;
+		var taskOptions = $(this).closest(".task-options");
 		$.post(url,function(data){
-			console.log(data);
+			$(taskOptions).children().remove();
+			$(taskOptions).append(data);
 		});
+		event.preventDefault();
 	});
 	
 	//Notifications updating

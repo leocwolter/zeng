@@ -88,7 +88,7 @@ public class TaskController {
 		String stringNotification = "Começou a task "+taskComplete.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
 		notificationDao.insert(notification);
-		result.redirectTo("startedTask.jsp");
+		result.use(Results.page()).of(TaskController.class).startedTask();
 	}
 	
 	@LoggedUser
@@ -109,7 +109,7 @@ public class TaskController {
 			notificationDao.insert(notification);
 			
 		}
-		result.redirectTo("finalizedTask.jsp");
+		result.use(Results.page()).of(TaskController.class).finalizedTask();
 	}
 
 	@LoggedUser
@@ -125,7 +125,7 @@ public class TaskController {
 			notificationDao.insert(notification);
 		
 		}
-		result.redirectTo("stoppedTask.jsp");
+		result.use(Results.page()).of(TaskController.class).stoppedTask();
 	}
 
 	@LoggedUser
@@ -142,5 +142,14 @@ public class TaskController {
 		notificationDao.insert(notification);
 	
 		result.nothing();
+	}
+	
+	public void startedTask() {
+	}
+	
+	public void stoppedTask() {
+	}
+	
+	public void finalizedTask() {
 	}
 }

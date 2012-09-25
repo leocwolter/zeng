@@ -40,5 +40,5 @@
 			</li>
 		</c:forEach>
 	</ul>
-	<a class="add-task-button modal" href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
+	<a class="add-button add-task-button modal" href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
 </section>

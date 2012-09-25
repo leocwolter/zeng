@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 /*Structure*/
-header {
+.header {
 	width: 100%;
 	height: auto;
 	overflow: hidden;
@@ -13,7 +13,7 @@ header {
 	position: fixed;
 }
 
-header a {
+.header a {
 	color: #E3E1D5;
 }
 

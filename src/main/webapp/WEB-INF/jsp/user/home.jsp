@@ -23,7 +23,7 @@
 			<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
 				<input type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />
 				<input type="password" name="user.password" placeholder="Password" />
-				<input type="submit" value="Login" class="button" />
+				<input type="submit" value="Login" class="button normal-button" />
 			</form>
 		</header>
 		<section id="home-content" class="content">
@@ -56,7 +56,7 @@
 						<label for="terms" generated="true" class="error"></label>
 					</p>
 					<p>
-						<input id="register-button" class="button" type="submit" value="REGISTER" />
+						<input id="register-button" class="button normal-button" type="submit" value="REGISTER" />
 					</p>
 				</fieldset>
  			</form>

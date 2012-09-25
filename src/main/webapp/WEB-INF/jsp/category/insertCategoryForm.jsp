@@ -25,7 +25,7 @@
 				
 				<input type="hidden" name="projectUrl" value="${projectUrl}"/>
 				
-				<input type="submit" class="button insert-category" value="Inserir">
+				<input type="submit" class="button normal-button insert-category" value="Inserir">
 			</fieldset>
 		</form>
 		<!-- SCRIPTS IMPORT -->

@@ -42,7 +42,7 @@
 	
 			<input type="hidden" name="taskListId" value="${taskList.id}"/>
 	
-			<input type="submit" class="insert-task button" value="Inserir">
+			<input type="submit" class="insert-task button normal-button" value="Inserir">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

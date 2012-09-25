@@ -31,7 +31,7 @@
 			</select>
 			<br/> 
 	
-			<input type="submit" class="button insert-task-list" value="Inserir">
+			<input type="submit" class="button normal-button insert-task-list" value="Inserir">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

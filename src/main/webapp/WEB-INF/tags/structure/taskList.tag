@@ -27,13 +27,13 @@
 					<div class="task-options">
 						<c:if test="${task.state != 'DONE'}">
 							<c:if test="${task.state != 'DOING'}">
-								<a href="${linkTo[TaskController].start}" class="button">Start Task</a>
+								<a href="${linkTo[TaskController].start}" class="button normal-button">Start Task</a>
 							</c:if>
 							<c:if test="${task.state != 'TODO'}">
-								<a href="${linkTo[TaskController].stop}" class="button">Give Up</a>
+								<a href="${linkTo[TaskController].stop}" class="button normal-button">Give Up</a>
 							</c:if>
 							<c:if test="${task.state == 'DOING'}" >
-								<a href="${linkTo[TaskController].finalize}" class="button">End task</a>
+								<a href="${linkTo[TaskController].finalize}" class="button normal-button">End task</a>
 							</c:if>
 						</c:if>
 					</div>

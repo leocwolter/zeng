@@ -27,7 +27,7 @@
 			<input id="project-contributors[0]" type="text" name="contributors[0].email"/>
 			<br/>
 		
-			<input type="submit" class="button insert-project" value="Inserir">
+			<input type="submit" class="button normal-button insert-project" value="Inserir">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

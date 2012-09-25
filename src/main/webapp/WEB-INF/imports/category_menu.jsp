@@ -8,6 +8,6 @@
 	</ul>
 	<section id="menu-bar-buttons">
 		<a href="${linkTo[CategoryController].insertCategoryForm}${project.url}"
-			id="new-category" title="Adicionar Categoria" class="button modal">Add category</a>
+			id="new-category" title="Adicionar Categoria" class="button normal-button modal">Add category</a>
 	</section>
 </nav>

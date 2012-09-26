@@ -40,7 +40,7 @@ public class UserController {
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
-	@Post("/login/")
+	@Post("/login")
 	public void logIn(User user) {
 		String password = cripto.criptografa(user.getPassword());
 		User registredUser = userDao.getRegistredUser(user.getEmail(),password) ;
@@ -49,9 +49,13 @@ public class UserController {
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
-	@Get("/logout/")
+	@Get("/logout")
 	public void logOut() {
 		userSession.logOut();
 		result.redirectTo(UserController.class).home();
+	}
+
+	@Get("/purchase")
+	public void purchase(User user) {
 	}
 }

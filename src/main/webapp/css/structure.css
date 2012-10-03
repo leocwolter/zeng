@@ -32,6 +32,11 @@
 	overflow: hidden;
 }
 
+.container {
+	margin: 0 auto;
+	padding: 0;
+}
+
 .content {
 	height: auto;
 	min-height: 600px;

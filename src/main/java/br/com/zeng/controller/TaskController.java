@@ -2,7 +2,6 @@
 package br.com.zeng.controller;
 
 import static br.com.caelum.vraptor.view.Results.json;
-import static br.com.caelum.vraptor.view.Results.xml;
 
 import java.util.List;
 

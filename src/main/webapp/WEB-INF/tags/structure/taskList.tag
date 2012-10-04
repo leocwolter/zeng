@@ -1,5 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="zeng-structure" tagdir="/WEB-INF/tags/structure" %>
 <%@ attribute name="taskList" required="true" type="br.com.zeng.model.TaskList" %>
 
 <section class="task-area" id="task-area-${taskList.id}">
@@ -16,28 +17,7 @@
 	</nav>
 	<ul class="task-list" data-tasklist-id="${taskList.id}">
 		<c:forEach items="${taskList.tasks}" var="task">
-			<li class="task task-state-${task.state}" data-task-id="${task.id}">
-					<h4 class="task-name">${task.name}</h4>
-					<ul class="task-contributors">
-						<c:forEach items="${task.contributors}" var="contributor">
-							<li>${contributor.name};</li>
-						</c:forEach>
-					</ul>
-					
-					<div class="task-options">
-						<c:if test="${task.state != 'DONE'}">
-							<c:if test="${task.state != 'DOING'}">
-								<a href="${linkTo[TaskController].start}" class="button normal-button">Start Task</a>
-							</c:if>
-							<c:if test="${task.state != 'TODO'}">
-								<a href="${linkTo[TaskController].stop}" class="button normal-button">Give Up</a>
-							</c:if>
-							<c:if test="${task.state == 'DOING'}" >
-								<a href="${linkTo[TaskController].finalize}" class="button normal-button">End task</a>
-							</c:if>
-						</c:if>
-					</div>
-			</li>
+			<zeng-structure:task task="${task}"/>
 		</c:forEach>
 	</ul>
 	<a class="add-button add-task-button modal" href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>

@@ -5,6 +5,7 @@ import static br.com.caelum.vraptor.view.Results.json;
 
 import java.util.List;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -17,6 +18,7 @@ import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.dao.TaskPerContributorDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.model.Notification;
+import br.com.zeng.model.Project;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskList;
 import br.com.zeng.model.TaskPerContributor;
@@ -62,6 +64,12 @@ public class TaskController {
 		result.use(json()).from(task).serialize();
 	}
 
+	@Get("/task/search")
+	public void searchTasksWithContent(String q, Project project){
+		List<Task> tasks = taskDao.getTasksWithContentInAProject(q, project);
+		result.include("tasksFound",tasks);
+	}
+	
 	@LoggedUser
 	@Path("/taskList/addTaskForm/{taskListId}")
 	public void insertTaskForm(Long taskListId) {

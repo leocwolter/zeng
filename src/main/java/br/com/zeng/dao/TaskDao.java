@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.zeng.model.Project;
 import br.com.zeng.model.Task;
 
 @Component
@@ -29,9 +30,14 @@ public class TaskDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Task> getTasksWithContent(String content){
-		return (List<Task>) session.createQuery("from Task t where t.name like :content or t.description like :content")
+	public List<Task> getTasksWithContentInAProject(String content, Project project){
+		System.out.println("Content: "+content);
+		System.out.println("Project: "+project.getId());
+		List<Task> tasks = session.createQuery("from Task t where t.name like :content or t.description like :content and t.taskList.category.project.id = :project")
 							.setString("content", "%"+content+"%")
+							.setLong("project", project.getId())
 							.list();
+		System.out.println(tasks);
+		return tasks;
 	}
 }

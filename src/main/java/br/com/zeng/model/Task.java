@@ -34,22 +34,21 @@ public class Task {
 	@OneToMany(mappedBy = "task")
 	private List<Step> steps;
 
-
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime expirationDate;
 
 	public Task() {
 		this.state = State.TODO;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public TaskList getTaskList() {
 		return taskList;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -101,7 +100,7 @@ public class Task {
 	public State getState() {
 		return state;
 	}
-	
+
 	public Project getProject() {
 		return taskList.getProject();
 	}
@@ -117,6 +116,7 @@ public class Task {
 	public void stop() {
 		this.state = State.TODO;
 	}
+
 	public void finalize() {
 		this.state = State.DONE;
 	}

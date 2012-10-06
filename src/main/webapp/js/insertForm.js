@@ -119,7 +119,7 @@ $(function(){
 		var taskOptions = $("<div>").addClass("task-options"),
 			option = $("<a>")
 				.attr("href","/zeng/task/startTask/"+taskId)
-				.addClass("button")
+				.addClass("button normal-button")
 				.text("Start task");
 		return taskOptions.append(option);
 	}

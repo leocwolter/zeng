@@ -19,26 +19,20 @@ public class Project {
 	@GeneratedValue
 	@Id
 	private Long id;
-
 	private String name;
-
 	@ManyToMany
 	List<User> contributors;
-
 	@OneToMany(mappedBy = "project")
 	private List<Category> categories;
-	
 	@Column(unique = true)
 	private String url;
-	
 	@OneToMany
 	private List<Notification> notifications;
-	
 	public List<Notification> getNotifications() {
 		return notifications;
 	}
-
 	public Project() {
+		notifications = new ArrayList<Notification>();
 		contributors = new ArrayList<User>();
 	}
 	

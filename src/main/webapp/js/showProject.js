@@ -63,8 +63,8 @@ $(function() {
 	
 	//Notifications updating
 	setInterval(function updateNotifications(){
-		var projectUrl = $("#project-name").data("url");
-		$.get("/zeng/project/"+projectUrl+"/updateNotifications", function(data){
+		var projectId= $("#project-name").data("projectid");
+		$.get("/zeng/project/"+projectId+"/updateNotifications", function(data){
 			var notifications = createNotifications(data.notifications);
 			$("#project-notifications").html(notifications);
 		});
@@ -73,11 +73,17 @@ $(function() {
 	function createNotifications(notificationsData){
 		var notifications = $("<dl>");
 		$(notificationsData).each(function(index, notification){
+			var date = new Date(notification.creationDate.iMillis),
+				formattedDate = date.format("dd/mm/yyyy");
+			
 			var author = $("<dt>").html(notification.author.name),
 				action = $("<dd>").html(notification.action);
+				creationDate = $("<dd>").html(formattedDate);
+			
 			notifications
 				.append(author)
 				.append(action)
+				.append(creationDate)
 				.append("<br>");
 		});
 		return notifications;

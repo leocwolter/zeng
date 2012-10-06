@@ -6,19 +6,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+
 @Entity
 public class Notification {
 	@GeneratedValue
 	@Id
 	private Long id;
-	
 	private String action;
-	
 	@OneToOne
 	private User author;
-	
 	@ManyToOne
 	private Project project;
+	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
+	private DateTime creationDate;
+
 	
 	//hibernate eyes only
 	public Notification(){
@@ -28,6 +31,7 @@ public class Notification {
 		this.action = action;
 		this.author = author;
 		this.project = project;
+		this.creationDate = new DateTime();
 		project.addNotification(this);
 	}
 	
@@ -47,5 +51,13 @@ public class Notification {
 
 	public Project getProject() {
 		return project;
+	}
+
+	public DateTime getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(DateTime creationDate) {
+		this.creationDate = creationDate;
 	}
 }

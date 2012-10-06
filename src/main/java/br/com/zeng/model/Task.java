@@ -18,22 +18,15 @@ public class Task {
 	@Id
 	@GeneratedValue
 	private Long id;
-
 	private String name;
-
 	private String description;
-
 	@ManyToMany
 	private List<User> contributors;
-
 	@ManyToOne
 	private TaskList taskList;
-
 	private State state;
-
 	@OneToMany(mappedBy = "task")
 	private List<Step> steps;
-
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime expirationDate;
 

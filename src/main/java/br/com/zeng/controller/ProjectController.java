@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.zeng.annotation.LoggedUser;
+import br.com.zeng.dao.NotificationDao;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskPerContributorDao;
@@ -29,27 +30,34 @@ public class ProjectController {
 	private final UserDao userDao;
 	private TaskPerContributorDao taskPerContributorDao;
 	private final TaskDao taskDao;
+	private final NotificationDao notificationDao;
 
-	public ProjectController(Result result, ProjectDao projectDao, UserSession userSession, UserDao userDao, TaskPerContributorDao taskPerContributorDao, TaskDao taskDao) {
+	public ProjectController(Result result, ProjectDao projectDao,
+			UserSession userSession, UserDao userDao,
+			TaskPerContributorDao taskPerContributorDao, TaskDao taskDao,
+			NotificationDao notificationDao) {
 		this.result = result;
 		this.projectDao = projectDao;
 		this.userSession = userSession;
 		this.userDao = userDao;
-		this.taskPerContributorDao =  taskPerContributorDao;
+		this.taskPerContributorDao = taskPerContributorDao;
 		this.taskDao = taskDao;
+		this.notificationDao = notificationDao;
 	}
 
 	@LoggedUser
 	@Path("/project/{project.url}")
 	public void showProject(Project project) {
-		Project projectCompleted = projectDao.getProjectWithUrl(project.getUrl());
+		Project projectCompleted = projectDao.getProjectWithUrl(project
+				.getUrl());
 		result.include("project", projectCompleted);
 	}
 
 	@LoggedUser
 	@Path("/projects")
 	public void listProjects() {
-		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
+		List<Project> listProjectsWithUser = projectDao
+				.listProjectsWithUser(userSession.getUser());
 		result.include("projects", listProjectsWithUser);
 	}
 
@@ -77,29 +85,30 @@ public class ProjectController {
 	@LoggedUser
 	@Get("/project/{project.url}/getTasksPerContributors")
 	public void getTasksPerContributors(Project project) {
-		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
+		Project projectComplete = projectDao
+				.getProjectWithUrl(project.getUrl());
 		List<User> contributors = projectComplete.getContributors();
-		List<TaskPerContributor> tasksPerContributors = taskPerContributorDao.getDataWithUsers(contributors);
-		
-		result.use(json()).from(tasksPerContributors, "tasksPerContributors").include("contributor","task","dateOfCompletion").serialize();
-	}
-	
-	@LoggedUser
-	@Get("/project/{project.url}/updateNotifications")
-	public void updateNotifications(Project project){
-		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
+		List<TaskPerContributor> tasksPerContributors = taskPerContributorDao
+				.getDataWithUsers(contributors);
 
-		List<Notification> notifications = projectComplete.getNotifications();
-		
-		result.use(json()).from(notifications, "notifications").include("author").serialize();
+		result.use(json()).from(tasksPerContributors, "tasksPerContributors")
+				.include("contributor", "task", "dateOfCompletion").serialize();
 	}
-	
+
+	@LoggedUser
+	@Get("/project/{project.id}/updateNotifications")
+	public void updateNotifications(Project project){
+		List<Notification> notifications = notificationDao.getNotificationsOfProject(project);
+		result.use(json()).from(notifications, "notifications").include("author").include("creationDate").serialize();
+	}
+
 	@LoggedUser
 	@Get("/project/search/{project.url}")
-	public void searchTasksWithContent(String q, Project project){
+	public void searchTasksWithContent(String q, Project project) {
 		List<Task> tasks = taskDao.getTasksWithContentInAProject(q, project);
-		result.include("tasksFound",tasks);
-		result.include("project",projectDao.getProjectWithUrl(project.getUrl()));
+		result.include("tasksFound", tasks);
+		result.include("project",
+				projectDao.getProjectWithUrl(project.getUrl()));
 	}
-	
+
 }

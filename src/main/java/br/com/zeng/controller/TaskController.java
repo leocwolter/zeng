@@ -69,14 +69,6 @@ public class TaskController {
 	}
 
 	@LoggedUser
-	@Get("/project/search/{project.url}")
-	public void searchTasksWithContent(String q, Project project){
-		List<Task> tasks = taskDao.getTasksWithContentInAProject(q, project);
-		result.include("tasksFound",tasks);
-		result.include("project",projectDao.getProjectWithUrl(project.getUrl()));
-	}
-	
-	@LoggedUser
 	@Path("/taskList/addTaskForm/{taskListId}")
 	public void insertTaskForm(Long taskListId) {
 		TaskList taskList = taskListDao.getTaskListWithId(taskListId);

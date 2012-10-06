@@ -11,10 +11,12 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.ProjectDao;
+import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskPerContributorDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.model.Notification;
 import br.com.zeng.model.Project;
+import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskPerContributor;
 import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
@@ -26,13 +28,15 @@ public class ProjectController {
 	private final UserSession userSession;
 	private final UserDao userDao;
 	private TaskPerContributorDao taskPerContributorDao;
+	private final TaskDao taskDao;
 
-	public ProjectController(Result result, ProjectDao projectDao, UserSession userSession, UserDao userDao, TaskPerContributorDao taskPerContributorDao) {
+	public ProjectController(Result result, ProjectDao projectDao, UserSession userSession, UserDao userDao, TaskPerContributorDao taskPerContributorDao, TaskDao taskDao) {
 		this.result = result;
 		this.projectDao = projectDao;
 		this.userSession = userSession;
 		this.userDao = userDao;
 		this.taskPerContributorDao =  taskPerContributorDao;
+		this.taskDao = taskDao;
 	}
 
 	@LoggedUser
@@ -89,4 +93,13 @@ public class ProjectController {
 		
 		result.use(json()).from(notifications, "notifications").include("author").serialize();
 	}
+	
+	@LoggedUser
+	@Get("/project/search/{project.url}")
+	public void searchTasksWithContent(String q, Project project){
+		List<Task> tasks = taskDao.getTasksWithContentInAProject(q, project);
+		result.include("tasksFound",tasks);
+		result.include("project",projectDao.getProjectWithUrl(project.getUrl()));
+	}
+	
 }

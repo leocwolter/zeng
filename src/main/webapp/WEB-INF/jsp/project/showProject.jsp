@@ -18,7 +18,7 @@
 	    	<section id="left-container" class="container">
 				<header class="header">
 					<c:import url="/WEB-INF/imports/header.jsp"/>
-					<c:import url="/WEB-INF/imports/category_menu.jsp"/>
+					<c:import url="/WEB-INF/imports/category-menu.jsp"/>
 				</header>
 	            <section id="project-content" class="content">
 	            	<section id="category-container" class="resizable">

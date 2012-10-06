@@ -1,9 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <section id="top" class="resizable">
 	<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
-	<form action="${linkTo[TaskController].searchTasksWithContent}" method="get" id="search-form">
+	<form action="${linkTo[TaskController].searchTasksWithContent}${project.url}" method="get" id="search-form">
 		<input type="search" name="q" placeholder="Search" />
-		<input type="hidden" name="project.id" value="${project.id}" />
 		<input type="submit" value="SEARCH" />
 	</form>
 	<a href="${linkTo[UserController].logOut}" class="user-logout">Logout</a>

@@ -13,6 +13,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.NotificationDao;
+import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.dao.TaskPerContributorDao;
@@ -34,12 +35,15 @@ public class TaskController {
 	private final UserSession userSession;
 	private TaskPerContributorDao taskPerContributorDao;
 	private final NotificationDao notificationDao;
+	private final ProjectDao projectDao;
 
-	public TaskController(TaskDao taskDao, TaskListDao taskListDao, UserDao userDao, Result result,
-			UserSession userSession, TaskPerContributorDao taskPerContributorDao, NotificationDao notificationDao) {
+	public TaskController(TaskDao taskDao, TaskListDao taskListDao, UserDao userDao,
+			UserSession userSession, TaskPerContributorDao taskPerContributorDao,
+			NotificationDao notificationDao,ProjectDao projectDao, Result result) {
 		this.taskDao = taskDao;
 		this.taskListDao = taskListDao;
 		this.userDao = userDao;
+		this.projectDao = projectDao;
 		this.result = result;
 		this.userSession = userSession;
 		this.taskPerContributorDao = taskPerContributorDao;
@@ -64,10 +68,12 @@ public class TaskController {
 		result.use(json()).from(task).serialize();
 	}
 
-	@Get("/task/search")
+	@LoggedUser
+	@Get("/project/search/{project.url}")
 	public void searchTasksWithContent(String q, Project project){
 		List<Task> tasks = taskDao.getTasksWithContentInAProject(q, project);
 		result.include("tasksFound",tasks);
+		result.include("project",projectDao.getProjectWithUrl(project.getUrl()));
 	}
 	
 	@LoggedUser

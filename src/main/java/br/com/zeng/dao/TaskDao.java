@@ -33,9 +33,9 @@ public class TaskDao {
 	public List<Task> getTasksWithContentInAProject(String content, Project project){
 		System.out.println("Content: "+content);
 		System.out.println("Project: "+project.getId());
-		List<Task> tasks = session.createQuery("from Task t where t.name like :content or t.description like :content and t.taskList.category.project.id = :project")
+		List<Task> tasks = session.createQuery("from Task t where t.name like :content or t.description like :content and t.taskList.category.project.url like :project")
 							.setString("content", "%"+content+"%")
-							.setLong("project", project.getId())
+							.setString("project", project.getUrl())
 							.list();
 		System.out.println(tasks);
 		return tasks;

@@ -18,6 +18,7 @@ public class TaskDaoTest extends DaoTest{
 		TaskDao taskDao = new TaskDao(session);
 
 		Project project = new Project();
+		project.setName("zeng");
 		session.save(project);
 
 		Category category = new Category();
@@ -46,7 +47,6 @@ public class TaskDaoTest extends DaoTest{
 		Task task4 = new Task();
 		task4.setDescription("Lorem test ipsum");
 		session.save(task4);
-		
 		
 		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project );
 		assertEquals(2, tasks.size());

@@ -71,15 +71,17 @@ $(function(){
 		var taskList = $("<ul>").addClass("task-list ui-sortable").attr("id","task-list-"+taskListData.id),
 			taskListTitle = $("<h3>").text(taskListData.name),
 			nav = createTaskAreaNavBar(),
-			addTaskButton = $("<a>").addClass("add-task-button modal").attr("href","/zeng/taskList/addTaskForm/"+taskListData.id).html("+Add Task"),
+			addTaskButton = $("<a>").addClass("add-button add-task-button modal").attr("href","/zeng/taskList/addTaskForm/"+taskListData.id).html("+Add Task"),
 			taskArea = $("<section>").addClass("task-area").append(taskListTitle, nav, taskList, addTaskButton);
 		$(taskArea).attr("id","task-area-"+taskListData.id);
 		return taskArea;
 	}
 	
 	function createTaskAreaNavBar(){
+		var all =  generateMenuItem("nofilter","All");
+		all.find("a").addClass("task-filter-selected");
 		var menuItems = $("<ul>")
-			.append(generateMenuItem("nofilter","All").addClass("task-filter-selected"))
+			.append(all)
 			.append(generateMenuItem("todo","To do"))
 			.append(generateMenuItem("doing","Doing"))
 			.append(generateMenuItem("done","Done"))

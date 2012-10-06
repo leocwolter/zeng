@@ -100,7 +100,8 @@ $(function(){
 			var taskData = data.task,
 				task = createTask(taskData),
 				taskListId = $("input[name='taskListId']").val(),
-				taskList = $("#task-list-"+taskListId, parent.document);
+				taskList = $("[data-tasklist-id = "+taskListId+"]", parent.document);
+			console.log(taskList);
 			$(taskList).append(task);
 		});
 	});

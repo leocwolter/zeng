@@ -1,11 +1,13 @@
 $(function() {
+	updateNotifications();
+	
 	//Drag n' drop configuration
 	$(".task-list").sortable({
 		connectWith : ".task-list",
 		receive : function(event, ui) {
 			var taskListId = ui.item.closest("ul").data("tasklist-id"),
 				taskId = ui.item.data("task-id");
-			$.post("../task/moveTask", {
+			$.post("/zeng/task/moveTask", {
 				"task.id" : taskId,
 				"taskList.id" : taskListId
 			});
@@ -39,20 +41,17 @@ $(function() {
 		taskArea.find(".task-contributors").closest(".task").hide();
 		taskArea.find(".task-contributors:contains("+userName+")").closest(".task").show();
 	};
-	
 
 	//Select Category Menu
 	$('.category-button').live("click", function() {
 		$("#selected-category-button").removeAttr('id');
 		$(this).attr('id', 'selected-category-button');
-		var categoryButtonDestination = $(this).data("category");
-		$('.category').removeClass('selected-category');
-		$(categoryButtonDestination).addClass('selected-category');
 	});
 	
 	$('.task-options > a').live("click",function(event){
-		var taskListId = $(this).closest(".task-list").data("tasklist-id");
-		var url = $(this).attr('href')+taskListId;
+		var taskId = $(this).closest(".task").data("task-id");
+		var url = $(this).attr('href')+taskId;
+		console.log(url);
 		var taskOptions = $(this).closest(".task-options");
 		$.post(url,function(data){
 			$(taskOptions).children().remove();
@@ -62,13 +61,17 @@ $(function() {
 	});
 	
 	//Notifications updating
-	setInterval(function updateNotifications(){
+	setInterval(function(){
+		updateNotifications();
+	}, 3000);
+	
+	function updateNotifications(){
 		var projectId= $("#project-name").data("projectid");
 		$.get("/zeng/project/"+projectId+"/updateNotifications", function(data){
 			var notifications = createNotifications(data.notifications);
 			$("#project-notifications").html(notifications);
 		});
-	}, 3000);
+	}
 	
 	function createNotifications(notificationsData){
 		var notifications = $("<dl>");

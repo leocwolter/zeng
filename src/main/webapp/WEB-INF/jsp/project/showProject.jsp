@@ -22,9 +22,7 @@
 				</header>
 	            <section id="project-content" class="content">
 	            	<section id="category-container" class="resizable">
-		            	<c:forEach items="${project.categories}" var="category">
-		            		<zeng-structure:category category="${category}"/>
-	            		</c:forEach>
+	            		<zeng-structure:category category="${currentCategory}"/>
             		</section>
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>

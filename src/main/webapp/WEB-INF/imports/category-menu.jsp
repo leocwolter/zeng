@@ -3,7 +3,7 @@
 	<h1 id="project-name" data-projectid="${project.id}"><a href="${linkTo[ProjectController].showProject}${project.url}">${project.name}</a></h1>
 	<ul id="menu">
 		<c:forEach items="${project.categories}" var="category">
-			<li><a data-category="#category-${category.id}" title="Categoria - ${category.name}" class="category-button">${category.name}</a></li>
+			<li><a href="${linkTo[CategoryController].getCategory[category.id]}" title="Categoria - ${category.name}" class="category-button">${category.name}</a></li>
 		</c:forEach>
 	</ul>
 	<section id="menu-bar-buttons">

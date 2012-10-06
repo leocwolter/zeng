@@ -1,6 +1,7 @@
 package br.com.zeng.controller;
 
 import static br.com.caelum.vraptor.view.Results.json;
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -37,5 +38,13 @@ public class CategoryController {
 	public void insertCategoryForm(String projectUrl) {
 		result.include("projectUrl", projectUrl);
 	}	
+	
+	@LoggedUser
+	@Get("/project/category/{categoryId}")
+	public void getCategory(Long categoryId) {
+		Category category = categoryDao.getCategoryWithId(categoryId);
+		result.include("currentCategory", category);
+		result.forwardTo(ProjectController.class).showProject(category.getProject());
+	}
 
 }

@@ -15,10 +15,8 @@ public class Category {
 	@Id
 	private Long id;
 	private String name;
-
 	@ManyToOne
 	private Project project;
-
 	@OneToMany(mappedBy = "category")
 	private List<TaskList> taskLists;
 

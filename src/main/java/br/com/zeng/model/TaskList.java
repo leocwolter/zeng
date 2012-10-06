@@ -13,15 +13,12 @@ public class TaskList {
 	@Id
 	@GeneratedValue
 	private Long id;
-
 	private String name;
-
 	@ManyToOne
 	private Category category;
-
 	@OneToMany(mappedBy = "taskList")
 	private List<Task> tasks;
-
+	
 	public List<Task> getTasks() {
 		return tasks;
 	}

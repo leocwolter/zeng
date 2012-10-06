@@ -38,26 +38,19 @@ $(function(){
 	$("input.insert-category").click(function(event){	
 		insert(event, this, function(data){
 			var categoryData = data.category;
-			createCategory(categoryData);
 			createCategoryMenuItem(categoryData);
 		});
 	});
-	
-	function createCategory(categoryData){
-		var categoryContainer = $("#category-container", parent.document),
-			categoryId = "category-"+categoryData.id,
-			category = $("<section>").addClass("category").attr("id",categoryId),
-			categoryTitle = $("<h2>").text(categoryData.name);
-		$(category)
-			.append(categoryTitle)
-			.appendTo(categoryContainer);
-	}
-	
+
 	function createCategoryMenuItem(categoryData){
 		var menu = $("#menu", parent.document),
 			categoryButton = $("<a>")
 							.addClass("category-button")
-							.attr({"data-category":"#category-"+categoryData.id, "title":categoryData.name})
+							.attr(
+									{"title":categoryData.name,
+									 "href":"/zeng/project/category/"+categoryData.id
+									}
+								)
 							.html(categoryData.name),
 			item = $("<li>").append(categoryButton);
 		$(item).appendTo(menu);

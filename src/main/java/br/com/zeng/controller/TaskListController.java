@@ -17,12 +17,10 @@ public class TaskListController {
 	private final Result result;
 	private final TaskListDao taskListDao;
 	private final CategoryDao categoryDao;
-	private final ProjectDao projectDao;
 
-	public TaskListController(TaskListDao taskListDao, CategoryDao categoryDao, ProjectDao projectDao, Result result) {
+	public TaskListController(TaskListDao taskListDao, CategoryDao categoryDao, Result result) {
 		this.taskListDao = taskListDao;
 		this.categoryDao = categoryDao;
-		this.projectDao = projectDao;
 		this.result = result;
 	}
 
@@ -36,9 +34,9 @@ public class TaskListController {
 	}
 
 	@LoggedUser
-	@Path("/addTaskListForm/{projectUrl}")
-	public void insertTaskListForm(String projectUrl) {
-		result.include(projectDao.getProjectWithUrl(projectUrl));
+	@Path("/addTaskListForm/{categoryId}")
+	public void insertTaskListForm(Long categoryId) {
+		result.include("category", categoryDao.getCategoryWithId(categoryId));
 	}	
 
 }

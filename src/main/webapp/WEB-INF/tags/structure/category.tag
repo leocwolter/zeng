@@ -7,7 +7,7 @@
 <section class="category" id="category-${category.id}">
 	<header>
 		<h2>${category.name}</h2>
-		<a href="${linkTo[TaskListController].insertTaskListForm}${project.url}"
+		<a href="${linkTo[TaskListController].insertTaskListForm}${category.id}"
 					title="Adicionar Lista" id="new-task-list" class="button add-button modal">+</a>
 	</header>
 	<c:forEach items="${category.taskLists}" var="taskList">

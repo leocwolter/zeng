@@ -17,12 +17,10 @@
 			<fieldset>
 				<legend>Criar Categoria</legend>
 				<br/>
-				
 				<label for="category-name">Nome: </label>
 				<br/>
 				<input type="text" name="category.name" />
 				<br/>
-				
 				<input type="hidden" name="projectUrl" value="${projectUrl}"/>
 				
 				<input type="submit" class="button normal-button insert-category" value="Inserir">

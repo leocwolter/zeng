@@ -33,6 +33,11 @@ public class TaskDao {
 		session.update(task);
 	}
 
+	public void archive(Task task) {
+		task.setArchived(true);
+		session.update(task);
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Task> getTasksWithContentInAProject(String content, Project project){
 		List<Task> tasks = session.createQuery("from Task t where t.name like :content or t.description like :content and t.taskList.category.project.url like :project")

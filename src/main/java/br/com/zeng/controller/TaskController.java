@@ -135,6 +135,19 @@ public class TaskController {
 		result.nothing();
 	}
 	
+	@LoggedUser
+	@Post("/task/archive/{taskId}")
+	public void archive(Long taskId) {
+		Task task = taskDao.getTaskWithId(taskId);
+		taskDao.archive(task);
+
+		String stringNotification = "Arquivou a task "+task.getName();
+		Notification notification = new Notification(stringNotification, userSession.getUser(), task.getProject());
+		notificationDao.insert(notification);
+		
+		result.nothing();
+	}
+	
 	public void startedTask() {
 	}
 	

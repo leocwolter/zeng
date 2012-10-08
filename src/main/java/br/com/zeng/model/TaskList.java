@@ -1,5 +1,6 @@
 package br.com.zeng.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,7 +21,12 @@ public class TaskList {
 	private List<Task> tasks;
 	
 	public List<Task> getTasks() {
-		return tasks;
+		ArrayList<Task> notArchivedTasks = new ArrayList<Task>();
+		for (Task task : tasks) {
+			if(!task.isArchived())
+				notArchivedTasks.add(task);
+		}
+		return notArchivedTasks;
 	}
 
 	public void setTasks(List<Task> tasks) {

@@ -135,5 +135,57 @@ public class TaskDaoTest extends DaoTest {
 		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project);
 		assertEquals(2, tasks.size());
 	}
+	
+	@Test
+	public void shouldSetArchivedToTrue() {
+		TaskDao taskDao = new TaskDao(session);
+		
+		Task task = new Task();
+		task.setName("invalid");
+		
+		session.save(task);
+		
+		assertFalse(task.isArchived());
+		taskDao.archive(task);
+		assertTrue(task.isArchived());
+		
+	}
+	
+	@Test
+	public void shouldSearchOnlyTheNotArchivedTasks() {
+		TaskDao taskDao = new TaskDao(session);
+
+		Project project = new Project();
+		project.setName("zeng");
+		session.save(project);
+
+		Category category = new Category();
+		category.setProject(project);
+		session.save(category);
+		
+		TaskList taskList = new TaskList();
+		taskList.setCategory(category);
+		session.save(taskList);
+		
+		Task task = new Task();
+		task.setName("test");
+		task.setTaskList(taskList);
+		session.save(task);
+		
+		Task task2 = new Task();
+		task2.setName("test2");
+		task2.setTaskList(taskList);
+		session.save(task2);
+
+		Task task3 = new Task();
+		task3.setDescription("Lorem test ipsum");
+		task3.setTaskList(taskList);
+		session.save(task3);
+
+		taskDao.archive(task3);
+		
+		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project );
+		assertEquals(2, tasks.size());
+	}
 
 }

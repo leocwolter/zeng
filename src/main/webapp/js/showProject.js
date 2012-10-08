@@ -60,6 +60,14 @@ $(function() {
 		event.preventDefault();
 	});
 	
+	//Archive task
+	$(".archive-task").live("click", function(event){
+		var url = $(this).attr("href");
+		$.post(url);
+		$(this).closest(".task").remove();
+		event.preventDefault();
+	});
+	
 	//Notifications updating
 	setInterval(function(){
 		updateNotifications();

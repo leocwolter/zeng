@@ -10,11 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.Where;
 import org.joda.time.DateTime;
 
 @Entity
+@Where(clause = "archived = 0")
 public class Task {
-
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -31,8 +32,10 @@ public class Task {
 	private DateTime expirationDate;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime dateOfCompletion;
+	private boolean archived;
 
 	public Task() {
+		this.archived = false;
 		this.state = State.TODO;
 	}
 
@@ -130,5 +133,11 @@ public class Task {
 		return dateOfCompletion;
 	}
 
+	public boolean isArchived() {
+		return archived;
+	}
 
+	public void setArchived(boolean archived) {
+		this.archived = archived;
+	}
 }

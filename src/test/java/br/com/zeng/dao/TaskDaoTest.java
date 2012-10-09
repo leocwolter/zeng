@@ -48,7 +48,7 @@ public class TaskDaoTest extends DaoTest {
 		user2.setEmail("joao@gmail.com");
 		session.save(user2);
 		
-		List<User> contributors = Arrays.asList(user);
+		List<User> contributors = Arrays.asList(user,user2);
 		List<User> contributors2 = Arrays.asList(user2);
 
 		TaskList taskList = new TaskList();
@@ -119,7 +119,7 @@ public class TaskDaoTest extends DaoTest {
 			if(userTasksPerMonth.getUser().getName().equals("Leonardo"))
 				assertEquals(valueOf(2), userTasksPerMonth.getQuantityOfTasksInMonth(today));
 			if(userTasksPerMonth.getUser().getName().equals("Joao"))
-				assertEquals(valueOf(1), userTasksPerMonth.getQuantityOfTasksInMonth(today));
+				assertEquals(valueOf(3), userTasksPerMonth.getQuantityOfTasksInMonth(today));
 		}
 	}
 

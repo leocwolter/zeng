@@ -10,8 +10,6 @@
 <title>Zeng - ${project.name}</title>
 <!-- CSS IMPORT -->
 <c:import url="/WEB-INF/imports/css-import.jsp" />
-<!-- PROJECT STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/project.css"/>" />
 
 </head>
 	<body>
@@ -26,53 +24,43 @@
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>
         </section>
+
 		
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />
 		
 		<!-- GOOGLE API -->
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- 		<script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
 		
 		<!-- CHART SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/chart.js" />"></script>
-		 <script type="text/javascript">
-			google.load('visualization', '1', {'packages':['corechart']});
-			google.setOnLoadCallback(desenhaGrafico);
+<%-- 		<script type="text/javascript" src="<c:url value="/js/chart.js" />"></script> --%>
+
 		
-			function getData(){
+		 <script type="text/javascript">
+// 			google.load('visualization', '1', {'packages':['corechart']});
+// 			google.setOnLoadCallback(desenhaGrafico);
+// 			function desenhaGrafico(){
 				$.get("./getTasksPerContributors",function(data){
 					console.log(data);
+// 					var dataChart = new google.visualization.DataTable();
+// 					$(data.contributors).each(function(contributorIndex,contributor){
+// 						console.log(contributor.name);
+// 						dataChart.addColumn('number', contributor.name);
+// 						console.log(contributor.finalizedTasks.length);
+// 						dataChart.addRows(contributor.finalizedTasks.length);
+// 						$(contributor.finalizedTasks).each(function(taskIndex, task){
+// 							console.log(parseInt(taskIndex)+","+parseInt(contributorIndex)+1);
+// 							dataChart.setValue(parseInt(taskIndex), 0, new Date(task.dateOfCompletion.iMillis));
+// 							dataChart.setValue(parseInt(taskIndex), parseInt(contributorIndex),);
+// 						});	
+// 					});
+					
+// 					var chart = new google.visualization.LineChart(document.getElementById('zeng'));
+// 					chart.draw(dataChart, {width: 800, height: 600, title: 'Tarefas por colaborador'});
 				});
-			};	
-			
-			function desenhaGrafico() {
-				getData();
-				var data = new google.visualization.DataTable();
-				data.addColumn('date', 'Dia');
-				data.addColumn('number', 'Leonardo');
-				data.addColumn('number', 'Enzo');
-				
-				data.addRows(4);
-				
-				data.setValue(0, 0, new Date(2012,01,09));
-				data.setValue(0, 1, 30);
-				data.setValue(0, 2, 60);
-				
-				data.setValue(1, 0, new Date(2012,02,10));
-				data.setValue(1, 1, 35);
-				data.setValue(1, 2, 26);
-				
-				data.setValue(2, 0, new Date(2012,03,12));
-				data.setValue(2, 1, 30);
-				data.setValue(2, 2, 30);
-				
-				data.setValue(3, 0, new Date(2012,04,13));
-				data.setValue(3, 1, 40);
-				data.setValue(3, 2, 2);
-				
-				var chart = new google.visualization.LineChart(document.getElementById('zeng'));
-				chart.draw(data, {width: 800, height: 600, title: 'Tarefas por colaborador'});
-			}  
+// 			}
 		</script>
+		
+
 	</body>
 </html>

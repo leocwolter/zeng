@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.zeng.annotation.LoggedUser;
+import br.com.zeng.chart.UserTasksPerMonth;
 import br.com.zeng.dao.NotificationDao;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskDao;
@@ -79,14 +80,12 @@ public class ProjectController {
 
 	@LoggedUser
 	@Get("/project/{project.url}/getTasksPerContributors")
-	public void getTasksPerContributors(Project project) {
+	public void getQuantityOfTasksPerMonth(Project project) {
 		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
-		List<User> contributors = projectComplete.getContributors();
-		
-		result.use(json()).from(contributors, "contributors")
-							.include("finalizedTasks")
-							.include("finalizedTasks.dateOfCompletion")
-							.serialize();
+		List<UserTasksPerMonth> quantityOfTasksPerMonth = taskDao.getQuantityOfTasksGroupedByDateAndUser(projectComplete);
+		result.use(json()).from(quantityOfTasksPerMonth, "quantityOfTasksPerMonth")
+								.recursive()
+								.serialize();
 	}
 
 	@LoggedUser
@@ -103,6 +102,5 @@ public class ProjectController {
 		result.include("tasksFound", tasks);
 		result.include("project", projectDao.getProjectWithUrl(project.getUrl()));
 	}
-	
 	
 }

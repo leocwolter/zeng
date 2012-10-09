@@ -23,6 +23,7 @@ public class TaskDaoTest extends DaoTest {
 
 	private TaskDao taskDao;
 	private Project project;
+	private Task task;
 
 	@Before
 	public void setUp() {
@@ -46,6 +47,7 @@ public class TaskDaoTest extends DaoTest {
 		user2.setName("Joao");
 		user2.setEmail("joao@gmail.com");
 		session.save(user2);
+		
 		List<User> contributors = Arrays.asList(user);
 		List<User> contributors2 = Arrays.asList(user2);
 
@@ -53,7 +55,7 @@ public class TaskDaoTest extends DaoTest {
 		taskList.setCategory(category);
 		session.save(taskList);
 
-		Task task = new Task();
+		task = new Task();
 		task.setName("invalid");
 		task.setTaskList(taskList);
 		task.setContributors(contributors);
@@ -85,12 +87,9 @@ public class TaskDaoTest extends DaoTest {
 		taskDao.finalize(task5);
 		session.flush();
 	}
-
+	
 	@Test
 	public void shouldFinalizeATask() {
-		Task task = new Task();
-		session.save(task);
-
 		assertFalse(task.isFinalized());
 		taskDao.finalize(task);
 		assertTrue(task.isFinalized());
@@ -98,10 +97,7 @@ public class TaskDaoTest extends DaoTest {
 
 	@Test
 	public void shouldStopATask() {
-		Task task = new Task();
-		task.start();
-		session.save(task);
-
+		taskDao.start(task);
 		assertFalse(task.isStopped());
 		taskDao.stop(task);
 		assertTrue(task.isStopped());
@@ -109,9 +105,6 @@ public class TaskDaoTest extends DaoTest {
 
 	@Test
 	public void shouldStartATask() {
-		Task task = new Task();
-		session.save(task);
-
 		assertFalse(task.isStarted());
 		taskDao.start(task);
 		assertTrue(task.isStarted());
@@ -122,12 +115,12 @@ public class TaskDaoTest extends DaoTest {
 		List<UserTasksPerMonth> quantityOfTasksGroupedByDateAndUser = taskDao.getQuantityOfTasksGroupedByDateAndUser(project);
 		DateTime dateTime = new DateTime();
 		DateTime today = new DateTime(dateTime.getYear(),dateTime.getMonthOfYear(),1,0,0,0,0);
-		
-		Long quantityOfTasksInMonthForJoao = quantityOfTasksGroupedByDateAndUser.get(0).getQuantityOfTasksInMonth(today);
-		assertEquals(valueOf(1), quantityOfTasksInMonthForJoao);
-		Long quantityOfTasksInMonthForLeonardo = quantityOfTasksGroupedByDateAndUser.get(1).getQuantityOfTasksInMonth(today);
-		assertEquals(valueOf(2), quantityOfTasksInMonthForLeonardo);
-		
+		for (UserTasksPerMonth userTasksPerMonth : quantityOfTasksGroupedByDateAndUser) {
+			if(userTasksPerMonth.getUser().getName().equals("Leonardo"))
+				assertEquals(valueOf(2), userTasksPerMonth.getQuantityOfTasksInMonth(today));
+			if(userTasksPerMonth.getUser().getName().equals("Joao"))
+				assertEquals(valueOf(1), userTasksPerMonth.getQuantityOfTasksInMonth(today));
+		}
 	}
 
 	@Test
@@ -154,36 +147,7 @@ public class TaskDaoTest extends DaoTest {
 	@Test
 	public void shouldSearchOnlyTheNotArchivedTasks() {
 		TaskDao taskDao = new TaskDao(session);
-
-		Project project = new Project();
-		project.setName("zeng");
-		session.save(project);
-
-		Category category = new Category();
-		category.setProject(project);
-		session.save(category);
-		
-		TaskList taskList = new TaskList();
-		taskList.setCategory(category);
-		session.save(taskList);
-		
-		Task task = new Task();
-		task.setName("test");
-		task.setTaskList(taskList);
-		session.save(task);
-		
-		Task task2 = new Task();
-		task2.setName("test2");
-		task2.setTaskList(taskList);
-		session.save(task2);
-
-		Task task3 = new Task();
-		task3.setDescription("Lorem test ipsum");
-		task3.setTaskList(taskList);
-		session.save(task3);
-
-		taskDao.archive(task3);
-		
+		taskDao.archive(task);
 		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project );
 		assertEquals(2, tasks.size());
 	}

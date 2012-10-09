@@ -14,8 +14,6 @@ INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `st
 
 INSERT INTO `User` (`email`, `name`, `password`) VALUES ('leocwolter@gmail.com', 'Leonardo Wolter', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('enzo.toshiba@gmail.com', 'Enzo Toshio', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('henrique.develops@gmail.com', 'Henrique Diniz', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('gareis93@gmail.com', 'Gabriel Reis', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('mtsh.poli@gmail.com', 'Mateus Poli', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6');
 
-INSERT INTO `TaskPerContributor` ( `contributor_id`, `task_id`, `dateOfCompletion`) VALUES (1, 2, '2012-04-30 07:00:00');
-
 INSERT INTO `Task_User` (`Task_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('2', '4'), ('2', '5'), ('4', '2'), ('4', '1'), ('5', '3'), ('5', '5'), ('6', '3');
 
 INSERT INTO `Project_User` (`Project_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'), ('1', '5');

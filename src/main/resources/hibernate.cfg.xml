@@ -22,7 +22,6 @@
 		<mapping class="br.com.zeng.model.TaskList"/> 
 		<mapping class="br.com.zeng.model.User"/> 
 		<mapping class="br.com.zeng.model.Step"/> 
-		<mapping class="br.com.zeng.model.TaskPerContributor"/> 
 		<mapping class="br.com.zeng.model.Notification"/> 
 
     </session-factory>

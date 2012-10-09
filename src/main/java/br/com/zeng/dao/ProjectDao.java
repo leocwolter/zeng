@@ -45,5 +45,4 @@ public class ProjectDao {
 	public Project getProjectWithUrl(String url) {
 		return (Project) session.createCriteria(Project.class).add(Restrictions.like("url", url)).uniqueResult();
 	}
-
 }

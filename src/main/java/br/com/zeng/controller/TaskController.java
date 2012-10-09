@@ -14,12 +14,10 @@ import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.NotificationDao;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskListDao;
-import br.com.zeng.dao.TaskPerContributorDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.model.Notification;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskList;
-import br.com.zeng.model.TaskPerContributor;
 import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
 
@@ -30,18 +28,16 @@ public class TaskController {
 	private final TaskListDao taskListDao;
 	private final UserDao userDao;
 	private final UserSession userSession;
-	private TaskPerContributorDao taskPerContributorDao;
 	private final NotificationDao notificationDao;
 
 	public TaskController(TaskDao taskDao, TaskListDao taskListDao, UserDao userDao,
-			UserSession userSession, TaskPerContributorDao taskPerContributorDao,
+			UserSession userSession,
 			NotificationDao notificationDao, Result result) {
 		this.taskDao = taskDao;
 		this.taskListDao = taskListDao;
 		this.userDao = userDao;
 		this.result = result;
 		this.userSession = userSession;
-		this.taskPerContributorDao = taskPerContributorDao;
 		this.notificationDao = notificationDao;
 	}
 
@@ -80,14 +76,15 @@ public class TaskController {
 	@Path("/task/startTask/{task.id}")
 	public void start(Task task) {
 		Task taskComplete = taskDao.getTaskWithId(task.getId());
-		if (!taskComplete.isFinalized()) {
-			taskComplete.start();
-			taskDao.update(taskComplete);
-		}
+		if (taskComplete.isFinalized()) throw new RuntimeException("Uma tarefa finalizada não pode ser iniciada");
+		
+		taskComplete.start();
+		taskDao.start(taskComplete);
 		
 		String stringNotification = "Começou a task "+taskComplete.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
 		notificationDao.insert(notification);
+		
 		result.use(Results.page()).of(TaskController.class).startedTask();
 	}
 	
@@ -95,20 +92,14 @@ public class TaskController {
 	@Path("/task/finalizeTask/{task.id}")
 	public void finalize(Task task) {
 		Task taskComplete = taskDao.getTaskWithId(task.getId());
-		if (!taskComplete.isFinalized()) {
-			User user = userSession.getUser();
-			
-			TaskPerContributor taskPerContributor = new TaskPerContributor(user, taskComplete);
-			taskPerContributorDao.insert(taskPerContributor);
-
-			taskComplete.finalize();
-			taskDao.update(taskComplete);
+		if (taskComplete.isFinalized()) throw new RuntimeException("Essa tarefa ja foi finalizada");
 		
-			String stringNotification = "Finalizou a task "+taskComplete.getName();
-			Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
-			notificationDao.insert(notification);
-			
-		}
+		taskDao.finalize(taskComplete);
+	
+		String stringNotification = "Finalizou a task "+taskComplete.getName();
+		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
+		notificationDao.insert(notification);
+		
 		result.use(Results.page()).of(TaskController.class).finalizedTask();
 	}
 
@@ -116,15 +107,15 @@ public class TaskController {
 	@Path("/task/todoTask/{task.id}")
 	public void stop(Task task) {
 		Task taskComplete = taskDao.getTaskWithId(task.getId());
-		if (!taskComplete.isFinalized()) {
-			taskComplete.stop();
-			taskDao.update(taskComplete);
-		
-			String stringNotification = "Parou a task "+taskComplete.getName();
-			Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
-			notificationDao.insert(notification);
-		
-		}
+		if (taskComplete.isFinalized()) throw new RuntimeException("uma tarefa finalizada nao pode ser parada");
+			
+		taskComplete.stop();
+		taskDao.stop(taskComplete);
+	
+		String stringNotification = "Parou a task "+taskComplete.getName();
+		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
+		notificationDao.insert(notification);
+	
 		result.use(Results.page()).of(TaskController.class).stoppedTask();
 	}
 

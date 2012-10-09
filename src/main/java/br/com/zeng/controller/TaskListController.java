@@ -7,7 +7,6 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.CategoryDao;
-import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.model.Category;
 import br.com.zeng.model.TaskList;

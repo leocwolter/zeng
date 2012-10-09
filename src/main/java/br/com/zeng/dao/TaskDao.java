@@ -35,7 +35,7 @@ public class TaskDao {
 
 	public void archive(Task task) {
 		task.setArchived(true);
-		session.update(task);
+		update(task);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -54,28 +54,32 @@ public class TaskDao {
 	}
 
 	private ArrayList<UserTasksPerMonth> buildUsersTasksPerMonthList(List<Object[]> list) {
-		HashMap<User,UserTasksPerMonth> tasksPerMonthPerUser = new HashMap<User, UserTasksPerMonth>();
-		for (Object[] object : list) {
-			DateTime dateTime = new DateTime((Integer)object[0],(Integer)object[1],1,0,0,0,0);
-			User user = (User) session.get(User.class, (Long)object[2]);
-			Long count = (Long) object[3];
-			
-			if(tasksPerMonthPerUser.containsKey(user)){
-				tasksPerMonthPerUser.get(user).addQuantityOfTasksPerMonth(dateTime, count);
-			}else{
-				HashMap<DateTime, Long> quantityOfTasksPerMonth = new HashMap<DateTime, Long>();
-				quantityOfTasksPerMonth.put(dateTime, count);
-				
-				UserTasksPerMonth userTasksPerMonth = new UserTasksPerMonth(user, quantityOfTasksPerMonth);
-				tasksPerMonthPerUser.put(user, userTasksPerMonth);
-			}
-			
-			
-			
-		}
+		HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser = mountTasksPerMonthPerUser(list);
 		ArrayList<UserTasksPerMonth> usersTasksPerMonthList = new ArrayList<UserTasksPerMonth>();
 		usersTasksPerMonthList.addAll(tasksPerMonthPerUser.values());
 		return usersTasksPerMonthList;
+	}
+
+	private HashMap<User, UserTasksPerMonth> mountTasksPerMonthPerUser(	List<Object[]> list) {
+		HashMap<User,UserTasksPerMonth> tasksPerMonthPerUser = new HashMap<User, UserTasksPerMonth>();
+		for (Object[] object : list) {
+			putOrAdd(tasksPerMonthPerUser, object);
+		}
+		return tasksPerMonthPerUser;
+	}
+
+	private void putOrAdd(	HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser, Object[] object) {
+		DateTime dateTime = new DateTime((Integer)object[0],(Integer)object[1],1,0,0,0,0);
+		User user = (User) session.get(User.class, (Long)object[2]);
+		Long count = (Long) object[3];
+		if(tasksPerMonthPerUser.containsKey(user)){
+			tasksPerMonthPerUser.get(user).addQuantityOfTasksPerMonth(dateTime, count);
+		}else{
+			HashMap<DateTime, Long> quantityOfTasksPerMonth = new HashMap<DateTime, Long>();
+			quantityOfTasksPerMonth.put(dateTime, count);
+			UserTasksPerMonth userTasksPerMonth = new UserTasksPerMonth(user, quantityOfTasksPerMonth);
+			tasksPerMonthPerUser.put(user, userTasksPerMonth);
+		}
 	}
 
 	public void finalize(Task task) {

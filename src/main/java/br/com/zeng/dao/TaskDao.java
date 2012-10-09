@@ -1,16 +1,20 @@
 package br.com.zeng.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.joda.time.DateTime;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.zeng.chart.UserTasksPerMonth;
 import br.com.zeng.model.Project;
 import br.com.zeng.model.Task;
+import br.com.zeng.model.User;
 
 @Component
 public class TaskDao {
-
 	private final Session session;
 
 	public TaskDao(Session session) {
@@ -31,13 +35,56 @@ public class TaskDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Task> getTasksWithContentInAProject(String content, Project project){
-		System.out.println("Content: "+content);
-		System.out.println("Project: "+project.getId());
 		List<Task> tasks = session.createQuery("from Task t where t.name like :content or t.description like :content and t.taskList.category.project.url like :project")
 							.setString("content", "%"+content+"%")
 							.setString("project", project.getUrl())
 							.list();
-		System.out.println(tasks);
 		return tasks;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<UserTasksPerMonth> getQuantityOfTasksGroupedByDateAndUser(Project project){
+		List<Object[]> list = session.createQuery("select year(t.dateOfCompletion), month(t.dateOfCompletion), c.id, count(*) from Task t join t.contributors c where t.dateOfCompletion != null group by year(t.dateOfCompletion),month(t.dateOfCompletion), c.id order by c.id").list();
+		return buildUsersTasksPerMonthList(list);
+	}
+
+	private ArrayList<UserTasksPerMonth> buildUsersTasksPerMonthList(List<Object[]> list) {
+		HashMap<User,UserTasksPerMonth> tasksPerMonthPerUser = new HashMap<User, UserTasksPerMonth>();
+		for (Object[] object : list) {
+			DateTime dateTime = new DateTime((Integer)object[0],(Integer)object[1],1,0,0,0,0);
+			User user = (User) session.get(User.class, (Long)object[2]);
+			Long count = (Long) object[3];
+			
+			if(tasksPerMonthPerUser.containsKey(user)){
+				tasksPerMonthPerUser.get(user).addQuantityOfTasksPerMonth(dateTime, count);
+			}else{
+				HashMap<DateTime, Long> quantityOfTasksPerMonth = new HashMap<DateTime, Long>();
+				quantityOfTasksPerMonth.put(dateTime, count);
+				
+				UserTasksPerMonth userTasksPerMonth = new UserTasksPerMonth(user, quantityOfTasksPerMonth);
+				tasksPerMonthPerUser.put(user, userTasksPerMonth);
+			}
+			
+			
+			
+		}
+		ArrayList<UserTasksPerMonth> usersTasksPerMonthList = new ArrayList<UserTasksPerMonth>();
+		usersTasksPerMonthList.addAll(tasksPerMonthPerUser.values());
+		return usersTasksPerMonthList;
+	}
+
+	public void finalize(Task task) {
+		task.finalize();
+		update(task);
+	}
+
+	public void start(Task task) {
+		task.start();
+		update(task);
+	}
+
+	public void stop(Task task) {
+		task.stop();
+		update(task);
 	}
 }

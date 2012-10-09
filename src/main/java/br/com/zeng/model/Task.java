@@ -29,6 +29,8 @@ public class Task {
 	private List<Step> steps;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime expirationDate;
+	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
+	private DateTime dateOfCompletion;
 
 	public Task() {
 		this.state = State.TODO;
@@ -105,13 +107,28 @@ public class Task {
 	public void start() {
 		this.state = State.DOING;
 	}
+	
+	public boolean isStarted() {
+		return state.equals(State.DOING);
+	}
 
 	public void stop() {
 		this.state = State.TODO;
 	}
 
+	public boolean isStopped() {
+		return state.equals(State.TODO);
+	}
+	
 	public void finalize() {
+		DateTime dateTime = new DateTime();
+		this.dateOfCompletion = new DateTime(dateTime.getYear(),dateTime.getMonthOfYear(),1,0,0,0,0);
 		this.state = State.DONE;
 	}
+
+	public DateTime getDateOfCompletion() {
+		return dateOfCompletion;
+	}
+
 
 }

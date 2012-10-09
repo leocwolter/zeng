@@ -13,12 +13,10 @@ import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.NotificationDao;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskDao;
-import br.com.zeng.dao.TaskPerContributorDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.model.Notification;
 import br.com.zeng.model.Project;
 import br.com.zeng.model.Task;
-import br.com.zeng.model.TaskPerContributor;
 import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
 
@@ -28,19 +26,16 @@ public class ProjectController {
 	private final ProjectDao projectDao;
 	private final UserSession userSession;
 	private final UserDao userDao;
-	private TaskPerContributorDao taskPerContributorDao;
 	private final TaskDao taskDao;
 	private final NotificationDao notificationDao;
 
 	public ProjectController(Result result, ProjectDao projectDao,
-			UserSession userSession, UserDao userDao,
-			TaskPerContributorDao taskPerContributorDao, TaskDao taskDao,
+			UserSession userSession, UserDao userDao, TaskDao taskDao,
 			NotificationDao notificationDao) {
 		this.result = result;
 		this.projectDao = projectDao;
 		this.userSession = userSession;
 		this.userDao = userDao;
-		this.taskPerContributorDao = taskPerContributorDao;
 		this.taskDao = taskDao;
 		this.notificationDao = notificationDao;
 	}
@@ -85,14 +80,13 @@ public class ProjectController {
 	@LoggedUser
 	@Get("/project/{project.url}/getTasksPerContributors")
 	public void getTasksPerContributors(Project project) {
-		Project projectComplete = projectDao
-				.getProjectWithUrl(project.getUrl());
+		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
 		List<User> contributors = projectComplete.getContributors();
-		List<TaskPerContributor> tasksPerContributors = taskPerContributorDao
-				.getDataWithUsers(contributors);
-
-		result.use(json()).from(tasksPerContributors, "tasksPerContributors")
-				.include("contributor", "task", "dateOfCompletion").serialize();
+		
+		result.use(json()).from(contributors, "contributors")
+							.include("finalizedTasks")
+							.include("finalizedTasks.dateOfCompletion")
+							.serialize();
 	}
 
 	@LoggedUser

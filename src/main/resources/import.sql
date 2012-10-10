@@ -28,18 +28,20 @@ INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `st
 INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Fazer imaginacao funcionar!', '2012-04-28 15:00:00', 'Marotona', '8', '0', 0);
 INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Dois Coelhos', '2012-12-31 00:00:00', 'Porra do tcc', '4', '0', 0);
 INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Sem piração', '2012-04-28 10:30:00', 'Malandraaageeem', '1', '0', 0);
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Akaka', '2012-04-11 00:00:00', 'eucarioticas', '2', '0', 0);
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('lalalala', '2012-06-19 00:00:00', 'Alo galera de cowboy', '4', '0', 0);
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('lulululu!', '2012-04-30 07:00:00', 'Tarefa Marota', '3', '0', 0);
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Fazer rio!', '2012-04-28 15:00:00', 'Marotona', '3', '0', 0); 
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Uma Cajadada', '2012-12-31 00:00:00', 'Porra do tcc', '3', '0', 0); 
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Sem cão', '2012-04-28 10:30:00', 'Malandraaageeem', '3', '0', 0);
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('Akaka', '2012-04-11 00:00:00', 'procarioticas', '1', '0', 0);
-INSERT INTO `Task` ( `description`, `expirationDate`, `name`, `taskList_id`, `state`, `archived`) VALUES ('lalalala', '2012-06-19 00:00:00', 'Alo galera de cowboy', '4', '2', 0);
+
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2001', 'Akaka', '2012-04-11 00:00:00', '2012-04-01 00:00:00', 'eucarioticas', '2', '2', 0);
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2002', 'lalalala', '2012-06-19 00:00:00', '2012-06-01 00:00:00', 'Alo galera de cowboy', '4', '2', 0);
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2003', 'lulululu!', '2012-04-30 07:00:00', '2012-04-01 07:00:00', 'Tarefa Marota', '3', '2', 0);
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2004', 'Fazer rio!', '2012-04-28 15:00:00', '2012-04-01 15:00:00', 'Marotona', '3', '2', 0); 
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2005', 'Uma Cajadada', '2012-12-31 00:00:00', '2012-08-01 00:00:00', 'Porra do tcc', '3', '2', 0); 
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2006', 'Sem cão', '2012-04-28 10:30:00', '2012-04-01 00:00:00', 'Malandraaageeem', '3', '2', 0);
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2007', 'Akaka', '2012-04-11 00:00:00', '2012-04-01 00:00:00', 'procarioticas', '1', '2', 0);
+INSERT INTO `Task` (`id`, `description`, `expirationDate`, `dateOfCompletion`, `name`, `taskList_id`, `state`, `archived`) VALUES ('2008', 'lalalala', '2012-06-19 00:00:00', '2012-06-01 00:00:00', 'Alo galera de cowboy', '4', '2', 0);
 
 INSERT INTO `User` (`email`, `name`, `password`) VALUES ('leocwolter@gmail.com', 'Leonardo Wolter', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('enzo.toshiba@gmail.com', 'Enzo Toshio', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('henrique.develops@gmail.com', 'Henrique Diniz', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('gareis93@gmail.com', 'Gabriel Reis', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6'), ('mtsh.poli@gmail.com', 'Mateus Poli', '4df1319f3df602e7bbaa0173d46388744715cb89e38d2d7d529b00834f7148e6');
 
 INSERT INTO `Task_User` (`Task_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('2', '4'), ('2', '5'), ('4', '2'), ('4', '1'), ('5', '3'), ('5', '5'), ('6', '3');
+INSERT INTO `Task_User` (`Task_id`, `contributors_id`) VALUES  ('2001', '1'), ('2001', '2'), ('2002', '2'), ('2002', '3'), ('2003', '1'), ('2003', '2'), ('2003', '2'), ('2004', '3'), ('2004', '1'), ('2005', '2'), ('2006', '2'), ('2008', '3'), ('2008', '1'), ('2007', '2'), ('2006', '2');
 
 INSERT INTO `Project_User` (`Project_id`, `contributors_id`) VALUES ('1', '1'), ('1', '2'), ('1', '3'), ('1', '4'), ('1', '5');
 

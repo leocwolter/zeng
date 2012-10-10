@@ -16,7 +16,8 @@ ol.plans {
 ol.plans .option {
 	float: left;
 	width: 273px;
-	height: 400px;
+	height: auto;
+	padding: 0 0 15px 0;
 	background: #38291A;
 	border: 1px solid #38291A;
 	color: #997047;
@@ -68,6 +69,18 @@ ol.plans .option {
 	color: #C9AE5D;
 }
 
+#silver-title {
+	color: #C0C0C0;
+}
+
+#gold-title {
+	color: #FFD700;
+}
+
+#platinum-title {
+	color: #EDEDEF;
+}
+
 .plan-description {
 	font-size: 14px;
 	width: 100%;
@@ -75,14 +88,26 @@ ol.plans .option {
 
 .plan-description li {
 	height: auto;
-	min-height: 63px;
+	min-height: 64px;
 	width: auto;
 	border-bottom: 1px solid #CCC;
 	border-top: 1px solid white;
 	border-collapse: separate;
 	border-spacing: 5px 0;
 	background: #F4F4F4;
-	padding: 5px;
+	padding: 24px 10px;
 	position: relative;
+	overflow: hidden;
+}
+
+#extension-button {
+	height: 40px;
+	width: 350px;
+	font-size: 18px;
+	line-height: 40px;
+	text-align: center;
+	display: block;
+	clear: both;
+	margin: 50px auto;
 	overflow: hidden;
 }

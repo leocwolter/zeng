@@ -3,7 +3,7 @@
 <%@ attribute name="task" required="true" type="br.com.zeng.model.Task" %>
 <li class="task task-state-${task.state}" data-task-id="${task.id}">
 	<h4 class="task-name">${task.name}</h4>
-	<a href="${linkTo[TaskController].archive[task.id]}" class="button add-button archive-task" >X</a>
+	<a href="${linkTo[TaskController].archive[task.id]}" class="button remove-button archive-task" >X</a>
 	<ul class="task-contributors">
 		<c:forEach items="${task.contributors}" var="contributor">
 			<li>${contributor.name};</li>

@@ -31,7 +31,7 @@
 			<h1 id="purchase-title">Purchase Plans</h1>
 			<ol class="offer-sale plans container">
 				<li class="option" id="bronze-option">
-					<h2 class="plan-title" id="bronze-title">BRONZE Plan</h2>
+					<h2 class="plan-title" id="bronze-title">Bronze Plan</h2>
 					<ul class="plan-description">
 						<li><strong>15</strong> active clients</li>
 						<li><strong>Unlimited</strong> invoices per month</li>
@@ -45,12 +45,9 @@
 							</form>
 							<!-- FORM END - PAGSEGURO BUTTON --></li>
 					</ul>
-					<p>
-						<a href="#" class="button">Sign up 30 day free trial</a>
-					</p>
 				</li>
-				<li class="option" id="bronze-option">
-					<h2 class="plan-title" id="bronze-title">BRONZE Plan</h2>
+				<li class="option" id="silver-option">
+					<h2 class="plan-title" id="silver-title">Silver Plan</h2>
 					<ul class="plan-description">
 						<li><strong>15</strong> active clients</li>
 						<li><strong>Unlimited</strong> invoices per month</li>
@@ -64,12 +61,9 @@
 							</form>
 							<!-- FORM END - PAGSEGURO BUTTON --></li>
 					</ul>
-					<p>
-						<a href="#" class="button">Sign up 30 day free trial</a>
-					</p>
 				</li>
-				<li class="option" id="bronze-option">
-					<h2 class="plan-title" id="bronze-title">BRONZE Plan</h2>
+				<li class="option" id="gold-option">
+					<h2 class="plan-title" id="gold-title">Gold Plan</h2>
 					<ul class="plan-description">
 						<li><strong>15</strong> active clients</li>
 						<li><strong>Unlimited</strong> invoices per month</li>
@@ -83,12 +77,9 @@
 							</form>
 							<!-- FORM END - PAGSEGURO BUTTON --></li>
 					</ul>
-					<p>
-						<a href="#" class="button">Sign up 30 day free trial</a>
-					</p>
 				</li>
-				<li class="option" id="bronze-option">
-					<h2 class="plan-title" id="bronze-title">BRONZE Plan</h2>
+				<li class="option" id="platinum-option">
+					<h2 class="plan-title" id="platinum-title">Platinum Plan</h2>
 					<ul class="plan-description">
 						<li><strong>15</strong> active clients</li>
 						<li><strong>Unlimited</strong> invoices per month</li>
@@ -102,11 +93,10 @@
 							</form>
 							<!-- FORM END - PAGSEGURO BUTTON --></li>
 					</ul>
-					<p>
-						<a href="#" class="button">Sign up 30 day free trial</a>
-					</p>
 				</li>
 			</ol>
+			<br class="clear-fix" />
+			<section class="button normal-button" id="extension-button">Extension Plan + More 25GB of Storage</section>
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp" />
 	</section>

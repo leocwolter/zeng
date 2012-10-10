@@ -73,9 +73,9 @@ public class TaskController {
 	}
 
 	@LoggedUser
-	@Path("/task/startTask/{task.id}")
-	public void start(Task task) {
-		Task taskComplete = taskDao.getTaskWithId(task.getId());
+	@Path("/task/startTask/{taskId}")
+	public void start(Long taskId) {
+		Task taskComplete = taskDao.getTaskWithId(taskId);
 		if (taskComplete.isFinalized()) throw new RuntimeException("Uma tarefa finalizada não pode ser iniciada");
 		
 		taskComplete.start();
@@ -89,9 +89,9 @@ public class TaskController {
 	}
 	
 	@LoggedUser
-	@Path("/task/finalizeTask/{task.id}")
-	public void finalize(Task task) {
-		Task taskComplete = taskDao.getTaskWithId(task.getId());
+	@Path("/task/finalizeTask/{taskId}")
+	public void finalize(Long taskId) {
+		Task taskComplete = taskDao.getTaskWithId(taskId);
 		if (taskComplete.isFinalized()) throw new RuntimeException("Essa tarefa ja foi finalizada");
 		
 		taskDao.finalize(taskComplete);
@@ -104,9 +104,9 @@ public class TaskController {
 	}
 
 	@LoggedUser
-	@Path("/task/todoTask/{task.id}")
-	public void stop(Task task) {
-		Task taskComplete = taskDao.getTaskWithId(task.getId());
+	@Path("/task/stopTask/{taskId}")
+	public void stop(Long taskId) {
+		Task taskComplete = taskDao.getTaskWithId(taskId);
 		if (taskComplete.isFinalized()) throw new RuntimeException("uma tarefa finalizada nao pode ser parada");
 			
 		taskComplete.stop();

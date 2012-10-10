@@ -2,7 +2,7 @@ $(function() {
 	updateNotifications();
 
 	//Drag n' drop configuration
-	$(".task-list").configureSortable();
+	$(".task-list").configureZengTaskList();
 	
 	//Filter tasks
 	$(".task-filter").live("click", function() {

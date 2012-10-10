@@ -9259,7 +9259,7 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 
-jQuery.fn.configureSortable = function() {
+jQuery.fn.configureZengTaskList = function() {
 	console.log(this);
 	$(this).sortable({
 		connectWith : $(this),

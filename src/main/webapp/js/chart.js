@@ -13,16 +13,7 @@
 				});
 				var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('zeng'));
 				
-				var options = {
-						displayZoomButtons:false,
-					    animation:{
-					    	duration: 1000,
-					    	easing: 'out',
-					    },
-					    title: 'Tarefas por colaborador',
-					    };
-				
-				chart.draw(dataChart, options);
+				chart.draw(dataChart, {displayZoomButtons:false});
 			});
 		});
 	}

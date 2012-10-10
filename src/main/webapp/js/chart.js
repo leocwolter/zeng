@@ -1,4 +1,4 @@
-	google.load('visualization', '1', {'packages':['corechart']});
+	google.load('visualization', '1', {'packages':['annotatedtimeline']});
 	google.setOnLoadCallback(desenhaGrafico);
 	function desenhaGrafico(){
 		$.get("./getTasksPerContributors",function(data){
@@ -11,8 +11,18 @@
 					dataChart.setValue(parseInt(tasksPerMonthIndex), 0, new Date(tasksPerMonth[0].iMillis));
 					dataChart.setValue(parseInt(tasksPerMonthIndex), parseInt(userIndex)+1,tasksPerMonth[1]);
 				});
-				var chart = new google.visualization.LineChart(document.getElementById('zeng'));
-				chart.draw(dataChart, {width: document.width, height: 600, title: 'Tarefas por colaborador'});
+				var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('zeng'));
+				
+				var options = {
+						displayZoomButtons:false,
+					    animation:{
+					    	duration: 1000,
+					    	easing: 'out',
+					    },
+					    title: 'Tarefas por colaborador',
+					    };
+				
+				chart.draw(dataChart, options);
 			});
 		});
 	}

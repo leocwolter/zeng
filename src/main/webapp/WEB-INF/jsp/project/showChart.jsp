@@ -19,7 +19,7 @@
 					<c:import url="/WEB-INF/imports/header.jsp"/>
 				</section>
 	            <section id="content">
-	            	<section class="project_chart" id="zeng"></section>
+	            	<section class="project_chart container" id="zeng" style='width: 1024px; height: 600px;'></section>
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>

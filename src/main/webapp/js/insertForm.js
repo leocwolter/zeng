@@ -1,7 +1,7 @@
 $(function(){
 	function insert(event, element, callBack){
 		var form = $(element).closest("form"),
-			inputs = form.find("select, input:not([type='submit'])"),	
+			inputs = form.find("select, input:not([type='submit'], input:checkbox:not(:checked))"),	
 			formData = createFormData(inputs),
 			url = form.attr("action");
 		$.post(url, formData, function(data){

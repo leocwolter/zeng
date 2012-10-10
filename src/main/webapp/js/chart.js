@@ -12,7 +12,7 @@
 					dataChart.setValue(parseInt(tasksPerMonthIndex), parseInt(userIndex)+1,tasksPerMonth[1]);
 				});
 				var chart = new google.visualization.LineChart(document.getElementById('zeng'));
-				chart.draw(dataChart, {width: 800, height: 600, title: 'Tarefas por colaborador'});
+				chart.draw(dataChart, {width: document.width, height: 600, title: 'Tarefas por colaborador'});
 			});
 		});
 	}

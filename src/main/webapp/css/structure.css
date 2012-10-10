@@ -288,12 +288,21 @@ footer {
 	background: -ms-linear-gradient(bottom, rgb(153, 0, 0) 0%,
 		rgb(255, 0, 0) 100% );
 	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(153, 0, 0) ), color-stop(1, rgb(255, 0, 0) ) );
-	-webkit-box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
-	-moz-box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
-	box-shadow: inset 0px 1px 0px #56D84F, 0px 1px 0px #0C320A;
-	text-shadow: #207D1B -1px -1px, #207D1B 1px 1px;
 	text-align: center;
 	color: #FFFFFF;
+}
+
+.remove-button:hover{
+    color: #5b0000;
+}
+
+.archive-task{
+	float: right;
+	width: 23px;
+	height: 23px;
+	line-height: 23px;
+	text-indent: -2px;
+	font-weight: bold;
 }
 
 /*RESIZABLE STRUSCTURE*/

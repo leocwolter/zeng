@@ -1,18 +1,8 @@
 $(function() {
 	updateNotifications();
-	
+
 	//Drag n' drop configuration
-	$(".task-list").sortable({
-		connectWith : ".task-list",
-		receive : function(event, ui) {
-			var taskListId = ui.item.closest("ul").data("tasklist-id"),
-				taskId = ui.item.data("task-id");
-			$.post("/zeng/task/moveTask", {
-				"task.id" : taskId,
-				"taskList.id" : taskListId
-			});
-		}
-	});
+	$(".task-list").configureSortable();
 	
 	//Filter tasks
 	$(".task-filter").live("click", function() {

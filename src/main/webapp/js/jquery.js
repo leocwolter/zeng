@@ -9165,9 +9165,6 @@ function getWindow( elem ) {
 			false;
 }
 
-
-
-
 // Create width, height, innerHeight, innerWidth, outerHeight and outerWidth methods
 jQuery.each([ "Height", "Width" ], function( i, name ) {
 
@@ -9261,6 +9258,22 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 	define( "jquery", [], function () { return jQuery; } );
 }
 
+
+jQuery.fn.configureSortable = function() {
+	console.log(this);
+	$(this).sortable({
+		connectWith : $(this),
+		receive : function(event, ui) {
+			var taskListId = ui.item.closest("ul").data("tasklist-id"),
+				taskId = ui.item.data("task-id");
+			ui.item.attr("style","");
+			$.post("/zeng/task/moveTask", {
+				"task.id" : taskId,
+				"taskList.id" : taskListId
+			});
+		}
+	});
+};
 
 
 })( window );

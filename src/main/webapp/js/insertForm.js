@@ -64,6 +64,7 @@ $(function(){
 				categoryId = $("[name='categoryId']").val(),
 				category = $("#category-"+categoryId, parent.document);
 			$(taskArea).appendTo(category);		
+			$(".task-list").configureSortable();
 		});
 	});
 

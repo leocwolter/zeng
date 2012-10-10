@@ -68,7 +68,7 @@ $(function(){
 	});
 
 	function createTaskArea(taskListData){
-		var taskList = $("<ul>").addClass("task-list ui-sortable").attr("id","task-list-"+taskListData.id),
+		var taskList = $("<ul>").addClass("task-list ui-sortable").attr("data-tasklist-id",taskListData.id),
 			taskListTitle = $("<h3>").text(taskListData.name),
 			nav = createTaskAreaNavBar(),
 			addTaskButton = $("<a>").addClass("add-button add-task-button modal").attr("href","/zeng/taskList/addTaskForm/"+taskListData.id).html("+Add Task"),
@@ -107,19 +107,23 @@ $(function(){
 	});
 	
 	function createTask(taskData){
-		var task = $("<li>").addClass("task task-state-TODO").attr("id","task-"+taskData.id),
+		var task = $("<li>").addClass("task task-state-TODO").attr("data-task-id",taskData.id),
+			archiveTaskButton = $("<a>").attr("href","/zeng/task/archive/")
+										.addClass("button remove-button archive-task")
+										.html("X"),
 			taskName = $("<h4>").addClass("task-name").text(taskData.name),
-			taskOptions = createTaskOptions(taskData.id);
+			taskOptions = createTaskOptions();
 		$(task)
+			.append(archiveTaskButton)
 			.append(taskName)
 			.append(taskOptions);
 		return task;
 	}
 	
-	function createTaskOptions(taskId){
+	function createTaskOptions(){
 		var taskOptions = $("<div>").addClass("task-options"),
 			option = $("<a>")
-				.attr("href","/zeng/task/startTask/"+taskId)
+				.attr("href","/zeng/task/startTask/")
 				.addClass("button normal-button")
 				.text("Start task");
 		return taskOptions.append(option);

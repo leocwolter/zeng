@@ -51,7 +51,6 @@ $(function() {
 	$('.task-options > a').live("click",function(event){
 		var taskId = $(this).closest(".task").data("task-id");
 		var url = $(this).attr('href')+taskId;
-		console.log(url);
 		var taskOptions = $(this).closest(".task-options");
 		$.post(url,function(data){
 			$(taskOptions).children().remove();
@@ -62,7 +61,8 @@ $(function() {
 	
 	//Archive task
 	$(".archive-task").live("click", function(event){
-		var url = $(this).attr("href");
+		var taskId = $(this).closest(".task").data("task-id");
+		var url = $(this).attr("href")+taskId;
 		$.post(url);
 		$(this).closest(".task").remove();
 		event.preventDefault();

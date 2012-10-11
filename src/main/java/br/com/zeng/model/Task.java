@@ -63,8 +63,8 @@ public class Task {
 		this.contributors = contributors;
 	}
 
-	public void setTaskList(TaskList taskPanel) {
-		this.taskList = taskPanel;
+	public void setTaskList(TaskList taskList) {
+		this.taskList = taskList;
 	}
 
 	public void setExpirationDate(DateTime expirationDate) {

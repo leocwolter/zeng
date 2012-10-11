@@ -61,12 +61,18 @@ public class UserController {
 	
 	@Post("/edit")
 	public void edit(UploadedFile userPhoto) throws FileNotFoundException, IOException {
-		String photoPath = env.get("user.photo.path")+File.separator+userPhoto.getFileName();
+		String photoHash = cripto.criptografa(userPhoto.getFileName());
+		String photoPath = env.get("user.photo.path")+File.separator+photoHash;
+		
 		FileOutputStream userPhotoOutput = new FileOutputStream(photoPath);
 		copy(userPhoto.getFile(), userPhotoOutput);
 		User user = userSession.getUser();
-		user.setPhoto(userPhoto.getFileName());
+		user.setPhoto(photoHash);
+		
 		userDao.update(user);
+		
+		result.include("confirmacao","Dados alterados com sucesso!");
+		result.redirectTo(UserController.class).editForm();
 	}
 	
 	@Post("/login")

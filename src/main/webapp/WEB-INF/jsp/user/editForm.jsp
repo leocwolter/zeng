@@ -23,9 +23,9 @@
 				</form>
 			</header>
 			<section id="home-content" class="content">
-				<zeng-messages:error />
 				<form method="POST" action='${linkTo[UserController].edit}' class="user-form" enctype="multipart/form-data">
 					<zeng-messages:error/>
+					<zeng-messages:confirmation/>
 					<fieldset>
 						<label for="user-photo">Foto:	</label>
 						<input type="file" name="userPhoto" id="user-photo"/>

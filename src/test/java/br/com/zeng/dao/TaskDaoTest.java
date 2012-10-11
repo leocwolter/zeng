@@ -75,13 +75,13 @@ public class TaskDaoTest extends DaoTest {
 	}
 
 	@Test
-	public void shouldReturnTasksGroupedByDateOfCompletionAndContributors() {
+	public void shouldReturnNumberOfTasksGroupedByDateOfCompletionAndContributors() {
 		User leonardo = new User("Leonardo",null,null);
 		session.save(leonardo);
 		
 		User joao = new User("Joao",null,null);
 		session.save(joao);
-
+		
 		List<User> joaoELeonardoList = Arrays.asList(leonardo,joao);
 		List<User> joaoList = Arrays.asList(joao);
 
@@ -96,7 +96,7 @@ public class TaskDaoTest extends DaoTest {
 		taskDao.insert(task4);
 		taskDao.finalize(task4);
 		
-		Task task5 = builder.withContributors(joaoELeonardoList).build();
+		Task task5 = builder.withContributors(joaoELeonardoList).withTaskList(null).build();
 		taskDao.insert(task5);
 		taskDao.finalize(task5);
 		
@@ -140,6 +140,18 @@ public class TaskDaoTest extends DaoTest {
 		taskDao.archive(task);
 		assertTrue(task.isArchived());
 		
+	}
+	
+	@Test
+	public void shouldVerifyIfThereIsManyTasksWithTheSameExpirationDate() {
+		DateTime expirationDate = new DateTime(2012,12,1,0,0,0,0);
+		Task task = builder.withTaskList(taskList).withExpirationDate(expirationDate).build();
+		taskDao.insert(task);
+		assertFalse(taskDao.manyTasksWithSameExpirationDate(project));
+		for (int i = 0; i < 9; i++) {
+			taskDao.insert(builder.withTaskList(taskList).withExpirationDate(expirationDate).build());
+		}
+		assertTrue(taskDao.manyTasksWithSameExpirationDate(project));
 	}
 	
 	@Test

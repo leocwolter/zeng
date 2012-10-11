@@ -21,8 +21,11 @@
 					<c:import url="/WEB-INF/imports/category-menu.jsp"/>
 				</header>
 	            <section id="project-content" class="content">
+					<zeng-messages:warning/>
 	            	<section id="category-container" class="resizable">
-	            		<zeng-structure:category category="${currentCategory}"/>
+	            		<c:if test="${!empty currentCategory}">
+		            		<zeng-structure:category category="${currentCategory}"/>
+	            		</c:if>
             		</section>
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>

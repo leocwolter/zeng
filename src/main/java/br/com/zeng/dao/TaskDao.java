@@ -15,6 +15,7 @@ import br.com.zeng.model.User;
 
 @Component
 public class TaskDao {
+	private static final int MANY_TASKS = 10;
 	private final Session session;
 
 	public TaskDao(Session session) {
@@ -46,21 +47,34 @@ public class TaskDao {
 							.list();
 		return tasks;
 	}
+
+	@SuppressWarnings("unchecked")
+	public boolean manyTasksWithSameExpirationDate(Project project) {
+		List<Long> list = session.createQuery("select count(*) from Task t where t.expirationDate != null and t.taskList.category.project.url like :project and t.state != 2 and t.archived = 0 group by year(t.expirationDate),month(t.expirationDate)")
+								.setString("project", project.getUrl())
+								.list();
+		for (Long numberOfTasks : list) {
+			if(numberOfTasks>=MANY_TASKS) return true;
+		}
+		return false;
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<UserTasksPerMonth> getQuantityOfTasksGroupedByDateAndUser(Project project){
-		List<Object[]> list = session.createQuery("select year(t.dateOfCompletion), month(t.dateOfCompletion), c.id, count(*) from Task t join t.contributors c where t.dateOfCompletion != null group by year(t.dateOfCompletion),month(t.dateOfCompletion), c.id order by c.id").list();
+		List<Object[]> list = session.createQuery("select year(t.dateOfCompletion), month(t.dateOfCompletion), c.id, count(*) from Task t join t.contributors c where t.dateOfCompletion != null and t.taskList.category.project.url like :project and t.state=2 group by year(t.dateOfCompletion),month(t.dateOfCompletion), c.id order by c.id")
+								.setString("project", project.getUrl())
+								.list();
 		return buildUsersTasksPerMonthList(list);
 	}
 
 	private ArrayList<UserTasksPerMonth> buildUsersTasksPerMonthList(List<Object[]> list) {
-		HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser = mountTasksPerMonthPerUser(list);
+		HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser = groupByUser(list);
 		ArrayList<UserTasksPerMonth> usersTasksPerMonthList = new ArrayList<UserTasksPerMonth>();
 		usersTasksPerMonthList.addAll(tasksPerMonthPerUser.values());
 		return usersTasksPerMonthList;
 	}
 
-	private HashMap<User, UserTasksPerMonth> mountTasksPerMonthPerUser(	List<Object[]> list) {
+	private HashMap<User, UserTasksPerMonth> groupByUser(	List<Object[]> list) {
 		HashMap<User,UserTasksPerMonth> tasksPerMonthPerUser = new HashMap<User, UserTasksPerMonth>();
 		for (Object[] object : list) {
 			putOrAdd(tasksPerMonthPerUser, object);
@@ -68,7 +82,7 @@ public class TaskDao {
 		return tasksPerMonthPerUser;
 	}
 
-	private void putOrAdd(	HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser, Object[] object) {
+	private void putOrAdd(HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser, Object[] object) {
 		DateTime dateTime = new DateTime((Integer)object[0],(Integer)object[1],1,0,0,0,0);
 		User user = (User) session.get(User.class, (Long)object[2]);
 		Long count = (Long) object[3];
@@ -96,4 +110,5 @@ public class TaskDao {
 		task.stop();
 		update(task);
 	}
+
 }

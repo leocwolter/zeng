@@ -5,6 +5,8 @@ import static br.com.caelum.vraptor.view.Results.json;
 
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -42,16 +44,13 @@ public class TaskController {
 	}
 
 	@Post("/taskList/addTask")
-	public void insert(Task task, Long taskListId, List<User> contributors) {
-		if (contributors != null) {
-			List<User> completeContributorsByList = userDao.getCompleteContributorsById(contributors);
-			task.setContributors(completeContributorsByList);
-		}
-
+	public void insert(Task task, Long taskListId, String expirationDate) {
+		DateTime expirationDateTime = new DateTime(expirationDate);
+		task.setExpirationDate(expirationDateTime);
 		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
 		task.setTaskList(taskList);
 		taskDao.insert(task);
-
+		
 		String stringNotification = "Adicionou a task "+task.getName()+" na lista "+taskList.getName()+" da categoria "+taskList.getCategory().getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),task.getProject());
 		notificationDao.insert(notification);

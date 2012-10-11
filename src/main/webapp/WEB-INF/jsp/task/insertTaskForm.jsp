@@ -30,14 +30,14 @@
 			<label for="task-contributors">Colaboradores: </label>
 			<br/>
 			<c:forEach items="${taskList.projectContributors}" var="contributor" varStatus="i">
-				<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="contributors[${i.count}].id"/>
+				<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="task.contributors[${i.count}].id"/>
 				<label for="task-contributors[${i.count}]">${contributor.name} </label>
 				<br/> 
 			</c:forEach>
 		
-			<label for="task-expirationDate">Data de expiração: </label>
+			<label for="expirationDate">Data de expiração: </label>
 			<br/>
-			<input type="date" id="task-expirationDate" name="task.expirationDate" />
+			<input type="date" id="expirationDate" name="expirationDate" />
 			<br/>
 	
 			<input type="hidden" name="taskListId" value="${taskList.id}"/>

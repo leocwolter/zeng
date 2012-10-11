@@ -1,5 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.joda.org/joda/time/tags" prefix="joda" %>
 <%@ attribute name="task" required="true" type="br.com.zeng.model.Task" %>
 <li class="task task-state-${task.state}" data-task-id="${task.id}">
 	<a href="${linkTo[TaskController].archive}" class="button remove-button archive-task" >X</a>
@@ -9,6 +10,7 @@
 			<li>${contributor.name};</li>
 		</c:forEach>
 	</ul>
+	<span>Expiration Date:   <joda:format value="${task.expirationDate}" pattern="d/M/Y" /></span>
 	<div class="task-options">
 		<c:if test="${task.state != 'DONE'}">
 			<c:if test="${task.state != 'DOING'}">

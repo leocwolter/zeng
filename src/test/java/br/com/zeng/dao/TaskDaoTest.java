@@ -12,6 +12,7 @@ import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.zeng.builder.TaskBuilder;
 import br.com.zeng.chart.UserTasksPerMonth;
 import br.com.zeng.model.Category;
 import br.com.zeng.model.Project;
@@ -24,67 +25,30 @@ public class TaskDaoTest extends DaoTest {
 	private TaskDao taskDao;
 	private Project project;
 	private Task task;
+	private TaskBuilder builder;
+	private TaskList taskList;
 
 	@Before
 	public void setUp() {
 		super.setUp();
 		taskDao = new TaskDao(session);
-
-		project = new Project();
-		project.setName("zeng");
+		builder = new TaskBuilder();
+		
+		project = new Project("zeng");
 		session.save(project);
 
 		Category category = new Category();
 		category.setProject(project);
 		session.save(category);
 
-		User user = new User();
-		user.setName("Leonardo");
-		user.setEmail("leo@gmail.com");
-		session.save(user);
-		
-		User user2 = new User();
-		user2.setName("Joao");
-		user2.setEmail("joao@gmail.com");
-		session.save(user2);
-		
-		List<User> contributors = Arrays.asList(user,user2);
-		List<User> contributors2 = Arrays.asList(user2);
-
-		TaskList taskList = new TaskList();
+		taskList = new TaskList();
 		taskList.setCategory(category);
 		session.save(taskList);
 
-		task = new Task();
-		task.setName("invalid");
-		task.setTaskList(taskList);
-		task.setContributors(contributors);
-		session.save(task);
+		task = builder.withTaskList(taskList).build();
+		taskDao.insert(task);
 
-		Task task2 = new Task();
-		task2.setName("test2");
-		task2.setTaskList(taskList);
-		task2.setContributors(contributors2);
-		session.save(task2);
-
-		Task task3 = new Task();
-		task3.setDescription("Lorem test ipsum");
-		task3.setTaskList(taskList);
-		task3.setContributors(contributors2);
-		session.save(task3);
-		taskDao.finalize(task3);
-
-		Task task4 = new Task();
-		task4.setDescription("Lorem test ipsum");
-		task4.setContributors(contributors);
-		session.save(task4);
-		taskDao.finalize(task4);
-
-		Task task5 = new Task();
-		task5.setDescription("Lorem test ipsum");
-		task5.setContributors(contributors);
-		session.save(task5);
-		taskDao.finalize(task5);
+		
 		session.flush();
 	}
 	
@@ -112,19 +76,53 @@ public class TaskDaoTest extends DaoTest {
 
 	@Test
 	public void shouldReturnTasksGroupedByDateOfCompletionAndContributors() {
+		User leonardo = new User("Leonardo",null,null);
+		session.save(leonardo);
+		
+		User joao = new User("Joao",null,null);
+		session.save(joao);
+
+		List<User> joaoELeonardoList = Arrays.asList(leonardo,joao);
+		List<User> joaoList = Arrays.asList(joao);
+
+		Task task = builder.withContributors(joaoELeonardoList).withTaskList(taskList).build();
+		taskDao.insert(task);
+		
+		Task task3 = builder.withContributors(joaoList).withTaskList(taskList).build();
+		taskDao.insert(task3);
+		taskDao.finalize(task3);
+		
+		Task task4 = builder.withContributors(joaoELeonardoList).withTaskList(taskList).build();
+		taskDao.insert(task4);
+		taskDao.finalize(task4);
+		
+		Task task5 = builder.withContributors(joaoELeonardoList).build();
+		taskDao.insert(task5);
+		taskDao.finalize(task5);
+		
 		List<UserTasksPerMonth> quantityOfTasksGroupedByDateAndUser = taskDao.getQuantityOfTasksGroupedByDateAndUser(project);
 		DateTime dateTime = new DateTime();
 		DateTime today = new DateTime(dateTime.getYear(),dateTime.getMonthOfYear(),1,0,0,0,0);
+
 		for (UserTasksPerMonth userTasksPerMonth : quantityOfTasksGroupedByDateAndUser) {
-			if(userTasksPerMonth.getUser().getName().equals("Leonardo"))
+			if(userTasksPerMonth.getUser().equals(leonardo))
+				assertEquals(valueOf(1), userTasksPerMonth.getQuantityOfTasksInMonth(today));
+			if(userTasksPerMonth.getUser().equals(joao))
 				assertEquals(valueOf(2), userTasksPerMonth.getQuantityOfTasksInMonth(today));
-			if(userTasksPerMonth.getUser().getName().equals("Joao"))
-				assertEquals(valueOf(3), userTasksPerMonth.getQuantityOfTasksInMonth(today));
 		}
 	}
 
 	@Test
 	public void shouldSearchAndReturnAllTasksThatHasTheProvidedStringInNameOrDescription() {
+		task = builder.withName("Invalid").withTaskList(taskList).build();
+		taskDao.insert(task);
+
+		Task task2 = builder.withName("test2").withTaskList(taskList).build();
+		taskDao.insert(task2);
+		
+		Task task3 = builder.withDescription("Lorem test ipsum").withTaskList(taskList).build();
+		taskDao.insert(task3);
+
 		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project);
 		assertEquals(2, tasks.size());
 	}
@@ -146,10 +144,9 @@ public class TaskDaoTest extends DaoTest {
 	
 	@Test
 	public void shouldSearchOnlyTheNotArchivedTasks() {
-		TaskDao taskDao = new TaskDao(session);
 		taskDao.archive(task);
 		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project );
-		assertEquals(2, tasks.size());
+		assertEquals(0, tasks.size());
 	}
 
 }

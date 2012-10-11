@@ -29,7 +29,6 @@
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>
-	        <zeng-structure:sideBar/>
         </section>
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />

@@ -8,7 +8,7 @@
 			<c:forEach items="${project.contributors}" var="contributor">
 				<a href="#" title="${contributor.name}" id="project-members-photo-link"
 					class="photo-link">
-					<img src="${contributor.photo}" alt="${contributor.name}" height="40" width="40" />
+					<img src='<c:url value="/img/users_images/${contributor.photo}"/>' alt="${contributor.name}" height="40" width="40" />
 				</a>
 			</c:forEach>
 		</section>

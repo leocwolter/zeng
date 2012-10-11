@@ -28,7 +28,7 @@
 		</header>
 		<section id="home-content" class="content">
 			<zeng-messages:error />
-			<form id="register-user-form" action="${linkTo[UserController].register}" method="post">
+			<form id="register-user-form" class="user-form" action="${linkTo[UserController].register}" method="post">
 				<h1>Sign up for FREE</h1>
 				<fieldset>
 					<zeng-messages:error/>

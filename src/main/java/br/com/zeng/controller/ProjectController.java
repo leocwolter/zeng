@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.environment.Environment;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.chart.UserTasksPerMonth;
 import br.com.zeng.dao.NotificationDao;
@@ -29,24 +30,26 @@ public class ProjectController {
 	private final UserDao userDao;
 	private final TaskDao taskDao;
 	private final NotificationDao notificationDao;
+	private final Environment env;
 
 	public ProjectController(Result result, ProjectDao projectDao,
 			UserSession userSession, UserDao userDao, TaskDao taskDao,
-			NotificationDao notificationDao) {
+			NotificationDao notificationDao, Environment env) {
 		this.result = result;
 		this.projectDao = projectDao;
 		this.userSession = userSession;
 		this.userDao = userDao;
 		this.taskDao = taskDao;
 		this.notificationDao = notificationDao;
+		this.env = env;
 	}
 
 	@LoggedUser
 	@Path("/project/{project.url}")
 	public void showProject(Project project) {
-		Project projectCompleted = projectDao.getProjectWithUrl(project
-				.getUrl());
+		Project projectCompleted = projectDao.getProjectWithUrl(project.getUrl());
 		result.include("project", projectCompleted);
+		result.include("url", env.get("user.photo.path"));
 	}
 
 	@LoggedUser

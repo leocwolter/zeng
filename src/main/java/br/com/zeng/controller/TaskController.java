@@ -3,8 +3,6 @@ package br.com.zeng.controller;
 
 import static br.com.caelum.vraptor.view.Results.json;
 
-import java.util.List;
-
 import org.joda.time.DateTime;
 
 import br.com.caelum.vraptor.Path;
@@ -16,11 +14,9 @@ import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.NotificationDao;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskListDao;
-import br.com.zeng.dao.UserDao;
 import br.com.zeng.model.Notification;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskList;
-import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
 
 @Resource
@@ -28,16 +24,14 @@ public class TaskController {
 	private final TaskDao taskDao;
 	private final Result result;
 	private final TaskListDao taskListDao;
-	private final UserDao userDao;
 	private final UserSession userSession;
 	private final NotificationDao notificationDao;
 
-	public TaskController(TaskDao taskDao, TaskListDao taskListDao, UserDao userDao,
+	public TaskController(TaskDao taskDao, TaskListDao taskListDao,
 			UserSession userSession,
 			NotificationDao notificationDao, Result result) {
 		this.taskDao = taskDao;
 		this.taskListDao = taskListDao;
-		this.userDao = userDao;
 		this.result = result;
 		this.userSession = userSession;
 		this.notificationDao = notificationDao;

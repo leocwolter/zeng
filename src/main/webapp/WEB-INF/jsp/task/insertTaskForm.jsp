@@ -40,7 +40,7 @@
 			<input type="date" id="expirationDate" name="expirationDate" />
 			<br/>
 	
-			<input type="hidden" name="taskListId" value="${taskList.id}"/>
+			<input type="hidden" name="task.taskList.id" value="${taskList.id}"/>
 	
 			<input type="submit" class="insert-task button normal-button" value="Inserir">
 		</fieldset>

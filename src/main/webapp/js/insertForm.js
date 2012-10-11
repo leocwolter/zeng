@@ -100,7 +100,7 @@ $(function(){
 		insert(event, this,  function(data){
 			var taskData = data.task,
 				task = createTask(taskData),
-				taskListId = $("input[name='taskListId']").val(),
+				taskListId = $("input[name='task.taskList.id']").val(),
 				taskList = $("[data-tasklist-id = "+taskListId+"]", parent.document);
 			console.log(taskList);
 			$(taskList).append(task);

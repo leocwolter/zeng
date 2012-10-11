@@ -38,15 +38,17 @@ public class TaskController {
 	}
 
 	@Post("/taskList/addTask")
-	public void insert(Task task, Long taskListId, String expirationDate) {
-		DateTime expirationDateTime = new DateTime(expirationDate);
-		task.setExpirationDate(expirationDateTime);
-		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
-		task.setTaskList(taskList);
+	public void insert(Task task, String expirationDate) {
+		if(!expirationDate.isEmpty()){
+			DateTime expirationDateTime = new DateTime(expirationDate);
+			task.setExpirationDate(expirationDateTime);
+		}
+	
 		taskDao.insert(task);
 		
-		String stringNotification = "Adicionou a task "+task.getName()+" na lista "+taskList.getName()+" da categoria "+taskList.getCategory().getName();
-		Notification notification = new Notification(stringNotification, userSession.getUser(),task.getProject());
+		TaskList taskListWithId = taskListDao.getTaskListWithId(task.getTaskList().getId());
+		String stringNotification = "Adicionou a task "+task.getName()+" na lista "+taskListWithId.getName()+" da categoria "+taskListWithId.getCategory().getName();
+		Notification notification = new Notification(stringNotification, userSession.getUser(), taskListWithId.getProject());
 		notificationDao.insert(notification);
 		
 		result.use(json()).from(task).serialize();

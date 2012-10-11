@@ -140,4 +140,8 @@ public class Task {
 	public void setArchived(boolean archived) {
 		this.archived = archived;
 	}
+
+	public Category getCategory() {
+		return getTaskList().getCategory();
+	}
 }

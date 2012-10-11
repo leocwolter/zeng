@@ -31,9 +31,16 @@ public class Project {
 	public List<Notification> getNotifications() {
 		return notifications;
 	}
+	
 	public Project() {
 		notifications = new ArrayList<Notification>();
 		contributors = new ArrayList<User>();
+	}
+	
+	public Project(String name) {
+		super();
+		this.name=name;
+		this.setUrl(name);
 	}
 	
 	public void setId(Long id) {

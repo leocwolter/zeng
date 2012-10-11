@@ -39,10 +39,7 @@ public class TaskController {
 
 	@Post("/taskList/addTask")
 	public void insert(Task task, String expirationDate) {
-		if(!expirationDate.isEmpty()){
-			DateTime expirationDateTime = new DateTime(expirationDate);
-			task.setExpirationDate(expirationDateTime);
-		}
+		configureExpirationDate(task, expirationDate);
 	
 		taskDao.insert(task);
 		
@@ -52,6 +49,13 @@ public class TaskController {
 		notificationDao.insert(notification);
 		
 		result.use(json()).from(task).serialize();
+	}
+
+	private void configureExpirationDate(Task task, String expirationDate) {
+		if(!expirationDate.isEmpty()){
+			DateTime expirationDateTime = new DateTime(expirationDate);
+			task.setExpirationDate(expirationDateTime);
+		}
 	}
 
 	@LoggedUser

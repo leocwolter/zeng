@@ -50,6 +50,10 @@ public class ProjectController {
 		Project projectCompleted = projectDao.getProjectWithUrl(project.getUrl());
 		result.include("project", projectCompleted);
 		result.include("url", env.get("user.photo.path"));
+		if(taskDao.manyTasksWithSameExpirationDate(projectCompleted)){
+			result.include("warning", "There are many tasks with the same expiration date!");
+		}
+	
 	}
 
 	@LoggedUser

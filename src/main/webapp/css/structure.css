@@ -305,6 +305,45 @@ footer {
 	font-weight: bold;
 }
 
+.message {
+	width: 300px;
+	heigth: auto;
+	padding: 7px 5px;
+	border-radius: 3px;
+	margin: 0 10px 10px 10px;
+	opacity: 0.9;
+}
+
+fieldset .message {
+	margin: 0px;
+}
+
+.warning {
+	background: #FFE393;
+	border: 1px solid #FED04C;
+	color: #936D00;
+}
+
+.error {
+	background: #E2B5B5;
+	border: 1px solid #D39191;
+	color: #FF0000;
+}
+
+label.error {
+	width: 300px;
+	heigth: auto;
+	padding: 7px 5px;
+	border-radius: 3px;
+}
+
+
+.success {
+	background: #C0E7B5;
+	border: 1px solid #A0DB8E;
+	color: #3c7f29;
+}
+
 /*RESIZABLE STRUSCTURE*/
 @media all and (max-width: 1035px) {
 

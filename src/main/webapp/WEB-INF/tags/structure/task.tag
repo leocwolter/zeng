@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.joda.org/joda/time/tags" prefix="joda" %>
 <%@ attribute name="task" required="true" type="br.com.zeng.model.Task" %>
-<li class="task task-state-${task.state}" data-task-id="${task.id}">
+<li class="task task-state-${task.state}" data-task-id="${task.id}" style="height: auto;">
 	<a href="${linkTo[TaskController].archive}" class="button remove-button archive-task" >X</a>
 	<h4 class="task-name">${task.name}</h4>
 	<ul class="task-contributors">

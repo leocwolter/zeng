@@ -2,5 +2,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:if test="${!empty confirmacao}">
-	<section class="confirmacao">${confirmacao}</section>
+	<section class="success message">${confirmacao}</section>
 </c:if>

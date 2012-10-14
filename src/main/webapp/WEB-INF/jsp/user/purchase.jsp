@@ -9,7 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Zeng - Project management</title>
-<!-- HOME STYLE -->
+<!-- NOT LOGGED STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/not-logged-page.css"/>" />
+<!-- PURCHASE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/purchase.css"/>" />
 <!-- FORM STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/form.css"/>" />
@@ -18,14 +20,7 @@
 </head>
 <body>
 	<section id="container">
-		<header id="top" class="header resizable">
-			<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
-			<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
-				<input type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />
-				<input type="password" name="user.password" placeholder="Password" />
-				<input type="submit" value="Login" class="button normal-button" />
-			</form>
-		</header>
+		<c:import url="/WEB-INF/imports/not-logged-header.jsp"></c:import>
 		<section id="home-content" class="content">
 			<zeng-messages:error />
 			<h1 id="purchase-title">Purchase Plans</h1>

@@ -7,6 +7,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Cadastro de usuário</title>
+		<!-- NOT LOGGED STYLE -->
+		<link rel="stylesheet" type="text/css" href="<c:url value="/css/not-logged-page.css"/>" />
 		<!-- FORM STYLE -->
 		<link rel="stylesheet" type="text/css" href="<c:url value="/css/form.css"/>" />
 		<!-- CSS IMPORT -->
@@ -14,19 +16,15 @@
 	</head>
 	<body>
 		<section id="container">
-			<header id="top" class="header resizable">
-				<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
-				<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
-					<input type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />
-					<input type="password" name="user.password" placeholder="Password" />
-					<input type="submit" value="Login" class="button normal-button" />
-				</form>
+			<header class="header">
+				<c:import url="/WEB-INF/imports/header.jsp"/>
+				<c:import url="/WEB-INF/imports/category-menu.jsp"/>
 			</header>
 			<section id="home-content" class="content">
 				<form method="POST" action='${linkTo[UserController].edit}' class="user-form" enctype="multipart/form-data">
-					<zeng-messages:error/>
-					<zeng-messages:confirmation/>
 					<fieldset>
+						<zeng-messages:error/>
+						<zeng-messages:confirmation/>
 						<label for="user-photo">Foto:	</label>
 						<input type="file" name="userPhoto" id="user-photo"/>
 						<input type="submit" value="Atualizar"/>

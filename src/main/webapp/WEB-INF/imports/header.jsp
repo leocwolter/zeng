@@ -6,8 +6,8 @@
 		<input type="submit" value="SEARCH" />
 	</form>
 	<a href="${linkTo[UserController].logOut}" class="user-logout">Logout</a>
-	<a href="${linkTo[ProjectController].listProjects}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" id="user-name-link">
+	<a href="${linkTo[UserController].editForm}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" class="modal" id="user-name-link">
 		${userSession.user.name} </a>
-	<a href="#" title="Atualization" id="atualization-icon">&nbsp;</a>
-	<a href="#" title="Menssages" id="message-icon">&nbsp;</a>
+	<!-- <a href="#" title="Atualization" id="atualization-icon">&nbsp;</a>
+	<a href="#" title="Menssages" id="message-icon">&nbsp;</a> -->
 </section>

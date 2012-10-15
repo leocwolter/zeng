@@ -15,27 +15,16 @@
 		<c:import url="/WEB-INF/imports/css-import.jsp" />
 	</head>
 	<body>
-		<section id="container">
-			<header class="header">
-				<c:import url="/WEB-INF/imports/header.jsp"/>
-				<c:import url="/WEB-INF/imports/category-menu.jsp"/>
-			</header>
-			<section id="home-content" class="content">
-				<form method="POST" action='${linkTo[UserController].edit}' class="user-form" enctype="multipart/form-data">
-					<fieldset>
-						<zeng-messages:error/>
-						<zeng-messages:confirmation/>
-						<label for="user-photo">Foto:	</label>
-						<input type="file" name="userPhoto" id="user-photo"/>
-						<input type="submit" value="Atualizar"/>
-					</fieldset>
-				</form>
-			</section>
-			<c:import url="/WEB-INF/imports/footer.jsp" />
-		</section>
+		<form method="POST" action='${linkTo[UserController].edit}' class="user-form" enctype="multipart/form-data">
+			<fieldset>
+				<zeng-messages:error/>
+				<zeng-messages:confirmation/>
+				<label for="user-photo">Foto:	</label>
+				<input type="file" name="userPhoto" id="user-photo"/>
+				<input type="submit" value="Atualizar"/>
+			</fieldset>
+		</form>
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />
-		<!-- HEADER MARGIN SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 	</body>
 </html>

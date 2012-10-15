@@ -8,11 +8,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.environment.Environment;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
+import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.infra.Criptografador;
 import br.com.zeng.model.User;
@@ -55,7 +57,12 @@ public class UserController {
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
-	@Get("/editForm")
+//	@Get("/editForm")
+//	public void editForm() {
+//	}
+	
+	@LoggedUser
+	@Path("/user/editForm")
 	public void editForm() {
 	}
 	
@@ -72,7 +79,7 @@ public class UserController {
 		userDao.update(user);
 		
 		result.include("confirmacao","Dados alterados com sucesso!");
-		result.redirectTo(UserController.class).editForm();
+		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
 	@Post("/login")

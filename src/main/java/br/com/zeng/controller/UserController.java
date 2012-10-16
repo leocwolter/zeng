@@ -57,23 +57,25 @@ public class UserController {
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
-//	@Get("/editForm")
-//	public void editForm() {
-//	}
-	
 	@LoggedUser
 	@Path("/user/editForm")
 	public void editForm() {
 	}
 	
 	@Post("/edit")
-	public void edit(UploadedFile userPhoto) throws FileNotFoundException, IOException {
+	public void edit(UploadedFile userPhoto, User editedUser) throws FileNotFoundException, IOException {
 		String photoHash = cripto.criptografa(userPhoto.getFileName());
 		String photoPath = env.get("user.photo.path")+File.separator+photoHash;
+		String password = cripto.criptografa(editedUser.getPassword());
 		
 		FileOutputStream userPhotoOutput = new FileOutputStream(photoPath);
 		copy(userPhoto.getFile(), userPhotoOutput);
 		User user = userSession.getUser();
+		
+		user.setEmail(editedUser.getEmail());
+		user.setName(editedUser.getName());
+		user.setPassword(password);
+		
 		user.setPhoto(photoHash);
 		
 		userDao.update(user);

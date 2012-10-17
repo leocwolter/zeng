@@ -19,7 +19,7 @@
 <body>
 	<section id="container">
 		<c:import url="/WEB-INF/imports/not-logged-header.jsp"></c:import>
-		<section id="home-content" class="content">
+		<section id="home-content" class="content container">
 			<zeng-messages:error />
 			<form id="register-user-form" class="user-form" action="${linkTo[UserController].register}" method="post">
 				<h1>Sign up for FREE</h1>

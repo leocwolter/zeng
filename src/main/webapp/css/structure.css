@@ -38,15 +38,15 @@
 
 .container {
 	margin: 0 auto;
-	padding: 0;
+	padding: 0 20px;
 }
 
 .content {
 	height: auto;
 	min-height: 600px;
 	width: 100%;
+	padding-top:20px;
 	overflow: hidden;
-	padding: 10px 0;
 	position: relative;
 }
 
@@ -310,7 +310,6 @@ footer {
 	heigth: auto;
 	padding: 7px 5px;
 	border-radius: 3px;
-	margin: 0 10px 10px 10px;
 	opacity: 0.9;
 }
 
@@ -346,19 +345,9 @@ label.error {
 
 /*RESIZABLE STRUSCTURE*/
 @media all and (max-width: 1035px) {
-
 	#project-sidebar {
 		display: none;
 	}
-	
-	.resizable.opened-sidebar {
-		padding-right: 20px;
-	}
-	
-	.resizable.closed-sidebar {
-		padding-right: 20px;
-	}
-	
 }
 
 .resizable {

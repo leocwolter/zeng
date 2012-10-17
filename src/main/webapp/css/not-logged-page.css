@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
-.error.message{
-	float:right;
-	margin:0 88px 0 0;
+.error.message {
+	float: right;
+	margin: 0 88px 0 0;
 }
 
 /*Top*/
@@ -11,30 +11,18 @@
 	height: 50px;
 	line-height: 50px;
 	float: right;
-	margin: 0 20px 0 0;
-	
 }
 
-#login-form input.error[type="text"], 
-#login-form input.error[type="email"], 
-#login-form input.error[type="password"] {
-	
+#login-form input.error[type="text"],#login-form input.error[type="email"],#login-form input.error[type="password"]
+	{
 	border: 1px solid #FF0000;
-	
 }
 
-#login-form input[type="email"], #login-form input[type="password"] {
-	
+#login-form input[type="email"],#login-form input[type="password"] {
 	height: 23px;
-	
 	line-height: 23px;
-	
 	width: 142px;
-	
 	padding: 0 4px;
-	
 	border: 1px solid #38291A;
-	
 	margin: 0 5px 0 0;
-	
 }

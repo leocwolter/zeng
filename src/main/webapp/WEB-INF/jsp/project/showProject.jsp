@@ -15,18 +15,18 @@
 </head>
 	<body>
 		<section id="container">
-	    	<section id="left-container" class="container">
+	    	<section id="left-container">
 				<header class="header">
 					<c:import url="/WEB-INF/imports/header.jsp"/>
 					<c:import url="/WEB-INF/imports/category-menu.jsp"/>
 				</header>
 	            <section id="project-content" class="content">
-					<zeng-messages:warning/>
-	            	<section id="category-container" class="resizable">
+	            	<div id="category-container" class="container resizable">
+						<zeng-messages:warning/>
 	            		<c:if test="${!empty currentCategory}">
 		            		<zeng-structure:category category="${currentCategory}"/>
 	            		</c:if>
-            		</section>
+   	        		</div>
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>

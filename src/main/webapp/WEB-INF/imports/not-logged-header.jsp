@@ -1,4 +1,4 @@
-<header id="top" class="header resizable">
+<header id="top" class="header resizable container">
 	<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
 	<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
 		<input type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />

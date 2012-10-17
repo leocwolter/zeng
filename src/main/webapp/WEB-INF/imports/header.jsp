@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<section id="top" class="resizable">
+<div id="top" class="container resizable">
 	<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
 	<form action="${linkTo[ProjectController].searchTasksWithContent}${project.url}" method="get" id="search-form">
 		<input type="search" name="q" placeholder="Search" />
@@ -10,4 +10,4 @@
 		${userSession.user.name} </a>
 	<!-- <a href="#" title="Atualization" id="atualization-icon">&nbsp;</a>
 	<a href="#" title="Menssages" id="message-icon">&nbsp;</a> -->
-</section>
+</div>

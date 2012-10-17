@@ -17,12 +17,12 @@
     		<header class="header">
 				<c:import url="/WEB-INF/imports/header.jsp"/>
 			</header>
-            <section id="generic-content" class="content">
-				<section class="personal-info">
+            <section class="container content">
+				<div class="personal-info">
 					<img src='<c:url value="/img/users_images/${user.photo}"/>' alt="${user.name}" height="100" width="100" />
 					<p>${user.name}</p>
 					<p>${user.email}</p>
-				</section>
+				</div>
 			</section>
 			<c:import url="/WEB-INF/imports/footer.jsp"/>
         </section>

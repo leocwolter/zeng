@@ -44,7 +44,7 @@ public class TaskController {
 		taskDao.insert(task);
 		
 		TaskList taskListWithId = taskListDao.getTaskListWithId(task.getTaskList().getId());
-		String stringNotification = "Adicionou a task "+task.getName()+" na lista "+taskListWithId.getName()+" da categoria "+taskListWithId.getCategory().getName();
+		String stringNotification = "Added the task "+task.getName()+" on the list "+taskListWithId.getName()+" of the category "+taskListWithId.getCategory().getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(), taskListWithId.getProject());
 		notificationDao.insert(notification);
 		

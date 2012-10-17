@@ -324,9 +324,9 @@ fieldset .message {
 }
 
 .error {
-	background: #E2B5B5;
+	background: #FECCCC;
 	border: 1px solid #D39191;
-	color: #FF0000;
+	color: #A30000;
 }
 
 label.error {

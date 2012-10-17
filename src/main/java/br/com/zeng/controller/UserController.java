@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
@@ -77,9 +76,17 @@ public class UserController {
 	}
 
 	@LoggedUser
-	@Path("/user/editForm")
+	@Get("/user/editForm")
 	public void editForm() {
 	}
+	
+	@LoggedUser
+	@Get("/user/profile/{userId}")
+	public void profile(Long userId){
+		User user = userDao.getUserById(userId);
+		result.include("user", user);
+	}
+
 	
 	@Post("/edit")
 	public void edit(UploadedFile userPhoto, User editedUser) throws FileNotFoundException, IOException {
@@ -110,4 +117,5 @@ public class UserController {
 		return field != null && !field.isEmpty();
 	}
 
+	
 }

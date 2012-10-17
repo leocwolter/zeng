@@ -57,39 +57,6 @@ public class UserController {
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
-	@LoggedUser
-	@Path("/user/editForm")
-	public void editForm() {
-	}
-	
-	@Post("/edit")
-	public void edit(UploadedFile userPhoto, User editedUser) throws FileNotFoundException, IOException {
-		User user = userSession.getUser();
-		
-		if(editedUser.getPassword() != null){
-			String password = cripto.criptografa(editedUser.getPassword());
-			user.setPassword(password);
-		}
-		
-		user.setEmail(editedUser.getEmail());
-		user.setName(editedUser.getName());
-		
-		if (userPhoto != null) {
-			String photoHash = cripto.criptografa(userPhoto.getFileName());
-			String photoPath = env.get("user.photo.path")+File.separator+photoHash;
-			
-			FileOutputStream userPhotoOutput = new FileOutputStream(photoPath);
-			copy(userPhoto.getFile(), userPhotoOutput);
-			
-			user.setPhoto(photoHash);
-		}
-		
-		userDao.update(user);
-		
-		result.include("confirmacao","Successful edition!");
-		result.redirectTo(ProjectController.class).listProjects();
-	}
-	
 	@Post("/login")
 	public void logIn(User user) {
 		String password = cripto.criptografa(user.getPassword());
@@ -108,4 +75,39 @@ public class UserController {
 	@Get("/purchase")
 	public void purchase(User user) {
 	}
+
+	@LoggedUser
+	@Path("/user/editForm")
+	public void editForm() {
+	}
+	
+	@Post("/edit")
+	public void edit(UploadedFile userPhoto, User editedUser) throws FileNotFoundException, IOException {
+		User user = userSession.getUser();
+		if(validField(editedUser.getPassword())){
+			String password = cripto.criptografa(editedUser.getPassword());
+			user.setPassword(password);
+		}
+		user.setEmail(editedUser.getEmail());
+		user.setName(editedUser.getName());
+		if (userPhoto != null) {
+			String photoHash = cripto.criptografa(userPhoto.getFileName());
+			copyPhoto(userPhoto, photoHash);
+			user.setPhoto(photoHash);
+		}
+		userDao.update(user);
+		result.include("confirmacao","Edition Completed Successfully!");
+		result.redirectTo(ProjectController.class).listProjects();
+	}
+
+	private void copyPhoto(UploadedFile userPhoto, String photoHash) throws FileNotFoundException, IOException {
+		String photoPath = env.get("user.photo.path")+File.separator+photoHash;
+		FileOutputStream userPhotoOutput = new FileOutputStream(photoPath);
+		copy(userPhoto.getFile(), userPhotoOutput);
+	}
+	
+	private boolean validField(String field) {
+		return field != null && !field.isEmpty();
+	}
+
 }

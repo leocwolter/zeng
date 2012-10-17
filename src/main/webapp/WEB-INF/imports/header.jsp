@@ -10,7 +10,7 @@
 	<div class="arrow dropdown" data-target="user-menu">
 		<ul class="dropdown-target" id="user-menu">
 			<li><a href="${linkTo[UserController].logOut}">Logout</a></li>
-			<li><a href="${linkTo[UserController].profile[userSession.user.id]}">Perfil</a></li>
+			<li><a href="${linkTo[UserController].profile[userSession.user.id]}">Profile</a></li>
 		</ul>
 	</div>
 	<!-- <a href="#" title="Atualization" id="atualization-icon">&nbsp;</a>

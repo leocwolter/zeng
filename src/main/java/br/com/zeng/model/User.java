@@ -6,6 +6,7 @@ import javax.persistence.Id;
 
 @Entity
 public class User {
+	private static final String DEFAULT_PHOTO = "profile.png";
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -16,13 +17,14 @@ public class User {
 
 	//hibernate eyes only
 	public User() {
+		this.photo=DEFAULT_PHOTO;
 	}
 
 	public User(String name, String email, String password) {
+		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-
 	}
 
 	public void setId(Long id) {

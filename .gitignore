@@ -1,6 +1,6 @@
 build/
 .DS_Store
 target/
-development.properties
+src/main/resources/development.properties
 src/main/webapp/img/users_images/
 .metadata/

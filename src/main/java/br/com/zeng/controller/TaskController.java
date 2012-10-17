@@ -75,12 +75,12 @@ public class TaskController {
 	@Path("/task/startTask/{taskId}")
 	public void start(Long taskId) {
 		Task taskComplete = taskDao.getTaskWithId(taskId);
-		if (taskComplete.isFinalized()) throw new RuntimeException("Uma tarefa finalizada não pode ser iniciada");
+		if (taskComplete.isFinalized()) throw new RuntimeException("A completed task can not be initiated");
 		
 		taskComplete.start();
 		taskDao.start(taskComplete);
 		
-		String stringNotification = "Começou a task "+taskComplete.getName();
+		String stringNotification = "Started the task "+taskComplete.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
 		notificationDao.insert(notification);
 		
@@ -91,11 +91,11 @@ public class TaskController {
 	@Path("/task/finalizeTask/{taskId}")
 	public void finalize(Long taskId) {
 		Task taskComplete = taskDao.getTaskWithId(taskId);
-		if (taskComplete.isFinalized()) throw new RuntimeException("Essa tarefa ja foi finalizada");
+		if (taskComplete.isFinalized()) throw new RuntimeException("This task has already been completed");
 		
 		taskDao.finalize(taskComplete);
 	
-		String stringNotification = "Finalizou a task "+taskComplete.getName();
+		String stringNotification = "Completed the task "+taskComplete.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
 		notificationDao.insert(notification);
 		
@@ -106,12 +106,12 @@ public class TaskController {
 	@Path("/task/stopTask/{taskId}")
 	public void stop(Long taskId) {
 		Task taskComplete = taskDao.getTaskWithId(taskId);
-		if (taskComplete.isFinalized()) throw new RuntimeException("uma tarefa finalizada nao pode ser parada");
+		if (taskComplete.isFinalized()) throw new RuntimeException("A completed task can not be stopped");
 			
 		taskComplete.stop();
 		taskDao.stop(taskComplete);
 	
-		String stringNotification = "Parou a task "+taskComplete.getName();
+		String stringNotification = "Stopped the task "+taskComplete.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
 		notificationDao.insert(notification);
 	
@@ -127,7 +127,7 @@ public class TaskController {
 		taskComplete.setTaskList(taskListComplete);
 		taskDao.update(taskComplete);
 		
-		String stringNotification = "Moveu a task "+taskComplete.getName()+" para a lista "+taskListComplete.getName();
+		String stringNotification = "Moved the task "+taskComplete.getName()+" to the list "+taskListComplete.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
 		notificationDao.insert(notification);
 	
@@ -140,7 +140,7 @@ public class TaskController {
 		Task task = taskDao.getTaskWithId(taskId);
 		taskDao.archive(task);
 
-		String stringNotification = "Arquivou a task "+task.getName();
+		String stringNotification = "Archived the task "+task.getName();
 		Notification notification = new Notification(stringNotification, userSession.getUser(), task.getProject());
 		notificationDao.insert(notification);
 		

@@ -205,6 +205,11 @@
 	overflow: hidden;
 }
 
+.task .task-expiration-date {
+	display: inline-block;
+	margin: 0px 0px 10px 0px;
+}
+
 .task-name {
 	font-family: Verdana;
 	font-weight: bold;
@@ -213,7 +218,7 @@
 }
 
 .task-contributors {
-	margin: 0 0 15px 0;
+	margin: 0 0 10px 0;
 }
 
 .task-contributors li {

@@ -48,7 +48,10 @@
 	
 }
 
-.insert-form fieldset input[type="text"], .insert-form fieldset select {
+.insert-form fieldset input[type="text"], 
+.insert-form fieldset input[type="email"], 
+.insert-form fieldset input[type="password"], 
+.insert-form fieldset select {
 	
 	height:25px;
 	

@@ -64,23 +64,29 @@ public class UserController {
 	
 	@Post("/edit")
 	public void edit(UploadedFile userPhoto, User editedUser) throws FileNotFoundException, IOException {
-		String photoHash = cripto.criptografa(userPhoto.getFileName());
-		String photoPath = env.get("user.photo.path")+File.separator+photoHash;
-		String password = cripto.criptografa(editedUser.getPassword());
-		
-		FileOutputStream userPhotoOutput = new FileOutputStream(photoPath);
-		copy(userPhoto.getFile(), userPhotoOutput);
 		User user = userSession.getUser();
+		
+		if(editedUser.getPassword() != null){
+			String password = cripto.criptografa(editedUser.getPassword());
+			user.setPassword(password);
+		}
 		
 		user.setEmail(editedUser.getEmail());
 		user.setName(editedUser.getName());
-		user.setPassword(password);
 		
-		user.setPhoto(photoHash);
+		if (userPhoto != null) {
+			String photoHash = cripto.criptografa(userPhoto.getFileName());
+			String photoPath = env.get("user.photo.path")+File.separator+photoHash;
+			
+			FileOutputStream userPhotoOutput = new FileOutputStream(photoPath);
+			copy(userPhoto.getFile(), userPhotoOutput);
+			
+			user.setPhoto(photoHash);
+		}
 		
 		userDao.update(user);
 		
-		result.include("confirmacao","Dados alterados com sucesso!");
+		result.include("confirmacao","Successful edition!");
 		result.redirectTo(ProjectController.class).listProjects();
 	}
 	

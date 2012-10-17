@@ -9,40 +9,41 @@
 		<title>Profile - Edit</title>
 		<!-- NOT LOGGED STYLE -->
 		<link rel="stylesheet" type="text/css" href="<c:url value="/css/not-logged-page.css"/>" />
-		<!-- FORM STYLE -->
-		<link rel="stylesheet" type="text/css" href="<c:url value="/css/form.css"/>" />
 		<!-- CSS IMPORT -->
 		<c:import url="/WEB-INF/imports/css-import.jsp" />
+		<!-- STRUCTURE STYLE -->
+		<link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 	</head>
 	<body>
-		<h2>Profile - Edit</h2>
-		<form id="edit-user-form" class="user-form" action="${linkTo[UserController].edit}" method="post" enctype="multipart/form-data">
+		<form id="edit-user-form" class="insert-form" action="${linkTo[UserController].edit}" method="post" enctype="multipart/form-data">
 			<fieldset>
-				<zeng-messages:error/>
-				<zeng-messages:confirmation/>
-				<p>
+				<legend>Profile - Edit</legend>
+					<br/>
+					<zeng-messages:error/>
+					<zeng-messages:confirmation/>
+				
 					<label for="user-photo">Foto:</label>
+					<br/>
 					<input type="file" name="userPhoto" id="user-photo"/>
-				</p>
-				<p>
+					<br/>
 					<label for="name">Name:</label>
-					<input id="name" name="editedUser.name" type="text" class="text" value="${userSession.user.name}" />
-				</p>
-				<p>
+					<br/>
+					<input id="name" name="editedUser.name" type="text" value="${userSession.user.name}" />
+					<br/>
 					<label for="email">Email:</label>
-					<input id="email" name="editedUser.email" type="email" class="text" value="${userSession.user.email}" />
-				</p>
-				<p>
+					<br/>
+					<input id="email" name="editedUser.email" type="email" value="${userSession.user.email}" />
+					<br/>
 					<label for="password">Password:</label>
-					<input id="password" name="editedUser.password" class="text" type="password" />
-				</p>
-				<p>
+					<br/>
+					<input id="password" name="editedUser.password" type="password" />
+					<br/>
 					<label for="confirm-password">Confirm password:</label>
-					<input id="confirm-password" name="editedUser.confirmPassword" class="text" type="password" />
-				</p>
-				<p>
+					<br/>
+					<input id="confirm-password" name="editedUser.confirmPassword" type="password" />
+					<br/>
 					<input type="submit" class="button normal-button" value="Atualizar"/>
-				</p>
+				
 			</fieldset>
 		</form>
 		<!-- SCRIPTS IMPORT -->

@@ -17,7 +17,7 @@
     		<header class="header">
 				<c:import url="/WEB-INF/imports/header.jsp"/>
 				<nav id="menu-bar" class="resizable">
-					<h1>Meus Projetos:</h1>
+					<h1>My projects:</h1>
 					<ul id="menu">
 						<c:forEach items="${projects}" var="project">
 							<li><a href="${linkTo[ProjectController].showProject}${project.url}"	title="Project ${project.id}">${project.name}</a></li>

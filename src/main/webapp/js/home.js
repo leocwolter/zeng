@@ -75,11 +75,9 @@ $(document).ready(function() {
 				email: true
 			},
 			'editedUser.password': {
-				required: true,
 				minlength: 8
 			},
 			'editedUser.confirmPassword': {
-				required: true,
 				equalTo: "#password"
 			}
 		},

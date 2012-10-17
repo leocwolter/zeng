@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+legend {
+	font-weight: bold;
+}
+
 .user-form {
 	float: right;
 	margin: 0 78px 0 0;

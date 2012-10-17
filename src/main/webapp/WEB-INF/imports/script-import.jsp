@@ -8,3 +8,6 @@
 
 <!-- MESSI SCRIPT -->
 <script type="text/javascript" src="<c:url value="/js/messi.min.js"/>"></script>
+
+<!-- DROPDOWN SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/dropdown.js"/>"></script>

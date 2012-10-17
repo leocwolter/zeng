@@ -11,12 +11,12 @@ $(document).ready(function() {
 		},
 		messages: {
 			'user.email': {
-				required: "",
-				email: ""
+				required: "Please provide a email",
+				email: "It should be a valid email"
 			},
 			'user.password': {
-				required: "",
-				minlength: ""
+				required: "Please provide a password",
+				minlength: "Your password must be at least 8 characters long"
 			}
 		}
 	});

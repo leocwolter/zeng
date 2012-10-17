@@ -1,16 +1,16 @@
 @CHARSET "UTF-8";
 
+.error.message{
+	float:right;
+	margin:0 88px 0 0;
+}
+
 /*Top*/
 #login-form {
-	
 	display: inline-block;
-	
 	height: 50px;
-	
 	line-height: 50px;
-	
 	float: right;
-	
 	margin: 0 20px 0 0;
 	
 }

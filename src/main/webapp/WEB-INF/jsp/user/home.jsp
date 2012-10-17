@@ -24,7 +24,6 @@
 			<form id="register-user-form" class="user-form" action="${linkTo[UserController].register}" method="post">
 				<h1>Sign up for FREE</h1>
 				<fieldset>
-					<zeng-messages:error/>
 					<p>
 						<label for="name">Name:</label>
 						<input id="name" name="user.name" type="text" class="text" value="" />

@@ -5,6 +5,7 @@ legend {
 }
 
 .user-form {
+	clear:right;
 	float: right;
 	margin: 0 78px 0 0;
 }

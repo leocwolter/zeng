@@ -114,16 +114,22 @@ public class TaskDaoTest extends DaoTest {
 
 	@Test
 	public void shouldSearchAndReturnAllTasksThatHasTheProvidedStringInNameOrDescription() {
-		task = builder.withName("Invalid").withTaskList(taskList).build();
+		Task task = builder.withName("Invalid").withDescription("Invalid").withTaskList(taskList).build();
 		taskDao.insert(task);
 
-		Task task2 = builder.withName("test2").withTaskList(taskList).build();
+		Task task2 = builder.withName("test2").withDescription("Invalid").withTaskList(taskList).build();
 		taskDao.insert(task2);
 		
-		Task task3 = builder.withDescription("Lorem test ipsum").withTaskList(taskList).build();
+		Task task3 = builder.withName("Invalid").withDescription("Lorem test ipsum").withTaskList(null).build();
 		taskDao.insert(task3);
+		
+		Task task4 = builder.withName("test2").withDescription("Invalid").withTaskList(null).build();
+		taskDao.insert(task4);
+		
+		Task task5 = builder.withName("Invalid").withDescription("Lorem test ipsum").withTaskList(taskList).build();
+		taskDao.insert(task5);
 
-		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project);
+		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", taskList.getProject().getUrl());
 		assertEquals(2, tasks.size());
 	}
 	
@@ -155,9 +161,20 @@ public class TaskDaoTest extends DaoTest {
 	}
 	
 	@Test
+	public void shouldNotReturnTrueIfTheTasksHasNoExpirationDate() {
+		Task task = builder.withTaskList(taskList).withExpirationDate(null).build();
+		taskDao.insert(task);
+		assertFalse(taskDao.manyTasksWithSameExpirationDate(project));
+		for (int i = 0; i < 9; i++) {
+			taskDao.insert(builder.withTaskList(taskList).withExpirationDate(null).build());
+		}
+		assertFalse(taskDao.manyTasksWithSameExpirationDate(project));
+	}
+	
+	@Test
 	public void shouldSearchOnlyTheNotArchivedTasks() {
 		taskDao.archive(task);
-		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project );
+		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project.getUrl() );
 		assertEquals(0, tasks.size());
 	}
 

@@ -40,10 +40,10 @@ public class TaskDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Task> getTasksWithContentInAProject(String content, Project project){
+	public List<Task> getTasksWithContentInAProject(String content, String projectUrl){
 		List<Task> tasks = session.createQuery("from Task t where t.name like :content or t.description like :content and t.taskList.category.project.url like :project")
 							.setString("content", "%"+content+"%")
-							.setString("project", project.getUrl())
+							.setString("project", projectUrl)
 							.list();
 		return tasks;
 	}

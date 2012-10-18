@@ -81,12 +81,23 @@ footer {
 }
 
 /*USER*/
-#user-name-link {
-	display: block;
+#user-box {
 	width: auto;
 	float: right;
 	height: 40px;
-	line-height: 40px; font-size : 14px;
+}
+
+#user-name-link {
+	display: block;
+	width: auto;
+	max-width: 105px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	float: left;
+	height: 40px;
+	line-height: 40px; 
+	font-size : 14px;
 	color: #E3E1D5;
 	font-size: 14px;
 }
@@ -99,8 +110,8 @@ footer {
 .arrow {
 	width: 0;
 	height: 0;
-	float: right;
-	margin: 18px 9px 0 0;
+	float: left;
+	margin: 18px 0 0 9px;
 	line-height: 20px;
 	font-weight: bold;
 	font-size: 19px;
@@ -119,7 +130,7 @@ footer {
 	width: 100px;
 	font-size: 10px;
 	color: #000;
-	left: -50px;
+	left: -93px;
 	top: 5px;
 	background-color: #FFF;
 	position: absolute;
@@ -380,6 +391,10 @@ label.error {
 @media all and (max-width: 1035px) {
 	#project-sidebar {
 		display: none;
+	}
+	
+	.opened-sidebar {
+		padding-right: 20px !important;
 	}
 }
 

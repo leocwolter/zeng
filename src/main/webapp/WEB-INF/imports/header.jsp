@@ -5,14 +5,16 @@
 		<input type="search" name="q" placeholder="Search" />
 		<input type="submit" value="SEARCH" />
 	</form>
-	<a href="${linkTo[UserController].editForm}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" class="modal" id="user-name-link">
-		${userSession.user.name} </a>
-	<div class="arrow dropdown" data-target="user-menu">
-		<ul class="dropdown-target" id="user-menu">
-			<li><a href="${linkTo[UserController].profile[userSession.user.id]}">Profile</a></li>
-			<li><a href="${linkTo[UserController].logOut}">Logout</a></li>
-		</ul>
-	</div>
+	<section id="user-box">
+		<a href="${linkTo[UserController].editForm}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" class="modal" id="user-name-link">
+			${userSession.user.name} </a>
+		<div class="arrow dropdown" data-target="user-menu">
+			<ul class="dropdown-target" id="user-menu">
+				<li><a href="${linkTo[UserController].profile[userSession.user.id]}">Profile</a></li>
+				<li><a href="${linkTo[UserController].logOut}">Logout</a></li>
+			</ul>
+		</div>
+	</section>
 	<!-- <a href="#" title="Atualization" id="atualization-icon">&nbsp;</a>
 	<a href="#" title="Menssages" id="message-icon">&nbsp;</a> -->
 </div>

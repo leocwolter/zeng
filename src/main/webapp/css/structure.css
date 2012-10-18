@@ -8,7 +8,6 @@
 .header {
 	width: 100%;
 	height: auto;
-	overflow: hidden;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -82,7 +81,8 @@ footer {
 
 /*USER*/
 #user-box {
-	width: auto;
+	min-width: 128px;
+	width:auto;
 	float: right;
 	height: 40px;
 }
@@ -110,8 +110,8 @@ footer {
 .arrow {
 	width: 0;
 	height: 0;
-	float: left;
-	margin: 18px 0 0 9px;
+	float: right;
+	margin-top: 18px;
 	line-height: 20px;
 	font-weight: bold;
 	font-size: 19px;
@@ -171,7 +171,7 @@ footer {
 	height: 35px;
 	list-style: none;
 	font-size: 14px;
-	margin-left: 80px;
+	margin-left: 20px;
 	float: left;
 }
 
@@ -181,18 +181,20 @@ footer {
 
 #menu li a {
 	display: block;
+	overflow: hidden;
 	margin: 5px 15px;
-	padding: 0 5px;
-	float: left;
+	padding: 0 6px;
 	width: auto;
+	max-width: 123px;
 	line-height: 25px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 #menu li a:hover {
 	border-radius: 4px;
 	background: #AE7F50;
 	color: #E3E1D5;
-	padding: 0 5px;
 	cursor: pointer;
 }
 
@@ -388,16 +390,6 @@ label.error {
 }
 
 /*RESIZABLE STRUSCTURE*/
-@media all and (max-width: 1035px) {
-	#project-sidebar {
-		display: none;
-	}
-	
-	.opened-sidebar {
-		padding-right: 20px !important;
-	}
-}
-
 .resizable {
 	width: 100%;
 	padding-right: 20px;

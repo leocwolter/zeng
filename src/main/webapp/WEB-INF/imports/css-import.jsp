@@ -9,5 +9,8 @@
 <!-- STRUCTURE STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/structure.css"/>" />
 
+<!-- RESPONSIVE STRUCTURE STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/responsive-structure.css"/>" />
+
 <!-- MESSI STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/messi.min.css"/>" />

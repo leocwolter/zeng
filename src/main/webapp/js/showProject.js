@@ -85,7 +85,7 @@ $(function() {
 				.append(author)
 				.append(action)
 				.append(creationDate)
-				.append("<br>");
+				.append("<hr/>");
 		});
 		return notifications;
 	};

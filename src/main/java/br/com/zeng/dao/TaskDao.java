@@ -15,7 +15,7 @@ import br.com.zeng.model.User;
 
 @Component
 public class TaskDao {
-	private static final int MANY_TASKS = 10;
+	private static final int MANY_TASKS = 3;
 	private final Session session;
 
 	public TaskDao(Session session) {

@@ -23,10 +23,12 @@ import br.com.zeng.model.User;
 public class TaskDaoTest extends DaoTest {
 
 	private TaskDao taskDao;
-	private Project project;
+	private Project projectZeng;
 	private Task task;
 	private TaskBuilder builder;
-	private TaskList taskList;
+	private TaskList taskListOfZeng;
+	private Project projectRails;
+	private TaskList taskListOfRails;
 
 	@Before
 	public void setUp() {
@@ -34,18 +36,25 @@ public class TaskDaoTest extends DaoTest {
 		taskDao = new TaskDao(session);
 		builder = new TaskBuilder();
 		
-		project = new Project("zeng");
-		session.save(project);
+		projectZeng = new Project("zeng");
+		session.save(projectZeng);
+		Category categoryBackEnd = new Category();
+		categoryBackEnd.setProject(projectZeng);
+		session.save(categoryBackEnd);
+		taskListOfZeng = new TaskList();
+		taskListOfZeng.setCategory(categoryBackEnd);
+		session.save(taskListOfZeng);
 
-		Category category = new Category();
-		category.setProject(project);
-		session.save(category);
+		projectRails = new Project("rails");
+		session.save(projectRails);
+		Category categoryFrontEnd = new Category();
+		categoryFrontEnd.setProject(projectRails);
+		session.save(categoryFrontEnd);
+		taskListOfRails = new TaskList();
+		taskListOfRails.setCategory(categoryFrontEnd);
+		session.save(taskListOfRails);
 
-		taskList = new TaskList();
-		taskList.setCategory(category);
-		session.save(taskList);
-
-		task = builder.withTaskList(taskList).build();
+		task = builder.withTaskList(taskListOfZeng).build();
 		taskDao.insert(task);
 
 		
@@ -85,14 +94,14 @@ public class TaskDaoTest extends DaoTest {
 		List<User> joaoELeonardoList = Arrays.asList(leonardo,joao);
 		List<User> joaoList = Arrays.asList(joao);
 
-		Task task = builder.withContributors(joaoELeonardoList).withTaskList(taskList).build();
+		Task task = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfZeng).build();
 		taskDao.insert(task);
 		
-		Task task3 = builder.withContributors(joaoList).withTaskList(taskList).build();
+		Task task3 = builder.withContributors(joaoList).withTaskList(taskListOfZeng).build();
 		taskDao.insert(task3);
 		taskDao.finalize(task3);
 		
-		Task task4 = builder.withContributors(joaoELeonardoList).withTaskList(taskList).build();
+		Task task4 = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfZeng).build();
 		taskDao.insert(task4);
 		taskDao.finalize(task4);
 		
@@ -100,7 +109,7 @@ public class TaskDaoTest extends DaoTest {
 		taskDao.insert(task5);
 		taskDao.finalize(task5);
 		
-		List<UserTasksPerMonth> quantityOfTasksGroupedByDateAndUser = taskDao.getQuantityOfTasksGroupedByDateAndUser(project);
+		List<UserTasksPerMonth> quantityOfTasksGroupedByDateAndUser = taskDao.getQuantityOfTasksGroupedByDateAndUser(projectZeng);
 		DateTime dateTime = new DateTime();
 		DateTime today = new DateTime(dateTime.getYear(),dateTime.getMonthOfYear(),1,0,0,0,0);
 
@@ -114,23 +123,36 @@ public class TaskDaoTest extends DaoTest {
 
 	@Test
 	public void shouldSearchAndReturnAllTasksThatHasTheProvidedStringInNameOrDescription() {
-		Task task = builder.withName("Invalid").withDescription("Invalid").withTaskList(taskList).build();
+		Task task = builder.withName("Invalid").withDescription("Invalid").withTaskList(taskListOfZeng).build();
 		taskDao.insert(task);
 
-		Task task2 = builder.withName("test2").withDescription("Invalid").withTaskList(taskList).build();
+		Task task2 = builder.withName("test2").withDescription("Invalid").withTaskList(taskListOfZeng).build();
 		taskDao.insert(task2);
 		
-		Task task3 = builder.withName("Invalid").withDescription("Lorem test ipsum").withTaskList(null).build();
+		Task task3 = builder.withName("Invalid").withDescription("Lorem test ipsum").withTaskList(taskListOfRails).build();
 		taskDao.insert(task3);
 		
-		Task task4 = builder.withName("test2").withDescription("Invalid").withTaskList(null).build();
+		Task task4 = builder.withName("test2").withDescription("Invalid").withTaskList(taskListOfRails).build();
 		taskDao.insert(task4);
 		
-		Task task5 = builder.withName("Invalid").withDescription("Lorem test ipsum").withTaskList(taskList).build();
+		Task task5 = builder.withName("Invalid").withDescription("Lorem test ipsum").withTaskList(taskListOfZeng).build();
 		taskDao.insert(task5);
 
-		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", taskList.getProject().getUrl());
+		Task task6 = builder.withName("test2").withDescription("Lorem test ipsum").withTaskList(taskListOfRails).build();
+		taskDao.insert(task6);
+
+		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", projectZeng.getId());
+		
 		assertEquals(2, tasks.size());
+		
+		assertTrue(tasks.contains(task2));
+		assertTrue(tasks.contains(task5));
+		
+		assertFalse(tasks.contains(task));
+		assertFalse(tasks.contains(task3));
+		assertFalse(tasks.contains(task4));
+		assertFalse(tasks.contains(task6));
+		
 	}
 	
 	@Test
@@ -151,30 +173,30 @@ public class TaskDaoTest extends DaoTest {
 	@Test
 	public void shouldVerifyIfThereIsManyTasksWithTheSameExpirationDate() {
 		DateTime expirationDate = new DateTime(2012,12,1,0,0,0,0);
-		Task task = builder.withTaskList(taskList).withExpirationDate(expirationDate).build();
+		Task task = builder.withTaskList(taskListOfZeng).withExpirationDate(expirationDate).build();
 		taskDao.insert(task);
-		assertFalse(taskDao.manyTasksWithSameExpirationDate(project));
+		assertFalse(taskDao.manyTasksWithSameExpirationDate(projectZeng));
 		for (int i = 0; i < 9; i++) {
-			taskDao.insert(builder.withTaskList(taskList).withExpirationDate(expirationDate).build());
+			taskDao.insert(builder.withTaskList(taskListOfZeng).withExpirationDate(expirationDate).build());
 		}
-		assertTrue(taskDao.manyTasksWithSameExpirationDate(project));
+		assertTrue(taskDao.manyTasksWithSameExpirationDate(projectZeng));
 	}
 	
 	@Test
 	public void shouldNotReturnTrueIfTheTasksHasNoExpirationDate() {
-		Task task = builder.withTaskList(taskList).withExpirationDate(null).build();
+		Task task = builder.withTaskList(taskListOfZeng).withExpirationDate(null).build();
 		taskDao.insert(task);
-		assertFalse(taskDao.manyTasksWithSameExpirationDate(project));
+		assertFalse(taskDao.manyTasksWithSameExpirationDate(projectZeng));
 		for (int i = 0; i < 9; i++) {
-			taskDao.insert(builder.withTaskList(taskList).withExpirationDate(null).build());
+			taskDao.insert(builder.withTaskList(taskListOfZeng).withExpirationDate(null).build());
 		}
-		assertFalse(taskDao.manyTasksWithSameExpirationDate(project));
+		assertFalse(taskDao.manyTasksWithSameExpirationDate(projectZeng));
 	}
 	
 	@Test
-	public void shouldSearchOnlyTheNotArchivedTasks() {
+	public void shouldSearchForOnlyNotArchivedTasks() {
 		taskDao.archive(task);
-		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", project.getUrl() );
+		List<Task> tasks = taskDao.getTasksWithContentInAProject("test", projectZeng.getId() );
 		assertEquals(0, tasks.size());
 	}
 

@@ -8,7 +8,6 @@
 .header {
 	width: 100%;
 	height: auto;
-	position: absolute;
 	top: 0px;
 	left: 0px;
 	z-index: 2;
@@ -144,6 +143,11 @@ footer {
 
 .dropdown-target li > * {
 	color:#000;
+	display:block;
+}
+
+.dropdown-target li > *:hover {
+	background-color:#ceb296;
 }
 
 #menu-bar-buttons {

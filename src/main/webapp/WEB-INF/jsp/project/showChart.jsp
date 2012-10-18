@@ -15,11 +15,11 @@
 	<body>
 		<section id="container">
 	    	<section id="left_container">
-				<section id="top">
+				<header class="header">
 					<c:import url="/WEB-INF/imports/header.jsp"/>
-				</section>
-	            <section id="content">
-	            	<section class="project_chart container" id="zeng" style='width: 1024px; height: 600px;'></section>
+				</header>
+	            <section class="content">
+	            	<section class="project_chart container" id="zeng" style='width: 1024px; height: 500px;'></section>
 				</section>
 				<c:import url="/WEB-INF/imports/footer.jsp"/>
 	        </section>

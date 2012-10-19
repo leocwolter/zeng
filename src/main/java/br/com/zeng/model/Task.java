@@ -71,11 +71,13 @@ public class Task {
 	}
 
 	public void setExpirationDate(DateTime expirationDate) {
-		int year = expirationDate.getYear();
-		int monthOfYear = expirationDate.getMonthOfYear();
-		int dayOfMonth = expirationDate.getDayOfMonth();
-		DateTime formattedExpirationDate = new DateTime(year,monthOfYear, dayOfMonth,0,0,0,0);
-		this.expirationDate = formattedExpirationDate;
+		if(expirationDate != null){
+			int year = expirationDate.getYear();
+			int monthOfYear = expirationDate.getMonthOfYear();
+			int dayOfMonth = expirationDate.getDayOfMonth();
+			expirationDate = new DateTime(year,monthOfYear, dayOfMonth,0,0,0,0);
+			this.expirationDate = expirationDate;
+		}
 	}
 
 	public String getName() {

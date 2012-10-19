@@ -123,12 +123,16 @@ $(function(){
 										.html("X"),
 			taskName = $("<h4>").addClass("task-name").text(taskData.name),
 			taskContributors = createTaskContributors(taskData.contributors);
+			date = new Date(taskData.expirationDate.iMillis),
+			formattedDate = date.format("dd/mm/yyyy");
+			taskDate = $("<span>").addClass("task-expiration-date").html("Expiration Date: "+ formattedDate);
 			taskOptions = createTaskOptions();
 		
 		$(task)
 			.append(archiveTaskButton)
 			.append(taskName)
 			.append(taskContributors)
+			.append(taskDate)
 			.append(taskOptions);
 		return task;
 	}
@@ -159,7 +163,7 @@ $(function(){
 	    },
 		messages: {
 			'expirationDate': {
-				afterNow: "The expiration date whould be after today"
+				afterNow: "The expiration date should be after today"
 			}
 		}
 

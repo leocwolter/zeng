@@ -23,13 +23,12 @@ public class UserValidator {
 	public void validate(User user) {
 		if(user == null) {
 			validator.add(new ValidationMessage("Invalid User", "error"));
+		}else{
+			List<br.com.caelum.stella.ValidationMessage> invalidMessages = cpfValidator.invalidMessagesFor(user.getCpf());
+			for (br.com.caelum.stella.ValidationMessage validationMessage : invalidMessages) {
+				validator.add(new ValidationMessage(validationMessage.getMessage(), "error"));
+			}
 		}
-		List<br.com.caelum.stella.ValidationMessage> invalidMessages = cpfValidator.invalidMessagesFor(user.getCpf());
-		for (br.com.caelum.stella.ValidationMessage validationMessage : invalidMessages) {
-			validator.add(new ValidationMessage(validationMessage.getMessage(), "error"));
-		}
-		
-		
 		validator.onErrorRedirectTo(UserController.class).home();
 	}
 }

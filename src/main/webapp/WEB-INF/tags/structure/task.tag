@@ -10,7 +10,12 @@
 			<li>${contributor.name};</li>
 		</c:forEach>
 	</ul>
-	<span class="task-expiration-date">Expiration Date: <joda:format value="${task.expirationDate}" pattern="d/M/Y" /></span>
+	<c:if test="${task.expired}">
+		<span class="task-expiration-date expired">Expiration Date: <joda:format value="${task.expirationDate}" pattern="d/M/Y" /></span>
+	</c:if>
+	<c:if test="${!task.expired}">
+		<span class="task-expiration-date">Expiration Date: <joda:format value="${task.expirationDate}" pattern="d/M/Y" /></span>
+	</c:if>
 	<div class="task-options">
 		<c:if test="${task.state != 'DONE'}">
 			<c:if test="${task.state != 'DOING'}">

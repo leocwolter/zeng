@@ -149,6 +149,11 @@ public class Task {
 	public void setArchived(boolean archived) {
 		this.archived = archived;
 	}
+	
+	public boolean isExpired(){
+		return expirationDate.isBefore(new DateTime());
+	}
+	
 	public Category getCategory() {
 		return getTaskList().getCategory();
 	}

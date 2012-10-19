@@ -8,11 +8,12 @@
 		</form>
 	</c:if>
 	<section id="user-box">
-		<a href="${linkTo[UserController].editForm}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" class="modal" id="user-name-link">
+		<a href="${linkTo[ProjectController].listProjects}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" id="user-name-link">
 			${userSession.user.name} </a>
 		<div class="arrow dropdown" data-target="user-menu">
 			<ul class="dropdown-target" id="user-menu">
 				<li><a href="${linkTo[UserController].profile[userSession.user.id]}">Profile</a></li>
+				<li><a href="${linkTo[UserController].editForm}" class="modal">Edit</a></li>
 				<li><a href="${linkTo[UserController].logOut}">Logout</a></li>
 			</ul>
 		</div>

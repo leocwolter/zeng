@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Zeng - Nova Categoria</title>
+        <title>Zeng - Insert Category</title>
         <!-- CSS IMPORT -->
 		<c:import url="/WEB-INF/imports/css-import.jsp" />
         <!-- STRUCTURE STYLE -->
@@ -15,15 +15,15 @@
 	<body>
 		<form action="${linkTo[CategoryController].insert}" method="POST" class="insert-form">
 			<fieldset>
-				<legend>Criar Categoria</legend>
+				<legend>Insert Category</legend>
 				<br/>
-				<label for="category-name">Nome: </label>
+				<label for="category-name">Name: </label>
 				<br/>
 				<input type="text" name="category.name" />
 				<br/>
 				<input type="hidden" name="projectUrl" value="${projectUrl}"/>
 				
-				<input type="submit" class="button normal-button insert-category" value="Inserir">
+				<input type="submit" class="button normal-button insert-category" value="Insert">
 			</fieldset>
 		</form>
 		<!-- SCRIPTS IMPORT -->

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Zeng - Novo Projeto</title>
+<title>Zeng - Insert Project</title>
 <!-- CSS IMPORT -->
 <c:import url="/WEB-INF/imports/css-import.jsp" />
 <!-- STRUCTURE STYLE -->
@@ -14,20 +14,20 @@
 <body>
 	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert-form">
 		<fieldset>
-			<legend>Criar Projeto</legend>
+			<legend>Insert Project</legend>
 			<br/>
 			
-			<label for="project-name">Nome: </label>
+			<label for="project-name">Name: </label>
 			<br/>
 			<input type="text" id="project-name" name="project.name" />
 			<br/>
 		
-			<label for="project-contributors">Colaboradores: </label>
+			<label for="project-contributors">Contributors: </label>
 			<br/>
 			<input id="project-contributors[0]" type="text" name="contributors[0].email"/>
 			<br/>
 		
-			<input type="submit" class="button normal-button insert-project" value="Inserir">
+			<input type="submit" class="button normal-button insert-project" value="Insert">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

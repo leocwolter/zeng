@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Zeng - Nova Lista de Tarefas</title>
+<title>Zeng - Insert Task List</title>
 <!-- CSS IMPORT -->
 <c:import url="/WEB-INF/imports/css-import.jsp" />
 <!-- STRUCTURE STYLE -->
@@ -14,14 +14,14 @@
 <body>
 	<form action="${linkTo[TaskListController].insert}" method="post" class="insert-form">
 		<fieldset>
-			<legend>Criar Lista de Tarefas </legend>
+			<legend>Insert Task List</legend>
 			<br/>
-			<label for="taskList-name">Nome: </label>
+			<label for="taskList-name">Name: </label>
 			<br/>
 			<input type="text" id="taskList-name" name="taskList.name" />
 			<br/>
 			<input type="hidden" name="categoryId" value="${category.id}">
-			<input type="submit" class="button normal-button insert-task-list" value="Inserir">
+			<input type="submit" class="button normal-button insert-task-list" value="Insert">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

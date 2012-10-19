@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Zeng - Nova Tarefa</title>
+<title>Zeng - Insert Task</title>
 <!-- CSS IMPORT -->
 <c:import url="/WEB-INF/imports/css-import.jsp" />
 <!-- STRUCTURE STYLE -->
@@ -14,20 +14,20 @@
 <body>
 	<form action="${linkTo[TaskController].insert}" method="POST" class="insert-form">
 		<fieldset>
-			<legend>Criar Tarefa</legend>
+			<legend>Insert Task</legend>
 			<br/>
 			
-			<label for="task-name">Nome: </label>
+			<label for="task-name">Name: </label>
 			<br/>
 			<input type="text" id="task-name" name="task.name" />
 			<br/>
 			
-			<label for="task-description">Descrição: </label>
+			<label for="task-description">Description: </label>
 			<br/>
 			<input type="text" id="task-description" name="task.description" />
 			<br/>
 		
-			<label for="task-contributors">Colaboradores: </label>
+			<label for="task-contributors">Contributors: </label>
 			<br/>
 			<c:forEach items="${taskList.projectContributors}" var="contributor" varStatus="i">
 				<input id="task-contributors[${i.count}]" type="checkbox" value="${contributor.id}" name="task.contributors[${i.count}].id"/>
@@ -35,14 +35,14 @@
 				<br/> 
 			</c:forEach>
 		
-			<label for="expirationDate">Data de expiração: </label>
+			<label for="expirationDate">Expiration Date: </label>
 			<br/>
 			<input type="date" id="expirationDate" name="expirationDate" />
 			<br/>
 	
 			<input type="hidden" name="task.taskList.id" value="${taskList.id}"/>
 	
-			<input type="submit" class="insert-task button normal-button" value="Inserir">
+			<input type="submit" class="insert-task button normal-button" value="Insert">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

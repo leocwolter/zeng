@@ -99,9 +99,9 @@ $(function(){
 	$("input.insert-task").click(function(event){
 		insert(event, this, function(data){
 			var taskData = data.task;
-
-			if(taskData.expirationDate !== undefined){
-				var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
+			var expirationDate = taskData.expirationDate;
+			if(expirationDate !== undefined){
+				var expirationData = {"dateInMillis":expirationDate.iMillis};
 				var projectUrl = taskData.taskList.category.project.url;
 				$.get("/zeng/project/"+projectUrl+"/manyTasksWithExpirationDate", expirationData, function(manyTasks){
 					if(manyTasks.boolean){
@@ -109,7 +109,6 @@ $(function(){
 					}
 				});
 			}
-
 			var task = createTask(taskData),
 				taskListId = $("input[name='task.taskList.id']").val(),
 				taskList = $("[data-tasklist-id = "+taskListId+"]", parent.document);
@@ -134,7 +133,6 @@ $(function(){
 		return task;
 	}
 	
-	
 	function createTaskContributors(contributors){
 		var contributorsUl = $("<ul>").addClass("task-contributors");
 		$(contributors).each(function(index, contributor){
@@ -143,7 +141,6 @@ $(function(){
 		});
 		return contributorsUl;
 	}
-	
 	
 	function createTaskOptions(){
 		var taskOptions = $("<div>").addClass("task-options"),
@@ -154,4 +151,17 @@ $(function(){
 		return taskOptions.append(option);
 	}
 
+	$(".insert-form").validate({   
+	    rules: {   
+	        'expirationDate': {   
+	            afterNow: true
+	        }  
+	    },
+		messages: {
+			'expirationDate': {
+				afterNow: "The expiration date whould be after today"
+			}
+		}
+
+	});  
 });

@@ -1185,4 +1185,11 @@ $.format = $.validator.format;
 			});
 		}
 	});
+	jQuery.validator.addMethod("afterNow", function(value, element) {   
+		var expirationDateText = value.split("-");
+		var date = new Date(expirationDateText[0],expirationDateText[1]-1,expirationDateText[2]);
+		var today = new Date;
+		return date >= today;   
+	}, "Informe uma data válida");
+
 })(jQuery);

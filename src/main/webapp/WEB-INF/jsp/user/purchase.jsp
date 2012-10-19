@@ -28,10 +28,10 @@
 				<li class="option" id="bronze-option">
 					<h2 class="plan-title" id="bronze-title">Bronze Plan</h2>
 					<ul class="plan-description">
-						<li><strong>15</strong> active clients</li>
-						<li><strong>Unlimited</strong> invoices per month</li>
-						<li><strong>Unlimited</strong> staff logins</li>
-						<li><strong>Free</strong> upgrades</li>
+						<li><strong>Unlimited</strong> users</li>
+						<li><strong>2</strong> projects</li>
+						<li><strong>1GB</strong> of available storage</li>
+						<li><strong>Community</strong> support</li>
 						<li>
 							<!-- FORM BEGIN - PAGSEGURO BUTTON -->
 							<form target="pagseguro" action="https://pagseguro.uol.com.br/v2/pre-approvals/request.html" method="post">
@@ -44,10 +44,10 @@
 				<li class="option" id="silver-option">
 					<h2 class="plan-title" id="silver-title">Silver Plan</h2>
 					<ul class="plan-description">
-						<li><strong>15</strong> active clients</li>
-						<li><strong>Unlimited</strong> invoices per month</li>
-						<li><strong>Unlimited</strong> staff logins</li>
-						<li><strong>Free</strong> upgrades</li>
+						<li><strong>Unlimited</strong> users</li>
+						<li><strong>5</strong> projects</li>
+						<li><strong>3GB</strong> of available storage</li>
+						<li><strong>Community</strong> support</li>
 						<li>
 							<!-- FORM BEGIN - PAGSEGURO BUTTON -->
 							<form target="pagseguro" action="https://pagseguro.uol.com.br/v2/pre-approvals/request.html" method="post">
@@ -60,10 +60,10 @@
 				<li class="option" id="gold-option">
 					<h2 class="plan-title" id="gold-title">Gold Plan</h2>
 					<ul class="plan-description">
-						<li><strong>15</strong> active clients</li>
-						<li><strong>Unlimited</strong> invoices per month</li>
-						<li><strong>Unlimited</strong> staff logins</li>
-						<li><strong>Free</strong> upgrades</li>
+						<li><strong>Unlimited</strong> users</li>
+						<li><strong>10</strong> projects</li>
+						<li><strong>5GB</strong> of available storage</li>
+						<li><strong>Specialized</strong> support with email</li>
 						<li>
 							<!-- FORM BEGIN - PAGSEGURO BUTTON -->
 							<form target="pagseguro" action="https://pagseguro.uol.com.br/v2/pre-approvals/request.html" method="post">
@@ -76,10 +76,10 @@
 				<li class="option" id="platinum-option">
 					<h2 class="plan-title" id="platinum-title">Platinum Plan</h2>
 					<ul class="plan-description">
-						<li><strong>15</strong> active clients</li>
-						<li><strong>Unlimited</strong> invoices per month</li>
-						<li><strong>Unlimited</strong> staff logins</li>
-						<li><strong>Free</strong> upgrades</li>
+						<li><strong>Unlimited</strong> users</li>
+						<li><strong>Unlimited</strong> projects</li>
+						<li><strong>30GB</strong> of available storage</li>
+						<li><strong>Specialized</strong> support with email</li>
 						<li>
 							<!-- FORM BEGIN - PAGSEGURO BUTTON -->
 							<form target="pagseguro" action="https://pagseguro.uol.com.br/v2/pre-approvals/request.html" method="post">
@@ -91,7 +91,7 @@
 				</li>
 			</ol>
 			<br class="clear-fix" />
-			<section class="button normal-button" id="extension-button">Extension Plan + More 25GB of Storage</section>
+			<section class="button normal-button" id="extension-button">Extension Plan + More 10GB of Storage</section>
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp" />
 	</section>

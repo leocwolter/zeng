@@ -23,9 +23,9 @@ public class UserDaoTest extends DaoTest {
 	public void setUp() {
 		super.setUp();
 		userDao = new UserDao(session);
-		leonardo = new User("Leonardo", "leo@user.com", "password", "230.234.234-32" );
+		leonardo = new User("Leonardo", "leo@user.com", "password");
 		userDao.insert(leonardo);
-		enzo = new User("Enzo", "enzo@user.com", "password2", "230.234.234-31");
+		enzo = new User("Enzo", "enzo@user.com", "password2");
 		userDao.insert(enzo);
 	}
 

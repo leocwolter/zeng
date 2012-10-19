@@ -21,7 +21,7 @@ public class ProjectDaoTest extends DaoTest {
 		super.setUp();
 		projectDao = new ProjectDao(session);
 
-		user = new User("user", "user@user.com", "password", "230.234.234-32");
+		user = new User("user", "user@user.com", "password");
 		session.save(user);
 
 		String url = "project-one";

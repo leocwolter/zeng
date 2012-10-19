@@ -102,10 +102,10 @@ public class TaskDaoTest extends DaoTest {
 
 	@Test
 	public void shouldReturnNumberOfTasksGroupedByDateOfCompletionAndContributors() {
-		User leonardo = new User("Leonardo","leo@leo.com","123", "230.234.234-32");
+		User leonardo = new User("Leonardo","leo@leo.com","123");
 		session.save(leonardo);
 		
-		User joao = new User("Joao", "joao@joao.com", "123", "230.234.234-31");
+		User joao = new User("Joao", "joao@joao.com", "123");
 		session.save(joao);
 		
 		List<User> joaoELeonardoList = Arrays.asList(leonardo,joao);

@@ -21,8 +21,6 @@ public class User {
 	@Column(unique=true)
 	private String email;
 	@NotNull(message="The field 'cpf' is required")
-	@Column(unique=true)
-	private String cpf;
 
 	/**
 	 * @deprecated hibernate eyes only
@@ -31,12 +29,11 @@ public class User {
 		this.photo=DEFAULT_PHOTO;
 	}
 
-	public User(String name, String email, String password, String cpf) {
+	public User(String name, String email, String password) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.cpf = cpf;
 	}
 
 	public void setId(Long id) {
@@ -114,13 +111,5 @@ public class User {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-	
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 }

@@ -431,3 +431,9 @@ label.error {
 	height: 1px;
 	background: #CCCCCC;
 }
+
+/* Captcha */
+#captcha{
+	border: 3px solid #38291A;
+	border-radius: 3px;
+}

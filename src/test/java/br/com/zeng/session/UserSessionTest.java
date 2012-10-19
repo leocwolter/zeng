@@ -11,7 +11,7 @@ public class UserSessionTest {
 	@Test
 	public void shouldLogInUser() {
 		UserSession userSession = new UserSession();
-		User user = new User("name", "email", "password", "230.234.234-32");
+		User user = new User("name", "email", "password");
 		userSession.logIn(user);
 		
 		assertEquals(user, userSession.getUser());
@@ -20,7 +20,7 @@ public class UserSessionTest {
 	@Test
 	public void shouldLogOutUser() {
 		UserSession userSession = new UserSession();
-		User user = new User("name", "email", "password", "230.234.234-31");
+		User user = new User("name", "email", "password");
 		userSession.logIn(user);
 		
 		userSession.logOut();

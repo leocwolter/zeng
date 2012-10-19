@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -14,8 +15,10 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.environment.Environment;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.zeng.annotation.LoggedUser;
+import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.infra.Criptografador;
+import br.com.zeng.model.Project;
 import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
 import br.com.zeng.simplecaptcha.SimpleCaptcha;
@@ -33,6 +36,7 @@ public class UserController {
 	private final Environment env;
 	private final SimpleCaptcha captcha;
 	private final CaptchaValidator captchaValidator;
+	private final ProjectDao projectDao;
 
 	public UserController(Result result,
 			UserDao userDao,
@@ -41,7 +45,9 @@ public class UserController {
 			Criptografador cripto,
 			Environment env,
 			SimpleCaptcha captcha,
-			CaptchaValidator captchaValidator) {
+			CaptchaValidator captchaValidator,
+			ProjectDao projectDao
+			) {
 		this.result = result;
 		this.userDao = userDao;
 		this.userSession = userSession;
@@ -50,6 +56,7 @@ public class UserController {
 		this.env = env;
 		this.captcha = captcha;
 		this.captchaValidator = captchaValidator;
+		this.projectDao = projectDao;
 	}
 
 	@Get("/")
@@ -73,7 +80,7 @@ public class UserController {
 		User registredUser = userDao.getRegistredUser(user.getEmail(),password) ;
 		userValidator.validate(registredUser);
 		userSession.logIn(registredUser);
-		result.redirectTo(ProjectController.class).listProjects();
+		result.redirectTo(UserController.class).purchase();
 	}
 	
 	@Get("/logout")
@@ -83,7 +90,10 @@ public class UserController {
 	}
 
 	@Get("/purchase")
-	public void purchase(User user) {
+	@LoggedUser
+	public void purchase() {
+		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
+		result.include("projects", listProjectsWithUser);
 	}
 
 	@LoggedUser

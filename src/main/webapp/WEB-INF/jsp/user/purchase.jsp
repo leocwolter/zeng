@@ -20,7 +20,11 @@
 </head>
 <body>
 	<section id="container">
-		<c:import url="/WEB-INF/imports/not-logged-header.jsp"></c:import>
+		<header class="header">
+			<c:import url="/WEB-INF/imports/header.jsp"/>
+			<c:import url="/WEB-INF/imports/project-menu.jsp"/>
+			
+		</header>
 		<section id="home-content" class="content">
 			<zeng-messages:error />
 			<h1 id="purchase-title">Purchase Plans</h1>

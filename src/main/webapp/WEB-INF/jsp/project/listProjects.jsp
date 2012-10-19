@@ -16,6 +16,7 @@
     	<section id="left-container">
     		<header class="header">
 				<c:import url="/WEB-INF/imports/header.jsp"/>
+				<c:import url="/WEB-INF/imports/project-menu.jsp"/>
 				<nav id="menu-bar" class="resizable">
 					<h1>My projects:</h1>
 					<ul id="menu">

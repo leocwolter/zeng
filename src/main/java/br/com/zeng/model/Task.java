@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
 
 @Entity
 @Where(clause = "archived = 0")
@@ -151,7 +152,15 @@ public class Task {
 	}
 	
 	public boolean isExpired(){
-		return expirationDate.isBefore(new DateTime());
+		if(expirationDate==null) return false;
+		return expirationDate.isBefore(new DateTime().minusDays(1));
+	}
+	
+	public boolean isCloseToExpiring(){
+		if(expirationDate==null) return false;
+		DateTime today = new DateTime();
+		Interval interval = new Interval(today.minusDays(1), today.plusWeeks(1));
+		return interval.contains(expirationDate);
 	}
 	
 	public Category getCategory() {

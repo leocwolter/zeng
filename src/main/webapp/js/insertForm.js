@@ -140,7 +140,7 @@ $(function(){
 		$(contributors).each(function(index, contributor){
 			var contributorLi = $("<li>").html(contributor.name+"; ");
 			$(contributorsUl).append(contributorLi);
-		})
+		});
 		return contributorsUl;
 	}
 	

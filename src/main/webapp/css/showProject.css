@@ -210,12 +210,16 @@
 	margin: 0px 0px 10px 0px;
 }
 
-.task-expiration-date.expired{
+.task-expiration-date.expired-task{
 	color:red;
 }
 
-.task-expiration-date.close-to-expiring{
+.task-expiration-date.close-to-expiring-task{
 	color:#936D00;
+}
+
+.task-expiration-date.valid-task{
+	color:green;
 }
 
 .task-name {

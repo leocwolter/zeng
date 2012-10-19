@@ -123,9 +123,7 @@ $(function(){
 										.html("X"),
 			taskName = $("<h4>").addClass("task-name").text(taskData.name),
 			taskContributors = createTaskContributors(taskData.contributors);
-			date = new Date(taskData.expirationDate.iMillis),
-			formattedDate = date.format("dd/mm/yyyy");
-			taskDate = $("<span>").addClass("task-expiration-date").html("Expiration Date: "+ formattedDate);
+			taskDate = createTaskExpirationDate(taskData),
 			taskOptions = createTaskOptions();
 		
 		$(task)
@@ -135,6 +133,12 @@ $(function(){
 			.append(taskDate)
 			.append(taskOptions);
 		return task;
+	}
+	
+	function createTaskExpirationDate(taskData){
+		var date = new Date(taskData.expirationDate.iMillis),
+		formattedDate = date.format("dd/mm/yyyy");
+		return $("<span>").addClass("task-expiration-date").html("Expiration Date: "+ formattedDate);
 	}
 	
 	function createTaskContributors(contributors){

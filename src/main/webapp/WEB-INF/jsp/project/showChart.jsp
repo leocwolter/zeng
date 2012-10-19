@@ -34,6 +34,9 @@
 		
 		<!-- CHART SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/chart.js" />"></script>
+
+		<!-- HEADER SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 		
 		
 

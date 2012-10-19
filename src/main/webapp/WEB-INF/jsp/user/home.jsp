@@ -62,6 +62,7 @@
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp" />
 	</section>
+	
 	<!-- SCRIPTS IMPORT -->
 	<c:import url="/WEB-INF/imports/script-import.jsp" />
 	<!-- VALIDATE SCRIPT -->

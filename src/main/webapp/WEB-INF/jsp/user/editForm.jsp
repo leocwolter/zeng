@@ -22,7 +22,7 @@
 					<zeng-messages:error/>
 					<zeng-messages:confirmation/>
 				
-					<label for="user-photo">Foto:</label>
+					<label for="user-photo">Photo:</label>
 					<br/>
 					<input type="file" name="userPhoto" id="user-photo"/>
 					<br/>

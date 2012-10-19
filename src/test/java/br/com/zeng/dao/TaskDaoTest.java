@@ -22,6 +22,7 @@ import br.com.zeng.model.User;
 
 public class TaskDaoTest extends DaoTest {
 
+	private static final int MANY_TASKS = 2;
 	private TaskDao taskDao;
 	private Project projectZeng;
 	private Task task;
@@ -38,27 +39,43 @@ public class TaskDaoTest extends DaoTest {
 		
 		projectZeng = new Project("zeng");
 		session.save(projectZeng);
+		
 		Category categoryBackEnd = new Category();
 		categoryBackEnd.setProject(projectZeng);
+		categoryBackEnd.setName("Back-end");
 		session.save(categoryBackEnd);
+		
 		taskListOfZeng = new TaskList();
 		taskListOfZeng.setCategory(categoryBackEnd);
+		taskListOfZeng.setName("Zeng Task List");
 		session.save(taskListOfZeng);
 
 		projectRails = new Project("rails");
 		session.save(projectRails);
+		
 		Category categoryFrontEnd = new Category();
 		categoryFrontEnd.setProject(projectRails);
 		session.save(categoryFrontEnd);
+
 		taskListOfRails = new TaskList();
 		taskListOfRails.setCategory(categoryFrontEnd);
 		session.save(taskListOfRails);
 
-		task = builder.withTaskList(taskListOfZeng).build();
+		task = builder.withTaskList(taskListOfZeng).withName("do something").build();
 		taskDao.insert(task);
 
 		
 		session.flush();
+	}
+	
+	@Test
+	public void shouldGetATaskById() {
+		Task completeTask = taskDao.getWithId(task.getId());
+		assertEquals("do something", completeTask.getName());
+		assertEquals("Zeng Task List", completeTask.getTaskList().getName());
+		assertEquals("Back-end", completeTask.getCategory().getName());
+		assertEquals("zeng", completeTask.getProject().getName());
+		
 	}
 	
 	@Test
@@ -180,6 +197,18 @@ public class TaskDaoTest extends DaoTest {
 			taskDao.insert(builder.withTaskList(taskListOfZeng).withExpirationDate(expirationDate).build());
 		}
 		assertTrue(taskDao.manyTasksWithSameExpirationDate(projectZeng));
+	}
+	
+	@Test
+	public void shouldVerifyIfThereIsManyTasksInAProjectWithTheExpirationDate() {
+		DateTime expirationDate = new DateTime(2012,12,1,0,0,0,0);
+		Task task = builder.withTaskList(taskListOfZeng).withExpirationDate(expirationDate).build();
+		taskDao.insert(task);
+		assertFalse(taskDao.manyTasksInAProjectWith(expirationDate, projectZeng));
+		for (int i = 0; i < MANY_TASKS; i++) {
+			taskDao.insert(builder.withTaskList(taskListOfZeng).withExpirationDate(expirationDate).build());
+		}
+		assertTrue(taskDao.manyTasksInAProjectWith(expirationDate, projectZeng));
 	}
 	
 	@Test

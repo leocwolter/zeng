@@ -1,8 +1,10 @@
 package br.com.zeng.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -21,20 +23,21 @@ public class Task {
 	private Long id;
 	private String name;
 	private String description;
-	@ManyToMany
-	private List<User> contributors;
-	@ManyToOne
-	private TaskList taskList;
+	private boolean archived;
 	private State state;
-	@OneToMany(mappedBy = "task")
-	private List<Step> steps;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime expirationDate;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime dateOfCompletion;
-	private boolean archived;
+	@OneToMany(mappedBy = "task")
+	private List<Step> steps;
+	@ManyToMany
+	private List<User> contributors;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private TaskList taskList;
 
 	public Task() {
+		this.contributors = new ArrayList<User>();
 		this.archived = false;
 		this.state = State.TODO;
 	}
@@ -68,7 +71,11 @@ public class Task {
 	}
 
 	public void setExpirationDate(DateTime expirationDate) {
-		this.expirationDate = expirationDate;
+		int year = expirationDate.getYear();
+		int monthOfYear = expirationDate.getMonthOfYear();
+		int dayOfMonth = expirationDate.getDayOfMonth();
+		DateTime formattedExpirationDate = new DateTime(year,monthOfYear, dayOfMonth,0,0,0,0);
+		this.expirationDate = formattedExpirationDate;
 	}
 
 	public String getName() {

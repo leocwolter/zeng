@@ -1,5 +1,6 @@
 package br.com.zeng.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -26,11 +27,12 @@ public class UserDao {
 				.uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<User> getCompleteContributorsById(List<User> contributors) {
-		for (User user : contributors) {
-			user = (User) session.get(User.class,user.getId());
-		}
-		return contributors;
+		if(contributors.isEmpty()) return contributors;
+		return session.createQuery("from User u where u in :contributors")
+						.setParameterList("contributors",contributors)
+						.list();
 	}
 
 	public void update(User user) {

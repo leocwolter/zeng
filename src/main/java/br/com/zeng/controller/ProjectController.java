@@ -4,6 +4,8 @@ import static br.com.caelum.vraptor.view.Results.json;
 
 import java.util.List;
 
+import org.joda.time.DateTime;
+
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -111,4 +113,13 @@ public class ProjectController {
 		result.include("project", project);
 	}
 	
+	@LoggedUser
+	@Get("/project/{projectUrl}/manyTasksWithExpirationDate")
+	public void manyTasksWithThis(String projectUrl, Long dateInMillis){
+		DateTime expirationDate = new DateTime(dateInMillis);
+		Project project = projectDao.getProjectWithUrl(projectUrl);
+		boolean manyTasks = taskDao.manyTasksInAProjectWith(expirationDate, project);
+		result.use(json()).from(manyTasks).serialize();
+	}
+
 }

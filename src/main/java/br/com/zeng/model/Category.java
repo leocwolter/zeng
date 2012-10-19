@@ -3,6 +3,7 @@ package br.com.zeng.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -15,7 +16,7 @@ public class Category {
 	@Id
 	private Long id;
 	private String name;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Project project;
 	@OneToMany(mappedBy = "category")
 	private List<TaskList> taskLists;

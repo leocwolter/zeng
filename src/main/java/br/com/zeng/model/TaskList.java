@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -15,7 +16,7 @@ public class TaskList {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Category category;
 	@OneToMany(mappedBy = "taskList")
 	private List<Task> tasks;

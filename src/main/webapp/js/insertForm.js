@@ -97,12 +97,20 @@ $(function(){
 	
 	//Task insertion
 	$("input.insert-task").click(function(event){
-		insert(event, this,  function(data){
-			var taskData = data.task,
-				task = createTask(taskData),
+		insert(event, this, function(data){
+			var taskData = data.task;
+
+			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
+			var projectUrl = taskData.taskList.category.project.url;
+			$.get("/zeng/project/"+projectUrl+"/manyTasksWithExpirationDate", expirationData, function(manyTasks){
+				if(manyTasks.boolean){
+					alert("There are more than three tasks with that expiration date in this project!");
+				}
+			});
+
+			var task = createTask(taskData),
 				taskListId = $("input[name='task.taskList.id']").val(),
 				taskList = $("[data-tasklist-id = "+taskListId+"]", parent.document);
-			console.log(taskList);
 			$(taskList).append(task);
 		});
 	});

@@ -26,10 +26,10 @@ public class TaskDao {
 		session.save(task);
 	}
 
-	public Task getTaskWithId(Long id) {
-		return (Task) session.get(Task.class, id);
+	public Task getWithId(Long id) {
+		return (Task) session.load(Task.class, id);
 	}
-
+	
 	public void update(Task task) {
 		session.update(task);
 	}
@@ -59,6 +59,14 @@ public class TaskDao {
 		return false;
 	}
 	
+	public boolean manyTasksInAProjectWith(DateTime expirationDate, Project project) {
+		Long numberOfTasks = (Long) session.createQuery("select count(*) from Task t where t.expirationDate = :expirationDate and t.taskList.category.project.url like :project and t.state != 2 and t.archived = 0")
+				.setString("project", project.getUrl())
+				.setParameter("expirationDate", expirationDate)
+				.uniqueResult();
+		return numberOfTasks>=MANY_TASKS;
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<UserTasksPerMonth> getQuantityOfTasksGroupedByDateAndUser(Project project){
 		List<Object[]> list = session.createQuery("select year(t.dateOfCompletion), month(t.dateOfCompletion), c.id, count(*) from Task t join t.contributors c where t.dateOfCompletion != null and t.taskList.category.project.url like :project and t.state=2 group by year(t.dateOfCompletion),month(t.dateOfCompletion), c.id order by c.id")

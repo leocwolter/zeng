@@ -59,6 +59,7 @@ public class UserController {
 	@Post("/register")
 	public void register(User user, String captchaAnswer) {
 		captchaValidator.validate(captcha, captchaAnswer);
+		userValidator.validate(user);
 		String password = cripto.criptografa(user.getPassword());
 		user.setPassword(password);
 		userDao.insert(user);

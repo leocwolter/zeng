@@ -1,8 +1,10 @@
 package br.com.zeng.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -10,21 +12,31 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
-	private String password;
-	private String email;
 	private String photo;
+	@NotNull(message="The field 'name' is required")
+	private String name;
+	@NotNull(message="The field 'password' is required")
+	private String password;
+	@NotNull(message="The field 'email' is required")
+	@Column(unique=true)
+	private String email;
+	@NotNull(message="The field 'cpf' is required")
+	@Column(unique=true)
+	private String cpf;
 
-	//hibernate eyes only
+	/**
+	 * @deprecated hibernate eyes only
+	 */
 	public User() {
 		this.photo=DEFAULT_PHOTO;
 	}
 
-	public User(String name, String email, String password) {
+	public User(String name, String email, String password, String cpf) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
+		this.cpf = cpf;
 	}
 
 	public void setId(Long id) {
@@ -103,5 +115,12 @@ public class User {
 			return false;
 		return true;
 	}
+
+	public String getCpf() {
+		return cpf;
+	}
 	
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
 }

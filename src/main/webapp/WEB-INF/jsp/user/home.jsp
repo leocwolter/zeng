@@ -33,6 +33,10 @@
 						<input id="email" name="user.email" type="email" class="text" value="" />
 					</p>
 					<p>
+						<label for="cpf">Cpf:</label>
+						<input id="cpf" name="user.cpf" type="text" class="text" value="" />
+					</p>
+					<p>
 						<label for="password">Password:</label>
 						<input id="password" name="user.password" class="text" type="password" />
 					</p>

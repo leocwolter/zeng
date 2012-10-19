@@ -27,7 +27,7 @@ public class NotificationDaoTest extends DaoTest {
 		Project project2 = new Project();
 		session.save(project2);
 		
-		User author = new User();
+		User author = new User("Leonardo", "leo@leo.com", "123", "230.234.234-32");
 		session.save(author);
 		
 		Notification notification = new Notification("Test", author, project);

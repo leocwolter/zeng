@@ -100,13 +100,15 @@ $(function(){
 		insert(event, this, function(data){
 			var taskData = data.task;
 
-			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
-			var projectUrl = taskData.taskList.category.project.url;
-			$.get("/zeng/project/"+projectUrl+"/manyTasksWithExpirationDate", expirationData, function(manyTasks){
-				if(manyTasks.boolean){
-					alert("There are more than three tasks with that expiration date in this project!");
-				}
-			});
+			if(taskData.expirationDate !== undefined){
+				var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
+				var projectUrl = taskData.taskList.category.project.url;
+				$.get("/zeng/project/"+projectUrl+"/manyTasksWithExpirationDate", expirationData, function(manyTasks){
+					if(manyTasks.boolean){
+						alert("There are more than three tasks with that expiration date in this project!");
+					}
+				});
+			}
 
 			var task = createTask(taskData),
 				taskListId = $("input[name='task.taskList.id']").val(),
@@ -121,13 +123,27 @@ $(function(){
 										.addClass("button remove-button archive-task")
 										.html("X"),
 			taskName = $("<h4>").addClass("task-name").text(taskData.name),
+			taskContributors = createTaskContributors(taskData.contributors);
 			taskOptions = createTaskOptions();
+		
 		$(task)
 			.append(archiveTaskButton)
 			.append(taskName)
+			.append(taskContributors)
 			.append(taskOptions);
 		return task;
 	}
+	
+	
+	function createTaskContributors(contributors){
+		var contributorsUl = $("<ul>").addClass("task-contributors");
+		$(contributors).each(function(index, contributor){
+			var contributorLi = $("<li>").html(contributor.name+"; ");
+			$(contributorsUl).append(contributorLi);
+		})
+		return contributorsUl;
+	}
+	
 	
 	function createTaskOptions(){
 		var taskOptions = $("<div>").addClass("task-options"),

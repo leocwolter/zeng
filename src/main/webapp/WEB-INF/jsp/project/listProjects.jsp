@@ -24,7 +24,7 @@
 						</c:forEach>
 					</ul>
 					<section id="menu-bar-buttons">
-						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Adicionar Projeto" class="button normal-button modal">Adicionar projeto</a>
+						<a	href="${linkTo[ProjectController].insertProjectForm}${project.id}" title="Insert Project" class="button normal-button modal">Insert Project</a>
 					</section>
 				</nav>
 			</header>

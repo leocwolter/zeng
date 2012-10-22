@@ -12,9 +12,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import br.com.zeng.infra.Sanitizer;
+import br.com.zeng.model.action.Wrapper;
 
 @Entity
-public class Project {
+public class Project implements Wrapper {
 
 	@GeneratedValue
 	@Id

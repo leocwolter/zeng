@@ -2,10 +2,9 @@ package br.com.zeng.model.action;
 
 
 public class AddAction implements ActionType{
+	private Wrapper destination;
 
-	private final Modifiable destination;
-
-	public AddAction(Modifiable destination) {
+	public AddAction(Wrapper destination) {
 		this.destination = destination;
 	}
 

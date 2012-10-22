@@ -24,6 +24,16 @@ public class Category implements Modifiable, Wrapper{
 	@OneToMany(mappedBy = "category")
 	private List<TaskList> taskLists;
 
+	/**
+	 * @deprecated hibernate eyes only
+	 */
+	public Category() {
+	}
+
+	public Category(Project project){
+		this.setProject(project);
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -32,16 +42,16 @@ public class Category implements Modifiable, Wrapper{
 		this.name = name;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
 	public void setTaskLists(List<TaskList> taskLists) {
 		this.taskLists = taskLists;
 	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 	public Project getProject() {
@@ -60,5 +70,6 @@ public class Category implements Modifiable, Wrapper{
 	public String getType() {
 		return "Category";
 	}
+
 
 }

@@ -12,7 +12,7 @@ import br.com.zeng.model.User;
 public class ProjectDaoTest extends DaoTest {
 
 	private ProjectDao projectDao;
-	private Project project;
+	private Project zeng;
 	private User user;
 
 	@Override
@@ -24,22 +24,16 @@ public class ProjectDaoTest extends DaoTest {
 		user = new User("user", "user@user.com", "password");
 		session.save(user);
 
-		String url = "project-one";
-		String correctName = "Project One";
+		zeng = new Project();
+		zeng.setUrl("zeng");
+		zeng.setName("Zeng");
+		zeng.addContributor(user);
+		projectDao.insert(zeng);
 
-		project = new Project();
-		project.setUrl(url);
-		project.setName(correctName);
-		project.addContributor(user);
-		projectDao.insert(project);
-
-		String urlTwo = "project-two";
-		String incorrectName = "wrong name";
-
-		Project project2 = new Project();
-		project2.setUrl(urlTwo);
-		project2.setName(incorrectName);
-		projectDao.insert(project2);
+		Project projectWithWrongName = new Project();
+		projectWithWrongName.setUrl("project-two");
+		projectWithWrongName.setName("wrong name");
+		projectDao.insert(projectWithWrongName);
 	}
 
 	@Test
@@ -49,29 +43,29 @@ public class ProjectDaoTest extends DaoTest {
 
 	@Test
 	public void shouldReturnACompleteProjectUsingUrl() {
-		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
-		assertEquals(project.getName(), projectComplete.getName());
-		assertEquals(project.getUrl(), projectComplete.getUrl());
+		Project projectComplete = projectDao.getProjectWithUrl(zeng.getUrl());
+		assertEquals(zeng.getName(), projectComplete.getName());
+		assertEquals(zeng.getUrl(), projectComplete.getUrl());
 	}
 
 	@Test
 	public void shouldReturnAProjectById() {
-		Project projectComplete = projectDao.getProjectWithId(project.getId());
-		assertEquals(project.getName(), projectComplete.getName());
-		assertEquals(project.getUrl(), projectComplete.getUrl());
+		Project projectComplete = projectDao.getProjectWithId(zeng.getId());
+		assertEquals(zeng.getName(), projectComplete.getName());
+		assertEquals(zeng.getUrl(), projectComplete.getUrl());
 	}
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowExceptionIfExistAProjectWithSameName() {
 		Project projectWithSameName = new Project();
-		projectWithSameName.setName(project.getName());
+		projectWithSameName.setName(zeng.getName());
 		projectDao.insert(projectWithSameName);
 	}
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowExceptionIfExistAProjectWithSameUrl() {
 		Project projectWithSameUrl = new Project();
-		projectWithSameUrl.setUrl(project.getUrl());
+		projectWithSameUrl.setUrl(zeng.getUrl());
 		projectDao.insert(projectWithSameUrl);
 	}
 

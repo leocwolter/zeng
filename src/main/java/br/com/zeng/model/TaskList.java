@@ -24,6 +24,16 @@ public class TaskList implements Modifiable, Wrapper {
 	@OneToMany(mappedBy = "taskList")
 	private List<Task> tasks;
 	
+	/**
+	 * @deprecated hibernate eyes only
+	 */
+	public TaskList() {
+	}
+	
+	public TaskList(Category category){
+		this.category = category;
+	}
+	
 	public List<Task> getTasks() {
 		ArrayList<Task> notArchivedTasks = new ArrayList<Task>();
 		for (Task task : tasks) {
@@ -56,7 +66,7 @@ public class TaskList implements Modifiable, Wrapper {
 	public Category getCategory() {
 		return category;
 	}
-
+	
 	public void setCategory(Category category) {
 		this.category = category;
 	}

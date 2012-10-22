@@ -27,27 +27,17 @@ public class ActionDaoTest extends DaoTest {
 		actionDao = new ActionDao(session);
 		zeng = new Project();
 		session.save(zeng);
-		Category backEnd = new Category();
-		backEnd.setProject(zeng);
-		
-		TaskList refactor = new TaskList();
-		refactor.setCategory(backEnd);
-		
-		Task cleanCode = new Task();
-		cleanCode.setTaskList(refactor);
+
+		Category backEnd = new Category(zeng);
+		TaskList refactor = new TaskList(backEnd);
+		Task cleanCode = new Task(refactor);
 
 		Project trello = new Project();
 		session.save(trello);
 		
-		Category frontEnd = new Category();
-		frontEnd.setProject(trello);
-		
-		TaskList refactorJavascript = new TaskList();
-		refactorJavascript.setCategory(frontEnd);
-		
-		Task cleanJavascript = new Task();
-		cleanJavascript.setTaskList(refactorJavascript);
-		
+		Category frontEnd = new Category(trello);
+		TaskList refactorJavascript = new TaskList(frontEnd);
+		Task cleanJavascript = new Task(refactorJavascript);
 		
 		User leonardo = new User("Leonardo", "leo@leo.com", "123");
 		session.save(leonardo);

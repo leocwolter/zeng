@@ -24,20 +24,17 @@ public class ActionTest {
 	public void setUp(){
 		Project zeng = new Project();
 		
-		backEnd = new Category();
+		backEnd = new Category(zeng);
 		backEnd.setName("Back-End");
-		backEnd.setProject(zeng);
 		
-		refactorList = new TaskList();
-		refactorList.setCategory(backEnd);
+		refactorList = new TaskList(backEnd);
 		refactorList.setName("Refactor");
 
 		leonardo = new User();
 		leonardo.setName("Leonardo");
 		
-		cleanCode = new Task();
+		cleanCode = new Task(refactorList);
 		cleanCode.setName("Clean Code");
-		cleanCode.setTaskList(refactorList);
 	}
 	
 	@Test

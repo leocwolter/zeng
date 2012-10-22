@@ -39,12 +39,20 @@ public class Task implements Modifiable{
 	@ManyToOne(fetch=FetchType.EAGER)
 	private TaskList taskList;
 
+	/**
+	 * @deprecated hibernate eyes only
+	 */
 	public Task() {
 		this.contributors = new ArrayList<User>();
 		this.archived = false;
 		this.state = State.TODO;
 	}
 
+	public Task(TaskList taskList) {
+		this();
+		this.taskList = taskList;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -67,10 +75,6 @@ public class Task implements Modifiable{
 
 	public void setContributors(List<User> contributors) {
 		this.contributors = contributors;
-	}
-
-	public void setTaskList(TaskList taskList) {
-		this.taskList = taskList;
 	}
 
 	public void setExpirationDate(DateTime expirationDate) {
@@ -162,8 +166,6 @@ public class Task implements Modifiable{
 		return "Task";
 	}
 	
-
-	
 	public boolean isExpired(){
 		if(expirationDate==null) return false;
 		return expirationDate.isBefore(new DateTime().minusDays(1));
@@ -191,6 +193,10 @@ public class Task implements Modifiable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public void setTaskList(TaskList taskList) {
+		this.taskList = taskList;
 	}
 
 	

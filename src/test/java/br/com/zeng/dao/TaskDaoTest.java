@@ -40,25 +40,21 @@ public class TaskDaoTest extends DaoTest {
 		projectZeng = new Project("zeng");
 		session.save(projectZeng);
 		
-		Category categoryBackEnd = new Category();
-		categoryBackEnd.setProject(projectZeng);
+		Category categoryBackEnd = new Category(projectZeng);
 		categoryBackEnd.setName("Back-end");
 		session.save(categoryBackEnd);
 		
-		taskListOfZeng = new TaskList();
-		taskListOfZeng.setCategory(categoryBackEnd);
+		taskListOfZeng = new TaskList(categoryBackEnd);
 		taskListOfZeng.setName("Zeng Task List");
 		session.save(taskListOfZeng);
 
 		projectRails = new Project("rails");
 		session.save(projectRails);
 		
-		Category categoryFrontEnd = new Category();
-		categoryFrontEnd.setProject(projectRails);
+		Category categoryFrontEnd = new Category(projectRails);
 		session.save(categoryFrontEnd);
 
-		taskListOfRails = new TaskList();
-		taskListOfRails.setCategory(categoryFrontEnd);
+		taskListOfRails = new TaskList(categoryFrontEnd);
 		session.save(taskListOfRails);
 
 		task = builder.withTaskList(taskListOfZeng).withName("do something").build();
@@ -176,7 +172,7 @@ public class TaskDaoTest extends DaoTest {
 	public void shouldSetArchivedToTrue() {
 		TaskDao taskDao = new TaskDao(session);
 		
-		Task task = new Task();
+		Task task = new Task(null);
 		task.setName("invalid");
 		
 		session.save(task);

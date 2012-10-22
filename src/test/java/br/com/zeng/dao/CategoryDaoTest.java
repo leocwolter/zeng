@@ -16,7 +16,7 @@ public class CategoryDaoTest extends DaoTest {
 	public void setUp() {
 		super.setUp();
 		categoryDao = new CategoryDao(session);
-		category = new Category();
+		category = new Category(null);
 		category.setName("test category");
 		categoryDao.insert(category);
 	}

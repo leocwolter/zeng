@@ -61,8 +61,7 @@ public class ProjectController {
 	@LoggedUser
 	@Path("/projects")
 	public void listProjects() {
-		List<Project> listProjectsWithUser = projectDao
-				.listProjectsWithUser(userSession.getUser());
+		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
 		result.include("projects", listProjectsWithUser);
 	}
 

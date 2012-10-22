@@ -153,6 +153,17 @@ public class Task implements Modifiable{
 		this.archived = archived;
 	}
 	
+	public Category getCategory() {
+		return getTaskList().getCategory();
+	}
+
+	@Override
+	public String getType() {
+		return "Task";
+	}
+	
+
+	
 	public boolean isExpired(){
 		if(expirationDate==null) return false;
 		return expirationDate.isBefore(new DateTime().minusDays(1));
@@ -163,10 +174,6 @@ public class Task implements Modifiable{
 		DateTime today = new DateTime();
 		Interval interval = new Interval(today.minusDays(1), today.plusWeeks(1));
 		return interval.contains(expirationDate);
-	}
-	
-	public Category getCategory() {
-		return getTaskList().getCategory();
 	}
 
 	@Override
@@ -186,9 +193,5 @@ public class Task implements Modifiable{
 		return true;
 	}
 
-	@Override
-	public String getType() {
-		return "Task";
-	}
 	
 }

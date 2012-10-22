@@ -14,11 +14,11 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.environment.Environment;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.chart.UserTasksPerMonth;
-import br.com.zeng.dao.NotificationDao;
+import br.com.zeng.dao.ActionDao;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.UserDao;
-import br.com.zeng.model.Notification;
+import br.com.zeng.model.Action;
 import br.com.zeng.model.Project;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.User;
@@ -31,18 +31,18 @@ public class ProjectController {
 	private final UserSession userSession;
 	private final UserDao userDao;
 	private final TaskDao taskDao;
-	private final NotificationDao notificationDao;
+	private final ActionDao actionDao;
 	private final Environment env;
 
 	public ProjectController(Result result, ProjectDao projectDao,
 			UserSession userSession, UserDao userDao, TaskDao taskDao,
-			NotificationDao notificationDao, Environment env) {
+			ActionDao actionDao, Environment env) {
 		this.result = result;
 		this.projectDao = projectDao;
 		this.userSession = userSession;
 		this.userDao = userDao;
 		this.taskDao = taskDao;
-		this.notificationDao = notificationDao;
+		this.actionDao = actionDao;
 		this.env = env;
 	}
 
@@ -98,10 +98,10 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Get("/project/{project.id}/updateNotifications")
-	public void updateNotifications(Project project){
-		List<Notification> notifications = notificationDao.getNotificationsOfProject(project);
-		result.use(json()).from(notifications, "notifications").include("author").include("creationDate").serialize();
+	@Get("/project/{project.id}/getActions")
+	public void getActions(Project project){
+		List<Action> actions = actionDao.getActionsOf(project);
+		result.use(json()).from(actions, "actions").include("author").include("creationDate").serialize();
 	}
 
 	@LoggedUser

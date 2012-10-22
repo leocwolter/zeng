@@ -13,7 +13,6 @@ public class UserSessionTest {
 		UserSession userSession = new UserSession();
 		User user = new User("name", "email", "password");
 		userSession.logIn(user);
-		
 		assertEquals(user, userSession.getUser());
 	}
 	

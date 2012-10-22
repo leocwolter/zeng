@@ -13,14 +13,20 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
 import br.com.zeng.annotation.LoggedUser;
-import br.com.zeng.dao.NotificationDao;
+import br.com.zeng.dao.ActionDao;
 import br.com.zeng.dao.TaskDao;
 import br.com.zeng.dao.TaskListDao;
 import br.com.zeng.dao.UserDao;
-import br.com.zeng.model.Notification;
+import br.com.zeng.model.Action;
 import br.com.zeng.model.Task;
 import br.com.zeng.model.TaskList;
 import br.com.zeng.model.User;
+import br.com.zeng.model.action.AddAction;
+import br.com.zeng.model.action.ArchiveAction;
+import br.com.zeng.model.action.FinalizeAction;
+import br.com.zeng.model.action.MoveAction;
+import br.com.zeng.model.action.StartAction;
+import br.com.zeng.model.action.StopAction;
 import br.com.zeng.session.UserSession;
 
 @Resource
@@ -29,17 +35,17 @@ public class TaskController {
 	private final Result result;
 	private final TaskListDao taskListDao;
 	private final UserSession userSession;
-	private final NotificationDao notificationDao;
+	private final ActionDao actionDao;
 	private final UserDao userDao;
 
 	public TaskController(TaskDao taskDao, TaskListDao taskListDao,
 			UserSession userSession,
-			NotificationDao notificationDao, Result result, UserDao userDao) {
+			ActionDao notificationDao, Result result, UserDao userDao) {
 		this.taskDao = taskDao;
 		this.taskListDao = taskListDao;
 		this.result = result;
 		this.userSession = userSession;
-		this.notificationDao = notificationDao;
+		this.actionDao = notificationDao;
 		this.userDao = userDao;
 	}
 
@@ -52,10 +58,9 @@ public class TaskController {
 		task.setContributors(contributors);
 		taskDao.insert(task);
 		
-		String stringNotification = "Added the task "+task.getName()+" on the list "+task.getTaskList().getName()+" of the category "+task.getCategory().getName();
-		Notification notification = new Notification(stringNotification, userSession.getUser(), task.getProject());
-		notificationDao.insert(notification);
-		
+		Action action = new Action(userSession.getUser(),task, new AddAction(taskList));
+		actionDao.insert(action);
+
 		result.use(json()).from(task)
 							.include("contributors")
 							.include("taskList")
@@ -94,9 +99,8 @@ public class TaskController {
 		taskComplete.start();
 		taskDao.start(taskComplete);
 		
-		String stringNotification = "Started the task "+taskComplete.getName();
-		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
-		notificationDao.insert(notification);
+		Action action = new Action(userSession.getUser(), taskComplete, new StartAction());
+		actionDao.insert(action);
 		
 		result.use(Results.page()).of(TaskController.class).startedTask();
 	}
@@ -109,9 +113,8 @@ public class TaskController {
 		
 		taskDao.finalize(taskComplete);
 	
-		String stringNotification = "Completed the task "+taskComplete.getName();
-		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
-		notificationDao.insert(notification);
+		Action action = new Action(userSession.getUser(), taskComplete, new FinalizeAction());
+		actionDao.insert(action);
 		
 		result.use(Results.page()).of(TaskController.class).finalizedTask();
 	}
@@ -125,9 +128,8 @@ public class TaskController {
 		taskComplete.stop();
 		taskDao.stop(taskComplete);
 	
-		String stringNotification = "Stopped the task "+taskComplete.getName();
-		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
-		notificationDao.insert(notification);
+		Action action = new Action(userSession.getUser(), taskComplete, new StopAction());
+		actionDao.insert(action);
 	
 		result.use(Results.page()).of(TaskController.class).stoppedTask();
 	}
@@ -141,9 +143,8 @@ public class TaskController {
 		taskComplete.setTaskList(taskListComplete);
 		taskDao.update(taskComplete);
 		
-		String stringNotification = "Moved the task "+taskComplete.getName()+" to the list "+taskListComplete.getName();
-		Notification notification = new Notification(stringNotification, userSession.getUser(),taskComplete.getProject());
-		notificationDao.insert(notification);
+		Action action = new Action(userSession.getUser(),taskComplete, new MoveAction(taskListComplete));
+		actionDao.insert(action);
 	
 		result.nothing();
 	}
@@ -154,9 +155,8 @@ public class TaskController {
 		Task task = taskDao.getWithId(taskId);
 		taskDao.archive(task);
 
-		String stringNotification = "Archived the task "+task.getName();
-		Notification notification = new Notification(stringNotification, userSession.getUser(), task.getProject());
-		notificationDao.insert(notification);
+		Action action = new Action(userSession.getUser(), task, new ArchiveAction());
+		actionDao.insert(action);
 		
 		result.nothing();
 	}

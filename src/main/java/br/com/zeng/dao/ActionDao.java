@@ -8,28 +8,28 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.zeng.model.Notification;
+import br.com.zeng.model.Action;
 import br.com.zeng.model.Project;
 
 @Component
-public class NotificationDao {
+public class ActionDao {
 
 	private final Session session;
 
-	public NotificationDao(Session session) {
+	public ActionDao(Session session) {
 		this.session = session;
 	}
 	
-	public void insert(Notification notification){
-		session.save(notification);
+	public void insert(Action action){
+		session.save(action);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Notification> getNotificationsOfProject(Project project) {
-		List<Notification> notifications = session.createCriteria(Notification.class)
+	public List<Action> getActionsOf(Project project) {
+		List<Action> actions = session.createCriteria(Action.class)
 											.add(like("project.id", project.getId()))
 											.addOrder(desc("creationDate")).list();
-		return notifications;
+		return actions;
 	}
 	
 	

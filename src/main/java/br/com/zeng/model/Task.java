@@ -16,9 +16,11 @@ import org.hibernate.annotations.Where;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
+import br.com.zeng.model.action.Modifiable;
+
 @Entity
 @Where(clause = "archived = 0")
-public class Task {
+public class Task implements Modifiable{
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -182,6 +184,11 @@ public class Task {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String getType() {
+		return "Task";
 	}
 	
 }

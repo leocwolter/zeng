@@ -22,7 +22,13 @@
 		<mapping class="br.com.zeng.model.TaskList"/> 
 		<mapping class="br.com.zeng.model.User"/> 
 		<mapping class="br.com.zeng.model.Step"/> 
-		<mapping class="br.com.zeng.model.Notification"/> 
+		<mapping class="br.com.zeng.model.Action"/>
+		<mapping class="br.com.zeng.model.action.AddAction"/>
+		<mapping class="br.com.zeng.model.action.ArchiveAction"/>
+		<mapping class="br.com.zeng.model.action.MoveAction"/>
+		<mapping class="br.com.zeng.model.action.FinalizeAction"/>
+		<mapping class="br.com.zeng.model.action.StartAction"/>
+		<mapping class="br.com.zeng.model.action.StopAction"/>
 
     </session-factory>
 </hibernate-configuration>

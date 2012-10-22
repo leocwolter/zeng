@@ -1,3 +1,4 @@
+
 package br.com.zeng.model;
 
 import java.util.List;
@@ -9,11 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-@Entity
-public class Category {
+import br.com.zeng.model.action.Modifiable;
+import br.com.zeng.model.action.Wrapper;
 
-	@GeneratedValue
+@Entity
+public class Category implements Modifiable, Wrapper{
 	@Id
+	@GeneratedValue
 	private Long id;
 	private String name;
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -51,6 +54,11 @@ public class Category {
 
 	public List<TaskList> getTaskLists() {
 		return taskLists;
+	}
+
+	@Override
+	public String getType() {
+		return "Category";
 	}
 
 }

@@ -10,8 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import br.com.zeng.model.action.Modifiable;
+import br.com.zeng.model.action.Wrapper;
+
 @Entity
-public class TaskList {
+public class TaskList implements Modifiable, Wrapper {
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -64,5 +67,10 @@ public class TaskList {
 
 	public List<User> getProjectContributors(){
 		return this.getProject().getContributors();
+	}
+
+	@Override
+	public String getType() {
+		return "Task List";
 	}
 }

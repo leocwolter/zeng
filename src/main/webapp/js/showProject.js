@@ -65,29 +65,30 @@ $(function() {
 	
 	function updateNotifications(){
 		var projectId= $("#project-name").data("projectid");
-		$.get("/zeng/project/"+projectId+"/updateNotifications", function(data){
-			var notifications = createNotifications(data.notifications);
-			$("#project-notifications").html(notifications);
+		$.get("/zeng/project/"+projectId+"/getActions", function(data){
+			console.log(data);
+			var actions = createNotifications(data.actions);
+			$("#project-notifications").html(actions);
 		});
 	}
 	
-	function createNotifications(notificationsData){
-		var notifications = $("<dl>");
-		$(notificationsData).each(function(index, notification){
-			var date = new Date(notification.creationDate.iMillis),
+	function createNotifications(actions){
+		var actionsDl = $("<dl>");
+		$(actions).each(function(index, action){
+			var date = new Date(action.creationDate.iMillis),
 				formattedDate = date.format("dd/mm/yyyy");
 			
-			var author = $("<dt>").html(notification.author.name),
-				action = $("<dd>").html(notification.action);
+			var author = $("<dt>").html(action.author.name),
+				actionText = $("<dd>").html(action.text);
 				creationDate = $("<dd>").html(formattedDate);
 			
-			notifications
+			actionsDl
 				.append(author)
-				.append(action)
+				.append(actionText)
 				.append(creationDate)
 				.append("<hr/>");
 		});
-		return notifications;
+		return actionsDl;
 	};
 	
 });

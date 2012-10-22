@@ -26,14 +26,12 @@ public class Project {
 	private List<Category> categories;
 	@Column(unique = true)
 	private String url;
-	@OneToMany
-	private List<Notification> notifications;
-	public List<Notification> getNotifications() {
-		return notifications;
-	}
+	@OneToMany(mappedBy = "project")
+	private List<Action> actions;
+
 	
 	public Project() {
-		notifications = new ArrayList<Notification>();
+		actions = new ArrayList<Action>();
 		contributors = new ArrayList<User>();
 	}
 	
@@ -81,8 +79,11 @@ public class Project {
 		return categories;
 	}
 
-	public void addNotification(Notification notification) {
-		notifications.add(notification);
+	public void addAction(Action action) {
+		actions.add(action);
 	}
-
+	
+	public List<Action> getActions() {
+		return actions;
+	}
 }

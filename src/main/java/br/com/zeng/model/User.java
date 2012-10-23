@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class User {
@@ -15,15 +16,16 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	private String photo;
-	@NotNull(message="The field 'name' is required")
+	@NotNull
 	private String name;
-	@NotNull(message="The field 'password' is required")
+	@NotNull
+	@Length(min=8)
 	private String password;
-	@NotNull(message="The field 'email' is required")
+	@NotNull
 	@Column(unique=true)
-	@Email(message="The field 'email' have to be a valid email")
+	@Email
 	private String email;
-	@NotNull(message="The field 'cpf' is required")
+	@NotNull
 
 	@Deprecated()
 	public User() {

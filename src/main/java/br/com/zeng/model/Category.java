@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.zeng.model.action.Modifiable;
 import br.com.zeng.model.action.Wrapper;
@@ -18,7 +21,9 @@ public class Category implements Modifiable, Wrapper{
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotEmpty
 	private String name;
+	@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Project project;
 	@OneToMany(mappedBy = "category")
@@ -30,7 +35,8 @@ public class Category implements Modifiable, Wrapper{
 	public Category() {
 	}
 
-	public Category(Project project){
+	public Category(Project project, String name){
+		this.name = name;
 		this.setProject(project);
 	}
 	

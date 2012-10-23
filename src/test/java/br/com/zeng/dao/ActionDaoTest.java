@@ -28,19 +28,19 @@ public class ActionDaoTest extends DaoTest {
 		super.setUp();
 		ZengMailer mailer = mock(ZengMailer.class);
 		actionDao = new ActionDao(session, mailer);
-		zeng = new Project();
+		zeng = new Project("Zeng");
 		session.save(zeng);
 
-		Category backEnd = new Category(zeng);
+		Category backEnd = new Category(zeng, "Back-End");
 		TaskList refactor = new TaskList(backEnd);
-		Task cleanCode = new Task(refactor);
+		Task cleanCode = new Task(refactor, "Clean Code");
 
-		Project trello = new Project();
+		Project trello = new Project("Trello");
 		session.save(trello);
 		
-		Category frontEnd = new Category(trello);
+		Category frontEnd = new Category(trello, "Front-End");
 		TaskList refactorJavascript = new TaskList(frontEnd);
-		Task cleanJavascript = new Task(refactorJavascript);
+		Task cleanJavascript = new Task(refactorJavascript, "Clean Javascript");
 		
 		User leonardo = new User("Leonardo", "leo@leo.com", "123");
 		session.save(leonardo);

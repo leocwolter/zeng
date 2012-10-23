@@ -55,12 +55,11 @@ public class TaskBuilder {
 	}
 	
 	public Task build(){
-		Task task = new Task(taskList);
+		Task task = new Task(taskList, name);
 		task.setArchived(archived);
 		task.setContributors(contributors);
 		task.setDescription(description);
 		task.setExpirationDate(expirationDate);
-		task.setName(name);
 		task.setSteps(steps);
 		return task;
 	}

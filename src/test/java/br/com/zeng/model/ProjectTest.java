@@ -8,8 +8,7 @@ public class ProjectTest {
 
 	@Test
 	public void mustSetUrlSameAsTheNameButNormalized() {
-		Project project = new Project(); 
-		project.setName("ëÉÁáÉüÚãçÃcäṕóÒÀ");
+		Project project = new Project("ëÉÁáÉüÚãçÃcäṕóÒÀ"); 
 		assertEquals("eeaaeuuacacapooa", project.getUrl());
 	}
 

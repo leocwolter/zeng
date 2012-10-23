@@ -40,8 +40,7 @@ public class TaskDaoTest extends DaoTest {
 		projectZeng = new Project("zeng");
 		session.save(projectZeng);
 		
-		Category categoryBackEnd = new Category(projectZeng);
-		categoryBackEnd.setName("Back-end");
+		Category categoryBackEnd = new Category(projectZeng, "Back-End");
 		session.save(categoryBackEnd);
 		
 		taskListOfZeng = new TaskList(categoryBackEnd);
@@ -51,7 +50,7 @@ public class TaskDaoTest extends DaoTest {
 		projectRails = new Project("rails");
 		session.save(projectRails);
 		
-		Category categoryFrontEnd = new Category(projectRails);
+		Category categoryFrontEnd = new Category(projectRails, "Front-End");
 		session.save(categoryFrontEnd);
 
 		taskListOfRails = new TaskList(categoryFrontEnd);
@@ -69,7 +68,7 @@ public class TaskDaoTest extends DaoTest {
 		Task completeTask = taskDao.getWithId(task.getId());
 		assertEquals("do something", completeTask.getName());
 		assertEquals("Zeng Task List", completeTask.getTaskList().getName());
-		assertEquals("Back-end", completeTask.getCategory().getName());
+		assertEquals("Back-End", completeTask.getCategory().getName());
 		assertEquals("zeng", completeTask.getProject().getName());
 		
 	}
@@ -118,7 +117,7 @@ public class TaskDaoTest extends DaoTest {
 		taskDao.insert(task4);
 		taskDao.finalize(task4);
 		
-		Task task5 = builder.withContributors(joaoELeonardoList).withTaskList(null).build();
+		Task task5 = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfRails).build();
 		taskDao.insert(task5);
 		taskDao.finalize(task5);
 		
@@ -171,15 +170,19 @@ public class TaskDaoTest extends DaoTest {
 	@Test
 	public void shouldSetArchivedToTrue() {
 		TaskDao taskDao = new TaskDao(session);
+		Project trello = new Project("Trello");
+		session.save(trello);
+		Category backEnd = new Category(trello, "Back-End");
+		session.save(backEnd);
+		TaskList refactor = new TaskList(backEnd);
+		session.save(refactor);
+		Task email = new Task(refactor, "Email");
 		
-		Task task = new Task(null);
-		task.setName("invalid");
+		session.save(email);
 		
-		session.save(task);
-		
-		assertFalse(task.isArchived());
-		taskDao.archive(task);
-		assertTrue(task.isArchived());
+		assertFalse(email.isArchived());
+		taskDao.archive(email);
+		assertTrue(email.isArchived());
 		
 	}
 	

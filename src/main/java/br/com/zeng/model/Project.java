@@ -10,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.zeng.infra.Sanitizer;
 import br.com.zeng.model.action.Wrapper;
@@ -20,24 +23,30 @@ public class Project implements Wrapper {
 	@GeneratedValue
 	@Id
 	private Long id;
+	@NotEmpty
 	private String name;
+	@NotNull
 	@ManyToMany
 	List<User> contributors;
 	@OneToMany(mappedBy = "project")
 	private List<Category> categories;
+	@NotEmpty
 	@Column(unique = true)
 	private String url;
 	@OneToMany(mappedBy = "project")
 	private List<Action> actions;
 
 	
+	/**
+	 * @deprecated hibernate eyes only
+	 */
 	public Project() {
 		actions = new ArrayList<Action>();
 		contributors = new ArrayList<User>();
 	}
 	
 	public Project(String name) {
-		super();
+		this();
 		this.name=name;
 		this.setUrl(name);
 	}

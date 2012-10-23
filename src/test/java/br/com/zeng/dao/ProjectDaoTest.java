@@ -24,15 +24,13 @@ public class ProjectDaoTest extends DaoTest {
 		user = new User("user", "user@user.com", "password");
 		session.save(user);
 
-		zeng = new Project();
+		zeng = new Project("Zeng");
 		zeng.setUrl("zeng");
-		zeng.setName("Zeng");
 		zeng.addContributor(user);
 		projectDao.insert(zeng);
 
-		Project projectWithWrongName = new Project();
+		Project projectWithWrongName = new Project("wrong name");
 		projectWithWrongName.setUrl("project-two");
-		projectWithWrongName.setName("wrong name");
 		projectDao.insert(projectWithWrongName);
 	}
 
@@ -57,16 +55,15 @@ public class ProjectDaoTest extends DaoTest {
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowExceptionIfExistAProjectWithSameName() {
-		Project projectWithSameName = new Project();
-		projectWithSameName.setName(zeng.getName());
+		Project projectWithSameName = new Project(zeng.getName());
 		projectDao.insert(projectWithSameName);
 	}
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowExceptionIfExistAProjectWithSameUrl() {
-		Project projectWithSameUrl = new Project();
-		projectWithSameUrl.setUrl(zeng.getUrl());
-		projectDao.insert(projectWithSameUrl);
+		Project anotherZeng = new Project("Another Zeng");
+		anotherZeng.setUrl(zeng.getUrl());
+		projectDao.insert(anotherZeng);
 	}
 
 }

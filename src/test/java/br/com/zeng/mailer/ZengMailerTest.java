@@ -32,13 +32,11 @@ public class ZengMailerTest {
 		ZengMailer zengMailer = new ZengMailer(env, mailer, context);
 		
 		User author = new User("Leonardo", "leocwolter@gmail.com", "123456");
-		Project zeng = new Project();
+		Project zeng = new Project("Zeng");
 		zeng.addContributor(new User("Hi","leocwolter@gmail.com","12345"));
-		zeng.setName("Zeng");
-		Category backEnd = new Category(zeng);
+		Category backEnd = new Category(zeng, "Back-End");
 		TaskList refactor = new TaskList(backEnd);
-		Task email = new Task(refactor);
-		email.setName("Refactor email method");
+		Task email = new Task(refactor, "Refactor email method");
 		zengMailer.montaEEnviaEmail(new Action(author, email, new StartAction()));
 	}
 

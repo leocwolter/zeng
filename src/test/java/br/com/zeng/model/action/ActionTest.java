@@ -22,18 +22,16 @@ public class ActionTest {
 
 	@Before
 	public void setUp(){
-		Project zeng = new Project();
+		Project zeng = new Project("Zeng");
 		
-		backEnd = new Category(zeng);
-		backEnd.setName("Back-End");
+		backEnd = new Category(zeng, "Back-End");
 		
 		refactorList = new TaskList(backEnd);
 		refactorList.setName("Refactor");
 
-		leonardo = new User();
-		leonardo.setName("Leonardo");
+		leonardo = new User("Leonardo", "leo@leo.com", "12345");
 		
-		cleanCode = new Task(refactorList);
+		cleanCode = new Task(refactorList, "Clean Code");
 		cleanCode.setName("Clean Code");
 	}
 	

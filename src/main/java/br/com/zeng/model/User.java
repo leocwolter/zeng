@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
+
 @Entity
 public class User {
 	private static final String DEFAULT_PHOTO = "profile.png";
@@ -19,6 +21,7 @@ public class User {
 	private String password;
 	@NotNull(message="The field 'email' is required")
 	@Column(unique=true)
+	@Email(message="The field 'email' have to be a valid email")
 	private String email;
 	@NotNull(message="The field 'cpf' is required")
 

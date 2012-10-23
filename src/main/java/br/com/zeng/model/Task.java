@@ -10,9 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.Where;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
@@ -24,11 +27,15 @@ public class Task implements Modifiable{
 	@Id
 	@GeneratedValue
 	private Long id;
+	@NotEmpty
 	private String name;
 	private String description;
+	@NotNull
 	private boolean archived;
+	@NotNull
 	private State state;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
+	@Future
 	private DateTime expirationDate;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime dateOfCompletion;
@@ -36,6 +43,7 @@ public class Task implements Modifiable{
 	private List<Step> steps;
 	@ManyToMany
 	private List<User> contributors;
+	@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)
 	private TaskList taskList;
 
@@ -48,9 +56,10 @@ public class Task implements Modifiable{
 		this.state = State.TODO;
 	}
 
-	public Task(TaskList taskList) {
+	public Task(TaskList taskList, String name) {
 		this();
 		this.taskList = taskList;
+		this.name = name;
 	}
 	
 	public Long getId() {

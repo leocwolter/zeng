@@ -11,13 +11,15 @@ import br.com.zeng.model.User;
 @Component
 public class UserDao {
 	private final Session session;
+	private GenericDao<User> dao;
 
 	public UserDao(Session session) {
 		this.session = session;
+		dao = new GenericDao<User>(session, User.class);
 	}
 
-	public User getUserById(Long id) {
-		return (User) session.createCriteria(User.class).add(Restrictions.eq("id", id)).uniqueResult();
+	public User getById(Long id) {
+		return dao.getById(id);
 	}
 
 	public User getRegistredUser(String email, String password) {
@@ -35,7 +37,7 @@ public class UserDao {
 	}
 
 	public void update(User user) {
-		session.update(user);
+		dao.update(user);
 	}
 
 	public User getUserByEmail(User user) {
@@ -43,7 +45,7 @@ public class UserDao {
 	}
 
 	public void insert(User user) {
-		session.save(user);
+		dao.insert(user);
 	}
 	
 }

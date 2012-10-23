@@ -17,14 +17,16 @@ public class ActionDao {
 
 	private final Session session;
 	private final ZengMailer mailer;
+	private GenericDao<Action> dao;
 
 	public ActionDao(Session session, ZengMailer mailer) {
 		this.session = session;
 		this.mailer = mailer;
+		this.dao = new GenericDao<Action>(session, Action.class);
 	}
 	
 	public void insert(Action action){
-		session.save(action);
+		dao.insert(action);
 		mailer.montaEEnviaEmail(action);
 	}
 

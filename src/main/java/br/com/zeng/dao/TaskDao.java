@@ -17,17 +17,19 @@ import br.com.zeng.model.User;
 public class TaskDao {
 	private static final int MANY_TASKS = 3;
 	private final Session session;
+	private GenericDao<Task> dao;
 
 	public TaskDao(Session session) {
 		this.session = session;
+		dao = new GenericDao<Task>(session, Task.class);
 	}
 
 	public void insert(Task task) {
-		session.save(task);
+		dao.insert(task);
 	}
 
 	public Task getWithId(Long id) {
-		return (Task) session.load(Task.class, id);
+		return dao.getById(id);
 	}
 	
 	public void update(Task task) {

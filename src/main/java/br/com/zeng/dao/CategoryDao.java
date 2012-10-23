@@ -7,19 +7,18 @@ import br.com.zeng.model.Category;
 
 @Component
 public class CategoryDao {
-
-	private final Session session;
+	private GenericDao<Category> dao;
 
 	public CategoryDao(Session session) {
-		this.session = session;
+		dao = new GenericDao<Category>(session, Category.class);
 	}
 
 	public Category getCategoryWithId(Long id) {
-		return (Category) session.get(Category.class, id);
+		return dao.getById(id);
 	}
 
 	public void insert(Category category) {
-		session.save(category);
+		dao.insert(category);
 	}
 	
 }

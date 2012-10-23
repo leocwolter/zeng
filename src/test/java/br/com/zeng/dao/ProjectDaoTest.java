@@ -48,7 +48,7 @@ public class ProjectDaoTest extends DaoTest {
 
 	@Test
 	public void shouldReturnAProjectById() {
-		Project projectComplete = projectDao.getProjectWithId(zeng.getId());
+		Project projectComplete = projectDao.getWithId(zeng.getId());
 		assertEquals(zeng.getName(), projectComplete.getName());
 		assertEquals(zeng.getUrl(), projectComplete.getUrl());
 	}

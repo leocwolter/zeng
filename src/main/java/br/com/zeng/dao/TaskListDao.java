@@ -8,18 +8,18 @@ import br.com.zeng.model.TaskList;
 @Component
 public class TaskListDao {
 
-	private final Session session;
+	private GenericDao<TaskList> dao;
 
 	public TaskListDao(Session session) {
-		this.session = session;
+		dao = new GenericDao<TaskList>(session, TaskList.class);
 	}
 
-	public TaskList getTaskListWithId(Long id) {
-		return (TaskList) session.get(TaskList.class, id);
+	public TaskList getWithId(Long id) {
+		return dao.getById(id);
 	}
 
 	public void insert(TaskList taskList) {
-		session.save(taskList);
+		dao.insert(taskList);
 	}
 
 }

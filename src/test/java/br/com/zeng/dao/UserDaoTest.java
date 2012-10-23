@@ -7,6 +7,8 @@ import static org.junit.Assert.assertNull;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -57,6 +59,30 @@ public class UserDaoTest extends DaoTest {
 		assertNull(registredUser);
 		assertNull(registredUser2);
 
+	}
+	
+	@Test(expected=ConstraintViolationException.class)
+	public void shouldThrowConstraintViolationExceptionWithUserWithoutEmail() {
+		User leo = new User("","leo@leo.com","1234578");
+		userDao.insert(leo);
+	}
+	
+	@Test(expected=ConstraintViolationException.class)
+	public void shouldThrowConstraintViolationExceptionWithUserWithoutName() {
+		User leo = new User("Leonardo","","1234578");
+		userDao.insert(leo);
+	}
+	
+	@Test(expected=ConstraintViolationException.class)
+	public void shouldThrowConstraintViolationExceptionWithUserWithoutPassword() {
+		User leo = new User("Leonardo","leo@leo.com","");
+		userDao.insert(leo);
+	}
+	
+	@Test(expected=ConstraintViolationException.class)
+	public void shouldThrowConstraintViolationExceptionWithUserWithPasswordWithLengthLessThan8() {
+		User leo = new User("Leonardo","leo@leo.com","1234567");
+		userDao.insert(leo);
 	}
 	
 }

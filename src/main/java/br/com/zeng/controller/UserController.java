@@ -104,7 +104,7 @@ public class UserController {
 	@LoggedUser
 	@Get("/user/profile/{userId}")
 	public void profile(Long userId){
-		User user = userDao.getUserById(userId);
+		User user = userDao.getById(userId);
 		result.include("user", user);
 	}
 

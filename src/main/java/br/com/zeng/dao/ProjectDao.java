@@ -14,18 +14,19 @@ import br.com.zeng.model.User;
 public class ProjectDao {
 
 	private final Session session;
+	private GenericDao<Project> dao;
 
 	public ProjectDao(Session session) {
 		this.session = session;
+		dao = new GenericDao<Project>(session, Project.class);
 	}
 
-	public Project getProjectWithId(Long id) {
-		return (Project) session.get(Project.class, id);
+	public Project getWithId(Long id) {
+		return dao.getById(id);
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Project> list() {
-		return session.createCriteria(Project.class).list();
+		return dao.list();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -39,7 +40,7 @@ public class ProjectDao {
 	}
 
 	public void insert(Project project) {
-		session.save(project);
+		dao.insert(project);
 	}
 
 	public Project getProjectWithUrl(String url) {

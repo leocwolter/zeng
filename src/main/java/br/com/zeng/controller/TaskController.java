@@ -52,7 +52,7 @@ public class TaskController {
 	@Post("/taskList/addTask")
 	public void insert(Task task, String expirationDate) {
 		configureExpirationDate(task, expirationDate);
-		TaskList taskList = taskListDao.getTaskListWithId(task.getTaskList().getId());
+		TaskList taskList = taskListDao.getWithId(task.getTaskList().getId());
 		List<User> contributors = userDao.getCompleteContributorsById(task.getContributors());
 		task.setTaskList(taskList);
 		task.setContributors(contributors);
@@ -80,7 +80,7 @@ public class TaskController {
 	@LoggedUser
 	@Path("/taskList/addTaskForm/{taskListId}")
 	public void insertTaskForm(Long taskListId) {
-		TaskList taskList = taskListDao.getTaskListWithId(taskListId);
+		TaskList taskList = taskListDao.getWithId(taskListId);
 		result.include("taskList", taskList);
 	}
 
@@ -138,7 +138,7 @@ public class TaskController {
 	@Path("/task/moveTask")
 	public void moveTask(Task task, TaskList taskList) {
 		Task taskComplete = taskDao.getWithId(task.getId());
-		TaskList taskListComplete = taskListDao.getTaskListWithId(taskList.getId());
+		TaskList taskListComplete = taskListDao.getWithId(taskList.getId());
 		
 		taskComplete.setTaskList(taskListComplete);
 		taskDao.update(taskComplete);

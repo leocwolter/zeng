@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.zeng.mailer.ZengMailer;
 import br.com.zeng.model.Action;
 import br.com.zeng.model.Project;
 
@@ -15,13 +16,16 @@ import br.com.zeng.model.Project;
 public class ActionDao {
 
 	private final Session session;
+	private final ZengMailer mailer;
 
-	public ActionDao(Session session) {
+	public ActionDao(Session session, ZengMailer mailer) {
 		this.session = session;
+		this.mailer = mailer;
 	}
 	
 	public void insert(Action action){
 		session.save(action);
+		mailer.montaEEnviaEmail(action);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -2,6 +2,7 @@ package br.com.zeng.dao;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.zeng.mailer.ZengMailer;
 import br.com.zeng.model.Action;
 import br.com.zeng.model.Category;
 import br.com.zeng.model.Project;
@@ -24,7 +26,8 @@ public class ActionDaoTest extends DaoTest {
 	@Before
 	public void setUp() {
 		super.setUp();
-		actionDao = new ActionDao(session);
+		ZengMailer mailer = mock(ZengMailer.class);
+		actionDao = new ActionDao(session, mailer);
 		zeng = new Project();
 		session.save(zeng);
 

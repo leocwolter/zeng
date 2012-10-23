@@ -22,15 +22,13 @@ public class User {
 	private String email;
 	@NotNull(message="The field 'cpf' is required")
 
-	/**
-	 * @deprecated hibernate eyes only
-	 */
+	@Deprecated()
 	public User() {
 		this.photo=DEFAULT_PHOTO;
 	}
 
 	public User(String name, String email, String password) {
-		super();
+		this();
 		this.name = name;
 		this.email = email;
 		this.password = password;

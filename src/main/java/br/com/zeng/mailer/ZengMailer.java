@@ -29,10 +29,10 @@ public class ZengMailer {
 	}
 	
 	public void montaEEnviaEmail(Action action) {
-		Map<String, Object> configuracoes = configuraFreeMarker(action);
-		String emailString = parseiaFreemarker(configuracoes);
+		Map<String, Object> configuracoes = configureFreeMarker(action);
+		String emailString = parseFreemarker(configuracoes);
 		ZengEmail email = configureEmail(action, emailString);
-		enviaOuLogaEmail(email);
+		sendOrLog(email);
 	}
 
 	private ZengEmail configureEmail(Action action, String content) {
@@ -41,37 +41,37 @@ public class ZengMailer {
 		email.setSubject("Hello! You have a new notification in "+action.getProject().getName()+"!");
 		email.setCharset("utf-8");
 		email.setFrom("contato.zeng@gmail.com");
-		email.setBcc(action.getProject().getContributors());
+		email.setTo(action.getProject().getContributors());
 		return email;
 	}
 
-	private Map<String, Object> configuraFreeMarker(Action action) {
-		Map<String, Object> configuracoes = new HashMap<String, Object>();
-		configuracoes.put("action", action);
-		return configuracoes;
+	private Map<String, Object> configureFreeMarker(Action action) {
+		Map<String, Object> configurations = new HashMap<String, Object>();
+		configurations.put("action", action);
+		return configurations;
 	}
 	
-	private String parseiaFreemarker(Map<String, Object> configuracoes) {
-		String pastaTemplates = context.getRealPath("/WEB-INF/templates");
+	private String parseFreemarker(Map<String, Object> configurations) {
+		String templateFolder = context.getRealPath("/WEB-INF/templates");
 		String emailString;
 		try {
-			emailString = FreeMarkerUtils.parseTemplate(configuracoes, "zeng-email.ftl", pastaTemplates);
+			emailString = FreeMarkerUtils.parseTemplate(configurations, "zeng-email.ftl", templateFolder);
 		} catch (Exception e) {
 			throw new RuntimeException("An error ocurred while parsing freemarker template",e);
 		}
 		return emailString;
 	}
 
-	private void enviaOuLogaEmail(ZengEmail email) {
+	private void sendOrLog(ZengEmail email) {
 		if (environment.getName().equals("production")) {
-			enviaEmail(email);
+			send(email);
 		}else{
 			logger.debug("Subject: "+email.getSubject());
 			logger.debug("Content: "+email.getContent());
 		}
 	}
 
-	private void enviaEmail(ZengEmail email) {
+	private void send(ZengEmail email) {
 		try {
 			mailer.send(email.getHtmlEmail());
 		} catch (EmailException e) {

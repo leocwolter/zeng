@@ -48,15 +48,6 @@ public class ZengEmail {
 		email.setCharset(charset);
 	}
 
-	public void addTo(String email) {
-		try {
-			this.email.addTo(email);
-		} catch (EmailException e) {
-			throw new RuntimeException(
-					"An error ocurred while trying to add to", e);
-		}
-	}
-
 	public void setFrom(String email) {
 		try {
 			this.email.setFrom(email);
@@ -66,18 +57,17 @@ public class ZengEmail {
 		}
 	}
 
-	public void setBcc(List<User> listOfEmails) {
+	public void setTo(List<User> listOfEmails) {
 		for (User user : listOfEmails) {
-			addBcc(user.getEmail());
+			addTo(user.getEmail());
 		}
 	}
 
-	private void addBcc(String email) {
+	private void addTo(String email) {
 		try {
-			this.email.addBcc(email);
+			this.email.addTo(email);
 		} catch (EmailException e) {
-			throw new RuntimeException(
-					"An error ocurred while trying to add Bcc", e);
+			throw new RuntimeException("An error ocurred while trying to add to", e);
 		}
 	}
 

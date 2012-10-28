@@ -10,10 +10,12 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import br.com.caelum.vraptor.environment.Environment;
+import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.simplemail.Mailer;
 import br.com.zeng.freemarker.FreeMarkerUtils;
 import br.com.zeng.model.Action;
 
+@Component
 public class ZengMailer {
 	private final Environment environment;
 	private final Mailer mailer;

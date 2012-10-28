@@ -80,7 +80,7 @@ footer {
 
 /*USER*/
 #user-box {
-	min-width: 128px;
+	position: relative;
 	width:auto;
 	float: right;
 	height: 40px;
@@ -88,13 +88,14 @@ footer {
 
 #user-name-link {
 	display: block;
+	margin: 0 20px 0 0;
+	height: 40px;
 	width: auto;
 	max-width: 105px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
 	float: left;
-	height: 40px;
 	line-height: 40px; 
 	font-size : 14px;
 	color: #E3E1D5;
@@ -110,6 +111,8 @@ footer {
 	width: 0;
 	height: 0;
 	float: right;
+	position: absolute;
+	right: 0;
 	margin-top: 18px;
 	line-height: 20px;
 	font-weight: bold;
@@ -120,11 +123,11 @@ footer {
 
 .dropdown {
 	cursor: pointer;
-	position: relative;
 }
 
 .dropdown-target {
 	z-index: 1;
+	position: absolute;
 	display: none;
 	width: 100px;
 	font-size: 10px;
@@ -132,7 +135,7 @@ footer {
 	left: -93px;
 	top: 5px;
 	background-color: #FFF;
-	position: absolute;
+	border: 1px solid #61472D;
 }
 
 .dropdown-target li {

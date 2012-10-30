@@ -20,5 +20,9 @@ public class CategoryDao {
 	public void insert(Category category) {
 		dao.insert(category);
 	}
+
+	public Category getCategoryWithUrl(String categoryUrl) {
+		return dao.getByUrl(categoryUrl);
+	}
 	
 }

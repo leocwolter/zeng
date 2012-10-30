@@ -3,6 +3,7 @@ package br.com.zeng.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 public class GenericDao<T> {
 
@@ -30,6 +31,11 @@ public class GenericDao<T> {
 
 	public void update(T t) {
 		session.update(t);
+	}
+
+	@SuppressWarnings("unchecked")
+	public T getByUrl(String url) {
+		return (T) session.createCriteria(clazz).add(Restrictions.like("url", url)).uniqueResult();
 	}
 	
 	

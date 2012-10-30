@@ -4,10 +4,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ attribute name="category" required="true" type="br.com.zeng.model.Category" %>
 
-<section class="category" id="category-${category.id}">
+<section class="category">
 	<header>
 		<h2>${category.name}</h2>
-		<a href="${linkTo[TaskListController].insertTaskListForm}${category.id}"
+		<a href="${linkTo[TaskListController].insertTaskListForm[category.url]}"
 					title="Adicionar Lista" id="new-task-list" class="button add-button modal">+</a>
 	</header>
 	<c:forEach items="${category.taskLists}" var="taskList">

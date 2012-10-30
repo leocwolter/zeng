@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 </head>
 <body>
-	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert-form">
+	<form action="${linkTo[ProjectController].insert}" method="POST" class="insert-form simple-insert-form">
 		<fieldset>
 			<legend>Insert Project</legend>
 			<br/>
@@ -26,8 +26,8 @@
 			<br/>
 			<input id="project-contributors[0]" type="text" name="contributors[0].email"/>
 			<br/>
-		
-			<input type="submit" class="button normal-button insert-project" value="Insert">
+			<input type="hidden" name="showUrl" value="${linkTo[ProjectController].showProject}"/> 
+			<input type="submit" class="button normal-button" value="Insert">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

@@ -9,9 +9,8 @@ $(function() {
 		var taskFilter= $(this).data("filter").toUpperCase(),
 			taskArea = $(this).closest(".task-area");
 		filterTasksInTaskArea(taskFilter,taskArea);
-		taskArea
-			.find(".task-filter")
-			.removeClass("task-filter-selected");
+		taskArea.find(".task-filter")
+				.removeClass("task-filter-selected");
 		$(this).addClass("task-filter-selected");
 	});
 
@@ -38,24 +37,23 @@ $(function() {
 		$(this).attr('id', 'selected-category-button');
 	});
 	
+	//Task Actions
 	$('.task-options > a').live("click",function(event){
-		var taskId = $(this).closest(".task").data("task-id");
-		var url = $(this).attr('href')+taskId;
+		event.preventDefault();
+		var url = $(this).attr('href');
 		var taskOptions = $(this).closest(".task-options");
 		$.post(url,function(data){
 			$(taskOptions).children().remove();
 			$(taskOptions).append(data);
 		});
-		event.preventDefault();
 	});
 	
 	//Archive task
 	$(".archive-task").live("click", function(event){
-		var taskId = $(this).closest(".task").data("task-id");
-		var url = $(this).attr("href")+taskId;
+		event.preventDefault();
+		var url = $(this).attr("href");
 		$.post(url);
 		$(this).closest(".task").remove();
-		event.preventDefault();
 	});
 	
 	//Notifications updating
@@ -66,7 +64,6 @@ $(function() {
 	function updateNotifications(){
 		var projectId= $("#project-name").data("projectid");
 		$.get("/zeng/project/"+projectId+"/getActions", function(data){
-			console.log(data);
 			var actions = createNotifications(data.actions);
 			$("#project-notifications").html(actions);
 		});

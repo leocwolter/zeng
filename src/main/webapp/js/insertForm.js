@@ -1,80 +1,54 @@
 $(function(){
-	function insert(event, element, callBack){
-		var form = $(element).closest("form"),
-			inputs = form.find("select, input:not([type='submit'], input:checkbox:not(:checked))"),	
-			formData = createFormData(inputs),
-			url = form.attr("action");
+	function submitForm(form, callBack){
+		var formData = form.serialize(),
+		url = form.attr("action");
 		$.post(url, formData, function(data){
 			callBack(data);
 		});
 		$(".messi-closebtn", parent.document).click();
-		event.preventDefault();
 	};
 	
-	function createFormData(inputs){
-		var formData = {};
-		$(inputs).each(function(index, input){
-			var name = $(input).attr("name"),
-				value = $(input).val();
-			formData[name] = value;
-		});
-		return formData;
+	function appendLinkToMenu(href, name){
+		var page = $(parent.document),
+			menu = page.find("#menu"),
+			link = $("<a>"+name+"</a>").attr({"href":href, "title":name}),
+			menuItem = $("<li>").append(link);
+		$(menu).append(menuItem);
 	}
 	
-	//Project insertion
-	$("input.insert-project").click(function(event){
-		insert(event, this,  function(data){
-			var menu = $("#menu", parent.document),
-				projectButton = $("<li>").append("<a>");
-			$(projectButton)
-				.appendTo(menu)
-				.find("a")
-				.attr({"href":"/zeng/project/"+data.project.url, "title":data.project.name})
-				.html(data.project.name);
+	//Project & Category insertion
+	$(".simple-insert-form").submit(function(event){
+		event.preventDefault();
+		var form = $(this);
+		var url = form.find("[name='showUrl']").val();
+		submitForm(form,  function(data){
+			appendLinkToMenu(url+data.insertedElement.url, data.insertedElement.name);
 		});
 	});
-	
-	//Category insertion
-	$("input.insert-category").click(function(event){	
-		insert(event, this, function(data){
-			var categoryData = data.category;
-			createCategoryMenuItem(categoryData);
-		});
-	});
-
-	function createCategoryMenuItem(categoryData){
-		var menu = $("#menu", parent.document),
-			categoryButton = $("<a>")
-							.addClass("category-button")
-							.attr(
-									{"title":categoryData.name,
-									 "href":"/zeng/project/category/"+categoryData.id
-									}
-								)
-							.html(categoryData.name),
-			item = $("<li>").append(categoryButton);
-		$(item).appendTo(menu);
-	}
 	
 	//Task list insertion
-	$("input.insert-task-list").click(function(event){	
-		insert(event, this, function(data){
-			var taskListData = data.taskList,
-				taskArea = createTaskArea(taskListData),
-				categoryId = $("[name='categoryId']").val(),
-				category = $("#category-"+categoryId, parent.document);
+	$(".insert-task-list-form").submit(function(event){	
+		event.preventDefault();
+		submitForm($(this), function(data){
+			var taskArea = createTaskArea(data.taskList),
+				category = $(".category", parent.document);
 			$(taskArea).appendTo(category);		
 			$(".task-list").configureZengTaskList();
 		});
 	});
 
 	function createTaskArea(taskListData){
-		var taskList = $("<ul>").addClass("task-list ui-sortable").attr("data-tasklist-id",taskListData.id),
-			taskListTitle = $("<h3>").text(taskListData.name),
+		var taskList = $("<ul class='task-list ui-sortable' data-tasklist-id='"+taskListData.id+"'>"),
+			taskListTitle = $("<h3>"+taskListData.name+"</h3>"),
 			nav = createTaskAreaNavBar(),
-			addTaskButton = $("<a>").addClass("add-button add-task-button modal").attr("href","/zeng/taskList/addTaskForm/"+taskListData.id).html("+Add Task"),
-			taskArea = $("<section>").addClass("task-area").append(taskListTitle, nav, taskList, addTaskButton);
-		$(taskArea).attr("id","task-area-"+taskListData.id);
+			addTaskButton = $("<a class='add-button add-task-button modal'>+Add Task</a>")
+							.attr("href","/zeng/project/category/taskList/"+taskListData.id+"/addTaskForm"),
+			taskArea = $("<section class='task-area'>")
+						.append(taskListTitle)
+						.append(nav)
+						.append(taskList)
+						.append(addTaskButton);
+
 		return taskArea;
 	}
 	
@@ -94,68 +68,76 @@ $(function(){
 		return $("<li><a class='task-filter' data-filter='"+filter+"' href='#'>"+text+"</a></li>");
 	};
 	
-	
 	//Task insertion
-	$("input.insert-task").click(function(event){
-		insert(event, this, function(data){
-			var taskData = data.task;
-			var expirationDate = taskData.expirationDate;
-			if(expirationDate !== undefined){
-				var expirationData = {"dateInMillis":expirationDate.iMillis};
-				var projectUrl = taskData.taskList.category.project.url;
-				$.get("/zeng/project/"+projectUrl+"/manyTasksWithExpirationDate", expirationData, function(manyTasks){
-					if(manyTasks.boolean){
-						alert("There are more than three tasks with that expiration date in this project!");
-					}
-				});
-			}
-			var task = createTask(taskData),
-				taskListId = $("input[name='task.taskList.id']").val(),
-				taskList = $("[data-tasklist-id = "+taskListId+"]", parent.document);
+	$(".insert-task-form").submit(function(event){
+		event.preventDefault();
+		submitForm($(this), function(data){
+			var taskData = data.task,
+				task = createTask(taskData),
+				taskList = $("[data-tasklist-id = "+taskData.taskList.id+"]", parent.document);
 			$(taskList).append(task);
+			validateManyTasks(taskData);
 		});
 	});
 	
+	function validateManyTasks(taskData){
+		if(expirationDate !== undefined){
+			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
+			var projectUrl = taskData.taskList.category.project.url;
+			$.get("/zeng/project/"+projectUrl+"/manyTasksWithExpirationDate", expirationData, function(manyTasks){
+				if(manyTasks.boolean){
+					alert("There are more than three tasks with that expiration date in this project!");
+				}
+			});
+		}
+	}
+	
 	function createTask(taskData){
-		var task = $("<li>").addClass("task task-state-TODO").attr("data-task-id",taskData.id),
-			archiveTaskButton = $("<a>").attr("href","/zeng/task/archive/")
-										.addClass("button remove-button archive-task")
-										.html("X"),
-			taskName = $("<h4>").addClass("task-name").text(taskData.name),
+		var archiveTaskButton = createArchiveTaskButton(taskData.id),
+			taskName = createTaskName(taskData.name),
 			taskContributors = createTaskContributors(taskData.contributors);
-			taskDate = createTaskExpirationDate(taskData),
-			taskOptions = createTaskOptions();
+			taskDate = createTaskExpirationDate(taskData.expirationDate.iMillis),
+			taskOptions = createTaskOptions(taskData.id);
 		
-		$(task)
+		var task = $("<li class='task task-state-TODO'>").attr("data-task-id",taskData.id)
 			.append(archiveTaskButton)
 			.append(taskName)
 			.append(taskContributors)
 			.append(taskDate)
 			.append(taskOptions);
+		
 		return task;
 	}
 	
-	function createTaskExpirationDate(taskData){
-		var date = new Date(taskData.expirationDate.iMillis),
+	function createTaskName(taskName){
+		return $("<h4>").addClass("task-name").text(taskName);
+	}
+	
+	function createArchiveTaskButton(taskId){
+		 var archiveButton = $("<a class='button remove-button archive-task'>X</a>")
+			.attr("href","/zeng/task/"+taskId+"/archive/");
+		 return archiveButton;
+	}
+	
+	function createTaskExpirationDate(dateInMillis){
+		var date = new Date(dateInMillis),
 		formattedDate = date.format("dd/mm/yyyy");
-		return $("<span>").addClass("task-expiration-date").html("Expiration Date: "+ formattedDate);
+		return $("<span class='task-expiration-date'>").html("Expiration Date: "+ formattedDate);
 	}
 	
 	function createTaskContributors(contributors){
-		var contributorsUl = $("<ul>").addClass("task-contributors");
+		var contributorsUl = $("<ul class='task-contributors'>");
 		$(contributors).each(function(index, contributor){
-			var contributorLi = $("<li>").html(contributor.name+"; ");
+			var contributorLi = $("<li>"+contributor.name+"; </li>");
 			$(contributorsUl).append(contributorLi);
 		});
 		return contributorsUl;
 	}
 	
-	function createTaskOptions(){
+	function createTaskOptions(taskId){
 		var taskOptions = $("<div>").addClass("task-options"),
-			option = $("<a>")
-				.attr("href","/zeng/task/startTask/")
-				.addClass("button normal-button")
-				.text("Start task");
+			option = $("<a class='button normal-button'>Start Task</a>")
+						.attr("href","/zeng/task/"+taskId+"/startTask/");
 		return taskOptions.append(option);
 	}
 

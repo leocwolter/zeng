@@ -3,9 +3,8 @@
 <%@taglib prefix="zeng-structure" tagdir="/WEB-INF/tags/structure" %>
 <%@ attribute name="taskList" required="true" type="br.com.zeng.model.TaskList" %>
 
-<section class="task-area" id="task-area-${taskList.id}">
+<section class="task-area">
 	<h3>${taskList.name}</h3>
-	
 	<nav class="task-menu-bar">
 		<ul>
 	    	<li><a class="task-filter task-filter-selected" data-filter="nofilter" href="#" >All</a></li>
@@ -20,5 +19,5 @@
 			<zeng-structure:task task="${task}"/>
 		</c:forEach>
 	</ul>
-	<a class="add-button add-task-button modal" href="${linkTo[TaskController].insertTaskForm}${taskList.id}">+Add Task</a>
+	<a class="add-button add-task-button modal" href="${linkTo[TaskController].insertTaskForm[taskList.id]}">+Add Task</a>
 </section>

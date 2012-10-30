@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 </head>
 <body>
-	<form action="${linkTo[TaskController].insert}" method="POST" class="insert-form">
+	<form action="${linkTo[TaskController].insert}" method="POST" class="insert-form insert-task-form">
 		<fieldset>
 			<legend>Insert Task</legend>
 			<br/>
@@ -42,7 +42,7 @@
 	
 			<input type="hidden" name="task.taskList.id" value="${taskList.id}"/>
 	
-			<input type="submit" class="insert-task button normal-button" value="Insert">
+			<input type="submit" class="button normal-button" value="Insert">
 		</fieldset>
 	</form>
 	<!-- SCRIPTS IMPORT -->

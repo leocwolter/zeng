@@ -63,8 +63,6 @@
 	
 	<!-- SCRIPTS IMPORT -->
 	<c:import url="/WEB-INF/imports/script-import.jsp" />
-	<!-- VALIDATE SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/jquery.validate.js" />"></script>
 	<!-- SCREEN SIZE SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 	<!-- HOME FORMS VALIDATE SCRIPT -->

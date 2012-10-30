@@ -9259,20 +9259,4 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 }
 
 
-jQuery.fn.configureZengTaskList = function() {
-	$(this).sortable({
-		connectWith : $(this),
-		receive : function(event, ui) {
-			var taskListId = ui.item.closest("ul").data("tasklist-id"),
-				taskId = ui.item.data("task-id");
-			ui.item.attr("style","");
-			$.post("/zeng/task/moveTask", {
-				"task.id" : taskId,
-				"taskList.id" : taskListId
-			});
-		}
-	});
-};
-
-
 })( window );

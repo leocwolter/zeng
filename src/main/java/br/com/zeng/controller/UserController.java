@@ -109,7 +109,7 @@ public class UserController {
 	}
 
 	
-	@Post("/edit")
+	@Post("/user/profile/edit")
 	public void edit(UploadedFile userPhoto, User editedUser) throws FileNotFoundException, IOException {
 		User user = userSession.getUser();
 		if(validField(editedUser.getPassword())){

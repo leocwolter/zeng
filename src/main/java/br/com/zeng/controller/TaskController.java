@@ -49,7 +49,7 @@ public class TaskController {
 		this.userDao = userDao;
 	}
 
-	@Post("/taskList/addTask")
+	@Post("/addTask")
 	public void insert(Task task, String expirationDate) {
 		configureExpirationDate(task, expirationDate);
 		TaskList taskList = taskListDao.getWithId(task.getTaskList().getId());
@@ -78,20 +78,20 @@ public class TaskController {
 	}
 
 	@LoggedUser
-	@Path("/taskList/addTaskForm/{taskListId}")
+	@Path("/project/category/taskList/{taskListId}/addTaskForm")
 	public void insertTaskForm(Long taskListId) {
 		TaskList taskList = taskListDao.getWithId(taskListId);
 		result.include("taskList", taskList);
 	}
 
 	@LoggedUser
-	@Path("/task/{task.id}")
+	@Path("/project/category/taskList/task/{task.id}")
 	public Task showTask(Task task) {
 		return taskDao.getWithId(task.getId());
 	}
 	
 	@LoggedUser
-	@Path("/task/startTask/{taskId}")
+	@Path("/project/category/taskList/task/{taskId}/startTask")
 	public void start(Long taskId) {
 		Task taskComplete = taskDao.getWithId(taskId);
 		if (taskComplete.isFinalized()) throw new RuntimeException("A completed task can not be initiated");
@@ -106,7 +106,7 @@ public class TaskController {
 	}
 	
 	@LoggedUser
-	@Path("/task/finalizeTask/{taskId}")
+	@Path("/project/category/taskList/task/{taskId}/finalizeTask")
 	public void finalize(Long taskId) {
 		Task taskComplete = taskDao.getWithId(taskId);
 		if (taskComplete.isFinalized()) throw new RuntimeException("This task has already been completed");
@@ -120,7 +120,7 @@ public class TaskController {
 	}
 
 	@LoggedUser
-	@Path("/task/stopTask/{taskId}")
+	@Path("/project/category/taskList/task/{taskId}/stopTask")
 	public void stop(Long taskId) {
 		Task taskComplete = taskDao.getWithId(taskId);
 		if (taskComplete.isFinalized()) throw new RuntimeException("A completed task can not be stopped");
@@ -135,7 +135,7 @@ public class TaskController {
 	}
 
 	@LoggedUser
-	@Path("/task/moveTask")
+	@Path("/project/category/taskList/task/moveTask")
 	public void moveTask(Task task, TaskList taskList) {
 		Task taskComplete = taskDao.getWithId(task.getId());
 		TaskList taskListComplete = taskListDao.getWithId(taskList.getId());
@@ -150,7 +150,7 @@ public class TaskController {
 	}
 	
 	@LoggedUser
-	@Post("/task/archive/{taskId}")
+	@Post("/project/category/taskList/task/{taskId}/archiveTask")
 	public void archive(Long taskId) {
 		Task task = taskDao.getWithId(taskId);
 		taskDao.archive(task);

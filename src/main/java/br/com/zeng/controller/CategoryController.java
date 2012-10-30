@@ -33,26 +33,26 @@ public class CategoryController {
 	}
 
 
-	@Post("/addCategory/")
+	@Post("/addCategory")
 	public void insert(Category category, String projectUrl) {
 		Project project = projectDao.getProjectWithUrl(projectUrl);
 		category.setProject(project);
 		categoryDao.insert(category);
 		Action action = new Action(userSesion.getUser(),category,new AddAction(project));
 		actionDao.insert(action);
-		result.use(json()).from(category).serialize();
+		result.use(json()).from(category, "insertedElement").serialize();
 	}
 
 	@LoggedUser
-	@Path("/addCategoryForm/{projectUrl}")
+	@Path("/project/{projectUrl}/addCategoryForm")
 	public void insertCategoryForm(String projectUrl) {
 		result.include("projectUrl", projectUrl);
 	}	
 	
 	@LoggedUser
-	@Get("/project/category/{categoryId}")
-	public void getCategory(Long categoryId) {
-		Category category = categoryDao.getCategoryWithId(categoryId);
+	@Get("/project/category/{categoryUrl}")
+	public void showCategory(String categoryUrl) {
+		Category category = categoryDao.getCategoryWithUrl(categoryUrl);
 		result.include("currentCategory", category);
 		result.forwardTo(ProjectController.class).showProject(category.getProject());
 	}

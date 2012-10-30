@@ -73,7 +73,7 @@ public class ProjectController {
 		}
 		project.addContributor(userSession.getUser());
 		projectDao.insert(project);
-		result.use(json()).from(project).serialize();
+		result.use(json()).from(project, "insertedElement").serialize();
 	}
 
 	@LoggedUser
@@ -104,7 +104,7 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Get("/project/search/{projectUrl}")
+	@Get("/project/{projectUrl}/search/")
 	public void searchTasksWithContent(String q, String projectUrl) {
 		Project project = projectDao.getProjectWithUrl(projectUrl);
 		List<Task> tasks = taskDao.getTasksWithContentInAProject(q, project.getId());

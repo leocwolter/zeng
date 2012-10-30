@@ -36,7 +36,7 @@ public class TaskListController {
 	}
 
 
-	@Post("/addTaskList/")
+	@Post("/addTaskList")
 	public void insert(TaskList taskList, Long categoryId) {
 		Category category = categoryDao.getCategoryWithId(categoryId);
 		taskList.setCategory(category);
@@ -47,9 +47,9 @@ public class TaskListController {
 	}
 
 	@LoggedUser
-	@Path("/addTaskListForm/{categoryId}")
-	public void insertTaskListForm(Long categoryId) {
-		result.include("category", categoryDao.getCategoryWithId(categoryId));
+	@Path("/project/category/{categoryUrl}/addTaskListForm")
+	public void insertTaskListForm(String categoryUrl) {
+		result.include("category", categoryDao.getCategoryWithUrl(categoryUrl));
 	}	
 
 }

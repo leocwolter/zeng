@@ -16,7 +16,7 @@ $(function(){
 				var taskListId = ui.item.closest("ul").data("tasklist-id"),
 					taskId = ui.item.data("task-id");
 				ui.item.attr("style","");
-				$.post("/zeng/task/moveTask", {
+				$.post("/zeng/project/category/taskList/task/moveTask", {
 					"task.id" : taskId,
 					"taskList.id" : taskListId
 				});

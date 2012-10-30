@@ -6,6 +6,9 @@
 <!-- JQUERY UI -->
 <script type="text/javascript" src="<c:url value="/js/jquery-ui-1.8.18.custom.min.js"/>"></script>
 
+<!-- DATE FORMAT SCRIPT -->
+<script type="text/javascript" src="<c:url value="/js/date.format.js" />"></script>
+
 <!-- JQUERY VALIDATE -->
 <script type="text/javascript" src="<c:url value="/js/jquery.validate.js"/>"></script>
 

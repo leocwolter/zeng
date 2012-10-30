@@ -9,8 +9,7 @@ $(function() {
 		var taskFilter= $(this).data("filter").toUpperCase(),
 			taskArea = $(this).closest(".task-area");
 		filterTasksInTaskArea(taskFilter,taskArea);
-		taskArea.find(".task-filter")
-				.removeClass("task-filter-selected");
+		taskArea.find(".task-filter").removeClass("task-filter-selected");
 		$(this).addClass("task-filter-selected");
 	});
 

@@ -38,8 +38,6 @@
 		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 		<!-- HEADER MARGIN SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
-		<!-- DATE FORMAT SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/date.format.js" />"></script>
 		<!-- SHOWPROJECT SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/showProject.js" />"></script>
 	</body>

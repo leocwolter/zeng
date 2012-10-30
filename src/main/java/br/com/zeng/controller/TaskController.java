@@ -147,7 +147,7 @@ public class TaskController {
 		Action action = new Action(userSession.getUser(),taskComplete, new MoveAction(taskListComplete));
 		actionDao.insert(action);
 	
-		result.redirectTo(CategoryController.class).showCategory(task.getCategory().getUrl());
+		result.nothing();
 	}
 	
 	@LoggedUser

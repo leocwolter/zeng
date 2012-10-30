@@ -172,7 +172,7 @@ public class TaskDaoTest extends DaoTest {
 		TaskDao taskDao = new TaskDao(session);
 		Project trello = new Project("Trello");
 		session.save(trello);
-		Category backEnd = new Category(trello, "Back-End");
+		Category backEnd = new Category(trello, "Back-End2");
 		session.save(backEnd);
 		TaskList refactor = new TaskList(backEnd);
 		session.save(refactor);

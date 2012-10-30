@@ -1,5 +1,7 @@
 package br.com.zeng.model;
 
+import static br.com.zeng.infra.Sanitizer.toSlug;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +16,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import br.com.zeng.infra.Sanitizer;
 import br.com.zeng.model.action.Wrapper;
 
 @Entity
@@ -82,7 +83,7 @@ public class Project implements Wrapper {
 	}
 	
 	public void setUrl(String url) {
-		this.url = Sanitizer.toSlug(url);
+		this.url = toSlug(url);
 	}
 
 	public List<Category> getCategories() {

@@ -34,8 +34,6 @@
         </section>
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />
-		<!-- GENERIC MODAL SCRIPT - BIND -->
-		<script type="text/javascript" src="<c:url value="/js/modal-bind.js" />"></script>
 		<!-- SCREEN SIZE SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 		<!-- HEADER MARGIN SCRIPT -->

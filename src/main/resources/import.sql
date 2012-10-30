@@ -1,6 +1,6 @@
 INSERT INTO `Project` (`name`, `url`) VALUES ('Zeng', 'zeng');
 
-INSERT INTO `Category` (`name`, `project_id`) VALUES ('Layout',1), ('Back-end',1), ('Documentation',1);
+INSERT INTO `Category` (`name`, `project_id`, `url`) VALUES ('Layout',1, 'layout'), ('Back-end',1, 'back-end'), ('Documentation',1, 'documentation');
 
 INSERT INTO `TaskList` (`name`, `category_id`) VALUES ('Logo',1), ('Wire-frame',1), ('Site',1);
 INSERT INTO `TaskList` (`name`, `category_id`) VALUES ('Database',2), ('Logic',2);

@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Type;
@@ -35,7 +34,6 @@ public class Task implements Modifiable{
 	@NotNull
 	private State state;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
-	@Future
 	private DateTime expirationDate;
 	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
 	private DateTime dateOfCompletion;

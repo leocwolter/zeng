@@ -68,6 +68,7 @@ public class TaskController {
 							.include("taskList.category.project")
 							.include("expirationDate")
 							.serialize();
+
 	}
 
 	private void configureExpirationDate(Task task, String expirationDate) {
@@ -146,11 +147,11 @@ public class TaskController {
 		Action action = new Action(userSession.getUser(),taskComplete, new MoveAction(taskListComplete));
 		actionDao.insert(action);
 	
-		result.nothing();
+		result.redirectTo(CategoryController.class).showCategory(task.getCategory().getUrl());
 	}
 	
 	@LoggedUser
-	@Post("/project/category/taskList/task/{taskId}/archiveTask")
+	@Path("/project/category/taskList/task/{taskId}/archiveTask")
 	public void archive(Long taskId) {
 		Task task = taskDao.getWithId(taskId);
 		taskDao.archive(task);
@@ -158,7 +159,7 @@ public class TaskController {
 		Action action = new Action(userSession.getUser(), task, new ArchiveAction());
 		actionDao.insert(action);
 		
-		result.nothing();
+		result.redirectTo(CategoryController.class).showCategory(task.getCategory().getUrl());
 	}
 	
 	public void startedTask() {

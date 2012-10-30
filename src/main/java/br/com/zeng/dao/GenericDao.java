@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import br.com.caelum.vraptor.ioc.Component;
-
-@Component
 public class GenericDao<T> {
 
 	private final Class<T> clazz;

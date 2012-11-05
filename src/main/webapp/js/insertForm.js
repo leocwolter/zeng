@@ -7,24 +7,23 @@ $(function () {
 		});
 		$(".messi-closebtn", parent.document).click();
 	};
-	
-	function appendLinkToMenu(href, name) {
-		var page = $(parent.document),
-			menu = page.find("#menu"),
-			link = $("<a>"+name+"</a>").attr({"href":href, "title":name}),
-			menuItem = $("<li>").append(link);
-		$(menu).append(menuItem);
-	}
-	
 	//Project & Category insertion
 	$(".simple-insert-form").submit(function (event) {
 		event.preventDefault();
 		var form = $(this);
 		var url = form.find("[name='showUrl']").val();
 		submitForm(form,  function (data) {
-			appendLinkToMenu(url+data.insertedElement.url, data.insertedElement.name);
+			appendLinkToMenu({"href":url+data.insertedElement.url, "name":data.insertedElement.name});
 		});
 	});
+	
+	function appendLinkToMenu(data) {
+		var page = $(parent.document),
+		menu = page.find("#menu"),
+		link = $.nano("<a href='{href}' title='{name}'>{name}</a>", data),
+		menuItem = $("<li>").append(link);
+		$(menu).append(menuItem);
+	}
 	
 	//Task list insertion
 	$(".insert-task-list-form").submit(function (event) {	
@@ -38,8 +37,8 @@ $(function () {
 	});
 
 	function createTaskArea(taskListData) {
-		var taskList = $("<ul class='task-list ui-sortable' data-tasklist-id='"+taskListData.id+"'>"),
-			taskListTitle = $("<h3>"+taskListData.name+"</h3>"),
+		var taskList = $.nano("<ul class='task-list ui-sortable' data-tasklist-id='{id}'>", taskListData),
+			taskListTitle = $.nano("<h3>{name}</h3>", taskListData),
 			nav = createTaskAreaNavBar(),
 			addTaskButton = $("<a class='add-button add-task-button modal'>+Add Task</a>")
 							.attr("href","/zeng/project/category/taskList/"+taskListData.id+"/addTaskForm"),
@@ -53,19 +52,20 @@ $(function () {
 	}
 	
 	function createTaskAreaNavBar() {
-		var all =  generateMenuItem("nofilter","All");
+		var all =  generateMenuItem({"filter":"nofilter","text":"All"});
+		console.log(all);
 		all.find("a").addClass("task-filter-selected");
 		var menuItems = $("<ul>")
 			.append(all)
-			.append(generateMenuItem("todo","To do"))
-			.append(generateMenuItem("doing","Doing"))
-			.append(generateMenuItem("done","Done"))
-			.append(generateMenuItem("mine","Mine"));
+			.append(generateMenuItem({"filter":"todo", "text":"To do"}))
+			.append(generateMenuItem({"filter":"doing", "text":"Doing"}))
+			.append(generateMenuItem({"filter":"done", "text":"Done"}))
+			.append(generateMenuItem({"filter":"mine", "text":"Mine"}));
 		return $("<nav>").addClass("task-menu-bar").append(menuItems);
 	}
 	
-	function generateMenuItem(filter,text) {
-		return $("<li><a class='task-filter' data-filter='"+filter+"' href='#'>"+text+"</a></li>");
+	function generateMenuItem(data) {
+		return $($.nano("<li><a class='task-filter' data-filter='{filter}' href='#'>{text}</a></li>", data));
 	};
 	
 	//Task insertion
@@ -74,7 +74,8 @@ $(function () {
 		submitForm($(this), function (data) {
 			var taskData = data.task,
 				task = createTask(taskData),
-				taskList = $("[data-tasklist-id = "+taskData.taskList.id+"]", parent.document);
+				selector = $.nano("[data-tasklist-id = {taskList.id}]", taskData),
+				taskList = $(selector, parent.document);
 			$(taskList).append(task);
 			validateManyTasks(taskData);
 		});
@@ -83,8 +84,8 @@ $(function () {
 	function validateManyTasks(taskData) {
 		if(expirationDate !== undefined){
 			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
-			var projectUrl = taskData.taskList.category.project.url;
-			$.get("/zeng/project/"+projectUrl+"/manyTasksWithExpirationDate", expirationData, function(manyTasks){
+			var projectUrl = $.nano("/zeng/project/{taskList.category.project.url}/manyTasksWithExpirationDate",taskData);
+			$.get(projectUrl, expirationData, function(manyTasks){
 				if(manyTasks.boolean){
 					alert("There are more than three tasks with that expiration date in this project!");
 				}
@@ -99,7 +100,9 @@ $(function () {
 			taskDate = createTaskExpirationDate(taskData.expirationDate.iMillis),
 			taskOptions = createTaskOptions(taskData);
 		
-		var task = $("<li class='task task-state-TODO'>").attr("data-task-id",taskData.id)
+		var taskHtml = $.nano("<li class='task task-state-TODO' data-task-id='{id}'>", taskData);
+		
+		var task = $(taskHtml)
 			.append(archiveTaskButton)
 			.append(taskName)
 			.append(taskContributors)
@@ -123,7 +126,6 @@ $(function () {
 		var contributorsUl = $("<ul class='task-contributors'>");
 		var lis = "";
 		$(contributors).each(function (index, contributor) {
-			console.log(contributor);
 			lis+=$.nano("<li>{name};&nbsp; </li>",contributor);
 		});
 		$(contributorsUl).append(lis);

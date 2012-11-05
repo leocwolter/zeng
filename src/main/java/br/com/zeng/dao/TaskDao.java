@@ -3,11 +3,13 @@ package br.com.zeng.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.joda.time.DateTime;
 
 import br.com.caelum.vraptor.ioc.Component;
+import br.com.zeng.chart.QuantityOfTasksPerMonth;
 import br.com.zeng.chart.UserTasksPerMonth;
 import br.com.zeng.model.Project;
 import br.com.zeng.model.Task;
@@ -15,7 +17,7 @@ import br.com.zeng.model.User;
 
 @Component
 public class TaskDao {
-	private static final int MANY_TASKS = 3;
+	public static final int MANY_TASKS = 3;
 	private final Session session;
 	private GenericDao<Task> dao;
 
@@ -69,43 +71,38 @@ public class TaskDao {
 		return numberOfTasks>=MANY_TASKS;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<UserTasksPerMonth> getQuantityOfTasksGroupedByDateAndUser(Project project){
-		List<Object[]> list = session.createQuery("select year(t.dateOfCompletion), month(t.dateOfCompletion), c.id, count(*) from Task t join t.contributors c where t.dateOfCompletion != null and t.taskList.category.project.url like :project and t.state=2 group by year(t.dateOfCompletion),month(t.dateOfCompletion), c.id order by c.id")
-								.setString("project", project.getUrl())
-								.list();
-		return buildUsersTasksPerMonthList(list);
-	}
-
-	private ArrayList<UserTasksPerMonth> buildUsersTasksPerMonthList(List<Object[]> list) {
-		HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser = groupByUser(list);
-		ArrayList<UserTasksPerMonth> usersTasksPerMonthList = new ArrayList<UserTasksPerMonth>();
-		usersTasksPerMonthList.addAll(tasksPerMonthPerUser.values());
-		return usersTasksPerMonthList;
-	}
-
-	private HashMap<User, UserTasksPerMonth> groupByUser(	List<Object[]> list) {
-		HashMap<User,UserTasksPerMonth> tasksPerMonthPerUser = new HashMap<User, UserTasksPerMonth>();
-		for (Object[] object : list) {
-			putOrAdd(tasksPerMonthPerUser, object);
+		List<User> contributors = project.getContributors();
+		ArrayList<UserTasksPerMonth> userTasksPerMonthList = new ArrayList<UserTasksPerMonth>();
+		for (User user : contributors) {
+			Map<DateTime, Long> quantityOfTasksOfUserByMonth = getQuantityOfTasksOfUserByMonth(user, project);
+			UserTasksPerMonth userTasksPerMonth = new UserTasksPerMonth(user, quantityOfTasksOfUserByMonth);
+			if(userTasksPerMonth.getQuantityOfTasks()!=0){
+				userTasksPerMonthList.add(userTasksPerMonth);
+			}
 		}
-		return tasksPerMonthPerUser;
+		return userTasksPerMonthList;
 	}
 
-	private void putOrAdd(HashMap<User, UserTasksPerMonth> tasksPerMonthPerUser, Object[] object) {
-		DateTime dateTime = new DateTime((Integer)object[0],(Integer)object[1],1,0,0,0,0);
-		User user = (User) session.get(User.class, (Long)object[2]);
-		Long count = (Long) object[3];
-		if(tasksPerMonthPerUser.containsKey(user)){
-			tasksPerMonthPerUser.get(user).addQuantityOfTasksPerMonth(dateTime, count);
-		}else{
-			HashMap<DateTime, Long> quantityOfTasksPerMonth = new HashMap<DateTime, Long>();
-			quantityOfTasksPerMonth.put(dateTime, count);
-			UserTasksPerMonth userTasksPerMonth = new UserTasksPerMonth(user, quantityOfTasksPerMonth);
-			tasksPerMonthPerUser.put(user, userTasksPerMonth);
+	@SuppressWarnings("unchecked")
+	private Map<DateTime, Long> getQuantityOfTasksOfUserByMonth(User user, Project project){
+		List<QuantityOfTasksPerMonth> list = session.createQuery("select new "+QuantityOfTasksPerMonth.class.getName()+
+				"	(year(t.dateOfCompletion), month(t.dateOfCompletion), count(*))" +
+				"	from Task t where t.dateOfCompletion != null " +
+				"	and t.state=2 " +
+				"	and :user in elements(t.contributors) " +
+				"	and t.taskList.category.project = :project " +
+				"	group by year(t.dateOfCompletion), month(t.dateOfCompletion)")
+					.setParameter("user", user)
+					.setParameter("project", project)
+					.list();
+		HashMap<DateTime, Long> tasksPerMonthMap = new HashMap<DateTime, Long>();
+		for (QuantityOfTasksPerMonth tasksPerMonth : list) {
+			tasksPerMonthMap.put(tasksPerMonth.getMonth(), tasksPerMonth.getQuantityOfTasks());
 		}
+		return tasksPerMonthMap;
 	}
-
+	
 	public void finalize(Task task) {
 		task.finalize();
 		update(task);

@@ -17,14 +17,6 @@ public class UserTasksPerMonth {
 		this.tasksPerMonth = tasksPerMonth;
 	}
 	
-	public UserTasksPerMonth(User user, Integer year, Integer month, Long quantityOfTasks) {
-		this.user = user;
-		System.out.println(user.getName());
-		System.out.println(year);
-		System.out.println(month);
-		System.out.println(quantityOfTasks);
-	}
-
 	public User getUser() {
 		return user;
 	}

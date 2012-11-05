@@ -1,5 +1,5 @@
-$(function(){
-	function submitForm(form, callBack){
+$(function () {
+	function submitForm(form, callBack) {
 		var formData = form.serialize(),
 		url = form.attr("action");
 		$.post(url, formData, function(data){
@@ -8,7 +8,7 @@ $(function(){
 		$(".messi-closebtn", parent.document).click();
 	};
 	
-	function appendLinkToMenu(href, name){
+	function appendLinkToMenu(href, name) {
 		var page = $(parent.document),
 			menu = page.find("#menu"),
 			link = $("<a>"+name+"</a>").attr({"href":href, "title":name}),
@@ -17,19 +17,19 @@ $(function(){
 	}
 	
 	//Project & Category insertion
-	$(".simple-insert-form").submit(function(event){
+	$(".simple-insert-form").submit(function (event) {
 		event.preventDefault();
 		var form = $(this);
 		var url = form.find("[name='showUrl']").val();
-		submitForm(form,  function(data){
+		submitForm(form,  function (data) {
 			appendLinkToMenu(url+data.insertedElement.url, data.insertedElement.name);
 		});
 	});
 	
 	//Task list insertion
-	$(".insert-task-list-form").submit(function(event){	
+	$(".insert-task-list-form").submit(function (event) {	
 		event.preventDefault();
-		submitForm($(this), function(data){
+		submitForm($(this), function (data) {
 			var taskArea = createTaskArea(data.taskList),
 				category = $(".category", parent.document);
 			$(taskArea).appendTo(category);		
@@ -37,7 +37,7 @@ $(function(){
 		});
 	});
 
-	function createTaskArea(taskListData){
+	function createTaskArea(taskListData) {
 		var taskList = $("<ul class='task-list ui-sortable' data-tasklist-id='"+taskListData.id+"'>"),
 			taskListTitle = $("<h3>"+taskListData.name+"</h3>"),
 			nav = createTaskAreaNavBar(),
@@ -52,7 +52,7 @@ $(function(){
 		return taskArea;
 	}
 	
-	function createTaskAreaNavBar(){
+	function createTaskAreaNavBar() {
 		var all =  generateMenuItem("nofilter","All");
 		all.find("a").addClass("task-filter-selected");
 		var menuItems = $("<ul>")
@@ -64,14 +64,14 @@ $(function(){
 		return $("<nav>").addClass("task-menu-bar").append(menuItems);
 	}
 	
-	function generateMenuItem(filter,text){
+	function generateMenuItem(filter,text) {
 		return $("<li><a class='task-filter' data-filter='"+filter+"' href='#'>"+text+"</a></li>");
 	};
 	
 	//Task insertion
-	$(".insert-task-form").submit(function(event){
+	$(".insert-task-form").submit(function (event) {
 		event.preventDefault();
-		submitForm($(this), function(data){
+		submitForm($(this), function (data) {
 			var taskData = data.task,
 				task = createTask(taskData),
 				taskList = $("[data-tasklist-id = "+taskData.taskList.id+"]", parent.document);
@@ -80,7 +80,7 @@ $(function(){
 		});
 	});
 	
-	function validateManyTasks(taskData){
+	function validateManyTasks(taskData) {
 		if(expirationDate !== undefined){
 			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
 			var projectUrl = taskData.taskList.category.project.url;
@@ -92,12 +92,12 @@ $(function(){
 		}
 	}
 	
-	function createTask(taskData){
-		var archiveTaskButton = createArchiveTaskButton(taskData.id),
-			taskName = createTaskName(taskData.name),
+	function createTask(taskData) {
+		var archiveTaskButton = createArchiveTaskButton(taskData),
+			taskName = createTaskName(taskData),
 			taskContributors = createTaskContributors(taskData.contributors);
 			taskDate = createTaskExpirationDate(taskData.expirationDate.iMillis),
-			taskOptions = createTaskOptions(taskData.id);
+			taskOptions = createTaskOptions(taskData);
 		
 		var task = $("<li class='task task-state-TODO'>").attr("data-task-id",taskData.id)
 			.append(archiveTaskButton)
@@ -109,36 +109,37 @@ $(function(){
 		return task;
 	}
 	
-	function createTaskName(taskName){
-		return $("<h4>").addClass("task-name").text(taskName);
+	
+	function createArchiveTaskButton(taskData) {
+		var archiveButton = $.nano("<a class='button remove-button archive-task' href='/zeng/project/category/taskList/task/{id}/archiveTask'>X</a>", taskData);
+		return archiveButton;
+	}
+
+	function createTaskName(taskData) {
+		return $.nano("<h4 class='task-name'>{name}</h4>", taskData);
 	}
 	
-	function createArchiveTaskButton(taskId){
-		 var archiveButton = $("<a class='button remove-button archive-task'>X</a>")
-			.attr("href","/zeng/task/"+taskId+"/archive/");
-		 return archiveButton;
+	function createTaskContributors(contributors) {
+		var contributorsUl = $("<ul class='task-contributors'>");
+		var lis = "";
+		$(contributors).each(function (index, contributor) {
+			console.log(contributor);
+			lis+=$.nano("<li>{name};&nbsp; </li>",contributor);
+		});
+		$(contributorsUl).append(lis);
+		return contributorsUl;
 	}
 	
-	function createTaskExpirationDate(dateInMillis){
+	function createTaskExpirationDate(dateInMillis) {
 		var date = new Date(dateInMillis),
 		formattedDate = date.format("dd/mm/yyyy");
 		return $("<span class='task-expiration-date'>").html("Expiration Date: "+ formattedDate);
 	}
 	
-	function createTaskContributors(contributors){
-		var contributorsUl = $("<ul class='task-contributors'>");
-		$(contributors).each(function(index, contributor){
-			var contributorLi = $("<li>"+contributor.name+"; </li>");
-			$(contributorsUl).append(contributorLi);
-		});
-		return contributorsUl;
-	}
-	
-	function createTaskOptions(taskId){
-		var taskOptions = $("<div>").addClass("task-options"),
-			option = $("<a class='button normal-button'>Start Task</a>")
-						.attr("href","/zeng/task/"+taskId+"/startTask/");
-		return taskOptions.append(option);
+	function createTaskOptions(taskData) {
+		var taskOptions = $("<div class='task-options'>")
+			.append($.nano("<a class='button normal-button' href='/zeng/project/category/taskList/task/{id}/startTask'>Start Task</a>",taskData));
+		return taskOptions;
 	}
 
 	$(".insert-form").validate({   
@@ -152,6 +153,5 @@ $(function(){
 				afterNow: "The expiration date should be after today"
 			}
 		}
-
 	});  
 });

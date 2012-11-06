@@ -23,17 +23,4 @@ $(function(){
 			}
 		});
 	};
-
-	//Dropdown Bind
-	$(".dropdown").live("click",function(){
-		var target = $(this).data("target");
-		$(".dropdown-target#"+target).toggle();
-	});
-	
-	//Modal Bind
-	$(".modal").live('click',function(event){
-		var url = $(this).attr("href");
-		Messi.load(url,{modal:true, modalOpacity:0.4});
-		event.preventDefault();
-	});
 });

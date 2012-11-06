@@ -238,6 +238,23 @@
 	line-height: 15px;
 }
 
-.task-options{
+.task-options {
 	bottom: 2px;
+}
+
+#other-categories {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 34px;
+}
+
+#other-categories li a {
+	display: block;
+	width: 100%;
+	height: 22px;
+}
+
+#other-categories li a:hover {
+	background-color: #CEB296;
 }

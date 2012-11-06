@@ -34,6 +34,10 @@
         </section>
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />
+		<!-- MODAL SCRIPTS IMPORT -->
+		<c:import url="/WEB-INF/imports/modal-script.jsp"></c:import>
+		<!-- DROPDOWN MENU SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/dropdown.js" />"></script>
 		<!-- SCREEN SIZE SCRIPT -->
 		<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 		<!-- HEADER MARGIN SCRIPT -->

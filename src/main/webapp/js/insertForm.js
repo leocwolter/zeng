@@ -10,10 +10,23 @@ $(function(){
 	
 	function appendLinkToMenu(href, name){
 		var page = $(parent.document),
-			menu = page.find("#menu"),
 			link = $("<a>"+name+"</a>").attr({"href":href, "title":name}),
 			menuItem = $("<li>").append(link);
-		$(menu).append(menuItem);
+		
+		var target = "";
+		
+		if($('#menu li').size() >= 6){
+			target = page.find(".other-itens");
+		}
+		else{
+			target = page.find("#menu");
+		}
+		
+		$(target).append(menuItem);
+		
+		if($('#menu li').size() === 6){
+			document.location.reload(true);
+		}
 	}
 	
 	//Project & Category insertion

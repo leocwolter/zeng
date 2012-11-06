@@ -11,9 +11,3 @@
 
 <!-- JQUERY VALIDATE -->
 <script type="text/javascript" src="<c:url value="/js/jquery.validate.js"/>"></script>
-
-<!-- MESSI SCRIPT -->
-<script type="text/javascript" src="<c:url value="/js/messi.min.js"/>"></script>
-
-<!-- ZENG SCRIPTS -->
-<script type="text/javascript" src="<c:url value="/js/zeng.js"/>"></script>

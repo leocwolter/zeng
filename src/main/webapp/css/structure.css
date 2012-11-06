@@ -140,8 +140,16 @@ footer {
 
 .dropdown-target li {
 	height: 22px;
+	width: 100%;
 	line-height: 22px;
-	text-align:center;
+	text-align:left;
+}
+
+.dropdown-target li a {
+	padding: 0 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .dropdown-target li > * {
@@ -183,10 +191,15 @@ footer {
 }
 
 #menu li {
-	display: inline-block;
+	float: left;
+	min-width: 14px;
 }
 
-#menu li a {
+.top-menu-dropdown {
+	position: relative;
+}
+
+#menu > li > a {
 	display: block;
 	overflow: hidden;
 	margin: 5px 15px;
@@ -198,7 +211,7 @@ footer {
 	text-overflow: ellipsis;
 }
 
-#menu li a:hover {
+#menu > li > a:hover {
 	border-radius: 4px;
 	background: #AE7F50;
 	color: #E3E1D5;

@@ -22,6 +22,7 @@
 #top {
 	background: #61472D;
 	height: 50px;
+	min-width: 410px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin: 0px;
@@ -172,6 +173,7 @@ footer {
 
 #menu-bar {
 	height: 35px;
+	min-width: 410px;
 	background: #84603D;
 	line-height: 35px;
 	border-top: 1px solid #997047;

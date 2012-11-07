@@ -15,7 +15,7 @@ $(function(){
 		
 		var target = "";
 		
-		if($('#menu li').size() >= 6){
+		if($('#menu li').size() >= 4){
 			target = page.find(".other-itens");
 		}
 		else{
@@ -24,7 +24,7 @@ $(function(){
 		
 		$(target).append(menuItem);
 		
-		if($('#menu li').size() === 6){
+		if($('#menu li').size() === 4){
 			document.location.reload(true);
 		}
 	}

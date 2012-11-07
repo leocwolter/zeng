@@ -7,9 +7,42 @@
 @media only screen and (max-width: 765px) {
 }
 
+@media only screen and (min-width: 425px) {
+}
+
+@media only screen and (max-width: 425px) {
+	#project-content {
+		margin-top: 123px !important;
+	}
+	
+	#user-name-link {
+		max-width: 61px;
+	}
+	
+	#menu-bar {
+		height: 71px;
+	}
+	
+	#menu {
+		height: 71px;
+		width: 221px;
+	}
+}	
+
+@media only screen and (max-width: 430px) {
+	#menu {
+		height: 71px;
+		width: 221px;
+	}
+}	
+
 @media only screen and (max-width: 630px) {
-	#search-form input[type="search"]{
+	#search-form input[type="search"] {
 		width:150px;
+	}
+	#menu > li > a {
+		margin: 5px 0px;
+		max-width: 109px;
 	}
 }	
 

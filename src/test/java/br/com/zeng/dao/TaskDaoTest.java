@@ -94,18 +94,66 @@ public class TaskDaoTest extends DaoTest {
 		taskDao.start(task);
 		assertTrue(task.isStarted());
 	}
-
+	
 	@Test
-	public void shouldReturnNumberOfTasksGroupedByDateOfCompletionAndContributors() {
+	public void shouldIgnoreNumberOfTasksInOtherProjects() {
 		User leonardo = new User("Leonardo","leo@leo.com","12345678");
 		session.save(leonardo);
 		
 		User joao = new User("Joao", "joao@joao.com", "12345678");
 		session.save(joao);
 		
+		projectZeng.addContributor(leonardo);
+		projectZeng.addContributor(joao);
+		session.update(projectZeng);
+		
+		projectRails.addContributor(leonardo);
+		projectRails.addContributor(joao);
+		session.update(projectRails);
+		
 		List<User> joaoELeonardoList = Arrays.asList(leonardo,joao);
 		List<User> joaoList = Arrays.asList(joao);
+		
+		Task task = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfZeng).build();
+		taskDao.insert(task);
+		taskDao.finalize(task);
+		
+		Task task3 = builder.withContributors(joaoList).withTaskList(taskListOfRails).build();
+		taskDao.insert(task3);
+		taskDao.finalize(task3);
+		
+		Task task4 = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfRails).build();
+		taskDao.insert(task4);
+		taskDao.finalize(task4);
 
+		List<UserTasksPerMonth> quantityOfTasksGroupedByDateAndUser = taskDao.getQuantityOfTasksGroupedByDateAndUser(projectZeng);
+		for (UserTasksPerMonth userTasksPerMonth : quantityOfTasksGroupedByDateAndUser) {
+			if(userTasksPerMonth.getUser().equals(leonardo))
+				assertEquals(valueOf(1), userTasksPerMonth.getQuantityOfTasks());
+			if(userTasksPerMonth.getUser().equals(joao))
+				assertEquals(valueOf(1), userTasksPerMonth.getQuantityOfTasks());
+		}
+	}
+	
+	@Test
+	public void shouldIgnoreTasksThatAreNotFinalizedYet() {
+		User leonardo = new User("Leonardo","leo@leo.com","12345678");
+		session.save(leonardo);
+		
+		User joao = new User("Joao", "joao@joao.com", "12345678");
+		session.save(joao);
+		
+		projectZeng.addContributor(leonardo);
+		projectZeng.addContributor(joao);
+		session.update(projectZeng);
+		
+		projectRails.addContributor(leonardo);
+		projectRails.addContributor(joao);
+		session.update(projectRails);
+		
+		List<User> joaoELeonardoList = Arrays.asList(leonardo,joao);
+		List<User> joaoList = Arrays.asList(joao);
+		
 		Task task = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfZeng).build();
 		taskDao.insert(task);
 		
@@ -115,21 +163,13 @@ public class TaskDaoTest extends DaoTest {
 		
 		Task task4 = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfZeng).build();
 		taskDao.insert(task4);
-		taskDao.finalize(task4);
-		
-		Task task5 = builder.withContributors(joaoELeonardoList).withTaskList(taskListOfRails).build();
-		taskDao.insert(task5);
-		taskDao.finalize(task5);
 		
 		List<UserTasksPerMonth> quantityOfTasksGroupedByDateAndUser = taskDao.getQuantityOfTasksGroupedByDateAndUser(projectZeng);
-		DateTime dateTime = new DateTime();
-		DateTime today = new DateTime(dateTime.getYear(),dateTime.getMonthOfYear(),1,0,0,0,0);
-
 		for (UserTasksPerMonth userTasksPerMonth : quantityOfTasksGroupedByDateAndUser) {
 			if(userTasksPerMonth.getUser().equals(leonardo))
-				assertEquals(valueOf(1), userTasksPerMonth.getQuantityOfTasksInMonth(today));
+				assertEquals(valueOf(0), userTasksPerMonth.getQuantityOfTasks());
 			if(userTasksPerMonth.getUser().equals(joao))
-				assertEquals(valueOf(2), userTasksPerMonth.getQuantityOfTasksInMonth(today));
+				assertEquals(valueOf(1), userTasksPerMonth.getQuantityOfTasks());
 		}
 	}
 
@@ -215,7 +255,7 @@ public class TaskDaoTest extends DaoTest {
 		Task task = builder.withTaskList(taskListOfZeng).withExpirationDate(null).build();
 		taskDao.insert(task);
 		assertFalse(taskDao.manyTasksWithSameExpirationDate(projectZeng));
-		for (int i = 0; i < 9; i++) {
+		for (int i = 0; i < TaskDao.MANY_TASKS; i++) {
 			taskDao.insert(builder.withTaskList(taskListOfZeng).withExpirationDate(null).build());
 		}
 		assertFalse(taskDao.manyTasksWithSameExpirationDate(projectZeng));

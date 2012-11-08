@@ -7,16 +7,12 @@
 @media only screen and (max-width: 765px) {
 }
 
-@media only screen and (min-width: 425px) {
+@media only screen and (min-width: 539px) {
 }
 
 @media only screen and (max-width: 425px) {
 	#project-content {
 		margin-top: 123px !important;
-	}
-	
-	#user-name-link {
-		max-width: 61px;
 	}
 	
 	#menu-bar {
@@ -27,7 +23,26 @@
 		height: 71px;
 		width: 221px;
 	}
-}	
+	
+	#user-name-link {
+		max-width: 61px;
+	}
+}
+
+@media only screen and (max-width: 539px) {
+	#project-content {
+		margin-top: 123px !important;
+	}
+	
+	#menu-bar {
+		height: 71px;
+	}
+	
+	#menu {
+		height: 71px;
+		width: 221px;
+	}
+}
 
 @media only screen and (max-width: 430px) {
 	#menu {

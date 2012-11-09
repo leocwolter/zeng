@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -18,7 +17,6 @@ import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.infra.Criptografador;
-import br.com.zeng.model.Project;
 import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
 import br.com.zeng.simplecaptcha.SimpleCaptcha;
@@ -80,20 +78,13 @@ public class UserController {
 		User registredUser = userDao.getRegistredUser(user.getEmail(),password) ;
 		userValidator.validate(registredUser);
 		userSession.logIn(registredUser);
-		result.redirectTo(UserController.class).purchase();
+		result.redirectTo(ProjectController.class).listProjects();
 	}
 	
 	@Get("/logout")
 	public void logOut() {
 		userSession.logOut();
 		result.redirectTo(UserController.class).home();
-	}
-
-	@Get("/purchase")
-	@LoggedUser
-	public void purchase() {
-		List<Project> listProjectsWithUser = projectDao.listProjectsWithUser(userSession.getUser());
-		result.include("projects", listProjectsWithUser);
 	}
 
 	@LoggedUser

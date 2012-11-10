@@ -14,7 +14,6 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.environment.Environment;
 import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.zeng.annotation.LoggedUser;
-import br.com.zeng.dao.ProjectDao;
 import br.com.zeng.dao.UserDao;
 import br.com.zeng.infra.Criptografador;
 import br.com.zeng.model.User;
@@ -34,7 +33,6 @@ public class UserController {
 	private final Environment env;
 	private final SimpleCaptcha captcha;
 	private final CaptchaValidator captchaValidator;
-	private final ProjectDao projectDao;
 
 	public UserController(Result result,
 			UserDao userDao,
@@ -43,8 +41,7 @@ public class UserController {
 			Criptografador cripto,
 			Environment env,
 			SimpleCaptcha captcha,
-			CaptchaValidator captchaValidator,
-			ProjectDao projectDao
+			CaptchaValidator captchaValidator
 			) {
 		this.result = result;
 		this.userDao = userDao;
@@ -54,7 +51,6 @@ public class UserController {
 		this.env = env;
 		this.captcha = captcha;
 		this.captchaValidator = captchaValidator;
-		this.projectDao = projectDao;
 	}
 
 	@Get("/")

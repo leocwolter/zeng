@@ -116,7 +116,6 @@
 .task-area {
 	height: auto;
 	min-height: 120px;
-	max-height: 358px;
 	width: 379px;
 	margin: 0 10px 20px 0;
 	display:inline-block;
@@ -179,7 +178,7 @@
 }
 
 .task-list {
-	height: 269px;
+	height: 363px;
 	width: 379px;
 	overflow: auto;
 	border-left: 1px solid #AAAAAA;
@@ -205,9 +204,27 @@
 	overflow: hidden;
 }
 
+.task p{
+	margin:10px 0;
+}
+
+.task-name, .task-description{
+	display: block;
+	margin-right: 33px;
+}
+
+.task-name {
+	font-family: Verdana;
+	font-weight: bold;
+	color: #61472D;
+	margin-bottom: 10px;
+}
+
+.task .task-description{
+}
+
 .task .task-expiration-date {
 	display: inline-block;
-	margin: 0px 0px 10px 0px;
 }
 
 .task-expiration-date.expired-task{
@@ -222,20 +239,11 @@
 	color:green;
 }
 
-.task-name {
-	font-family: Verdana;
-	font-weight: bold;
-	color: #61472D;
-	margin-bottom: 10px;
-}
-
-.task-contributors {
-	margin: 0 0 10px 0;
-}
 
 .task-contributors li {
 	display: inline-block;
 	line-height: 15px;
+	margin-right: 3px;
 }
 
 .task-options {

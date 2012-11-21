@@ -94,15 +94,20 @@ $(function () {
 	$(".insert-task-form").submit(function (event) {
 		event.preventDefault();
 		submitForm($(this), function (data) {
-			var taskData = data.task,
-				task = createTask(taskData),
+			var taskData = data.task;
+			var taskDate = taskData.expirationDate;
+			var taskExpirationDate = "";
+			if(taskDate !== undefined){
+				taskExpirationDate = createTaskExpirationDate(taskDate);
+				validateManyTasks(taskData);
+			}
+			var	task = createTask(taskData, taskExpirationDate),
 				selector = $.nano("[data-tasklist-id = {taskList.id}]", taskData),
 				taskList = $(selector, parent.document);
 			$(taskList).append(task);
-			validateManyTasks(taskData);
 		});
 	});
-	
+
 	function validateManyTasks(taskData) {
 		if(expirationDate !== undefined){
 			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
@@ -115,11 +120,10 @@ $(function () {
 		}
 	}
 	
-	function createTask(taskData) {
+	function createTask(taskData, taskExpirationDate) {
 		var archiveTaskButton = createArchiveTaskButton(taskData),
 			taskName = createTaskName(taskData),
-			taskContributors = createTaskContributors(taskData.contributors);
-			taskDate = createTaskExpirationDate(taskData.expirationDate.iMillis),
+			taskContributors = createTaskContributors(taskData.contributors),
 			taskOptions = createTaskOptions(taskData);
 		
 		var taskHtml = $.nano("<li class='task task-state-TODO' data-task-id='{id}'>", taskData);
@@ -128,7 +132,7 @@ $(function () {
 			.append(archiveTaskButton)
 			.append(taskName)
 			.append(taskContributors)
-			.append(taskDate)
+			.append(taskExpirationDate)
 			.append(taskOptions);
 		
 		return task;
@@ -154,8 +158,8 @@ $(function () {
 		return contributorsUl;
 	}
 	
-	function createTaskExpirationDate(dateInMillis) {
-		var date = new Date(dateInMillis),
+	function createTaskExpirationDate(taskExpirationDate) {
+		var date = new Date(taskExpirationDate.iMillis),
 		formattedDate = date.format("dd/mm/yyyy");
 		return $("<span class='task-expiration-date'>").html("Expiration Date: "+ formattedDate);
 	}

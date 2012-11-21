@@ -2,7 +2,7 @@
 <div id="top" class="container resizable">
 	<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
 	<c:if test="${project != null }">
-		<form action="${linkTo[ProjectController].searchTasksWithContent[project.url]}" method="get" id="search-form">
+		<form action="${linkTo[ProjectController].searchTasksWithContent}${project.url}" method="get" id="search-form">
 			<input type="search" name="q" placeholder="Search" />
 			<input type="submit" value="SEARCH" />
 		</form>

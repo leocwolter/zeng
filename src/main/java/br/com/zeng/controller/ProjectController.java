@@ -104,7 +104,7 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Get("/project/{projectUrl}/search/")
+	@Get("/project/search/{projectUrl}")
 	public void searchTasksWithContent(String q, String projectUrl) {
 		Project project = projectDao.getProjectWithUrl(projectUrl);
 		List<Task> tasks = taskDao.getTasksWithContentInAProject(q, project.getId());

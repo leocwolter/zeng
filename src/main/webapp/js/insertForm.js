@@ -12,19 +12,15 @@ $(function () {
 		var page = $(parent.document),
 			link = $("<a>"+name+"</a>").attr({"href":href, "title":name}),
 			menuItem = $("<li>").append(link);
-		
 		var target = "";
-		
 		if($('#menu li').size() >= 4){
 			target = page.find(".other-itens");
 		}
 		else{
 			target = page.find("#menu");
 		}
-		
 		$(target).append(menuItem);
-		
-		if($('#menu li').size() === 4){
+		if($('#menu li').size() == 4){
 			document.location.reload(true);
 		}
 	}

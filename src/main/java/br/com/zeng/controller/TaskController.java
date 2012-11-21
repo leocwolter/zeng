@@ -103,7 +103,7 @@ public class TaskController {
 		Action action = new Action(userSession.getUser(), taskComplete, new StartAction());
 		actionDao.insert(action);
 		
-		result.use(Results.page()).of(TaskController.class).startedTask();
+		result.forwardTo(TaskController.class).startedTask(taskComplete);
 	}
 	
 	@LoggedUser
@@ -117,7 +117,7 @@ public class TaskController {
 		Action action = new Action(userSession.getUser(), taskComplete, new FinalizeAction());
 		actionDao.insert(action);
 		
-		result.use(Results.page()).of(TaskController.class).finalizedTask();
+		result.forwardTo(TaskController.class).finalizedTask(taskComplete);
 	}
 
 	@LoggedUser
@@ -132,7 +132,7 @@ public class TaskController {
 		Action action = new Action(userSession.getUser(), taskComplete, new StopAction());
 		actionDao.insert(action);
 	
-		result.use(Results.page()).of(TaskController.class).stoppedTask();
+		result.forwardTo(TaskController.class).stoppedTask(taskComplete);
 	}
 
 	@LoggedUser
@@ -162,12 +162,15 @@ public class TaskController {
 		result.redirectTo(CategoryController.class).showCategory(task.getCategory().getUrl());
 	}
 	
-	public void startedTask() {
+	public void startedTask(Task task) {
+		result.include("taskId", task.getId());
 	}
 	
-	public void stoppedTask() {
+	public void stoppedTask(Task task) {
+		result.include("taskId", task.getId());
 	}
 	
-	public void finalizedTask() {
+	public void finalizedTask(Task task) {
+		result.include("taskId", task.getId());
 	}
 }

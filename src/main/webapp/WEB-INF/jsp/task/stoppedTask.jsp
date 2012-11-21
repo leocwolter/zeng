@@ -1,1 +1,1 @@
-<a href="${linkTo[TaskController].start}" class="button normal-button">Start Task</a>
+<a href="${linkTo[TaskController].start[taskId]}" class="button normal-button">Start Task</a>

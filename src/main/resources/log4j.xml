@@ -10,12 +10,22 @@
     </appender>
 
     <category name="br.com.caelum.vraptor">
-        <priority value="WARN"/>
+        <priority value="ERROR"/>
         <appender-ref ref="main"/>
     </category>
 
     <category name="org.hibernate">
-        <priority value="WARN"/>
+        <priority value="ERROR"/>
+        <appender-ref ref="main"/>
+    </category>
+
+    <category name="br.com.zeng">
+        <priority value="ERROR"/>
+        <appender-ref ref="main"/>
+    </category>
+
+    <category name="freemarker.cache">
+        <priority value="ERROR"/>
         <appender-ref ref="main"/>
     </category>
 

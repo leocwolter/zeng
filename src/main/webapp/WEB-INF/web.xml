@@ -10,8 +10,4 @@
 		<param-name>br.com.caelum.vraptor.packages</param-name>
 		<param-value>br.com.caelum.vraptor.util.hibernate</param-value>
 	</context-param>
-	<servlet>
-		<servlet-name>SimpleCaptcha</servlet-name>
-		<servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>
-	</servlet>
 </web-app>

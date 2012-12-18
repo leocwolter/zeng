@@ -18,8 +18,6 @@ import br.com.zeng.dao.UserDao;
 import br.com.zeng.infra.Criptografador;
 import br.com.zeng.model.User;
 import br.com.zeng.session.UserSession;
-import br.com.zeng.simplecaptcha.SimpleCaptcha;
-import br.com.zeng.validator.CaptchaValidator;
 import br.com.zeng.validator.UserValidator;
 
 @Resource
@@ -31,17 +29,13 @@ public class UserController {
 	private final UserDao userDao;
 	private Criptografador cripto;
 	private final Environment env;
-	private final SimpleCaptcha captcha;
-	private final CaptchaValidator captchaValidator;
 
 	public UserController(Result result,
 			UserDao userDao,
 			UserSession userSession,
 			UserValidator userValidator,
 			Criptografador cripto,
-			Environment env,
-			SimpleCaptcha captcha,
-			CaptchaValidator captchaValidator
+			Environment env
 			) {
 		this.result = result;
 		this.userDao = userDao;
@@ -49,8 +43,6 @@ public class UserController {
 		this.userValidator = userValidator;
 		this.cripto = cripto;
 		this.env = env;
-		this.captcha = captcha;
-		this.captchaValidator = captchaValidator;
 	}
 
 	@Get("/")
@@ -58,8 +50,7 @@ public class UserController {
 	}
 	
 	@Post("/register")
-	public void register(User user, String captchaAnswer) {
-		captchaValidator.validate(captcha, captchaAnswer);
+	public void register(User user) {
 		userValidator.validate(user);
 		String password = cripto.criptografa(user.getPassword());
 		user.setPassword(password);

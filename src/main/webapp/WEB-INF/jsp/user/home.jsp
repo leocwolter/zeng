@@ -48,11 +48,6 @@
 						<label for="terms" generated="true" class="error" style="display: none;"></label>
 					</p>
 					<p>
-						<img id="captcha" src="<c:url value="/simpleCaptcha.jpg" />" width="150">
-						<label for="captcha-answer">Digit the text above:</label>
-						<input type="text" id="captcha-answer" name="captchaAnswer" />
-					</p>
-					<p>
 						<input id="register-button" class="button normal-button" type="submit" value="REGISTER" />
 					</p>
 				</fieldset>

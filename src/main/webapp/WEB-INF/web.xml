@@ -14,8 +14,4 @@
 		<servlet-name>SimpleCaptcha</servlet-name>
 		<servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>SimpleCaptcha</servlet-name>
-		<url-pattern>/simpleCaptcha.jpg</url-pattern>
-	</servlet-mapping>
 </web-app>

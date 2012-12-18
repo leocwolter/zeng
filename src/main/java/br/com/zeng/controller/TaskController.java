@@ -11,7 +11,6 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.view.Results;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.dao.ActionDao;
 import br.com.zeng.dao.TaskDao;

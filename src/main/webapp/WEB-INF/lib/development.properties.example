@@ -1,0 +1,8 @@
+vraptor.simplemail.main.server = smtp.gmail.com
+vraptor.simplemail.main.port = 587
+vraptor.simplemail.main.tls = true
+vraptor.simplemail.main.from = teste.zeng@gmail.com
+vraptor.simplemail.main.username = teste.zeng
+vraptor.simplemail.main.password = teste123321
+
+user.photo.path = /enzo/Documents/zeng/src/main/webapp/img/users_images

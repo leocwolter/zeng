@@ -62,7 +62,7 @@ $(function() {
 	
 	function updateNotifications(){
 		var projectId= $("#project-name").data("projectid");
-		$.get("/zeng/project/"+projectId+"/getActions", function(data){
+		$.get("/project/"+projectId+"/getActions", function(data){
 			var actions = createNotifications(data.actions);
 			$("#project-notifications").html(actions);
 		});

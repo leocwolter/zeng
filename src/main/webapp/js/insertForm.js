@@ -59,7 +59,7 @@ $(function () {
 			taskListTitle = $.nano("<h3>{name}</h3>", taskListData),
 			nav = createTaskAreaNavBar(),
 			addTaskButton = $("<a class='add-button add-task-button modal'>+Add Task</a>")
-							.attr("href","/zeng/project/category/taskList/"+taskListData.id+"/addTaskForm"),
+							.attr("href","/project/category/taskList/"+taskListData.id+"/addTaskForm"),
 			taskArea = $("<section class='task-area'>")
 						.append(taskListTitle)
 						.append(nav)
@@ -107,7 +107,7 @@ $(function () {
 	function validateManyTasks(taskData) {
 		if(expirationDate !== undefined){
 			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
-			var projectUrl = $.nano("/zeng/project/{taskList.category.project.url}/manyTasksWithExpirationDate",taskData);
+			var projectUrl = $.nano("/project/{taskList.category.project.url}/manyTasksWithExpirationDate",taskData);
 			$.get(projectUrl, expirationData, function(manyTasks){
 				if(manyTasks.boolean){
 					alert("There are more than three tasks with that expiration date in this project!");
@@ -136,7 +136,7 @@ $(function () {
 	
 	
 	function createArchiveTaskButton(taskData) {
-		var archiveButton = $.nano("<a class='button remove-button archive-task' href='/zeng/project/category/taskList/task/{id}/archiveTask'>X</a>", taskData);
+		var archiveButton = $.nano("<a class='button remove-button archive-task' href='/project/category/taskList/task/{id}/archiveTask'>X</a>", taskData);
 		return archiveButton;
 	}
 
@@ -162,7 +162,7 @@ $(function () {
 	
 	function createTaskOptions(taskData) {
 		var taskOptions = $("<div class='task-options'>")
-			.append($.nano("<a class='button normal-button' href='/zeng/project/category/taskList/task/{id}/startTask'>Start Task</a>",taskData));
+			.append($.nano("<a class='button normal-button' href='/project/category/taskList/task/{id}/startTask'>Start Task</a>",taskData));
 		return taskOptions;
 	}
 

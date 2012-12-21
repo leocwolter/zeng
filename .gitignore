@@ -4,3 +4,5 @@ target/
 src/main/resources/development.properties
 src/main/webapp/img/users_images/
 .metadata/
+.class
+.jar

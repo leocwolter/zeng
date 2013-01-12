@@ -12,7 +12,7 @@
 	</properties>
 
 	<build>
-		<outputDirectory>${basedir}/target/classes</outputDirectory>
+		<outputDirectory>${basedir}/target/etc</outputDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

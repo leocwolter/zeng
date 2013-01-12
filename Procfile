@@ -1,1 +1,1 @@
-web: java -cp classes:target/classes/ Main
+web: sh target/bin/webapp

@@ -2,7 +2,7 @@
   <wb-module deploy-name="zeng">
     <property name="context-root" value="zeng"/>
     <wb-resource deploy-path="/" source-path="src/main/webapp"/>
-    <property name="java-output-path" value="/src/main/webapp/WEB-INF/lib"/>
+    <property name="java-output-path" value="/target/classes"/>
     <dependent-module archiveName="activation-1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/javax/activation/activation/1.1/activation-1.1.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>

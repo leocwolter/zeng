@@ -1,1 +1,1 @@
-web: java -cp classes:target/* Main
+web: java -cp classes:target/classes/ Main

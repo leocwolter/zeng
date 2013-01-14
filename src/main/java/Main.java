@@ -13,7 +13,7 @@ public class Main {
         Server server = new Server(Integer.valueOf(webPort));
         WebAppContext root = new WebAppContext();
         root.setContextPath("/");
-        root.setDescriptor(webappDirLocation + "/WEB-INF/web.xml");
+        root.setDescriptor(webappDirLocation + "/WEB-INF/web.heroku.xml");
         root.setResourceBase(webappDirLocation);
         root.setParentLoaderPriority(true);
         server.setHandler(root);

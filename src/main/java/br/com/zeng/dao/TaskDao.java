@@ -54,7 +54,7 @@ public class TaskDao {
 
 	@SuppressWarnings("unchecked")
 	public boolean manyTasksWithSameExpirationDate(Project project) {
-		List<Long> list = session.createQuery("select count(*) from Task t where t.expirationDate != null and t.taskList.category.project.url like :project and t.state != 2 and t.archived = false group by year(t.expirationDate),month(t.expirationDate)")
+		List<Long> list = session.createQuery("select count(*) from Task t where t.expirationDate != null and t.taskList.category.project.url like :project and t.state != 2 group by year(t.expirationDate),month(t.expirationDate)")
 								.setString("project", project.getUrl())
 								.list();
 		for (Long numberOfTasks : list) {
@@ -64,7 +64,7 @@ public class TaskDao {
 	}
 	
 	public boolean manyTasksInAProjectWith(DateTime expirationDate, Project project) {
-		Long numberOfTasks = (Long) session.createQuery("select count(*) from Task t where t.expirationDate = :expirationDate and t.taskList.category.project.url like :project and t.state != 2 and t.archived = false")
+		Long numberOfTasks = (Long) session.createQuery("select count(*) from Task t where t.expirationDate = :expirationDate and t.taskList.category.project.url like :project and t.state != 2")
 				.setString("project", project.getUrl())
 				.setParameter("expirationDate", expirationDate)
 				.uniqueResult();

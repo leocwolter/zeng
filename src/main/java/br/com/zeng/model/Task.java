@@ -21,7 +21,7 @@ import org.joda.time.Interval;
 import br.com.zeng.model.action.Modifiable;
 
 @Entity
-@Where(clause = "archived = 0")
+@Where(clause = "archived = FALSE")
 public class Task implements Modifiable{
 	@Id
 	@GeneratedValue

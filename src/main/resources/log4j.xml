@@ -29,6 +29,11 @@
         <appender-ref ref="main"/>
     </category>
 
+    <category name="org.springframework.beans">
+        <priority value="ERROR"/>
+        <appender-ref ref="main"/>
+    </category>
+
     <category name="freemarker.cache">
         <priority value="ERROR"/>
         <appender-ref ref="main"/>

@@ -10,7 +10,7 @@
     </appender>
 
     <category name="br.com.caelum.vraptor">
-        <priority value="ERROR"/>
+        <priority value="DEBUG"/>
         <appender-ref ref="main"/>
     </category>
 
@@ -20,7 +20,7 @@
     </category>
 
     <category name="br.com.zeng">
-        <priority value="ERROR"/>
+        <priority value="DEBUG"/>
         <appender-ref ref="main"/>
     </category>
 

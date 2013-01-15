@@ -1,5 +1,8 @@
 
 
+import java.net.URL;
+import java.net.URLClassLoader;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
@@ -13,7 +16,7 @@ public class Main {
         Server server = new Server(Integer.valueOf(webPort));
         WebAppContext root = new WebAppContext();
         root.setContextPath("/");
-        root.setDescriptor(webappDirLocation + "/WEB-INF/web.heroku.xml");
+        root.setDescriptor(webappDirLocation + "/WEB-INF/web.xml");
         root.setResourceBase(webappDirLocation);
         root.setParentLoaderPriority(true);
         server.setHandler(root);

@@ -14,20 +14,19 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 public class SessionCreator implements ComponentFactory<Session> {
     
     private final SessionFactory sf;
-    private org.hibernate.classic.Session session;
+    private Session session;
 
     public SessionCreator(SessionFactory sf) {
         this.sf = sf;
     }
-
-    @Override
-    public Session getInstance() {
-        return session;
-    }
-    
     @PostConstruct
     public void create() {
         session = sf.openSession();
+    }
+    
+    @Override
+    public Session getInstance() {
+    	return session;
     }
     
     @PreDestroy

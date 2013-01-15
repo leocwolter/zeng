@@ -10,11 +10,16 @@
     </appender>
 
     <category name="br.com.caelum.vraptor">
-        <priority value="DEBUG"/>
+        <priority value="ERROR"/>
         <appender-ref ref="main"/>
     </category>
 
     <category name="org.hibernate">
+        <priority value="DEBUG"/>
+        <appender-ref ref="main"/>
+    </category>
+
+    <category name="com.mchange">
         <priority value="ERROR"/>
         <appender-ref ref="main"/>
     </category>

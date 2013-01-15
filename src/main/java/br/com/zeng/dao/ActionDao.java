@@ -1,11 +1,13 @@
 package br.com.zeng.dao;
 
 import static org.hibernate.criterion.Order.desc;
+import static org.hibernate.criterion.Restrictions.eq;
 import static org.hibernate.criterion.Restrictions.like;
 
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.zeng.mailer.ZengMailer;
@@ -33,7 +35,7 @@ public class ActionDao {
 	@SuppressWarnings("unchecked")
 	public List<Action> getActionsOf(Project project) {
 		List<Action> actions = session.createCriteria(Action.class)
-											.add(like("project.id", project.getId()))
+											.add(eq("project.id", project.getId()))
 											.addOrder(desc("creationDate")).list();
 		return actions;
 	}

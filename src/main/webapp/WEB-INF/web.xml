@@ -8,7 +8,7 @@
 	
 	<context-param>
         <param-name>br.com.caelum.vraptor.environment</param-name>
-        <param-value>development</param-value>
+        <param-value>heroku</param-value>
     </context-param>
 	
 	<filter>

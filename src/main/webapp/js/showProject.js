@@ -1,4 +1,5 @@
 $(function() {
+	var context = $("#small-logo").attr("href");
 	updateNotifications();
 
 	//Drag n' drop configuration
@@ -62,7 +63,7 @@ $(function() {
 	
 	function updateNotifications(){
 		var projectId= $("#project-name").data("projectid");
-		$.get("/project/"+projectId+"/getActions", function(data){
+		$.get(context+"project/"+projectId+"/getActions", function(data){
 			var actions = createNotifications(data.actions);
 			$("#project-notifications").html(actions);
 		});

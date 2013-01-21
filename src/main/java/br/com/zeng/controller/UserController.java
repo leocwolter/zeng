@@ -45,7 +45,7 @@ public class UserController {
 		this.env = env;
 	}
 
-	@Get("/")
+	@Get("/index")
 	public void home() {
 	}
 	

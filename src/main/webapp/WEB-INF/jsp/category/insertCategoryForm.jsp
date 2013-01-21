@@ -22,7 +22,7 @@
 				<input type="text" name="category.name" />
 				<br/>
 				<input type="hidden" name="projectUrl" value="${projectUrl}"/>
-				<input type="hidden" name="showUrl" value="${linkTo[CategoryController].showCategory}"/> 			
+				<input type="hidden" name="showUrl" value="${linkTo[CategoryController].showCategory[''][projectUrl]}"/> 			
 				<input type="submit" class="button normal-button" value="Insert">
 			</fieldset>
 		</form>

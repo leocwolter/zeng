@@ -150,15 +150,15 @@ public class TaskController {
 	}
 	
 	@LoggedUser
-	@Path("/project/category/taskList/task/{taskId}/archiveTask")
-	public void archive(Long taskId) {
+	@Path("/project/{projectUrl}/category/taskList/task/{taskId}/archiveTask")
+	public void archive(String projectUrl, Long taskId) {
 		Task task = taskDao.getWithId(taskId);
 		taskDao.archive(task);
 
 		Action action = new Action(userSession.getUser(), task, new ArchiveAction());
 		actionDao.insert(action);
 		
-		result.redirectTo(CategoryController.class).showCategory(task.getCategory().getUrl());
+		result.redirectTo(CategoryController.class).showCategory(task.getCategory().getUrl(), projectUrl);
 	}
 	
 	public void startedTask(Task task) {

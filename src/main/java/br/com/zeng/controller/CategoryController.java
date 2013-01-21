@@ -50,11 +50,11 @@ public class CategoryController {
 	}	
 	
 	@LoggedUser
-	@Get("/project/category/{categoryUrl}")
-	public void showCategory(String categoryUrl) {
+	@Get("/project/{projectUrl}/category/{categoryUrl}")
+	public void showCategory(String categoryUrl, String projectUrl) {
 		Category category = categoryDao.getCategoryWithUrl(categoryUrl);
 		result.include("currentCategory", category);
-		result.forwardTo(ProjectController.class).showProject(category.getProject());
+		result.forwardTo(ProjectController.class).showProject(projectUrl);
 	}
 
 }

@@ -47,9 +47,9 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Path("/project/{project.url}")
-	public void showProject(Project project) {
-		Project projectCompleted = projectDao.getProjectWithUrl(project.getUrl());
+	@Path("/project/{projectUrl}")
+	public void showProject(String projectUrl) {
+		Project projectCompleted = projectDao.getProjectWithUrl(projectUrl);
 		result.include("project", projectCompleted);
 		result.include("url", env.get("user.photo.path"));
 		if(taskDao.manyTasksWithSameExpirationDate(projectCompleted)){
@@ -82,14 +82,14 @@ public class ProjectController {
 	}
 
 	@LoggedUser
-	@Path("/project/{project.url}/showChart")
+	@Path("/project/{projectUrl}/showChart")
 	public void showChart() {
 	}
 
 	@LoggedUser
-	@Get("/project/{project.url}/getTasksPerContributors")
-	public void getQuantityOfTasksPerMonth(Project project) {
-		Project projectComplete = projectDao.getProjectWithUrl(project.getUrl());
+	@Get("/project/{projectUrl}/getTasksPerContributors")
+	public void getQuantityOfTasksPerMonth(String projectUrl) {
+		Project projectComplete = projectDao.getProjectWithUrl(projectUrl);
 		List<UserTasksPerMonth> quantityOfTasksPerMonth = taskDao.getQuantityOfTasksGroupedByDateAndUser(projectComplete);
 		result.use(json()).from(quantityOfTasksPerMonth, "quantityOfTasksPerMonth")
 								.recursive()

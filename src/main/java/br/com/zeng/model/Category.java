@@ -5,7 +5,6 @@ import static br.com.zeng.infra.Sanitizer.toSlug;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,7 +26,6 @@ public class Category implements Modifiable, Wrapper{
 	@NotEmpty
 	private String name;
 	@NotEmpty
-	@Column(unique = true)
 	private String url;
 	@NotNull
 	@ManyToOne(fetch=FetchType.EAGER)

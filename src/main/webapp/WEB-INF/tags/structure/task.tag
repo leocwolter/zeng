@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.joda.org/joda/time/tags" prefix="joda" %>
 <%@ attribute name="task" required="true" type="br.com.zeng.model.Task" %>
 <li class="task task-state-${task.state}" data-task-id="${task.id}" style="height: auto;">
-	<a href="${linkTo[TaskController].archive[task.id]}" class="button remove-button archive-task" >X</a>
+	<a href="${linkTo[TaskController].archive[task.taskList.category.project.url][task.id]}" class="button remove-button archive-task" >X</a>
 	<h4 class="task-name">${task.name}</h4>
 	<p class="task-description">${task.description}</p>
 	<ul class="task-contributors">

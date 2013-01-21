@@ -38,6 +38,11 @@ public class ProjectDao {
 
 	}
 
+	public boolean checkPermissionOfUserInProject(User user, Project project){
+		List<Project> projects = listProjectsWithUser(user);
+		return projects.contains(project);
+	}
+	
 	public void insert(Project project) {
 		dao.insert(project);
 	}

@@ -1,27 +1,29 @@
 package br.com.zeng.interceptor;
 
-import java.util.Arrays;
+import javax.servlet.http.HttpServletRequest;
 
 import br.com.caelum.vraptor.InterceptionException;
 import br.com.caelum.vraptor.Intercepts;
-import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
-import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.zeng.annotation.LoggedUser;
 import br.com.zeng.controller.UserController;
-import br.com.zeng.session.UserSession;
+import br.com.zeng.dao.ProjectDao;
+import br.com.zeng.model.Project;
+import br.com.zeng.validator.LoggedRequestValidator;
 
 @Intercepts
 public class LoggedUserInterceptor implements Interceptor {
 
-    private final UserSession userSession;
-    private final Result result;
+	private final HttpServletRequest req;
+	private final ProjectDao projectDao;
+	private final LoggedRequestValidator validator;
 
-    public LoggedUserInterceptor(UserSession userSession, Result result) {
-        this.userSession = userSession;
-        this.result = result;
+    public LoggedUserInterceptor(LoggedRequestValidator validator, ProjectDao projectDao, HttpServletRequest req) {
+        this.validator = validator;
+		this.projectDao = projectDao;
+		this.req = req;
     }
 
     @Override
@@ -32,12 +34,13 @@ public class LoggedUserInterceptor implements Interceptor {
     @Override
     public void intercept(InterceptorStack stack, ResourceMethod method, Object resourceInstance)
             throws InterceptionException {
-        if (!userSession.isLogged()) {
-            result.include("errors", Arrays.asList(new ValidationMessage(
-                    "You have to be logged in to visualize this page", "erro")));
-            result.forwardTo(UserController.class).home();
-        } else {
-            stack.next(method, resourceInstance);
-        }
-    }
+    		String projectUrl = req.getParameter("projectUrl");
+        	Project project = projectDao.getProjectWithUrl(projectUrl);
+        	if(validator.validate(project)){
+        		stack.next(method, resourceInstance);
+        	}else{
+        		validator.onErrorRedirectTo(UserController.class).home();
+        	}
+        	
+    	}
 }

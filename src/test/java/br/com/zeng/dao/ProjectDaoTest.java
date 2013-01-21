@@ -1,6 +1,8 @@
 package br.com.zeng.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Before;
@@ -64,6 +66,21 @@ public class ProjectDaoTest extends DaoTest {
 		Project anotherZeng = new Project("Another Zeng");
 		anotherZeng.setUrl(zeng.getUrl());
 		projectDao.insert(anotherZeng);
+	}
+	
+	@Test
+	public void shouldReturnTrueIfUserIsInProject() {
+		boolean hasPermission = projectDao.checkPermissionOfUserInProject(user, zeng);
+		assertTrue(hasPermission);
+	}
+	
+	@Test
+	public void shouldReturnFalseIfUserIsNotInProject() {
+		Project calopsyta = new Project("Calopsyta");
+		calopsyta.setUrl("calopsyta");
+		projectDao.insert(calopsyta);
+		boolean hasPermission = projectDao.checkPermissionOfUserInProject(user, calopsyta);
+		assertFalse(hasPermission);
 	}
 
 }

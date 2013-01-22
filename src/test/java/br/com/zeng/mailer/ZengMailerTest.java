@@ -31,9 +31,9 @@ public class ZengMailerTest {
 		
 		ZengMailer zengMailer = new ZengMailer(env, mailer, context);
 		
-		User author = new User("Leonardo", "leocwolter@gmail.com", "123456");
+		User author = new User("Leonardo", "leocwolter@gmail.com", "123456", "photo");
 		Project zeng = new Project("Zeng");
-		zeng.addContributor(new User("Hi","leocwolter@gmail.com","12345"));
+		zeng.addContributor(new User("Hi","leocwolter@gmail.com","12345", "photo"));
 		Category backEnd = new Category(zeng, "Back-End");
 		TaskList refactor = new TaskList(backEnd);
 		Task email = new Task(refactor, "Refactor email method");

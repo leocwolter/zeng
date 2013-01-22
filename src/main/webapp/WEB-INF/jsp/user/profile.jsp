@@ -19,7 +19,7 @@
 			</header>
             <section class="container content">
 				<div class="personal-info">
-					<img src='<c:url value="/img/users_images/${user.photo}"/>' alt="${user.name}" height="100" width="100" />
+					<img src='<c:url value="${user.photo}?s=100"/>' alt="${user.name}" height="100" width="100" />
 					<p>${user.name}</p>
 					<p>${user.email}</p>
 				</div>

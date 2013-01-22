@@ -9,7 +9,7 @@
 			<c:forEach items="${project.contributors}" var="contributor">
 				<a href="${linkTo[UserController].profile[contributor.id]}" title="${contributor.name}" id="project-members-photo-link"
 					class="photo-link">
-					<img src='<c:url value="/img/users_images/${contributor.photo}"/>' alt="${contributor.name}" height="40" width="40" />
+					<img src='<c:url value="${contributor.photo}?s=40"/>' alt="${contributor.name}" height="40" width="40" />
 				</a>
 			</c:forEach>
 		</section>

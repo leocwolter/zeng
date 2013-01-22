@@ -97,10 +97,10 @@ public class TaskDaoTest extends DaoTest {
 	
 	@Test
 	public void shouldIgnoreNumberOfTasksInOtherProjects() {
-		User leonardo = new User("Leonardo","leo@leo.com","12345678");
+		User leonardo = new User("Leonardo","leo@leo.com","12345678", "photo");
 		session.save(leonardo);
 		
-		User joao = new User("Joao", "joao@joao.com", "12345678");
+		User joao = new User("Joao", "joao@joao.com", "12345678", "photo");
 		session.save(joao);
 		
 		projectZeng.addContributor(leonardo);
@@ -137,10 +137,10 @@ public class TaskDaoTest extends DaoTest {
 	
 	@Test
 	public void shouldIgnoreTasksThatAreNotFinalizedYet() {
-		User leonardo = new User("Leonardo","leo@leo.com","12345678");
+		User leonardo = new User("Leonardo","leo@leo.com","12345678", "photo");
 		session.save(leonardo);
 		
-		User joao = new User("Joao", "joao@joao.com", "12345678");
+		User joao = new User("Joao", "joao@joao.com", "12345678", "photo");
 		session.save(joao);
 		
 		projectZeng.addContributor(leonardo);

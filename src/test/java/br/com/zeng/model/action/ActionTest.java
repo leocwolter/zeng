@@ -29,7 +29,7 @@ public class ActionTest {
 		refactorList = new TaskList(backEnd);
 		refactorList.setName("Refactor");
 
-		leonardo = new User("Leonardo", "leo@leo.com", "12345");
+		leonardo = new User("Leonardo", "leo@leo.com", "12345", "photo");
 		
 		cleanCode = new Task(refactorList, "Clean Code");
 		cleanCode.setName("Clean Code");

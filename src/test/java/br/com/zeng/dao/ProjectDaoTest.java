@@ -23,7 +23,7 @@ public class ProjectDaoTest extends DaoTest {
 		super.setUp();
 		projectDao = new ProjectDao(session);
 
-		user = new User("user", "user@user.com", "password");
+		user = new User("user", "user@user.com", "password", "photo");
 		session.save(user);
 
 		zeng = new Project("Zeng");

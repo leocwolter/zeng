@@ -42,7 +42,7 @@ public class ActionDaoTest extends DaoTest {
 		TaskList refactorJavascript = new TaskList(frontEnd);
 		Task cleanJavascript = new Task(refactorJavascript, "Clean Javascript");
 		
-		User leonardo = new User("Leonardo", "leo@leo.com", "12345678");
+		User leonardo = new User("Leonardo", "leo@leo.com", "12345678", "photo");
 		session.save(leonardo);
 		
 		Action Action = new Action(leonardo, cleanCode, new AddAction(refactorJavascript));

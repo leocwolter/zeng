@@ -25,9 +25,9 @@ public class UserDaoTest extends DaoTest {
 	public void setUp() {
 		super.setUp();
 		userDao = new UserDao(session);
-		leonardo = new User("Leonardo", "leo@user.com", "password");
+		leonardo = new User("Leonardo", "leo@user.com", "password", "photo");
 		userDao.insert(leonardo);
-		enzo = new User("Enzo", "enzo@user.com", "password2");
+		enzo = new User("Enzo", "enzo@user.com", "password2", "photo");
 		userDao.insert(enzo);
 	}
 
@@ -63,25 +63,25 @@ public class UserDaoTest extends DaoTest {
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowConstraintViolationExceptionWithUserWithoutEmail() {
-		User leo = new User("","leo@leo.com","1234578");
+		User leo = new User("","leo@leo.com","1234578", "photo");
 		userDao.insert(leo);
 	}
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowConstraintViolationExceptionWithUserWithoutName() {
-		User leo = new User("Leonardo","","1234578");
+		User leo = new User("Leonardo","","1234578", "photo");
 		userDao.insert(leo);
 	}
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowConstraintViolationExceptionWithUserWithoutPassword() {
-		User leo = new User("Leonardo","leo@leo.com","");
+		User leo = new User("Leonardo","leo@leo.com","", "photo");
 		userDao.insert(leo);
 	}
 	
 	@Test(expected=ConstraintViolationException.class)
 	public void shouldThrowConstraintViolationExceptionWithUserWithPasswordWithLengthLessThan8() {
-		User leo = new User("Leonardo","leo@leo.com","1234567");
+		User leo = new User("Leonardo","leo@leo.com","1234567", "photo");
 		userDao.insert(leo);
 	}
 	

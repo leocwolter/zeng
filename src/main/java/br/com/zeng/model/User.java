@@ -13,7 +13,6 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 @Table(name="`User`")
 public class User {
-	private static final String DEFAULT_PHOTO = "profile.png";
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -29,13 +28,11 @@ public class User {
 	private String email;
 	@NotNull
 
-	@Deprecated()
+	@Deprecated
 	public User() {
-		this.photo=DEFAULT_PHOTO;
 	}
 
-	public User(String name, String email, String password) {
-		this();
+	public User(String name, String email, String password, String photoUrl) {
 		this.name = name;
 		this.email = email;
 		this.password = password;

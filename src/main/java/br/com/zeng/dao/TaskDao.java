@@ -45,7 +45,7 @@ public class TaskDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Task> getTasksWithContentInAProject(String content, Long projectId){
-		List<Task> tasks = session.createQuery("from Task t where (t.name like :content or t.description like :content) and t.taskList.category.project.id like :project")
+		List<Task> tasks = session.createQuery("from Task t where (t.name like :content or t.description like :content) and t.taskList.category.project.id = :project")
 							.setString("content", "%"+content+"%")
 							.setLong("project", projectId)
 							.list();

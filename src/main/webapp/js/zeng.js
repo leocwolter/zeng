@@ -2,6 +2,7 @@ $(function(){
 
 	//Afternow Validation
 	jQuery.validator.addMethod("afterNow", function(value, element) {   
+		if(value === "" || value === undefined) return;
 		var expirationDateText = value.split("-");
 		var date = new Date(expirationDateText[0],expirationDateText[1]-1,expirationDateText[2]);
 		var today = new Date;

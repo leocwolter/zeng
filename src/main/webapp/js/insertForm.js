@@ -9,22 +9,22 @@ $(function () {
 		});
 		$(".messi-closebtn", parent.document).click();
 	};
+
+	function appendLinkToMenu(data) {
+		link = $.nano("<a href='{href}' title='{name}'>{name}</a>", data),
+		menuItem = $("<li>").append(link);
+		appendInApropriatedContainer(menuItem);
+	}
 	
-	function appendLinkToMenu(href, name){
-		var page = $(parent.document),
-			link = $("<a>"+name+"</a>").attr({"href":href, "title":name}),
-			menuItem = $("<li>").append(link);
-		var target = "";
+	function appendInApropriatedContainer(menuItem){
+		var page = $(parent.document);
+		var target = page.find("#menu");
 		if($('#menu li').size() >= 4){
-			target = page.find(".other-itens");
-		}
-		else{
-			target = page.find("#menu");
-		}
-		$(target).append(menuItem);
-		if($('#menu li').size() == 4){
+			console.log("entrei");
+			target = page.find(".other-itens").first();
 			document.location.reload(true);
 		}
+		$(menuItem).appendTo(target);
 	}
 
 	//Project & Category insertion
@@ -36,14 +36,6 @@ $(function () {
 			appendLinkToMenu({"href":url+data.insertedElement.url, "name":data.insertedElement.name});
 		});
 	});
-	
-	function appendLinkToMenu(data) {
-		var page = $(parent.document),
-		menu = page.find("#menu"),
-		link = $.nano("<a href='{href}' title='{name}'>{name}</a>", data),
-		menuItem = $("<li>").append(link);
-		$(menu).append(menuItem);
-	}
 	
 	//Task list insertion
 	$(".insert-task-list-form").submit(function (event) {	

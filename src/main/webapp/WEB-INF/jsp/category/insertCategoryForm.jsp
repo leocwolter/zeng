@@ -28,7 +28,9 @@
 		</form>
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />
-		<!-- INSERT_FORM SCRIPT -->
-		<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
+		<!-- INSERT FORM SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/insert-form/insert-form.js" />"></script>
+		<!-- INSERT CAGETORY SCRIPT -->
+		<script type="text/javascript" src="<c:url value="/js/insert-form/insert-category-project.js" />"></script>
 	</body>
 </html>

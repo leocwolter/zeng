@@ -34,8 +34,6 @@
         </section>
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />
-		<!-- ZENG SCRIPTS IMPORT -->
-		<script type="text/javascript" src="<c:url value="/js/zeng.js" />"></script>
 		<!-- MODAL SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/modal-script.jsp"></c:import>
 		<!-- DROPDOWN MENU SCRIPT -->

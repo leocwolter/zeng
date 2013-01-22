@@ -26,9 +26,9 @@
 	</form>
 	<!-- SCRIPTS IMPORT -->
 	<c:import url="/WEB-INF/imports/script-import.jsp" />
-	<!-- ZENG SCRIPTS IMPORT -->
-	<script type="text/javascript" src="<c:url value="/js/zeng.js" />"></script>
-	<!-- INSERT_FORM SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/insertForm.js" />"></script>
+	<!-- INSERT FORM  IMPORT -->
+	<script type="text/javascript" src="<c:url value="/js/insert-form/insert-form.js" />"></script>
+	<!-- INSERT TASKLIST SCRIPT -->
+	<script type="text/javascript" src="<c:url value="/js/insert-form/insert-tasklist.js" />"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <!-- DB schema will be updated if needed -->
-        
+       
         <property name="connection.driver_class">org.postgresql.Driver</property>
         
         <property name="dialect">org.hibernate.dialect.PostgresPlusDialect</property>

@@ -73,7 +73,6 @@ $(function () {
 	
 	function createTaskAreaNavBar() {
 		var all =  generateMenuItem({"filter":"nofilter","text":"All"});
-		console.log(all);
 		all.find("a").addClass("task-filter-selected");
 		var menuItems = $("<ul>")
 			.append(all)
@@ -107,7 +106,7 @@ $(function () {
 	});
 
 	function validateManyTasks(taskData) {
-		if(expirationDate !== undefined){
+		if(typeof expirationDate !== undefined){
 			var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
 			var projectUrl = $.nano(context+"project/{taskList.category.project.url}/manyTasksWithExpirationDate",taskData);
 			$.get(projectUrl, expirationData, function(manyTasks){
@@ -138,7 +137,6 @@ $(function () {
 	
 	
 	function createArchiveTaskButton(taskData) {
-		console.log(taskData);
 		var archiveButton = $.nano("<a class='button remove-button archive-task' href="+context+"project/{taskList.category.project.id}/category/taskList/task/{id}/archiveTask'>X</a>", taskData);
 		return archiveButton;
 	}

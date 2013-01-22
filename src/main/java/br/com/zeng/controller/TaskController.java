@@ -71,7 +71,7 @@ public class TaskController {
 	}
 
 	private void configureExpirationDate(Task task, String expirationDate) {
-		if(!expirationDate.isEmpty()){
+		if(expirationDate != null && !expirationDate.isEmpty()){
 			DateTime expirationDateTime = new DateTime(expirationDate);
 			task.setExpirationDate(expirationDateTime);
 		}

@@ -6,7 +6,7 @@
 		<c:forEach items="${project.categories}" var="category" begin="0" end="3">
 			<li><a href="${linkTo[CategoryController].showCategory[category.url][project.url]}" title="Categoria - ${category.name}" class="category-button">${category.name}</a></li>
 		</c:forEach>
-		<c:if test="${fn:length(project.categories) >= 4}">
+		<c:if test="${fn:length(project.categories) > 4}">
 			<li class="top-menu-dropdown">
 				<div class="dropdown arrow" data-target="other-categories"></div>
 				<ul class="dropdown-target other-itens" id="other-categories">

@@ -15,17 +15,13 @@
 		<link rel="stylesheet" type="text/css" href="<c:url value="/css/insert_form.css"/>" />
 	</head>
 	<body>
-		<form id="edit-user-form" class="insert-form" action="${linkTo[UserController].edit}" method="post" enctype="multipart/form-data">
+		<form id="edit-user-form" class="insert-form" action="${linkTo[UserController].edit}" method="post">
 			<fieldset>
 				<legend>Profile - Edit</legend>
 					<br/>
 					<zeng-messages:error/>
 					<zeng-messages:confirmation/>
 				
-					<label for="user-photo">Photo:</label>
-					<br/>
-					<input type="file" name="userPhoto" id="user-photo"/>
-					<br/>
 					<label for="name">Name:</label>
 					<br/>
 					<input id="name" name="editedUser.name" type="text" value="${userSession.user.name}" />

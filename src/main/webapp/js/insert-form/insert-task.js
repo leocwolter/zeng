@@ -75,7 +75,7 @@ $(function(){
 		var expirationData = {"dateInMillis":taskData.expirationDate.iMillis};
 		var projectUrl = $.nano(context+"project/{taskList.category.project.url}/manyTasksWithExpirationDate",taskData);
 		$.get(projectUrl, expirationData, function(manyTasks){
-			if(manyTasks.boolean){
+			if(manyTasks["boolean"]){
 				alert("There are more than three tasks with that expiration date in this project!");
 			}
 		});

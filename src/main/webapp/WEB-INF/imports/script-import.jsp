@@ -9,24 +9,11 @@
 <script type="text/javascript" src="<c:url value="/js/lib/date.format.js" />"></script>
 <!-- JQUERY VALIDATE -->
 <script type="text/javascript" src="<c:url value="/js/lib/jquery.validate.js"/>"></script>
+<!-- ZENG-JQUERY -->
+<script type="text/javascript" src="<c:url value="/js/lib/zeng-jquery.js"/>"></script>
 <script type="text/javascript">
 	//Context definition
 	var context = $("#small-logo").attr("href");
-	//DragnDrop Bind Configuration
-	jQuery.fn.configureZengTaskList = function() {
-		$(this).sortable({
-			connectWith : $(this),
-			receive : function(event, ui) {
-				var taskListId = ui.item.closest("ul").data("tasklist-id"),
-					taskId = ui.item.data("task-id");
-				ui.item.attr("style","");
-				$.post(context+"project/category/taskList/task/moveTask", {
-					"task.id" : taskId,
-					"taskList.id" : taskListId
-				});
-			}
-		});
-	};
 	//Google Analytics
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-38098928-1']);

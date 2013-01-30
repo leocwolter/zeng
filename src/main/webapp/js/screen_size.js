@@ -1,5 +1,3 @@
-// JavaScript Document
-
 $(document).ready(function() {
 	var SideBar = function(data){
 		this.closedSidebar = data.closedSidebar;
@@ -7,7 +5,6 @@ $(document).ready(function() {
 		this.closeSidebar = data.closeSidebar;
 		this.openSidebar = data.openSidebar;
 		
-		// Get Width of elements on the load
 		this.element = data.element;
 		this.clickArea = data.clickArea;
 
@@ -16,12 +13,12 @@ $(document).ready(function() {
 	
 	SideBar.prototype.setToggleFunctions = function(){
 		if(this.closedSidebar == "true"){
-			this.firstToggleFunction = this.openSideBar;
-			this.secondToggleFunction = this.closeSideBar;
+			this.firstToggleFunction = this.openSidebar;
+			this.secondToggleFunction = this.closeSidebar;
 			this.element.css('width', this.clickArea.width());
 		}else{
-			this.firstToggleFunction = this.closeSideBar;
-			this.secondToggleFunction = this.openSideBar;
+			this.firstToggleFunction = this.closeSidebar;
+			this.secondToggleFunction = this.openSidebar;
 			$('.resizable').addClass('opened-sidebar');
 		}
 
@@ -40,7 +37,7 @@ $(document).ready(function() {
 		var clickAreaWidth = clickArea.width();
 		
 		//Animation to close sidebar
-		var closeSideBar = function(){
+		var closeSidebar = function(){
 			localStorage.closedSidebar = true;
 			$('#project-sidebar').animate({
 				'width' : clickAreaWidth
@@ -50,7 +47,7 @@ $(document).ready(function() {
 		};
 		
 		//Animation to open sidebar
-		var openSideBar = function(){
+		var openSidebar = function(){
 			localStorage.closedSidebar = false;
 			$('#project-sidebar').animate({
 				'width' : sideBarWidth
@@ -61,8 +58,8 @@ $(document).ready(function() {
 		
 		var sideBar = new SideBar({
 				closedSidebar: localStorage.closedSidebar,
-				closeSideBar: closeSideBar,
-				openSideBar: openSideBar,
+				closeSidebar: closeSidebar,
+				openSidebar: openSidebar,
 				element: sideBarElement,
 				clickArea: clickArea
 		});

@@ -8,7 +8,7 @@
 	
 	<context-param>
         <param-name>br.com.caelum.vraptor.environment</param-name>
-        <param-value>heroku</param-value>
+        <param-value>development</param-value>
     </context-param>
 	
 	<filter>
@@ -27,7 +27,7 @@
     <filter-class>org.eclipse.jetty.servlets.GzipFilter</filter-class>
     <init-param>
       <param-name>mimeTypes</param-name>
-      <param-value>text/html,text/plain,text/xml,application/xhtml+xml,text/css,application/javascript</param-value>
+      <param-value>text/html,text/plain,text/xml,application/xhtml+xml,text/css,application/javascript,image/svg+xml</param-value>
     </init-param>
   </filter>
   <filter-mapping>

@@ -9,10 +9,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Zeng - Project management</title>
-	<!-- NOT LOGGED STYLE -->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/css/not-logged-page.css"/>" />
-	<!-- FORM STYLE -->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/css/form.css"/>" />
 	<!-- CSS IMPORT -->
 	<c:import url="/WEB-INF/imports/css-import.jsp" />
 </head>

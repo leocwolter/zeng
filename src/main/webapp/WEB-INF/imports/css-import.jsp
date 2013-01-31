@@ -3,14 +3,8 @@
 <!-- RESET STYLE -->
 <link rel="stylesheet" type="text/css" href='<c:url value="/css/reset.css"/>' />
 
-<!-- GENERIC STYLE -->
-<link rel="stylesheet" type="text/css" href='<c:url value="/css/style.css"/>' />
-
-<!-- STRUCTURE STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/structure.css"/>" />
-
-<!-- RESPONSIVE STRUCTURE STYLE -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/css/responsive-structure.css"/>" />
+<!-- ZENG STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/zeng.css"/>" />
 
 <!-- MESSI STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/messi.min.css"/>" />

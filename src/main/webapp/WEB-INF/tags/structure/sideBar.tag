@@ -2,10 +2,10 @@
 <%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <%@ tag language="java" pageEncoding="UTF-8"%>
 
-<aside id="project-sidebar">
-	<div id="project-sidebar-click-area">&nbsp;</div>
-	<section id="project-sidebar-content">
-		<section id="project-sidebar-members-area">
+<aside class="sidebar">
+	<div class="sidebar-click-area">&nbsp;</div>
+	<section class="sidebar-content">
+		<section class="sidebar-members-area">
 			<c:forEach items="${project.contributors}" var="contributor">
 				<a href="${linkTo[UserController].profile[contributor.id]}" title="${contributor.name}" id="project-members-photo-link"
 					class="photo-link">

@@ -14,24 +14,19 @@
 <c:import url="/WEB-INF/imports/css-import.jsp" />
 </head>
 	<body>
-		<section id="container">
-	    	<section id="left-container">
-				<header class="header">
-					<c:import url="/WEB-INF/imports/header.jsp"/>
-					<c:import url="/WEB-INF/imports/category-menu.jsp"/>
-				</header>
-	            <section id="project-content" class="content">
-	            	<div id="category-container" class="container resizable">
-						<zeng-messages:warning/>
-	            		<c:if test="${!empty currentCategory}">
-		            		<zeng-structure:category category="${currentCategory}"/>
-	            		</c:if>
-   	        		</div>
-				</section>
-				<c:import url="/WEB-INF/imports/footer.jsp"/>
-	        </section>
-	        <zeng-structure:sideBar/>
+    	<section class="main-area">
+			<c:import url="/WEB-INF/imports/header.jsp"/>
+			<c:import url="/WEB-INF/imports/category-menu.jsp"/>
+           	<div class="container resizable">
+				<zeng-messages:warning/>
+           		<c:if test="${!empty currentCategory}">
+            		<zeng-structure:category category="${currentCategory}"/>
+           		</c:if>
+			</div>
+			<c:import url="/WEB-INF/imports/footer.jsp"/>
         </section>
+        <zeng-structure:sideBar/>
+
 		<!-- SCRIPTS IMPORT -->
 		<c:import url="/WEB-INF/imports/script-import.jsp" />
 		<!-- MODAL SCRIPTS IMPORT -->

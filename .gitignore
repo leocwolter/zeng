@@ -5,5 +5,7 @@ classes/
 src/main/resources/development.properties
 src/main/webapp/img/users_images/
 .metadata/
+.settings/
+.classpath
 .class
 .jar

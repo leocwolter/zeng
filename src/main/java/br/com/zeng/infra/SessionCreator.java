@@ -10,7 +10,7 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.ComponentFactory;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 
-@Component @RequestScoped
+@Component
 public class SessionCreator implements ComponentFactory<Session> {
     
     private final SessionFactory sf;

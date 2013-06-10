@@ -10,12 +10,12 @@
     </appender>
 
     <category name="br.com.caelum.vraptor">
-        <priority value="ERROR"/>
+        <priority value="TRACE"/>
         <appender-ref ref="main"/>
     </category>
 
     <category name="org.hibernate">
-        <priority value="ERROR"/>
+        <priority value="INFO"/>
         <appender-ref ref="main"/>
     </category>
 
@@ -25,12 +25,12 @@
     </category>
 
     <category name="br.com.zeng">
-        <priority value="DEBUG"/>
+        <priority value="INFO"/>
         <appender-ref ref="main"/>
     </category>
 
     <category name="org.springframework">
-        <priority value="ERROR"/>
+        <priority value="INFO"/>
         <appender-ref ref="main"/>
     </category>
 

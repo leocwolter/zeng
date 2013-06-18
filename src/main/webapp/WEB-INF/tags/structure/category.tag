@@ -5,8 +5,8 @@
 <%@ attribute name="category" required="true" type="br.com.zeng.model.Category" %>
 
 <section class="category">
-	<header>
-		<h2>${category.name}</h2>
+	<header class="category-header">
+		<h2 class="title category-title">${category.name}</h2>
 		<a href="${linkTo[TaskListController].insertTaskListForm[category.url]}"
 					title="Adicionar Lista" id="new-task-list" class="button add-button modal">+</a>
 	</header>

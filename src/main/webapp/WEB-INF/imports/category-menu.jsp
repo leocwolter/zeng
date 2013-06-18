@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <nav class="main-menu-bar">
 	<div class="resizable container">
-		<h2 class="title" data-projectid="${project.id}"><a href="${linkTo[ProjectController].showProject}${project.url}">${project.name}</a></h2>
+		<h2 class="menu-title" data-projectid="${project.id}"><a class="title" href="${linkTo[ProjectController].showProject}${project.url}">${project.name}</a></h2>
 		<ul class="menu">
 			<c:forEach items="${project.categories}" var="category" begin="0" end="3">
 				<li class="menu-item"><a href="${linkTo[CategoryController].showCategory[category.url][project.url]}" title="Categoria - ${category.name}" class="button menu-button">${category.name}</a></li>

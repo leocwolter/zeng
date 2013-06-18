@@ -9,7 +9,7 @@
 			</form>
 		</c:if>
 		<section class="user">
-			<a href="${linkTo[ProjectController].listProjects}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" class="user-name">
+			<a href="${linkTo[ProjectController].listProjects}" title="${userSession.user.name}" data-user-name="${userSession.user.name}" class="user-name ellipsis">
 				${userSession.user.name} </a>
 			<div class="arrow dropdown" data-target="user-menu">
 				<ul class="dropdown-target  menu">

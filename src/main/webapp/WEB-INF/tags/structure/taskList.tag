@@ -4,14 +4,14 @@
 <%@ attribute name="taskList" required="true" type="br.com.zeng.model.TaskList" %>
 
 <section class="task-area">
-	<h3>${taskList.name}</h3>
+	<h3 class="task-list-name">${taskList.name}</h3>
 	<nav class="task-menu-bar">
 		<ul>
-	    	<li><a class="task-filter task-filter-selected" data-filter="nofilter" href="#" >All</a></li>
-	    	<li><a class="task-filter" data-filter="todo" href="#">To do</a></li>
-	        <li><a class="task-filter" data-filter="doing" href="#">Doing</a></li>
-	        <li><a class="task-filter" data-filter="done" href="#">Done</a></li>
-	        <li><a class="task-filter" data-filter="mine" href="#">Mine</a>
+	    	<li class="menu-item"><a class="task-filter task-filter-selected" data-filter="nofilter" href="#" >All</a></li>
+	    	<li class="menu-item"><a class="task-filter" data-filter="todo" href="#">To do</a></li>
+	        <li class="menu-item"><a class="task-filter" data-filter="doing" href="#">Doing</a></li>
+	        <li class="menu-item"><a class="task-filter" data-filter="done" href="#">Done</a></li>
+	        <li class="menu-item"><a class="task-filter" data-filter="mine" href="#">Mine</a>
 	    </ul>
 	</nav>
 	<ul class="task-list" data-tasklist-id="${taskList.id}">

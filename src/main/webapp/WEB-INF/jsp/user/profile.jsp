@@ -31,7 +31,5 @@
 	<c:import url="/WEB-INF/imports/script-import.jsp" />
 	<!-- GENERIC MODAL SCRIPT - BIND -->
 	<script type="text/javascript" src="<c:url value="/js/generic.js" />"></script>
-	<!-- HEADER MARGIN SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 </body>
 </html>

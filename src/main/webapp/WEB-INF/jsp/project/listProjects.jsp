@@ -29,7 +29,5 @@
 	<script type="text/javascript" src="<c:url value="/js/dropdown.js" />"></script>
 	<!-- MODAL SCRIPTS IMPORT -->
 	<c:import url="/WEB-INF/imports/modal-script.jsp"></c:import>	
-	<!-- HEADER MARGIN SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 </body>
 </html>

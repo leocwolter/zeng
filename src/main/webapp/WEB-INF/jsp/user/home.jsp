@@ -13,40 +13,28 @@
 	<c:import url="/WEB-INF/imports/css-import.jsp" />
 </head>
 <body>
-	<section id="container">
+	<section class="home-content">
 		<c:import url="/WEB-INF/imports/not-logged-header.jsp"></c:import>
-		<section id="home-content" class="content container">
+		<section class="content container">
 			<zeng-messages:error />
-			<form id="register-user-form" class="user-form" action="${linkTo[UserController].register}" method="post">
-				<h1>Sign up for FREE</h1>
-				<fieldset>
-					<p>
-						<label for="name">Name:</label>
-						<input id="name" name="user.name" type="text" class="text" value="" />
-					</p>
-					<p>
-						<label for="email">Email:</label>
-						<input id="email" name="user.email" type="email" class="text" value="" />
-					</p>
-					<p>
-						<label for="password">Password:</label>
-						<input id="password" name="user.password" class="text" type="password" />
-					</p>
-					<p>
-						<label for="confirm-password">Confirm password:</label>
-						<input id="confirm-password" name="user.confirmPassword" class="text" type="password" />
-					</p>
-					<p id="terms-paragraph">
-						<input type="checkbox" name="terms" checked="checked" />
-						<label for="terms">
-							I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a>
-						</label>
-						<label for="terms" generated="true" class="error" style="display: none;"></label>
-					</p>
-					<p>
-						<input id="register-button" class="button normal-button" type="submit" value="REGISTER" />
-					</p>
-				</fieldset>
+			<form class="user-form" action="${linkTo[UserController].register}" method="post">
+				<h2 class="user-form-title">Sign up for FREE</h2>
+				<label for="name">Name:</label>
+				<input id="name" name="user.name" type="text" class="input-text" value="" />
+
+				<label for="email">Email:</label>
+				<input id="email" name="user.email" type="email" class="input-text" value="" />
+
+				<label for="password">Password:</label>
+				<input id="password" name="user.password" class="input-text" type="password" />
+
+				<label for="confirm-password">Confirm password:</label>
+				<input id="confirm-password" name="user.confirmPassword" class="input-text" type="password" />
+
+				<input type="checkbox" name="terms" checked="checked" class="terms" />
+				<label for="terms" class="terms-label terms">I agree to the <a href="">Terms and Conditions</a> and <a href="">Privacy Policy</a></label>
+
+				<input id="register-button" class="button normal-button" type="submit" value="REGISTER" />
  			</form>
 		</section>
 		<c:import url="/WEB-INF/imports/footer.jsp" />
@@ -58,8 +46,6 @@
 	<script type="text/javascript" src="<c:url value="/js/screen_size.js" />"></script>
 	<!-- HOME FORMS VALIDATE SCRIPT -->
 	<script type="text/javascript" src="<c:url value="/js/home.js" />"></script>
-	<!-- HEADER MARGIN SCRIPT -->
-	<script type="text/javascript" src="<c:url value="/js/header.js" />"></script>
 
 </body>
 </html>

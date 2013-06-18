@@ -32,10 +32,21 @@ html, a{
 .container {margin: 0 auto;	padding: 0 1em;}
 .top, .copyright{background: #61472D;}
 .title{font-weight: bold;font-size: 1.5em;}
-.menu .menu-item{float: left;margin: 0 5px;}
+.menu{float: left}
+.menu-item{float: left;margin: 0 5px;}
+
+/* Form */
+.text-input{
+	padding: .2em;
+}
+
+input{
+	width: 100%;
+}
+
 
 /* Header */
-.top{padding:15px 0; overflow: hidden;}
+.top{padding: 1em 0; overflow: hidden; margin-bottom: 5%}
 .top .search-form{display: none;}
 .top .small-logo, .top .search-form, .top .user .user-name{float:left;}
 .top .user{float:right;}
@@ -55,6 +66,16 @@ html, a{
 .menu-item{display: inline-block; list-style: none}
 .main-menu-bar .new-item{float:right}
 .menu-title{float:left; margin-right: 1em}
+
+/* Content */
+.content {
+	overflow: hidden;
+}
+
+/* Footer */
+.footer{
+	margin-top: 5%;
+}
 
 /* Messages */
 .message {
@@ -79,7 +100,6 @@ html, a{
 
 
 /* DropDown */
-
 .arrow {
 	width:0;
 	border: 7px solid transparent;
@@ -119,7 +139,6 @@ html, a{
 /*Buttons*/
 .button {
 	display: inline-block;
-	width: auto;
 	padding: 0 10px;
 	line-height: 25px;
 	height: 25px;
@@ -203,6 +222,43 @@ html, a{
 .insert-project-button{
 	float: right;
 	margin-top: 4px;
+}
+/* Home */
+.login-form {
+	float: right;
+	width:175px;
+}
+
+.home-content{
+	background-color: #b78e65;
+}
+
+.user-form {
+	float: right;
+	display: block;
+}
+
+.user-form-title {
+	display: block;
+	margin-bottom: .6em;
+	font-size: 2.5em;
+	text-shadow: #61472D -1px -1px, #61472D 1px 1px;
+}
+
+.user-form label{
+	display: block;
+	margin: 0 0 5px 0;
+	line-height: 20px;
+	color: #000;
+}
+
+.terms{
+	float:left;
+	width: auto;
+}
+
+.terms-label{
+	width: 260px;
 }
 
 /* Show Project */
@@ -313,11 +369,6 @@ html, a{
 	display: block;
 	padding: .6em;
 }
-
-/* /* Forms */ */
-
-/* @CHARSET "UTF-8"; */
-
 /* /* CATEGORY INSERT FORM */ */
 
 /* .insert-form { */
@@ -389,121 +440,11 @@ html, a{
 	
 /* } */
 
-/* .user-form { */
-/* 	clear:right; */
-/* 	float: right; */
-/* } */
-
-/* .user-form fieldset input.error { */
-/* 	border: 1px solid #FF0000; */
-/* } */
-
-/* .user-form h1 { */
-/* 	display: block; */
-/* 	margin: 20px 0; */
-/* 	font-size: 35px; */
-/* 	text-shadow: #61472D -1px -1px, #61472D 1px 1px; */
-/* } */
-
-/* .user-form, .user-form fieldset { */
-/* 	display: block; */
-/* 	width: 311px; */
-/* 	height: auto; */
-/* } */
-
-/* .user-form fieldset label { */
-/* 	display: block; */
-/* 	margin: 0 0 5px 0; */
-/* 	line-height: 20px; */
-/* } */
-
-/* .user-form fieldset input[type="text"], */
-/* .user-form fieldset input[type="email"], */
-/* .user-form fieldset input[type="password"], */
-/* .insert-form fieldset select { */
-/* 	height: 21px; */
-/* 	width: 303px; */
-/* 	padding:2px; */
-/* 	border: 1px solid #38291A; */
-/* 	border-radius: 3px; */
-/* 	margin: 0 0 10px 0; */
-/* } */
-
-/* .user-form fieldset input[type="checkbox"] { */
-/* 	height: 20px; */
-/* 	width: 20px; */
-/* 	border: 1px solid #38291A; */
-/* 	display: block; */
-/* 	float: left; */
-/* } */
-
-/* .user-form fieldset #terms-paragraph { */
-/* 	margin: 15px 0 15px 0; */
-/* } */
-
-/* .user-form fieldset input[type="submit"] { */
-/* 	float: right; */
-/* } */
-
 /* /*Structure*/ */
-/* .header { */
-/* 	width: 100%; */
-/* 	height: auto; */
-/* 	top: 0px; */
-/* 	left: 0px; */
-/* 	z-index: 2; */
-/* 	background: #61472D; */
-/* 	position: fixed; */
-/* } */
-
-/* .header a { */
-/* 	color: #E3E1D5; */
-/* } */
-
-/* #top { */
-/* 	background: #61472D; */
-/* 	height: 50px; */
-/* 	min-width: 410px; */
-/* 	padding-top: 5px; */
-/* 	padding-bottom: 5px; */
-/* 	margin: 0px; */
-/* 	border-bottom: 1px solid #533D26; */
-/* } */
-
-/* #container { */
-/* 	min-height: 100%; */
-/* 	width: 100%; */
-/* 	position: relative; */
-/* 	overflow: hidden; */
-/* } */
-
-/* .container { */
-/* 	margin: 0 auto; */
-/* 	padding: 0 20px; */
-/* } */
-
-/* .content { */
-/* 	height: auto; */
-/* 	min-height: 600px; */
-/* 	width: 100%; */
-/* 	padding-top: 20px; */
-/* 	overflow: hidden; */
-/* 	position: relative; */
-/* 	overflow: hidden; */
-/* } */
 
 /* #project-content { */
 /* 	background: url(../img/fabric_plaid.png) repeat; */
 /* } */
-
-/* #home-content { */
-/* 	background: #B78E65; */
-/* } */
-
-/* #generic-content { */
-/* 	background: #FFFFFF; */
-/* } */
-
 
 /* #copyright { */
 /* 	height: 20px; */

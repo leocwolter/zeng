@@ -1,8 +1,10 @@
-<header id="top" class="header resizable container">
-	<a href="${linkTo[ProjectController].listProjects}" id="small-logo">Zeng</a>
-	<form action="${linkTo[UserController].logIn}" method="post" id="login-form">
-		<input type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />
-		<input type="password" name="user.password" placeholder="Password" />
-		<input type="submit" value="Login" class="button normal-button" />
-	</form>
+<header class="top">
+	<div class="container resizable">
+		<a href="${linkTo[ProjectController].listProjects}" class="small-logo">Zeng</a>
+		<form class="login-form" action="${linkTo[UserController].logIn}" method="post">
+			<input class="text-input" type="email" name="user.email" placeholder="email@zeng.com" autofocus="autofocus" />
+			<input class="text-input" type="password" name="user.password" placeholder="Password" />
+			<input class="button normal-button" type="submit" value="Login" />
+		</form>
+	</div>
 </header>

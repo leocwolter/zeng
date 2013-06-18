@@ -22,7 +22,7 @@
 			</section>
 			<c:import url="/WEB-INF/imports/footer.jsp"/>
         </section>
-       </section>
+	</section>
     <!-- SCRIPTS IMPORT -->
 	<c:import url="/WEB-INF/imports/script-import.jsp" />
 	<!-- DROPDOWN MARGIN SCRIPT -->

@@ -14,6 +14,7 @@ html *{
 	box-sizing:border-box;
 	color: #E3E1D5;
 	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
 	text-decoration: none;
 	overflow:hidden;
 }
@@ -43,11 +44,33 @@ html *{
 .top .user .dropdown{margin-top:16px;right:16px;}
 
 /* Main Menu */
-.main-menu-bar{height: 35px; line-height: 35px;}
-.main-menu-bar .title{float:left;}
+.main-menu-bar {height: 35px; line-height: 35px;}
 .main-menu-bar, .footer{border-top: 1px solid #997047;background: #84603D;}
 .main-menu-bar .menu{float:left}
 .main-menu-bar .new-item{float:right}
+.menu-title{float:left; margin-right: 1em}
+
+/* Messages */
+.message {
+	heigth: auto;
+	margin: 1em 0;
+	padding: 7px 5px;
+	border-radius: 3px;
+	opacity: 0.9;
+}
+
+.warning {
+	background: #FFE393;
+	border: 1px solid #FED04C;
+	color: #936D00;
+}
+
+.error {
+	background: #FECCCC;
+	border: 1px solid #D39191;
+	color: #A30000;
+}
+
 
 /* DropDown */
 
@@ -160,6 +183,8 @@ html *{
 	color: #5b0000;
 }
 
+
+
 .archive-task {
 	float: right;
 	width: 23px;
@@ -167,6 +192,13 @@ html *{
 	line-height: 23px;
 	text-indent: -2px;
 	font-weight: bold;
+}
+
+/* List Projects*/
+
+.insert-project-button{
+	float: right;
+	margin-top: 4px;
 }
 
 /* /* BASE ELEMENTS */ */

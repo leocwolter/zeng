@@ -14,7 +14,9 @@
 </head>
 <body>
 	<section class="home-content">
-		<c:import url="/WEB-INF/imports/not-logged-header.jsp"></c:import>
+		<header class="header">
+			<c:import url="/WEB-INF/imports/not-logged-header.jsp"></c:import>
+		</header>
 		<section class="content container">
 			<zeng-messages:error />
 			<form class="user-form" action="${linkTo[UserController].register}" method="post">

@@ -6,5 +6,8 @@
 <!-- ZENG STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/zeng.css"/>" />
 
+<!-- ZENG STYLE -->
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/responsive-zeng.css"/>" />
+
 <!-- MESSI STYLE -->
 <link rel="stylesheet" type="text/css" href="<c:url value="/css/messi.min.css"/>" />

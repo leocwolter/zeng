@@ -29,7 +29,7 @@ html, a{
 
 .field{height:25px;margin:0;color:#000;}
 .small-logo{text-indent: -9999px;display: block;height: 40px;width: 57px;background: url(../img/small_logo.png) no-repeat;}
-.container {margin: 0 auto;	padding: 0 1em;}
+.container {margin: 0 auto;	padding: 0 1em; overflow: hidden;}
 .top, .copyright{background: #61472D;}
 .title{font-weight: bold;font-size: 1.5em;}
 .menu{float: left}
@@ -327,6 +327,8 @@ input{
 .task-list {
 	border-left: 1px solid #AAAAAA;
 	border-right: 1px solid #AAAAAA;
+	height: 350px;
+	overflow: auto;
 }
 
 

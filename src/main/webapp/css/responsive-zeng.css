@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+@media only screen and (min-width: 630px) {
+	.task-area {
+		width: 48%;	
+		margin-right: 2%;
+		float:left;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.task-area {
+		width: 30%;	
+		margin-right: 2%;
+		float:left;
+	}
+}

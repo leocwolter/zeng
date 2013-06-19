@@ -7,13 +7,12 @@
 	<section class="sidebar-content">
 		<section class="sidebar-members-area">
 			<c:forEach items="${project.contributors}" var="contributor">
-				<a href="${linkTo[UserController].profile[contributor.id]}" title="${contributor.name}" id="project-members-photo-link"
-					class="photo-link">
+				<a href="${linkTo[UserController].profile[contributor.id]}" title="${contributor.name}" class="photo-link project-members-photo-link">
 					<img src='<c:url value="${contributor.photo}?s=40"/>' alt="${contributor.name}" height="40" width="40" />
 				</a>
 			</c:forEach>
 		</section>
-		<section id="project-notifications">
+		<section class="project-notifications">
 			<dl>
 				<c:forEach items="${project.actions}" var="action">
 					<dt>${action.author.name}</dt>

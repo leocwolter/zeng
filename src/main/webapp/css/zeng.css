@@ -73,6 +73,10 @@ input{
 	overflow: hidden;
 }
 
+.project-content {
+	background: url(../img/fabric_plaid.png) repeat;
+}
+
 /* SideBar */
 .project-notifications dl:first-child {
 	margin: 10px 0 0 0;
@@ -147,6 +151,29 @@ input{
 	opacity: 1;
 	cursor: pointer;
 }
+
+/*RESIZABLE STRUSCTURE */
+
+.resizable {
+	width: 100%;
+	padding-right: 20px;
+	padding-left: 10px;
+}
+
+.opened-sidebar {
+	transition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+	padding-right: 261px;
+}
+
+.closed-sidebar {
+	padding-right: 20px;
+	transition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+}
+
 
 /* Footer */
 .footer{
@@ -524,9 +551,7 @@ input{
 
 /* /*Structure*/ */
 
-/* #project-content { */
-/* 	background: url(../img/fabric_plaid.png) repeat; */
-/* } */
+
 
 /* #copyright { */
 /* 	height: 20px; */
@@ -537,70 +562,12 @@ input{
 /* 	text-align: center; */
 /* } */
 
-/
-/* /*HOME*/ */
-
-/* /*RESIZABLE STRUSCTURE*/ */
-
-.resizable {
-	width: 100%;
-	padding-right: 20px;
-	padding-left: 10px;
-}
-
-.opened-sidebar {
-	transition: all .3s linear;
-	-webkit-transition: all .3s linear;
-	-moz-transition: all .3s linear;
-	padding-right: 261px;
-}
-
-.closed-sidebar {
-	padding-right: 20px;
-	transition: all .3s linear;
-	-webkit-transition: all .3s linear;
-	-moz-transition: all .3s linear;
-}
-
 /* /*PROJECT AREA*/ */
 /* #left-container { */
 /* 	width: 100%; */
 /* 	height: auto; */
 /* 	float: left; */
 /* 	overflow: hidden; */
-/* } */
-
-/* /*CATEGORY*/ */
-/* #selected-category-button { */
-/* 	border-radius: 4px; */
-/* 	background: #38291A; */
-/* 	color: #FFFFFF; */
-/* 	padding: 0 5px; */
-/* } */
-
-/* .category,.selected-category { */
-/* 	height: auto; */
-/* 	min-height: 600px; */
-/* 	width: 100%; */
-/* } */
-
-/* .category header { */
-/* 	width: 100%; */
-/* 	height: 32px; */
-/* 	overflow: hidden; */
-/* 	margin: 0 0 10px 0; */
-/* } */
-
-/* #category-container { */
-/* 	height: auto; */
-/* } */
-
-/* .category h2 { */
-/* 	display: block; */
-/* 	font-weight: bold; */
-/* 	float: left; */
-/* 	font-size: 18px; */
-/* 	line-height: 30px; */
 /* } */
 
 /* /*TASK LIST*/ */
@@ -633,5 +600,3 @@ input{
 /* #other-categories li a:hover { */
 /* 	background-color: #CEB296; */
 /* } */
-
-

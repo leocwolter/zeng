@@ -14,7 +14,7 @@
 <c:import url="/WEB-INF/imports/css-import.jsp" />
 </head>
 	<body>
-    	<section class="main-area">
+    	<section class="main-area  project-content">
 			<c:import url="/WEB-INF/imports/header.jsp"/>
 			<c:import url="/WEB-INF/imports/category-menu.jsp"/>
            	<div class="container resizable">

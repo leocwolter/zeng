@@ -28,9 +28,9 @@ $(document).ready(function() {
 		this.clickArea.toggle(this.firstToggleFunction, this.secondToggleFunction);
 	}
 
-	var sideBarElement = $('#project-sidebar');
-	var clickArea = $('#project-sidebar-click-area');
-	if(sideBarElement !== undefined) toggleSideBar(sideBarElement, clickArea);
+	var sideBarElement = $('.project-sidebar');
+	var clickArea = $('.project-sidebar-click-area');
+	if(sideBarElement.is(":visible")) toggleSideBar(sideBarElement, clickArea);
 	
 	function toggleSideBar(sideBarElement, clickArea){
 		var sideBarWidth = sideBarElement.width();
@@ -39,7 +39,7 @@ $(document).ready(function() {
 		//Animation to close sidebar
 		var closeSidebar = function(){
 			localStorage.closedSidebar = true;
-			$('#project-sidebar').animate({
+			$('.project-sidebar').animate({
 				'width' : clickAreaWidth
 			}, function() {
 				$('.resizable').addClass('closed-sidebar').removeClass('opened-sidebar');
@@ -49,7 +49,7 @@ $(document).ready(function() {
 		//Animation to open sidebar
 		var openSidebar = function(){
 			localStorage.closedSidebar = false;
-			$('#project-sidebar').animate({
+			$('.project-sidebar').animate({
 				'width' : sideBarWidth
 			}, function() {
 				$('.resizable').addClass('opened-sidebar').removeClass('closed-sidebar');

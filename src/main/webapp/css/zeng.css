@@ -42,6 +42,7 @@ html, a{
 
 input{
 	width: 100%;
+	border: 0;
 }
 
 
@@ -220,7 +221,8 @@ input{
 	position: absolute;
 	display: none;
 	width: 100px;
-	left: 19px;
+	left: -90px;
+	top: 5px;
 	background: #FFF;
 	border: 1px solid #61472D;
 }
